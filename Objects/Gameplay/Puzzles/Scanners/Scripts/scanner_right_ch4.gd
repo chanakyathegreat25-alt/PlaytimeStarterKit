@@ -113,8 +113,6 @@ func power_scanner():
 	text_animation.play("ready")
 func dispower_scanner():
 	powered = false
-	screen_animation.play("blank")
-	text_animation.play("blank")
 	screen_material.emission_energy_multiplier = 0.0
 	text_material.emission_energy_multiplier = 0.0
 
