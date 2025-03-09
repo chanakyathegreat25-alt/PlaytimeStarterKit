@@ -182,6 +182,9 @@ func _physics_process(delta: float) -> void:
 	
 	#Handle Flashlight
 	flashlight_node.visible = flashlight
+	
+	#Settings Update:
+	camera.fov = GameSettings.fov
 
 func capture_mouse(capture_mode: bool) -> void:
 	if capture_mode:

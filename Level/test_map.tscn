@@ -755,7 +755,7 @@ allow_battery_removal = true
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 11.3, 3.2, 14.4)
 allow_battery_removal = true
 powers_puzzle = true
-puzzle_node = NodePath("../HandScannerLeft")
+puzzle_node = NodePath("../HandScannerRight3")
 powered_puzzle_on_signal = "power_scanner"
 powered_puzzle_off_signal = "dispower_scanner"
 
@@ -822,6 +822,10 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 18.3, 
 [node name="GrabHandle2" parent="Puzzles" instance=ExtResource("9_8tp42")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.0499997, 7.6, -15.65)
 handle_behaviour = 1
+
+[node name="HandScannerRight3" parent="Puzzles" instance=ExtResource("12_oxf1b")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 11.2, 4.1, 16.6)
+powered = false
 
 [node name="HandScannerLeft" parent="Puzzles" instance=ExtResource("11_8jck2")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 11.2, 3.3, 16.6)
@@ -1395,7 +1399,7 @@ light_color = Color(1, 1, 0.796078, 1)
 [node name="OmniLight3D4" type="OmniLight3D" parent="Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.4958, 3.8, 15.6)
 light_color = Color(1, 1, 0.796078, 1)
-light_energy = 2.11774
+light_energy = 0.501851
 omni_range = 5.7
 script = ExtResource("54_lxs5s")
 noise = SubResource("NoiseTexture2D_36i0g")
@@ -1404,7 +1408,7 @@ max_energy = 6.0
 [node name="OmniLight3D6" type="OmniLight3D" parent="Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.2042, 2.7, -16.3)
 light_color = Color(1, 1, 0.796078, 1)
-light_energy = 2.11774
+light_energy = 0.501851
 omni_range = 5.7
 script = ExtResource("54_lxs5s")
 noise = SubResource("NoiseTexture2D_36i0g")
@@ -1413,7 +1417,7 @@ max_energy = 6.0
 [node name="OmniLight3D7" type="OmniLight3D" parent="Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5042, 2.7, -16.3)
 light_color = Color(1, 1, 0.796078, 1)
-light_energy = 2.11774
+light_energy = 0.501851
 omni_range = 5.7
 script = ExtResource("54_lxs5s")
 noise = SubResource("NoiseTexture2D_36i0g")
@@ -1422,7 +1426,7 @@ max_energy = 6.0
 [node name="OmniLight3D8" type="OmniLight3D" parent="Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.7042, 2.7, -16.3)
 light_color = Color(1, 1, 0.796078, 1)
-light_energy = 2.11774
+light_energy = 0.501851
 omni_range = 5.7
 script = ExtResource("54_lxs5s")
 noise = SubResource("NoiseTexture2D_36i0g")

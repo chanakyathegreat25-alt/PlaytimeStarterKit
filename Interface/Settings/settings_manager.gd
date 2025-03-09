@@ -3,7 +3,7 @@ extends Node
 @onready var settings_menu = $"../../.."
 
 #TAB1
-@onready var camera_sense = $"../Tab1/HSlider"
+@onready var camera_sense = $"../Tab1/SettingsBox/HSlider"
 @onready var toggle_sprint = $"../Tab1/SettingsBox2"
 @onready var toggle_crouch = $"../Tab1/SettingsBox3"
 @onready var keybinds = $"../Tab1/SettingsBox4"

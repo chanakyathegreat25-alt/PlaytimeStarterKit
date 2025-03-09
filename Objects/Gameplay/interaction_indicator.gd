@@ -1,35 +1,42 @@
 extends Node3D
 
 ##The distance the player must be from the indicator for it to appear
-@export var radius: float = 2.5
+@export var radius: float = 1.0
 @export var enabled: bool = true
-@export var uses_check_function: bool = false
-@export var check_function_node: NodePath
-@export var check_function_name: String
-@export var player_requires_item: bool = false
-@export var item_list_name: String = ""
-@export var item_name: String = ""
 
 const ITEM_OUTLINE = preload("res://Objects/VFX/Item/item_outline.tres")
 
+@onready var circle: MeshInstance3D = $Circle
+@onready var ready_mesh: Node3D = $ReadyMesh
+
+var ind_node: Area3D = null
+
 func _ready():
-	visible = false
+	ready_mesh.visible = false
+	circle.visible = false
 	$Area/CollisionShape3D.shape.radius = radius
+	
+	if get_parent() is BasicInteraction:
+		ind_node = get_parent()
+		ind_node.connect("player_started_look", Callable(start_look))
+		ind_node.connect("player_ended_look", Callable(end_look))
+
+func start_look():
+	circle.visible = false
+	ready_mesh.visible = true
+func end_look():
+	circle.visible = true
+	ready_mesh.visible = false
 
 func _on_area_body_entered(body):
 	if body.is_in_group("Player"):
-		if not enabled:
+		if ind_node and not ind_node.enabled:
 			return
-		if uses_check_function:
-			var node = get_node(check_function_node)
-			if not node.call(check_function_name):
-				return
-		if player_requires_item:
-			var has_item = Inventory.scan_list(item_list_name, item_name)
-			if not has_item:
-				return
+		circle.visible = true
 		visible = true
 
 func _on_area_body_exited(body):
 	if body.is_in_group("Player"):
+		circle.visible = false
+		ready_mesh.visible = false
 		visible = false

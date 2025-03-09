@@ -64,7 +64,7 @@ func handle_grabpack_animation(delta):
 				walk_animation.play("StopWalking")
 				walk_animation.queue("NotWalking")
 				walk_animation.seek(0)
-				walk_animation.speed_scale = 1.0
+				walk_animation.speed_scale = 1.25
 				idle_animation.play("idle")
 				is_walking = false
 				is_sidel_animation = false

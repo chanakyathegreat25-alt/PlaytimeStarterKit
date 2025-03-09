@@ -11,6 +11,7 @@ extends StaticBody3D
 @onready var scan_complete = $ScanComplete
 @onready var fail = $Fail
 
+@export var powered: bool = true
 @export var scan_time: float = 2.5
 ##The name of the hand required for this scanner. This is the name of the hands root node.
 @export var required_hand: String = "RedHand"
@@ -41,6 +42,8 @@ func _ready():
 	text_material = text.get_surface_override_material(0)
 	screen_material = screen.get_surface_override_material(1)
 	set_state(0)
+	if not powered:
+		dispower_scanner()
 
 func set_state(state: int):
 	if state == 0:
@@ -89,6 +92,7 @@ func scan_finished():
 			emit_signal("scan_incorrect")
 
 func start_scan(hand):
+	if not powered: return
 	set_state(1)
 	timer.start(scan_time)
 	scan_hand = hand
@@ -98,6 +102,21 @@ func stop_scan(hand):
 		timer.stop()
 		set_state(0)
 		emit_signal("scan_cancelled")
+
+func power_scanner():
+	powered = true
+	text_material.emission_texture = T_READY
+	text_material.emission_energy_multiplier = 1.0
+	screen_material.emission_texture = T_HAND_SCANNER
+	screen_material.emission_energy_multiplier = 1.0
+	screen_animation.play("ready")
+	text_animation.play("ready")
+func dispower_scanner():
+	powered = false
+	screen_animation.play("blank")
+	text_animation.play("blank")
+	screen_material.emission_energy_multiplier = 0.0
+	text_material.emission_energy_multiplier = 0.0
 
 func _on_hand_grab_grabbed(hand):
 	if scan_state == 0:

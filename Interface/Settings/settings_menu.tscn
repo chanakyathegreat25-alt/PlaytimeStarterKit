@@ -413,15 +413,25 @@ script = ExtResource("13_e305e")
 setting_name = "Camera Sensitivity"
 setting_description = "The sensitivity of your camera."
 settings_root = NodePath("../../../..")
+is_slider = true
 
-[node name="HSlider" type="HSlider" parent="section/Tabs/Tab1"]
-offset_left = 365.0
-offset_top = 104.0
-offset_right = 554.0
-offset_bottom = 136.0
+[node name="HSlider" type="HSlider" parent="section/Tabs/Tab1/SettingsBox"]
+offset_left = 232.0
+offset_right = 410.0
+offset_bottom = 32.0
 theme_override_styles/slider = SubResource("StyleBoxLine_e305e")
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_lycpx")
 value = 50.0
+
+[node name="Label" type="Label" parent="section/Tabs/Tab1/SettingsBox"]
+offset_left = 187.0
+offset_top = 7.0
+offset_right = 231.0
+offset_bottom = 25.0
+theme_override_fonts/font = ExtResource("9_mtdyh")
+text = "65%"
+horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="SettingsBox2" type="CheckButton" parent="section/Tabs/Tab1"]
 offset_left = 144.0
@@ -544,6 +554,7 @@ script = ExtResource("13_e305e")
 setting_name = "Field Of View"
 setting_description = "The FOV of your camera."
 settings_root = NodePath("../../../..")
+is_slider = true
 
 [node name="HSlider" type="HSlider" parent="section/Tabs/Tab2/SettingsBox4"]
 layout_mode = 0
@@ -552,9 +563,19 @@ offset_right = 410.0
 offset_bottom = 32.0
 theme_override_styles/slider = SubResource("StyleBoxLine_e305e")
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_lycpx")
-min_value = 60.0
-max_value = 110.0
-value = 75.0
+min_value = 50.0
+value = 65.0
+
+[node name="Label" type="Label" parent="section/Tabs/Tab2/SettingsBox4"]
+layout_mode = 0
+offset_left = 172.0
+offset_top = 7.0
+offset_right = 216.0
+offset_bottom = 25.0
+theme_override_fonts/font = ExtResource("9_mtdyh")
+text = "65"
+horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="Tab3" type="Node2D" parent="section/Tabs"]
 visible = false
@@ -587,6 +608,8 @@ script = ExtResource("13_e305e")
 setting_name = "Main Volume"
 setting_description = "The volume of all of the games audio."
 settings_root = NodePath("../../../..")
+is_slider = true
+slider_use_percentage = true
 
 [node name="HSlider" type="HSlider" parent="section/Tabs/Tab4/SettingsBox"]
 layout_mode = 0
@@ -596,6 +619,16 @@ offset_bottom = 32.0
 theme_override_styles/slider = SubResource("StyleBoxLine_e305e")
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_lycpx")
 value = 100.0
+
+[node name="Label" type="Label" parent="section/Tabs/Tab4/SettingsBox"]
+offset_left = 172.0
+offset_top = 7.0
+offset_right = 216.0
+offset_bottom = 25.0
+theme_override_fonts/font = ExtResource("9_mtdyh")
+text = "65"
+horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="SettingsBox2" type="Button" parent="section/Tabs/Tab4"]
 offset_left = 144.0
@@ -609,6 +642,8 @@ script = ExtResource("13_e305e")
 setting_name = "Music Volume"
 setting_description = "The volume of the games music."
 settings_root = NodePath("../../../..")
+is_slider = true
+slider_use_percentage = true
 
 [node name="HSlider" type="HSlider" parent="section/Tabs/Tab4/SettingsBox2"]
 layout_mode = 0
@@ -618,6 +653,16 @@ offset_bottom = 32.0
 theme_override_styles/slider = SubResource("StyleBoxLine_e305e")
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_lycpx")
 value = 100.0
+
+[node name="Label" type="Label" parent="section/Tabs/Tab4/SettingsBox2"]
+offset_left = 172.0
+offset_top = 7.0
+offset_right = 216.0
+offset_bottom = 25.0
+theme_override_fonts/font = ExtResource("9_mtdyh")
+text = "65"
+horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="Tab5" type="Node2D" parent="section/Tabs"]
 visible = false
@@ -669,7 +714,7 @@ stream = ExtResource("14_iwa01")
 stream = ExtResource("15_d17gp")
 
 [connection signal="pressed" from="Tabs/back" to="." method="_on_back_pressed"]
-[connection signal="value_changed" from="section/Tabs/Tab1/HSlider" to="section/Tabs/SettingsManager" method="cam_sense_changed"]
+[connection signal="value_changed" from="section/Tabs/Tab1/SettingsBox/HSlider" to="section/Tabs/SettingsManager" method="cam_sense_changed"]
 [connection signal="toggled" from="section/Tabs/Tab1/SettingsBox2" to="section/Tabs/SettingsManager" method="toggle_sprint_changed"]
 [connection signal="toggled" from="section/Tabs/Tab1/SettingsBox3" to="section/Tabs/SettingsManager" method="toggle_crouch_changed"]
 [connection signal="item_selected" from="section/Tabs/Tab2/SettingsBox" to="section/Tabs/SettingsManager" method="window_mode_changed"]

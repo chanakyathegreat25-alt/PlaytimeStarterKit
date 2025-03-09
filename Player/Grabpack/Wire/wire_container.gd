@@ -89,4 +89,5 @@ func get_retract_path():
 func end_wire():
 	for i in get_child_count():
 		get_child(i).queue_free()
+	print("AHH")
 	last_segment = null

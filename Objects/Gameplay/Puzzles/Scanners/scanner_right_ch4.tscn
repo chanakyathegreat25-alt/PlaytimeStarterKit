@@ -88,7 +88,7 @@ size = Vector2(0.35, 0.115)
 resource_local_to_scene = true
 albedo_color = Color(0, 0, 0, 1)
 emission_enabled = true
-emission = Color(1, 1, 1, 1)
+emission = Color(1, 0, 0, 1)
 emission_operator = 1
 emission_texture = ExtResource("6_iv34o")
 uv1_scale = Vector3(1, 0.315, 1)
@@ -308,7 +308,7 @@ shape = SubResource("BoxShape3D_nsi4a")
 script = ExtResource("7_xggmt")
 grab_animation = "straight"
 grab_marker = NodePath("HandPositionMarker")
-metadata/_custom_type_script = ExtResource("7_xggmt")
+metadata/_custom_type_script = "uid://d4joakp74nxnn"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HandGrab"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0.15)

@@ -1,6 +1,14 @@
-[gd_scene load_steps=5 format=4 uid="uid://cxbtcmk7ewecu"]
+[gd_scene load_steps=8 format=4 uid="uid://cxbtcmk7ewecu"]
+
+[ext_resource type="Texture2D" uid="uid://bbto47elmd6il" path="res://Objects/Gameplay/ControlPanel/Mesh/T_ConsolesBase_A_BC.png" id="1_67jjf"]
+[ext_resource type="Texture2D" uid="uid://bmsgn2wb2gie0" path="res://Objects/Gameplay/ControlPanel/Mesh/T_ConsolesBase_A_N.png" id="2_s0r0s"]
+[ext_resource type="Texture2D" uid="uid://csipuka6g21at" path="res://Objects/Gameplay/ControlPanel/Mesh/T_ConsolesBase_A_ORM.png" id="3_w5vmt"]
 
 [sub_resource type="ORMMaterial3D" id="ORMMaterial3D_qy0wr"]
+albedo_texture = ExtResource("1_67jjf")
+orm_texture = ExtResource("3_w5vmt")
+normal_enabled = true
+normal_texture = ExtResource("2_s0r0s")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_qy0wr"]
 _surfaces = [{
