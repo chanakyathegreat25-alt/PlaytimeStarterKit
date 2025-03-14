@@ -47,7 +47,7 @@ shadow_mesh = SubResource("ArrayMesh_qy0wr")
 [sub_resource type="BoxShape3D" id="BoxShape3D_qy0wr"]
 size = Vector3(0.9, 0.8, 0.8)
 
-[node name="ControlPanelBase" type="StaticBody3D"]
+[node name="ConsoleBase" type="StaticBody3D"]
 
 [node name="SM_ConsolsBase_A" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_un2nn")

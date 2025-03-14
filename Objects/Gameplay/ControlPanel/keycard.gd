@@ -1,7 +1,21 @@
+@tool
 extends Node3D
+
+@export var keycard_name: String = ""
+@export var colour: Color
 
 @onready var inventory_item: InventoryItem = $InventoryItem
 @onready var hand_grab: HandGrab = $HandGrab
+
+@onready var material: ORMMaterial3D = $SM_KeyCard_B.get_surface_override_material(0)
+
+func _ready() -> void:
+	material.albedo_color = colour
+	inventory_item.item_name = keycard_name
+
+func _process(delta: float) -> void:
+	if Engine.is_editor_hint():
+		material.albedo_color = colour
 
 func grabbed():
 	hand_grab.release_grabbed()

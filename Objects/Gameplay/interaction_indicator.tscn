@@ -8,12 +8,15 @@ resource_local_to_scene = true
 radius = 1.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gkafu"]
+no_depth_test = true
 shading_mode = 0
 
 [sub_resource type="SphereMesh" id="SphereMesh_xrws7"]
 material = SubResource("StandardMaterial3D_gkafu")
 radius = 0.02
 height = 0.04
+radial_segments = 16
+rings = 8
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b7psr"]
 transparency = 1
@@ -34,7 +37,7 @@ script = ExtResource("1_b7psr")
 shape = SubResource("SphereShape3D_xrws7")
 
 [node name="Circle" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0068787, 0)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.0068787, 0)
 visible = false
 mesh = SubResource("SphereMesh_xrws7")
 

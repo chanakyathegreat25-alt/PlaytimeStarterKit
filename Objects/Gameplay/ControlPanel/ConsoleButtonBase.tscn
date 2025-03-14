@@ -44,7 +44,7 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_tyvm3")
 
-[node name="ControlPanelButton" type="StaticBody3D"]
+[node name="ConsoleButtonBase" type="StaticBody3D"]
 
 [node name="SM_ConsolsButtonSupport_A" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_asl4b")

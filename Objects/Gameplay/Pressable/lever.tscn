@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://baiftjqeipxda"]
+[gd_scene load_steps=25 format=4 uid="uid://baiftjqeipxda"]
 
 [ext_resource type="Script" uid="uid://8fmobl1bnf52" path="res://Objects/Gameplay/Pressable/Scripts/lever.gd" id="1_yx35o"]
 [ext_resource type="Texture2D" uid="uid://bivkbskdeggp2" path="res://Objects/Gameplay/Pressable/Model/T_LockerAndLever_BC.png" id="4_m3cij"]
@@ -141,18 +141,60 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_4cis8"]
 resource_name = "pull"
-length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath("Hinge:rotation")
-tracks/0/interp = 1
+tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(2.82843, 1),
 "update": 0,
 "values": [Vector3(0.575959, 0, 0), Vector3(2.49582, 0, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.566667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [true],
+"method": &"direction_changed"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_ndhkg"]
+resource_name = "pull_down"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hinge:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(2.9, 1),
+"update": 0,
+"values": [Vector3(2.49582, 0, 0), Vector3(0.575959, 0, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.566667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [false],
+"method": &"direction_changed"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_uv5ur"]
@@ -160,7 +202,8 @@ _data = {
 &"RESET": SubResource("Animation_uv5ur"),
 &"fail": SubResource("Animation_yx35o"),
 &"faildown": SubResource("Animation_erynx"),
-&"pull": SubResource("Animation_4cis8")
+&"pull": SubResource("Animation_4cis8"),
+&"pull_down": SubResource("Animation_ndhkg")
 }
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_erynx"]
@@ -218,6 +261,7 @@ shape = SubResource("BoxShape3D_erynx")
 
 [node name="BasicInteraction" type="Area3D" parent="."]
 script = ExtResource("7_ndhkg")
+enabled = false
 metadata/_custom_type_script = "uid://cp2nj828ny1um"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BasicInteraction"]
@@ -226,9 +270,8 @@ shape = SubResource("BoxShape3D_luvuq")
 
 [node name="InteractionIndicator" parent="BasicInteraction" instance=ExtResource("8_m3cij")]
 enabled = false
-uses_check_function = true
-check_function_node = NodePath("../..")
-check_function_name = "has_spare_lever"
 
+[connection signal="let_go" from="Hinge/HandGrab" to="." method="_on_hand_grab_let_go"]
 [connection signal="pulled" from="Hinge/HandGrab" to="." method="_on_hand_grab_pulled"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="player_interacted" from="BasicInteraction" to="." method="_on_basic_interaction_player_interacted"]

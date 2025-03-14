@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dtei4dbtarfod"
-path.s3tc="res://.godot/imported/T_ConsolesBase_B_N.png-f29f1c7950a09613f86b775da9759c2b.s3tc.ctex"
+uid="uid://bac1bjw4df0pk"
+path.s3tc="res://.godot/imported/T_SM_ConsolesHandScanner_A_N.png-8cc75472c6a6c21963f91aec34045083.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Objects/Gameplay/ControlPanel/Mesh/T_ConsolesBase_B_N.png"
-dest_files=["res://.godot/imported/T_ConsolesBase_B_N.png-f29f1c7950a09613f86b775da9759c2b.s3tc.ctex"]
+source_file="res://Objects/Gameplay/ControlPanel/Mesh/T_SM_ConsolesHandScanner_A_N.png"
+dest_files=["res://.godot/imported/T_SM_ConsolesHandScanner_A_N.png-8cc75472c6a6c21963f91aec34045083.s3tc.ctex"]
 
 [params]
 
@@ -25,7 +25,7 @@ compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=1
-roughness/src_normal="res://Objects/Gameplay/ControlPanel/Mesh/T_ConsolesBase_B_N.png"
+roughness/src_normal="res://Objects/Gameplay/ControlPanel/Mesh/T_SM_ConsolesHandScanner_A_N.png"
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

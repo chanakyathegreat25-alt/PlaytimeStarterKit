@@ -44,17 +44,24 @@ func _on_hand_grab_pulled(_hand):
 		pull_failed.emit()
 		return
 	if facing:
-		animation_player.play_backwards("pull")
+		animation_player.play("pull_down")
 		pulled_up.emit()
 	else:
 		animation_player.play("pull")
 		pulled_down.emit()
 	pull_sound.play()
-	facing = !facing
 	if pullable_once:
 		pulled_once = true
+
+func _on_hand_grab_let_go(hand: bool) -> void:
+	if animation_player.is_playing():
+		if animation_player.current_animation == "pull" or animation_player.current_animation == "pull_down":
+			pass
 
 func _on_basic_interaction_player_interacted():
 	if has_spare_lever():
 		set_has_lever(true)
 		Inventory.remove_item("items_Keys", "Lever")
+
+func direction_changed(new_direction: bool):
+	facing = new_direction
