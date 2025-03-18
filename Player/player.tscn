@@ -4104,10 +4104,10 @@ transform = Transform3D(-1, 8.74235e-08, -8.73988e-08, -8.74228e-08, -1, -3.7830
 [node name="Marker3D" type="Marker3D" parent="Grabpack/Pack/LayerWalk/ArmRight/LayerIdle/LayerWalk/LayerCrouch/LayerJump/LayerPack"]
 
 [node name="TubeLeft" type="Marker3D" parent="Grabpack/Pack/LayerWalk"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.38, 0.154481, 0.729331)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.38, 0.0518074, 0.546378)
 
 [node name="RightTube" type="Marker3D" parent="Grabpack/Pack/LayerWalk"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.329859, 0.152342, 0.720771)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.329859, 0.0496683, 0.537818)
 
 [node name="IdleAnimation" type="AnimationPlayer" parent="Grabpack/Pack"]
 libraries = {
@@ -4449,13 +4449,13 @@ libraries = {
 }
 playback_default_blend_time = 0.1
 
-[node name="DirectionCast" type="RayCast3D" parent="Grabpack/Pack/RightHandContainer"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0.0935527)
-
 [node name="Timer" type="Timer" parent="Grabpack/Pack/RightHandContainer"]
 wait_time = 0.2
 one_shot = true
 ignore_time_scale = true
+
+[node name="DirectionCast" type="RayCast3D" parent="Grabpack/Pack/RightHandContainer"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0.0935527)
 
 [node name="LeftWireContainer" type="Node3D" parent="Grabpack/Pack" node_paths=PackedStringArray("hand_container", "wire_origin", "wire_point", "wire_fake")]
 top_level = true

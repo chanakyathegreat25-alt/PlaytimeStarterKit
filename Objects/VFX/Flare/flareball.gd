@@ -21,5 +21,5 @@ func _process(delta):
 		frame_1 = 0.0
 		gpu_particles_3d.amount -= 1
 
-func _on_body_entered(_body):
+func _on_area_3d_body_entered(body: Node3D) -> void:
 	impact.play()

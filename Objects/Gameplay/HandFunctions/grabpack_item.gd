@@ -2,7 +2,7 @@ extends Node3D
 
 @onready var hand_grab = $HandGrab
 
-@export_range(1, 2) var grabpacK_number: int = 1
+@export_range(1, 2) var grabpack_number: int = 1
 @export var play_collect_sound: bool = true
 
 signal collected
@@ -12,7 +12,7 @@ func collect():
 	hand_grab.release_grabbed()
 	if play_collect_sound:
 		Grabpack.player.sound_manager.collect()
-	Grabpack.switch_grabpack(grabpacK_number)
+	Grabpack.switch_grabpack(grabpack_number)
 	
 	queue_free()
 

@@ -44,7 +44,7 @@ shadow_mesh = SubResource("ArrayMesh_xv8up")
 [sub_resource type="ORMMaterial3D" id="ORMMaterial3D_xv8up"]
 resource_local_to_scene = true
 next_pass = ExtResource("2_lcf87")
-albedo_color = Color(1, 0.772178, 0.734597, 1)
+albedo_color = Color(0, 0, 0, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_soe0c"]
 size = Vector3(0.3, 0.4, 0.2)
@@ -87,7 +87,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.047783)
 
 [node name="InventoryItem" type="Node" parent="."]
 script = ExtResource("4_soe0c")
-item_name = "Keycard"
+item_name = ""
 item_has_description = true
 item_description = "Its a fucking keycard"
 item_image = ExtResource("5_xv8up")

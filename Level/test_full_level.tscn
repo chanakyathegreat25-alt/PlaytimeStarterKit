@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://cjqgt71jp0xmh"]
+[gd_scene load_steps=33 format=4 uid="uid://cjqgt71jp0xmh"]
 
 [ext_resource type="Material" uid="uid://dl7krlcnai0qx" path="res://Level/Assets/Materials/ProtoDark.tres" id="1_fewn2"]
 [ext_resource type="PackedScene" uid="uid://dkty77argxwyc" path="res://Player/player.tscn" id="2_2v2lr"]
@@ -16,8 +16,15 @@
 [ext_resource type="PackedScene" uid="uid://d0a61yl37s346" path="res://Objects/Gameplay/ControlPanel/keycard.tscn" id="7_xfif6"]
 [ext_resource type="PackedScene" uid="uid://bxa4b5oyjodwg" path="res://Objects/Gameplay/ControlPanel/console_scanner_right.tscn" id="8_ijuff"]
 [ext_resource type="Script" uid="uid://cr7vgioayori4" path="res://Objects/VFX/WireCurves/power_cable.gd" id="8_k63y4"]
+[ext_resource type="Script" uid="uid://cg00b07a2atra" path="res://Objects/VFX/Flare/flare_detector.gd" id="14_2tvml"]
 [ext_resource type="PackedScene" uid="uid://pcbe4d8vixhy" path="res://Objects/Gameplay/Puzzles/Battery/battery.tscn" id="14_dusw1"]
-[ext_resource type="PackedScene" uid="uid://dlrkwthm6js8e" path="res://Player/Grabpack/Hands/red.tscn" id="14_q6awt"]
+[ext_resource type="PackedScene" uid="uid://cqepor71t6ham" path="res://Objects/Gameplay/HandFunctions/grabpack_item.tscn" id="18_ki6qs"]
+[ext_resource type="PackedScene" uid="uid://dd7igduoonl0g" path="res://Player/Grabpack/Hands/omni.tscn" id="19_86uxy"]
+[ext_resource type="PackedScene" uid="uid://dqt3cqw43ouuq" path="res://Objects/Gameplay/HandFunctions/Grabpack/grabpack_two_item_mesh.tscn" id="19_yraj4"]
+[ext_resource type="PackedScene" uid="uid://nkvm74l6uu31" path="res://Player/Grabpack/Hands/purple.tscn" id="20_86uxy"]
+[ext_resource type="PackedScene" uid="uid://cmy5x06xqde83" path="res://Objects/Gameplay/HandFunctions/Grabpack/grabpack_one_item_mesh.tscn" id="20_yraj4"]
+[ext_resource type="PackedScene" uid="uid://dsjalbhnalen4" path="res://Objects/Gameplay/LiquidNitrogen/explosive_barrel.tscn" id="21_8tokl"]
+[ext_resource type="PackedScene" uid="uid://5xwl88xktvuo" path="res://Player/Grabpack/Hands/flare.tscn" id="21_nwyu4"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_knc6i"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -55,6 +62,8 @@ _surfaces = [{
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q6awt"]
 albedo_color = Color(0, 0, 0, 1)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_2tvml"]
+
 [node name="test_full_level" type="Node3D"]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -70,6 +79,17 @@ environment = SubResource("Environment_xfif6")
 use_collision = true
 size = Vector3(12.7, 0.2, 10.3)
 material = ExtResource("1_fewn2")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSG"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.3, 1.65, 0)
+use_collision = true
+size = Vector3(0.1, 3.5, 10.3)
+material = ExtResource("1_fewn2")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSG/CSGBox3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.35, -0.9)
+operation = 2
+size = Vector3(1, 3.1, 3.2)
 
 [node name="Puzzle" type="Node" parent="."]
 
@@ -103,6 +123,7 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -4.1, 
 
 [node name="ConsoleScannerRight" parent="Puzzle/ControlPanelBase3" instance=ExtResource("8_ijuff")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+required_hand = "OmniHand"
 
 [node name="ControlPanelDouble" parent="Puzzle" instance=ExtResource("6_5e8g2")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.4, 0.1, 2.9)
@@ -138,6 +159,24 @@ powerable_off = false
 cable_mesh_node = NodePath("../MeshInstance3D")
 metadata/_custom_type_script = "uid://cr7vgioayori4"
 
+[node name="Gate2" parent="Gates" instance=ExtResource("6_btun3")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6.3, 0, -0.9)
+
+[node name="PuzzleGateLinker" type="Node" parent="Gates/Gate2" node_paths=PackedStringArray("connected_gate")]
+script = ExtResource("7_k63y4")
+connected_gate = NodePath("..")
+puzzle = NodePath("../../FlareDetector")
+enable_signal = "flare_entered"
+use_disable_signal = false
+metadata/_custom_type_script = "uid://ckdvdouxaw4it"
+
+[node name="FlareDetector" type="Area3D" parent="Gates"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.2, 1.7, 1.4)
+script = ExtResource("14_2tvml")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Gates/FlareDetector"]
+shape = SubResource("BoxShape3D_2tvml")
+
 [node name="Item" type="Node" parent="."]
 
 [node name="HandItem" parent="Item" instance=ExtResource("5_knc6i")]
@@ -151,7 +190,43 @@ colour = Color(0.614362, 1, 0.999852, 1)
 [node name="Battery" parent="Item" instance=ExtResource("14_dusw1")]
 transform = Transform3D(0.965926, -0.12941, 0.224144, 0, 0.866025, 0.5, -0.258819, -0.482963, 0.836516, -4.3, 0.7, 2.4)
 
+[node name="GrabpackItem" parent="Item" instance=ExtResource("18_ki6qs")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 3.1, 0.1, -1.2)
+grabpack_number = 2
+
+[node name="GrabpackTwoItemMesh" parent="Item/GrabpackItem" instance=ExtResource("19_yraj4")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 0, 0, 0)
+
+[node name="GrabpackItem4" parent="Item" instance=ExtResource("18_ki6qs")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 2.2, 0.1, -2.75885)
+grabpack_number = 2
+
+[node name="GrabpackTwoItemMesh" parent="Item/GrabpackItem4" instance=ExtResource("19_yraj4")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 0, 0, 0)
+
+[node name="GrabpackItem2" parent="Item" instance=ExtResource("18_ki6qs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.68756, 0.1, -2.40718)
+
+[node name="GrabpackOneItemMesh" parent="Item/GrabpackItem2" instance=ExtResource("20_yraj4")]
+
+[node name="GrabpackItem3" parent="Item" instance=ExtResource("18_ki6qs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.38756, 0.1, -4.10718)
+
+[node name="GrabpackOneItemMesh" parent="Item/GrabpackItem3" instance=ExtResource("20_yraj4")]
+
+[node name="ExplosiveBarrel" parent="Item" instance=ExtResource("21_8tokl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.3, 0.1, 2.1)
+
+[node name="ExplosiveBarrel2" parent="Item" instance=ExtResource("21_8tokl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.4, 0.1, -2.5)
+
+[node name="ExplosiveBarrel3" parent="Item" instance=ExtResource("21_8tokl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.2, 0.1, -1)
+
+[node name="ExplosiveBarrel4" parent="Item" instance=ExtResource("21_8tokl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.1, 0.1, -4.2)
+
 [node name="Player" parent="." instance=ExtResource("2_2v2lr")]
 flashlight_togglable = true
 starting_grabpack = 2
-enabled_hands = Array[PackedScene]([ExtResource("14_q6awt")])
+enabled_hands = Array[PackedScene]([ExtResource("19_86uxy"), ExtResource("20_86uxy"), ExtResource("21_nwyu4")])

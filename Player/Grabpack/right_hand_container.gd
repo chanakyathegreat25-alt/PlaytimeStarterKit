@@ -99,6 +99,17 @@ func _process(delta):
 				#Send Signals
 				if hand_send_signals:
 					hand_signal_connector.emit_signal("hand_reached_target")
+				
+				if hand_changed_point or not direction_cast.is_colliding(): return
+				play_animation("straight")
+				var target_normal = direction_cast.get_collision_normal()
+				if target_normal.dot(Vector3.UP) > 0.001 or target_normal.y < 0:
+					if target_normal.y > 0:
+						rotation_degrees.x = -90
+					elif target_normal.y < 0:
+							rotation_degrees.x = 90
+				else:
+					look_at(global_position - target_normal)
 		
 		if hand_reached_point:
 			if not hand_grab_point == position:
