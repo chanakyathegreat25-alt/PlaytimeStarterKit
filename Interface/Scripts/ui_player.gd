@@ -18,6 +18,8 @@ extends CanvasLayer
 @onready var open_inv = $inventory/Open
 @onready var close_inv = $inventory/Close
 @onready var keys = $inventory/Tabs/Keys
+@onready var reading: Panel = $inventory/section/Reading
+
 #Basic Interface
 @onready var crosshair = $crosshair
 
@@ -32,6 +34,7 @@ func _input(_event):
 			inventory.load_section("Keys", keys)
 		else:
 			close_inv.play()
+			reading.visible = false
 
 func new_objective(objective: String):
 	obj_msg.text = objective

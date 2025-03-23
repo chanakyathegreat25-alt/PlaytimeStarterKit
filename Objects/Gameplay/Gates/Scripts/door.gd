@@ -1,6 +1,7 @@
 extends StaticBody3D
 
 @export var locked: bool = false
+@export var unlockable_with_key: bool = false
 
 @onready var animation_player = $AnimationPlayer
 @onready var hand_grab = $frame/door/HandGrab
@@ -19,10 +20,14 @@ signal locked_attempt
 
 func toggle():
 	if locked:
-		animation_player.play("locked")
-		lockedsound.play()
-		emit_signal("locked_attempt")
-		return
+		if unlockable_with_key and Inventory.scan_list("items_Keys", "Key"):
+			locked = false
+			Inventory.remove_item("items_Keys", "Key")
+		else:
+			animation_player.play("locked")
+			lockedsound.play()
+			emit_signal("locked_attempt")
+			return
 	if open:
 		animation_player.play("close")
 		closesound.play()

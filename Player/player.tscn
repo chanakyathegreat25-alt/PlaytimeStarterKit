@@ -1,4 +1,4 @@
-[gd_scene load_steps=161 format=4 uid="uid://dkty77argxwyc"]
+[gd_scene load_steps=163 format=4 uid="uid://dkty77argxwyc"]
 
 [ext_resource type="Texture2D" uid="uid://cl7alwgeec33w" path="res://Player/Grabpack/Models/grabpack_chapter_3_-_poppy_playtime_0.png" id="1_00tjw"]
 [ext_resource type="Script" uid="uid://dkgdss1i1qci7" path="res://Player/player.gd" id="1_od3ui"]
@@ -68,6 +68,7 @@
 [ext_resource type="AudioStream" uid="uid://d1u6111mtf4qu" path="res://Interface/MainMenu/Sound/SW_SFX_Closing_Menu.wav" id="63_68syb"]
 [ext_resource type="AudioStream" uid="uid://c7wgcc6jimvtc" path="res://Interface/MainMenu/Sound/SW_SFX_Menu_Forward.wav" id="64_x0uyb"]
 [ext_resource type="AudioStream" uid="uid://40v5446yti4l" path="res://Interface/Inventory/Sound/SW_SFX_Inventory_SwitchTabs_01.wav" id="65_68syb"]
+[ext_resource type="Texture2D" uid="uid://ba641twe6vsbv" path="res://Interface/MainMenu/Texture/T_PauseBG.png" id="65_lfyh2"]
 [ext_resource type="Script" uid="uid://ctiwownyjmlkt" path="res://Player/Grabpack/hook_controller.gd" id="67_x0uyb"]
 [ext_resource type="PackedScene" uid="uid://dgwhev5imypr8" path="res://Interface/Pause/pause.tscn" id="68_pqfba"]
 
@@ -3750,6 +3751,10 @@ vertical = true
 [sub_resource type="QuadMesh" id="QuadMesh_68syb"]
 size = Vector2(1, -1)
 
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_soeee"]
+color = Color(0.411765, 0.858824, 1, 1)
+thickness = 2
+
 [node name="Player" type="CharacterBody3D" groups=["Player"]]
 script = ExtResource("1_od3ui")
 
@@ -5063,6 +5068,55 @@ offset_right = 567.0
 offset_bottom = 57.0
 text = "Caution: This is a TEST!"
 
+[node name="Reading" type="Panel" parent="UI/inventory/section"]
+visible = false
+offset_top = -112.0
+offset_right = 1156.0
+offset_bottom = 539.0
+
+[node name="Background" type="Sprite2D" parent="UI/inventory/section/Reading"]
+position = Vector2(576, 324)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("65_lfyh2")
+
+[node name="notetitle" type="Label" parent="UI/inventory/section/Reading"]
+offset_left = 102.0
+offset_top = 72.0
+offset_right = 1050.0
+offset_bottom = 146.0
+theme_override_fonts/font = ExtResource("51_gvnt1")
+theme_override_font_sizes/font_size = 36
+text = "Experiment 1006"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="notecontent" type="Label" parent="UI/inventory/section/Reading"]
+offset_left = 102.0
+offset_top = 172.0
+offset_right = 1050.0
+offset_bottom = 557.0
+theme_override_fonts/font = ExtResource("51_gvnt1")
+theme_override_font_sizes/font_size = 21
+text = "Experiment 1006"
+horizontal_alignment = 1
+
+[node name="Seperator" type="HSeparator" parent="UI/inventory/section/Reading"]
+offset_left = 317.0
+offset_top = 146.0
+offset_right = 833.0
+offset_bottom = 150.0
+theme_override_styles/separator = SubResource("StyleBoxLine_soeee")
+
+[node name="Button" type="Button" parent="UI/inventory/section/Reading"]
+offset_left = 997.0
+offset_top = 597.0
+offset_right = 1093.0
+offset_bottom = 627.0
+theme_override_fonts/font = ExtResource("51_gvnt1")
+theme_override_font_sizes/font_size = 24
+text = "Back"
+flat = true
+
 [node name="Open" type="AudioStreamPlayer" parent="UI/inventory"]
 stream = ExtResource("58_ntwt4")
 
@@ -5085,3 +5139,4 @@ player_body = NodePath("..")
 
 [connection signal="timeout" from="Grabpack/Pack/LeftHandContainer/Timer" to="Grabpack/Pack/LeftHandContainer" method="retract_hand"]
 [connection signal="timeout" from="Grabpack/Pack/RightHandContainer/Timer" to="Grabpack/Pack/RightHandContainer" method="retract_hand"]
+[connection signal="pressed" from="UI/inventory/section/Reading/Button" to="UI/inventory" method="close_note"]

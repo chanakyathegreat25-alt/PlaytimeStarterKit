@@ -7,6 +7,9 @@ extends Control
 @onready var title = $section/title
 @onready var read = $Tabs/read
 @onready var decription = $section/decription
+@onready var reading: Panel = $section/Reading
+@onready var notetitle: Label = $section/Reading/notetitle
+@onready var notecontent: Label = $section/Reading/notecontent
 
 @onready var press = $Press
 @onready var switch = $Switch
@@ -16,6 +19,8 @@ const STYLE_SELECTED = preload("res://Interface/Inventory/Themes/StyleSelected.t
 
 var previous_tab_button: Button
 var previous_item_button: Button
+
+var current_button_idx: int = -1
 
 func _ready():
 	previous_tab_button = get_node("Tabs/Keys")
@@ -33,6 +38,7 @@ func load_section(section: String, tab_button: Button):
 		new_button.position.y = -27.0
 		new_button.position.y += 45.0 * (i+1)
 		new_button.item_texture = section_array[i][1]
+		new_button.item_idx = i
 		
 		if section_array[i].size() > 2:
 			new_button.has_desc = true
@@ -67,7 +73,22 @@ func item_clicked(button_node: Button):
 	item_image.texture = button_node.item_texture
 	item_image.visible = true
 	decription.visible = false
+	current_button_idx = button_node.item_idx
 	if button_node.has_desc:
 		decription.visible = true
 		decription.text = button_node.description
 	press.play()
+
+func _unhandled_input(_event: InputEvent) -> void:
+	if Input.is_action_just_pressed("reset") and visible and title.text == "Notes":
+		if reading.visible:
+			close_note()
+		elif previous_item_button:
+			load_note(current_button_idx, buttons.get_child(current_button_idx).text)
+
+func load_note(idx: int, note_title: String):
+	reading.visible = true
+	notetitle.text = note_title
+	notecontent.text = Inventory.notes_data[idx]
+func close_note():
+	reading.visible = false

@@ -1,9 +1,11 @@
 extends Node
 
-var items_VHS: Array
-var items_Keys: Array = [["This is a key, it can't give birth", preload("res://Interface/Inventory/ItemIcons/key.png")]]
-var items_Notes: Array
+var items_VHS: Array = []
+var items_Keys: Array = []
+var items_Notes: Array = []
 var items_Equipment: Array = []
+
+var notes_data: Array = []
 
 func scan_list(list_name: String, item_name: String):
 	var list: Array = get(list_name)
@@ -23,5 +25,7 @@ func remove_item(list_name: String, item_name: String):
 	for i in list.size():
 		if not removed:
 			if list[i][0] == item_name:
+				if list == items_Notes:
+					notes_data.remove_at(i)
 				list.remove_at(i)
 				removed = true
