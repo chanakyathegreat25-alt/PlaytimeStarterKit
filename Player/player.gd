@@ -12,7 +12,6 @@ extends CharacterBody3D
 @export var start_lowered: bool = false
 #0 is no grabpack, and numbers 1 and 2 are grabpack versions 1 and 2.
 @export_range(0, 2) var starting_grabpack: int = 0
-@export var load_previous_player_hands: bool = false
 @export var enabled_hands: Array [PackedScene] = [preload("res://Player/Grabpack/Hands/none.tscn")]
 
 @export_category("Player")

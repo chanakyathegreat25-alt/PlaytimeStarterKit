@@ -1934,7 +1934,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_7emwf"]
 resource_name = "ScrewSwitch"
-length = 1.5
+length = 1.52
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -1942,10 +1942,10 @@ tracks/0/path = NodePath("LayerWalk/ArmRight/LayerIdle/LayerWalk/LayerCrouch/Lay
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.133333, 0.3, 0.4, 0.5, 0.633333, 0.73333, 0.866667, 0.96667, 1, 1.13333, 1.2, 1.36667),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.133333, 0.3, 0.4, 0.5, 0.633333, 0.766663, 0.86666, 0.999997, 1.1, 1.13333, 1.26666, 1.36666, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0), Vector3(-0.0167595, 0.0297475, 0.0267598), Vector3(-0.0313848, 0.00973533, 0.0633531), Vector3(-0.0321252, -0.0167175, 0.0746855), Vector3(-0.0322464, -0.0452825, 0.085524), Vector3(-0.0301166, -0.0443088, 0.0804849), Vector3(-0.0154949, -0.0167907, 0.0420621), Vector3(-0.00215101, 0.0136642, 0.00695057), Vector3(0.000383094, 0.0316042, 0.000163045), Vector3(0.000383079, 0.0319243, 0.000148091), Vector3(0.000383094, 0.00181995, 0.000357188), Vector3(0.000383094, -0.00555588, 0.000395939), Vector3(0, 0, 0)]
+"values": [Vector3(0, 0, 0), Vector3(-0.0167595, 0.0297475, 0.0267598), Vector3(-0.0313848, 0.00973533, 0.0633531), Vector3(-0.0321252, -0.0167175, 0.0746855), Vector3(-0.0322464, -0.0452825, 0.085524), Vector3(-0.0301166, -0.0443088, 0.0804849), Vector3(-0.0301166, -0.0443088, 0.0804849), Vector3(-0.0154949, -0.0167907, 0.0420621), Vector3(-0.00215101, 0.0136642, 0.00695057), Vector3(0.000383094, 0.0316042, 0.000163045), Vector3(0.000383079, 0.0319243, 0.000148091), Vector3(0.000383094, 0.00181995, 0.000357188), Vector3(0, -0.008, 0), Vector3(0, 0, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -1954,10 +1954,10 @@ tracks/1/path = NodePath("LayerWalk/ArmRight/LayerIdle/LayerWalk/LayerCrouch/Lay
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.0666667, 0.166667, 0.233333, 0.333333, 0.4, 0.533333, 0.73333, 0.866667, 1, 1.1, 1.2, 1.26667, 1.36667),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.0666667, 0.166667, 0.233333, 0.333333, 0.4, 0.533333, 0.633334, 0.766663, 0.86666, 0.999997, 1.13333, 1.23333, 1.33333, 1.4, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0), Vector3(-0.118128, -0.0502634, -0.0500417), Vector3(-0.43235, -0.0929634, -0.148998), Vector3(-0.634978, -0.0676081, -0.201424), Vector3(-0.581189, -0.0562238, -0.178212), Vector3(-0.098127, -0.0863056, -0.123563), Vector3(1.7174, -0.820305, -0.602139), Vector3(0.742853, -0.01743, -0.0413571), Vector3(-0.164342, 0.00253918, -0.00494536), Vector3(-0.349066, 0, 0), Vector3(-0.20944, 0, 0), Vector3(0.0356342, 6.86357e-05, -1.49046e-09), Vector3(0.0180002, 6.86357e-05, -1.48976e-09), Vector3(0, 0, 0)]
+"values": [Vector3(0, 0, 0), Vector3(-0.118128, -0.0502634, -0.0500417), Vector3(-0.43235, -0.0929634, -0.148998), Vector3(-0.634978, -0.0676081, -0.201424), Vector3(-0.581189, -0.0562238, -0.178212), Vector3(-0.098127, -0.0863056, -0.123563), Vector3(1.7174, -0.820305, -0.602139), Vector3(1.53641, -0.503677, -0.379676), Vector3(1.53641, -0.503677, -0.379676), Vector3(0.742853, -0.01743, -0.0413571), Vector3(-0.164342, 0.00253918, -0.00494536), Vector3(-0.349066, 0, 0), Vector3(-0.20944, 0, 0), Vector3(0.0356342, 6.86357e-05, -1.49046e-09), Vector3(0.0180002, 6.86357e-05, -1.48976e-09), Vector3(0, 0, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -1966,7 +1966,7 @@ tracks/2/path = NodePath("LayerWalk/ArmRight/LayerIdle/LayerWalk/LayerCrouch/Lay
 tracks/2/interp = 2
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.433333, 0.5, 0.566667, 0.7, 0.866667, 1.03333, 1.2, 1.4),
+"times": PackedFloat32Array(0, 0.433333, 0.5, 0.566667, 0.83333, 0.999997, 1.16666, 1.33333, 1.5),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector3(0, 3.14159, 0), Vector3(0, 3.14159, 0), Vector3(0, 3.14159, 0), Vector3(0, 3.14159, 8.20305), Vector3(0, 3.14159, 2.0944), Vector3(0, 3.14159, 0.9163), Vector3(0, 3.14159, -0.261799), Vector3(0, 3.14159, 0.0872665), Vector3(0, 3.14159, 0)]
@@ -3817,7 +3817,7 @@ bones/6/parent = 5
 bones/6/rest = Transform3D(1, 0, 0, 0, 1, -7.45058e-07, 0, 7.45058e-07, 1, -0.13434, -0.080193, 0.132049)
 bones/6/enabled = true
 bones/6/position = Vector3(-0.13334, -0.0801929, 0.131988)
-bones/6/rotation = Quaternion(0.00425115, -3.54605e-05, -1.41862e-06, 0.999991)
+bones/6/rotation = Quaternion(0.00424936, -3.54605e-05, -1.41868e-06, 0.999991)
 bones/6/scale = Vector3(1, 1, 1)
 bones/7/name = "JNT_R_Grabpack_Trigger_06"
 bones/7/parent = 6
@@ -3922,7 +3922,7 @@ bones/21/parent = 5
 bones/21/rest = Transform3D(1, -7.64274e-15, -8.74228e-08, 0, -1, 8.74228e-08, -8.74228e-08, -8.74228e-08, -1, 0.13434, -0.080193, 0.132049)
 bones/21/enabled = true
 bones/21/position = Vector3(0.135417, -0.0800722, 0.131952)
-bones/21/rotation = Quaternion(1, 3.97877e-15, -3.17865e-08, 8.14604e-08)
+bones/21/rotation = Quaternion(1, 6.08175e-14, -3.17865e-08, 1.8696e-06)
 bones/21/scale = Vector3(0.999999, 0.999999, 0.999999)
 bones/22/name = "JNT_L_Grabpack_Trigger_017"
 bones/22/parent = 21
@@ -5080,6 +5080,7 @@ scale = Vector2(0.6, 0.6)
 texture = ExtResource("65_lfyh2")
 
 [node name="notetitle" type="Label" parent="UI/inventory/section/Reading"]
+layout_mode = 0
 offset_left = 102.0
 offset_top = 72.0
 offset_right = 1050.0
@@ -5091,6 +5092,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="notecontent" type="Label" parent="UI/inventory/section/Reading"]
+layout_mode = 0
 offset_left = 102.0
 offset_top = 172.0
 offset_right = 1050.0
@@ -5101,6 +5103,7 @@ text = "Experiment 1006"
 horizontal_alignment = 1
 
 [node name="Seperator" type="HSeparator" parent="UI/inventory/section/Reading"]
+layout_mode = 0
 offset_left = 317.0
 offset_top = 146.0
 offset_right = 833.0
@@ -5108,6 +5111,7 @@ offset_bottom = 150.0
 theme_override_styles/separator = SubResource("StyleBoxLine_soeee")
 
 [node name="Button" type="Button" parent="UI/inventory/section/Reading"]
+layout_mode = 0
 offset_left = 997.0
 offset_top = 597.0
 offset_right = 1093.0

@@ -1,6 +1,6 @@
 extends Node3D
 
-const WIRE_SEGMENT_ONLY = preload("res://Player/Grabpack/Wire/wire_segment_only.tscn")
+const WIRE_SEGMENT_ONLY = preload("res://Objects/Gameplay/Puzzles/Turret/wire_segment_turret.tscn")
 
 @export var hand: bool = false
 @export var hand_container: Node3D
@@ -83,10 +83,12 @@ func remove_segment(segment, previous, last):
 func get_retract_path():
 	if hand_container.position.distance_to(last_segment.position) < 0.1:
 		remove_segment(last_segment, last_segment.origin_node, last_segment.next_node)
+		print(last_segment)
 		return last_segment.position
 	else:
 		if last_segment.origin_node is Marker3D:
 			return wire_fake.global_position
+		print(last_segment)
 		return last_segment.position
 func end_wire():
 	for i in get_child_count():

@@ -23,36 +23,52 @@ func _process(_delta):
 		set_angle()
 
 func handle_unwrap():
-	
-	if not origin_node or not next_node: return
-	if not origin_node is Area3D: return
-	if not origin_node.point == Vector3.ZERO: return
-	if angle == 0.0: return
-	var new_angle: Vector2 = get_angle()
-	if new_angle.x > new_angle.y if angle > 0.0 else new_angle.x < new_angle.y:
+	if not origin_node or not next_node:
+		return
+	if not origin_node is Area3D:
+		return
+	if not origin_node.point == Vector3.ZERO:
+		return
+	if angle == 0.0:
+		return
+
+	var angle_data: Vector3 = get_angle()
+	var diff = angle_data.z  # Use the normalized angle difference
+
+	# Properly compare the angle difference for unwrapping
+	if (diff > 10.0 if angle > 0.0 else diff < -10.0):  # Added threshold to prevent false unwrapping
 		origin_node.active = false
 		origin_node.timer.start(0.1)
 		get_parent().remove_segment(self, origin_node, next_node)
+
 func get_angle():
-	if not origin_node or not next_node: return Vector2(0.0, 0.0)
+	if not origin_node or not next_node:
+		return Vector3.ZERO
+
 	var player_point = origin_node.global_position
 	var corner_point = global_position
 	var hand_point = next_node.global_position
 	
-	var player_vec:Vector2 = Vector2(player_point.x, player_point.z)
-	var corner_vec:Vector2 = Vector2(corner_point.x, corner_point.z)
-	var hand_vec:Vector2 = Vector2(hand_point.x, hand_point.z)
+	var player_vec: Vector2 = Vector2(player_point.x, player_point.z)
+	var corner_vec: Vector2 = Vector2(corner_point.x, corner_point.z)
+	var hand_vec: Vector2 = Vector2(hand_point.x, hand_point.z)
 	
-	#PLAYER, CORNER
-	var angle1 = (player_vec - corner_vec).angle()
+	# Compute angles
+	var angle1 = rad_to_deg((player_vec - corner_vec).angle())
+	var angle2 = rad_to_deg((corner_vec - hand_vec).angle())
+
+	# Normalize the angle difference manually
+	var diff = fposmod((angle1 - angle2) + 180.0, 360.0) - 180.0
 	
-	#CORNER, HAND
-	var angle2 = (corner_vec - hand_vec).angle()
-	return Vector2(angle1, angle2)
+	return Vector3(angle1, angle2, diff)
+
 func set_angle():
-	var new_angle: Vector2 = get_angle()
-	if new_angle.x > new_angle.y: angle = -1.0
-	else: angle = 1.0
+	var angle_data: Vector3 = get_angle()
+	var diff = angle_data.z  # Extract the corrected angle difference
+
+	# Determine wrap direction based on the normalized angle difference
+	angle = -1.0 if diff > 0.0 else 1.0
+
 func handle_wrap():
 	if not origin_node or not next_node: return
 	if ray_cast_3d.is_colliding():

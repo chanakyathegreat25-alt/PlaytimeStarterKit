@@ -46,3 +46,7 @@ func reset_checkpoint():
 func load_checkpoint():
 	#ADD YOUR LOAD CHECKPOINT CODE HERE
 	pass
+
+#CUSTOM DATA:
+
+var omni_charges: int = 4

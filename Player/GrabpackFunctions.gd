@@ -156,7 +156,25 @@ func remove_hand(hand_name: String, replace_with_none: bool = true):
 		right_hand.hands[hand_idx] = preload("res://Player/Grabpack/Hands/none.tscn")
 	else:
 		right_hand.hands.remove_at(hand_idx)
-	Inventory.remove_item("items_Equipment", "RedHand")
+	Inventory.remove_item("items_Equipment", hand_name)
+	
+	if right_hand.current_hand == hand_idx:
+		if replace_with_none:
+			right_hand.set_hand(hand_idx)
+		else:
+			right_hand.set_hand(hand_idx-1)
+func remove_hand_index(hand_idx: int, replace_with_none: bool = true):
+	var hand_name: String = ""
+	
+	var hand_instance = right_hand.hands[hand_idx].instantiate()
+	hand_name = hand_instance.name
+	hand_instance.queue_free()
+	
+	if replace_with_none:
+		right_hand.hands[hand_idx] = preload("res://Player/Grabpack/Hands/none.tscn")
+	else:
+		right_hand.hands.remove_at(hand_idx)
+	Inventory.remove_item("items_Equipment", hand_name)
 	
 	if right_hand.current_hand == hand_idx:
 		if replace_with_none:

@@ -23,9 +23,9 @@ func _ready():
 func _process(delta):
 	if hands > 0:
 		if Input.is_action_just_pressed("rotate_left"):
-			handle_rotation.y = handle_rotation.y-90
+			handle_rotation.y = handle_rotation.y-45
 		elif Input.is_action_just_pressed("rotate_right"):
-			handle_rotation.y = handle_rotation.y+90
+			handle_rotation.y = handle_rotation.y+45
 		laser.visible = true
 		laser.scale.x = ray_cast_3d.global_position.distance_to(ray_cast_3d.get_collision_point())
 	else:
