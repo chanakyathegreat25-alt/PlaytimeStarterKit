@@ -1,5 +1,6 @@
 @tool
-extends Light3D
+extends OmniLight3D
+class_name FlickeringOmniLight
 
 @export var noise: NoiseTexture2D
 @export var max_energy: float = 2.0

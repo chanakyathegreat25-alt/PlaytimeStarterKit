@@ -52,6 +52,7 @@ var hand_hold_time: float = 0.0
 var pulling: bool = false
 var wire_unwrap: bool = true
 var wire_wrap: bool = true
+var awaiting_switch: bool = false
 
 var retract_type = false
 var hand_speed: float = 35.0
@@ -64,6 +65,11 @@ func _ready():
 	set_hand(0)
 
 func _process(delta):
+	if awaiting_switch and hand_attached:
+		print("yay")
+		current_hand = -1
+		switch_hand(1, hand_queue)
+		awaiting_switch = false
 	if holding_object:
 		if Input.is_action_pressed("handright"):
 			hand_hold_time += 1.0 * delta
@@ -274,6 +280,15 @@ func queue_hand(hand_index: int):
 		hand_queue = 0
 	if hand_queue > hands.size()-1:
 		hand_queue = hands.size()-1
+func queue_hand_switch(hand_index: int):
+	hand_queue = hand_index
+	
+	if hand_queue < 0:
+		hand_queue = 0
+	if hand_queue > hands.size()-1:
+		hand_queue = hands.size()-1
+	
+	awaiting_switch = true
 
 func play_animation(anim_name: String):
 	if not hand_uses_animations:

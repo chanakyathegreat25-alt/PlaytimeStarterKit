@@ -124,7 +124,7 @@ func animate_right(anim_name: String):
 func right_seek(time: float):
 	right_hand.seek_animation(time)
 
-func add_hand(hand_scene: PackedScene):
+func add_hand(hand_scene: PackedScene, hand_idx: int = -1):
 	var hand_instance = hand_scene.instantiate()
 	if not hand_instance.has_node("Useless"):
 		var inventory_icon: Texture2D = null
@@ -140,7 +140,11 @@ func add_hand(hand_scene: PackedScene):
 			item_array.append(description)
 		Inventory.items_Equipment.append(item_array)
 	hand_instance.queue_free()
-	right_hand.hands.append(hand_scene)
+	if hand_idx < 0: right_hand.hands.append(hand_scene)
+	else: right_hand.hands.insert(hand_idx, hand_scene)
+	var index: int = hand_idx if hand_idx > -1 else 10
+	right_hand.queue_hand_switch(index)
+	print("yay")
 func remove_hand(hand_name: String, replace_with_none: bool = true):
 	var hand_idx: int = 0
 	for i in right_hand.hands.size():

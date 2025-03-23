@@ -13,6 +13,7 @@ enum hands {
 @export var update_every_frame: bool = false
 @export var affect_position: bool = true
 @export var affect_rotation: bool = true
+@export var relative_to_grab_point: bool = false
 @export var stop_hand: bool = true
 @export var grab_animation: String = "normal"
 @export var grab_marker: Marker3D
@@ -55,7 +56,7 @@ func _process(_delta):
 			if Grabpack.left_hand.pulling and not pulling_left:
 				pulled.emit(false)
 				pulling_left = true
-			if Grabpack.left_hand.hand_retracting:
+			if Grabpack.left_hand.hand_retracting or Grabpack.left_hand.hand_attached:
 				grabbed_left = false
 				pulling_left = false
 				emit_signal("let_go", false)
@@ -66,7 +67,7 @@ func _process(_delta):
 			if Grabpack.right_hand.pulling and not pulling_right:
 				pulled.emit(true)
 				pulling_right = true
-			if Grabpack.right_hand.hand_retracting:
+			if Grabpack.right_hand.hand_retracting or Grabpack.right_hand.hand_attached:
 				grabbed_right = false
 				pulling_right = false
 				emit_signal("let_go", true)
@@ -75,25 +76,32 @@ func _process(_delta):
 func hand_grabbed(area):
 	if enabled:
 		if area.is_in_group("LeftHandArea") and not Grabpack.left_hand.hand_attached and (both_hand or not only_hand) and not (grabR and one_at_once) and not (Grabpack.left_hand.hand_changed_point if usable_multiple_times else 0.0 == 1.0):
-			update_hand_position(false)
 			emit_signal("grabbed", false)
+			if relative_to_grab_point: 
+				grab_marker.global_position = Grabpack.left_hand.global_position
+				grab_marker.global_rotation = Grabpack.left_hand.global_rotation
+			update_hand_position(false)
 			grabL = true
 		elif area.is_in_group("RightHandArea") and not Grabpack.right_hand.hand_attached and (both_hand or only_hand) and not (grabL and one_at_once) and not (Grabpack.right_hand.hand_changed_point if usable_multiple_times else 0.0 == 1.0):
-			update_hand_position(true)
 			emit_signal("grabbed", true)
+			if relative_to_grab_point: 
+				grab_marker.global_position = Grabpack.right_hand.global_position
+				grab_marker.global_rotation = Grabpack.right_hand.global_rotation
+			update_hand_position(true)
 			grabR = true
 func hand_released(area):
-	if enabled:
-		if area.is_in_group("LeftHandArea") and grabL and (both_hand or not only_hand):
-			grabbed_left = false
-			pulling_left = false
-			emit_signal("let_go", false)
-			grabL = false
-		elif area.is_in_group("RightHandArea") and grabR and (both_hand or only_hand):
-			grabbed_right = false
-			pulling_right = false
-			emit_signal("let_go", true)
-			grabR = false
+	pass
+	#if enabled:
+		#if area.is_in_group("LeftHandArea") and grabL and (both_hand or not only_hand):
+			#grabbed_left = false
+			#pulling_left = false
+			#emit_signal("let_go", false)
+			#grabL = false
+		#elif area.is_in_group("RightHandArea") and grabR and (both_hand or only_hand):
+			#grabbed_right = false
+			#pulling_right = false
+			#emit_signal("let_go", true)
+			#grabR = false
 
 func update_hand_position(hand: bool):
 	if hand:

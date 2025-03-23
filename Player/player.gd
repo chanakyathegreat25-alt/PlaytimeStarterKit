@@ -17,7 +17,7 @@ extends CharacterBody3D
 
 @export_category("Player")
 var speed: float = 10 # m/s
-var acceleration: float = 60 # m/s^2
+var acceleration: float = 40 # m/s^2
 
 var normal_speed: float = 4.0
 var sprint_speed: float = 6.0

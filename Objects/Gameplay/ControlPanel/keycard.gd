@@ -13,7 +13,7 @@ func _ready() -> void:
 	material.albedo_color = colour
 	inventory_item.item_name = keycard_name
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Engine.is_editor_hint():
 		material.albedo_color = colour
 
@@ -24,5 +24,5 @@ func grabbed():
 
 func _on_basic_interaction_player_interacted() -> void:
 	grabbed()
-func _on_hand_grab_let_go(hand: bool) -> void:
+func _on_hand_grab_let_go(_hand: bool) -> void:
 	grabbed()

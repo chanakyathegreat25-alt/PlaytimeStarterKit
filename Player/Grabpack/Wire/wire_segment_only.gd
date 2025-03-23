@@ -7,7 +7,7 @@ var next_node
 var wrap_object = null
 var wrap_offset: Vector3 = Vector3.ZERO
 var active: bool = false
-var check_distance: float = 0.15
+var check_distance: float = 0.3
 var point: Vector3 = Vector3.ZERO
 var angle: float = 0.0
 var hand: bool = false

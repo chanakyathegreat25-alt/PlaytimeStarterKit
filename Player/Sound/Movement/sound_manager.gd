@@ -64,7 +64,7 @@ func switch_hand():
 	
 	var sound: AudioStreamPlayer = get_node(sound_node)
 	sound.play()
-	sound.seek(0.45)
+	#sound.seek(0.45)
 func cable_sound(hand: bool, play: bool):
 	var sound_node: String = "none"
 	if not hand:

@@ -31,7 +31,6 @@
 [ext_resource type="AudioStream" uid="uid://cqftuiatom5ct" path="res://Player/Sound/Grabpack/SW_Grabpack_HandRetract_01.wav" id="27_f4lon"]
 [ext_resource type="AudioStream" uid="uid://bexmsh6hmw8c0" path="res://Player/Sound/Grabpack/SW_Grabpack_HandRetract_02.wav" id="28_8ynux"]
 [ext_resource type="AudioStream" uid="uid://cuomj2rfod7lc" path="res://Player/Sound/Grabpack/SW_Grabpack_HandRetract_03.wav" id="29_d30e8"]
-[ext_resource type="AudioStream" uid="uid://6mcjjdxd02d3" path="res://Player/Sound/Grabpack/SW_Grabpack_SwitchHands_02.wav" id="30_6pogt"]
 [ext_resource type="AudioStream" uid="uid://btnuqpk4s6kpe" path="res://Player/Sound/Movement/Metal/run1.wav" id="30_wvbyc"]
 [ext_resource type="AudioStream" uid="uid://ddv2r81gj4w5h" path="res://Player/Sound/Grabpack/SW_Grabpack_RopeSwing_01.wav" id="31_ie76m"]
 [ext_resource type="AudioStream" uid="uid://b673wed8myb10" path="res://Player/Sound/Grabpack/SW_Grabpack_RopeSwing_02.wav" id="32_dy65m"]
@@ -47,6 +46,7 @@
 [ext_resource type="AudioStream" uid="uid://dj4y26gm5d6ue" path="res://Player/Sound/Movement/Sidle/SW_SFX_Player_Sidling_Shuffle_02.wav" id="42_6eb1q"]
 [ext_resource type="AudioStream" uid="uid://cbwmsvpeyy46p" path="res://Player/Sound/Movement/Sidle/SW_SFX_Player_Sidling_Shuffle_03.wav" id="43_wvbyc"]
 [ext_resource type="AudioStream" uid="uid://bhaf70sbwjn68" path="res://Player/Sound/Grabpack/SW_Grabpack_SwitchHands_01.wav" id="44_7x5p2"]
+[ext_resource type="AudioStream" uid="uid://c8blvg2tgohf" path="res://Player/Sound/Grabpack/hand_switch_sound.wav" id="44_lgaa7"]
 [ext_resource type="AudioStream" uid="uid://c7rdq8ypp0lks" path="res://Player/Sound/Inventory/item_grab_v3.wav" id="45_1kmt7"]
 [ext_resource type="AudioStream" uid="uid://je6p8sf07015" path="res://Player/Sound/Grabpack/SW_SFX_Inventory_SwitchTabs_03.wav" id="46_lgaa7"]
 [ext_resource type="FontFile" uid="uid://b15pnbjgpussj" path="res://Interface/Font/NotoSansJP-VariableFont_wght.ttf" id="47_6rl0i"]
@@ -1933,7 +1933,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_7emwf"]
 resource_name = "ScrewSwitch"
-length = 1.7
+length = 1.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -1941,10 +1941,10 @@ tracks/0/path = NodePath("LayerWalk/ArmRight/LayerIdle/LayerWalk/LayerCrouch/Lay
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.133333, 0.3, 0.4, 0.5, 0.6, 0.733333, 0.833333, 0.933333, 1.03333, 1.1, 1.16667, 1.2, 1.33333, 1.4, 1.53333, 1.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.133333, 0.3, 0.4, 0.5, 0.633333, 0.73333, 0.866667, 0.96667, 1, 1.13333, 1.2, 1.36667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0), Vector3(-0.0167595, 0.0297475, 0.0267598), Vector3(-0.0313848, 0.00973533, 0.0633531), Vector3(-0.0321252, -0.0167175, 0.0746855), Vector3(-0.0322464, -0.0452825, 0.085524), Vector3(-0.032268, -0.0487164, 0.0867556), Vector3(-0.032297, -0.0488498, 0.0867216), Vector3(-0.0323187, -0.0485654, 0.0862729), Vector3(-0.0301166, -0.0443088, 0.0804849), Vector3(-0.0154949, -0.0167907, 0.0420621), Vector3(-0.00215101, 0.0136642, 0.00695057), Vector3(0.000383094, 0.0316042, 0.000163045), Vector3(0.000383079, 0.0319243, 0.000148091), Vector3(0.000383094, 0.00181995, 0.000357188), Vector3(0.000383094, -0.00555588, 0.000395939), Vector3(0.000383094, 0.00117728, 0.000289373), Vector3(0, 0, 0)]
+"values": [Vector3(0, 0, 0), Vector3(-0.0167595, 0.0297475, 0.0267598), Vector3(-0.0313848, 0.00973533, 0.0633531), Vector3(-0.0321252, -0.0167175, 0.0746855), Vector3(-0.0322464, -0.0452825, 0.085524), Vector3(-0.0301166, -0.0443088, 0.0804849), Vector3(-0.0154949, -0.0167907, 0.0420621), Vector3(-0.00215101, 0.0136642, 0.00695057), Vector3(0.000383094, 0.0316042, 0.000163045), Vector3(0.000383079, 0.0319243, 0.000148091), Vector3(0.000383094, 0.00181995, 0.000357188), Vector3(0.000383094, -0.00555588, 0.000395939), Vector3(0, 0, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -1953,10 +1953,10 @@ tracks/1/path = NodePath("LayerWalk/ArmRight/LayerIdle/LayerWalk/LayerCrouch/Lay
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.0666667, 0.166667, 0.233333, 0.333333, 0.4, 0.533333, 0.6, 0.733333, 0.833333, 0.933333, 1.03333, 1.1, 1.2, 1.3, 1.4, 1.46667, 1.56667, 1.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.0666667, 0.166667, 0.233333, 0.333333, 0.4, 0.533333, 0.73333, 0.866667, 1, 1.1, 1.2, 1.26667, 1.36667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0), Vector3(-0.118128, -0.0502634, -0.0500417), Vector3(-0.43235, -0.0929634, -0.148998), Vector3(-0.634978, -0.0676081, -0.201424), Vector3(-0.581189, -0.0562238, -0.178212), Vector3(-0.098127, -0.0863056, -0.123563), Vector3(1.7174, -0.820305, -0.602139), Vector3(1.38178, -2.76845, -2.78363), Vector3(1.36909, -2.79228, -2.80782), Vector3(1.37765, -2.78576, -2.80189), Vector3(1.49325, -2.24187, -2.26091), Vector3(0.742853, -0.01743, -0.0413571), Vector3(-0.164342, 0.00253918, -0.00494536), Vector3(-0.627249, 6.86368e-05, -1.83972e-09), Vector3(-0.438696, 6.86364e-05, -1.64532e-09), Vector3(0.0356342, 6.86357e-05, -1.49046e-09), Vector3(0.0180002, 6.86357e-05, -1.48976e-09), Vector3(-0.0458654, 6.86358e-05, -1.49109e-09), Vector3(0, 0, 0)]
+"values": [Vector3(0, 0, 0), Vector3(-0.118128, -0.0502634, -0.0500417), Vector3(-0.43235, -0.0929634, -0.148998), Vector3(-0.634978, -0.0676081, -0.201424), Vector3(-0.581189, -0.0562238, -0.178212), Vector3(-0.098127, -0.0863056, -0.123563), Vector3(1.7174, -0.820305, -0.602139), Vector3(0.742853, -0.01743, -0.0413571), Vector3(-0.164342, 0.00253918, -0.00494536), Vector3(-0.349066, 0, 0), Vector3(-0.20944, 0, 0), Vector3(0.0356342, 6.86357e-05, -1.49046e-09), Vector3(0.0180002, 6.86357e-05, -1.48976e-09), Vector3(0, 0, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -1965,10 +1965,10 @@ tracks/2/path = NodePath("LayerWalk/ArmRight/LayerIdle/LayerWalk/LayerCrouch/Lay
 tracks/2/interp = 2
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.4, 0.933333, 1.26667, 1.46667, 1.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.433333, 0.5, 0.566667, 0.7, 0.866667, 1.03333, 1.2, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 3.14159, 0), Vector3(0, 3.14159, 0), Vector3(0, 3.14159, 8.20305), Vector3(0, 3.14159, 0), Vector3(0, 3.14159, 0), Vector3(0, 3.14159, 0)]
+"values": [Vector3(0, 3.14159, 0), Vector3(0, 3.14159, 0), Vector3(0, 3.14159, 0), Vector3(0, 3.14159, 8.20305), Vector3(0, 3.14159, 2.0944), Vector3(0, 3.14159, 0.9163), Vector3(0, 3.14159, -0.261799), Vector3(0, 3.14159, 0.0872665), Vector3(0, 3.14159, 0)]
 }
 tracks/3/type = "method"
 tracks/3/imported = false
@@ -1977,7 +1977,7 @@ tracks/3/path = NodePath("RightHandContainer")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0.733333),
+"times": PackedFloat32Array(0.566667),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -4150,7 +4150,7 @@ libraries = {
 &"": SubResource("AnimationLibrary_gpjlu")
 }
 playback_default_blend_time = 0.1
-speed_scale = 1.25
+speed_scale = 1.75
 
 [node name="CanonLeftAnimation" type="AnimationPlayer" parent="Grabpack/Pack"]
 libraries = {
@@ -4645,7 +4645,7 @@ stream = ExtResource("28_8ynux")
 stream = ExtResource("29_d30e8")
 
 [node name="switch_hand" type="AudioStreamPlayer" parent="SoundManager"]
-stream = ExtResource("30_6pogt")
+stream = ExtResource("44_7x5p2")
 
 [node name="swing1" type="AudioStreamPlayer" parent="SoundManager"]
 stream = ExtResource("31_ie76m")
@@ -4681,7 +4681,7 @@ stream = ExtResource("42_6eb1q")
 stream = ExtResource("43_wvbyc")
 
 [node name="switchhand" type="AudioStreamPlayer" parent="SoundManager"]
-stream = ExtResource("30_6pogt")
+stream = ExtResource("44_lgaa7")
 
 [node name="switchhand2" type="AudioStreamPlayer" parent="SoundManager"]
 stream = ExtResource("44_7x5p2")

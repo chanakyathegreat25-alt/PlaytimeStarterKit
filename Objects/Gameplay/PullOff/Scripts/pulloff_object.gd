@@ -20,6 +20,7 @@ func _ready():
 
 func _process(delta):
 	if pulling:
+		pull_speed += 40.0 * delta
 		if pull_off_point > 0:
 			rotation_degrees.y -= pull_speed * delta
 			if rotation_degrees.y < target_rotation:

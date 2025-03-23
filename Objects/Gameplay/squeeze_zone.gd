@@ -41,13 +41,13 @@ func _process(delta):
 			player_head_clamp.y = lerp_clamp(player_head_clamp.y, angle2, angle1, 10.0 * delta)
 			player_head_clamp.x = lerp_clamp(player_head_clamp.x, -0.5, 0.5, 10.0 * delta)
 			
-			player.neck.rotation.y = player_head_clamp.y
+			player.neck.global_rotation.y = player_head_clamp.y
 			player.neck.rotation.x = player_head_clamp.x
 			if current_look_at == global_position:
 				entering_squeeze = false
 		else:
 			player.camera_movable = true
-			player.neck.rotation.y = clamp(player.neck.rotation.y, angle2, angle1)
+			player.neck.global_rotation.y = clamp(player.neck.global_rotation.y, angle2, angle1)
 			player.neck.rotation.x = clamp(player.neck.rotation.x, -0.5, 0.5)
 
 func _enter_tree():
@@ -76,7 +76,7 @@ func body_entered(body):
 			time.start()
 			pre_camera_movable = player.camera_movable
 			current_look_at = player.camera_front.global_position
-			player_head_clamp = player.neck.rotation
+			player_head_clamp = player.neck.global_rotation
 			
 			player.camera_movable = false
 			player.is_squeezing = true
