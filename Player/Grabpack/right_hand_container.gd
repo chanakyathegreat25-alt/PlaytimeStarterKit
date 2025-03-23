@@ -250,7 +250,7 @@ func switch_hand(type: int, new_hand: int):
 			switch_animation.play("CollectSwitch")
 		elif type == 1:
 			if not grabpack.grabpack_switchable_hands: return
-			switch_animation.play("ScrewSwitch_2")
+			switch_animation.play("ScrewSwitch")
 
 #HAND DATA
 func set_hand(hand_index: int):
