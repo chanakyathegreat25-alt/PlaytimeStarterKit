@@ -6,7 +6,7 @@
 [ext_resource type="Material" uid="uid://boniyrbf4188m" path="res://Objects/VFX/Item/item_outline.tres" id="2_lcf87"]
 [ext_resource type="PackedScene" uid="uid://b6d8fh6o30302" path="res://Objects/Gameplay/interaction_indicator.tscn" id="3_b1i3n"]
 [ext_resource type="Script" uid="uid://f1ql8nf8705p" path="res://Objects/Gameplay/HandFunctions/inventory_item.gd" id="4_soe0c"]
-[ext_resource type="Texture2D" uid="uid://bpec5p0i33x8e" path="res://Interface/Settings/Textures/T_AudioSettings.png" id="5_xv8up"]
+[ext_resource type="Texture2D" uid="uid://difi76573jdkf" path="res://Objects/VFX/Texture/smoke_effect.png" id="7_lcf87"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_xv8up"]
 _surfaces = [{
@@ -89,8 +89,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.047783)
 script = ExtResource("4_soe0c")
 item_name = ""
 item_has_description = true
-item_description = "Its a fucking keycard"
-item_image = ExtResource("5_xv8up")
+item_description = "Can be inserted into a keycard reader."
+item_image = ExtResource("7_lcf87")
 metadata/_custom_type_script = "uid://f1ql8nf8705p"
 
 [connection signal="player_interacted" from="BasicInteraction" to="." method="_on_basic_interaction_player_interacted"]

@@ -89,7 +89,7 @@ func hand_grabbed(area):
 				grab_marker.global_rotation = Grabpack.right_hand.global_rotation
 			update_hand_position(true)
 			grabR = true
-func hand_released(area):
+func hand_released(_area):
 	pass
 	#if enabled:
 		#if area.is_in_group("LeftHandArea") and grabL and (both_hand or not only_hand):

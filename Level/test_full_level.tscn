@@ -1,5 +1,6 @@
-[gd_scene load_steps=44 format=4 uid="uid://cjqgt71jp0xmh"]
+[gd_scene load_steps=48 format=4 uid="uid://cjqgt71jp0xmh"]
 
+[ext_resource type="Script" uid="uid://ejhnxbxtuhu6" path="res://Level/Scripts/test_full_level.gd" id="1_6vkx8"]
 [ext_resource type="Material" uid="uid://dl7krlcnai0qx" path="res://Level/Assets/Materials/ProtoDark.tres" id="1_fewn2"]
 [ext_resource type="PackedScene" uid="uid://dkty77argxwyc" path="res://Player/player.tscn" id="2_2v2lr"]
 [ext_resource type="PackedScene" uid="uid://cxbtcmk7ewecu" path="res://Objects/Gameplay/ControlPanel/ConsoleBase.tscn" id="2_6dakb"]
@@ -31,19 +32,28 @@
 [ext_resource type="PackedScene" uid="uid://c1t3xbqcqo788" path="res://Objects/Gameplay/Extra/pullable_box.tscn" id="26_c6bwk"]
 [ext_resource type="PackedScene" uid="uid://bca26vpymh0mn" path="res://Objects/Gameplay/PullOff/pullable_plank.tscn" id="27_xar1q"]
 [ext_resource type="PackedScene" uid="uid://c6m7soa8trbay" path="res://Objects/Gameplay/PullOff/pullable_bar.tscn" id="28_6vkx8"]
+[ext_resource type="Script" uid="uid://dhjsvwgpbf3bx" path="res://Objects/Gameplay/event_trigger.gd" id="30_tfe2q"]
+[ext_resource type="Script" uid="uid://boad7pm33g3dk" path="res://Objects/Gameplay/tutorial_trigger.gd" id="31_177fr"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_knc6i"]
-sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
-ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3mqk5"]
+sky_horizon_color = Color(1, 0.841716, 0.366897, 1)
+ground_bottom_color = Color(0.147326, 0.0548213, 0, 1)
+ground_horizon_color = Color(1, 0.690196, 0, 1)
 
-[sub_resource type="Sky" id="Sky_n63bf"]
-sky_material = SubResource("ProceduralSkyMaterial_knc6i")
+[sub_resource type="Sky" id="Sky_sgpca"]
+sky_material = SubResource("ProceduralSkyMaterial_3mqk5")
 
-[sub_resource type="Environment" id="Environment_xfif6"]
+[sub_resource type="Environment" id="Environment_xar1q"]
 background_mode = 2
-sky = SubResource("Sky_n63bf")
+sky = SubResource("Sky_sgpca")
 tonemap_mode = 2
 glow_enabled = true
+glow_bloom = 0.3
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0
+adjustment_enabled = true
+adjustment_contrast = 1.2
+adjustment_saturation = 1.2
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xxcfa"]
 size = Vector3(1, 3, 2.6)
@@ -187,14 +197,18 @@ frequency = 1.0
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_uu150"]
 noise = SubResource("FastNoiseLite_6vkx8")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_2pg6m"]
+size = Vector3(3, 2.2, 1.8)
+
 [node name="test_full_level" type="Node3D"]
+script = ExtResource("1_6vkx8")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
 shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_xfif6")
+environment = SubResource("Environment_xar1q")
 
 [node name="CSG" type="Node" parent="."]
 
@@ -924,6 +938,12 @@ mesh = SubResource("ArrayMesh_au2cd")
 skin = SubResource("Skin_v3xve")
 surface_material_override/0 = SubResource("ORMMaterial3D_xar1q")
 
+[node name="TutorialTrigger" type="Node" parent="Item/GrabpackTwoItemMesh/HandItem"]
+script = ExtResource("31_177fr")
+signal_name = "collected"
+tutorial_message = "Switch hands using the number keys or mouse scroll wheel."
+metadata/_custom_type_script = "uid://boad7pm33g3dk"
+
 [node name="Light" type="Node" parent="."]
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Light"]
@@ -936,7 +956,7 @@ omni_range = 6.5
 
 [node name="OmniLight3D3" type="OmniLight3D" parent="Light"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 3.7, 14.4)
-light_energy = 0.405643
+light_energy = 2.00551
 omni_range = 6.5
 script = ExtResource("18_86uxy")
 noise = SubResource("NoiseTexture2D_nwyu4")
@@ -944,7 +964,7 @@ max_energy = 7.68
 
 [node name="OmniLight3D9" type="OmniLight3D" parent="Light"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.6, 3.7, 19.9)
-light_energy = 0.633818
+light_energy = 3.13361
 omni_range = 6.5
 script = ExtResource("18_86uxy")
 noise = SubResource("NoiseTexture2D_nwyu4")
@@ -952,7 +972,7 @@ max_energy = 12.0
 
 [node name="OmniLight3D10" type="OmniLight3D" parent="Light"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 4.9, 36.6)
-light_energy = 1.47185
+light_energy = 1.55069
 omni_range = 6.5
 script = ExtResource("18_86uxy")
 noise = SubResource("NoiseTexture2D_uu150")
@@ -961,7 +981,7 @@ max_energy = 12.0
 [node name="OmniLight3D7" type="OmniLight3D" parent="Light"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.9, 3.3, 14.4)
 light_color = Color(1, 0.313726, 0, 1)
-light_energy = 0.158454
+light_energy = 0.783402
 omni_range = 6.5
 script = ExtResource("18_86uxy")
 noise = SubResource("NoiseTexture2D_nwyu4")
@@ -1019,8 +1039,25 @@ transform = Transform3D(3.45922e-09, 4.35743e-08, 1, 0.996864, -0.0791377, 0, 0.
 [node name="PullableBar3" parent="Pull" instance=ExtResource("28_6vkx8")]
 transform = Transform3D(-1.46192e-08, -4.11942e-08, 1, -0.942414, 0.334448, 0, -0.334448, -0.942414, -4.37114e-08, 2.1, 4.92977, 15.6871)
 
+[node name="Triggers" type="Node" parent="."]
+
+[node name="EventTrigger" type="Area3D" parent="Triggers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, -4.2)
+script = ExtResource("30_tfe2q")
+metadata/_custom_type_script = "uid://dhjsvwgpbf3bx"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Triggers/EventTrigger"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, -0.4)
+shape = SubResource("BoxShape3D_2pg6m")
+
+[node name="TutorialTrigger" type="Node" parent="Triggers/EventTrigger"]
+script = ExtResource("31_177fr")
+tutorial_message = "Toggle flashlight with [F]"
+metadata/_custom_type_script = "uid://boad7pm33g3dk"
+
 [node name="Player" parent="." instance=ExtResource("2_2v2lr")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0.576733, 2.7, 20.3297)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0.176733, 0.0999999, -8.1703)
+flashlight_togglable = true
 starting_grabpack = 2
 enabled_hands = Array[PackedScene]([ExtResource("20_86uxy"), ExtResource("21_nwyu4")])
 
