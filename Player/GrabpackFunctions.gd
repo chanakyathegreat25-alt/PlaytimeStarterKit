@@ -144,8 +144,7 @@ func add_hand(hand_scene: PackedScene, hand_idx: int = -1):
 	else: right_hand.hands.insert(hand_idx, hand_scene)
 	var index: int = hand_idx if hand_idx > -1 else 10
 	right_hand.queue_hand_switch(index)
-	print("yay")
-func remove_hand(hand_name: String, replace_with_none: bool = true):
+func remove_hand(hand_name: String, replace_with_none: bool = true, auto_fix_hand: bool = true):
 	var hand_idx: int = 0
 	for i in right_hand.hands.size():
 		var hand_instance = right_hand.hands[i].instantiate()
@@ -158,12 +157,12 @@ func remove_hand(hand_name: String, replace_with_none: bool = true):
 		right_hand.hands.remove_at(hand_idx)
 	Inventory.remove_item("items_Equipment", hand_name)
 	
-	if right_hand.current_hand == hand_idx:
+	if right_hand.current_hand == hand_idx and auto_fix_hand:
 		if replace_with_none:
 			right_hand.set_hand(hand_idx)
 		else:
 			right_hand.set_hand(hand_idx-1)
-func remove_hand_index(hand_idx: int, replace_with_none: bool = true):
+func remove_hand_index(hand_idx: int, replace_with_none: bool = true, auto_fix_hand: bool = true):
 	var hand_name: String = ""
 	
 	var hand_instance = right_hand.hands[hand_idx].instantiate()
@@ -176,7 +175,7 @@ func remove_hand_index(hand_idx: int, replace_with_none: bool = true):
 		right_hand.hands.remove_at(hand_idx)
 	Inventory.remove_item("items_Equipment", hand_name)
 	
-	if right_hand.current_hand == hand_idx:
+	if right_hand.current_hand == hand_idx and auto_fix_hand:
 		if replace_with_none:
 			right_hand.set_hand(hand_idx)
 		else:

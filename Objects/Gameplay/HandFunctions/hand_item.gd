@@ -15,9 +15,10 @@ func collect():
 		Grabpack.player.sound_manager.collect()
 	if hand_index < 0: Grabpack.add_hand(hand_scene)
 	else: 
-		if replace_hand_at_index: Grabpack.remove_hand_index(hand_index, false)
+		if replace_hand_at_index: Grabpack.remove_hand_index(hand_index, false, false)
 		Grabpack.add_hand(hand_scene, hand_index)
 	collected.emit()
+	
 	queue_free()
 
 func _on_hand_grab_let_go(_hand):

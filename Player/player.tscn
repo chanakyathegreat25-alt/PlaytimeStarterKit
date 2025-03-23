@@ -1,4 +1,4 @@
-[gd_scene load_steps=163 format=4 uid="uid://dkty77argxwyc"]
+[gd_scene load_steps=164 format=4 uid="uid://dkty77argxwyc"]
 
 [ext_resource type="Texture2D" uid="uid://cl7alwgeec33w" path="res://Player/Grabpack/Models/grabpack_chapter_3_-_poppy_playtime_0.png" id="1_00tjw"]
 [ext_resource type="Script" uid="uid://dkgdss1i1qci7" path="res://Player/player.gd" id="1_od3ui"]
@@ -1892,6 +1892,20 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0, 0, -0.01), Vector3(0, 0, 0)]
 }
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RightHandContainer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0666667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"set_queued_hand"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_hshwv"]
 length = 0.001
@@ -2000,11 +2014,80 @@ tracks/4/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_11wp0"]
+resource_name = "ScrewSwitch_2"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LayerWalk/ArmRight/LayerIdle/LayerWalk/LayerCrouch/LayerJump/LayerPack/LayerSwitch:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-0.0333405, 0.133333, 0.3, 0.6, 0.833333, 0.866663, 0.999994, 1.23333, 1.53333, 1.66667, 1.96667, 2.03333, 2.1, 2.13333, 2.43333, 2.46666, 2.73333, 3, 3.03333, 3.16666, 3.4, 3.6, 3.7, 4.6, 4.73333, 4.96667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -0.008, 0), Vector3(-0.0167595, 0.0297475, 0.0267598), Vector3(-0.0313848, 0.00973533, 0.0633531), Vector3(-0.0321252, -0.0167175, 0.0746855), Vector3(0.000383094, 0.0316042, 0.000163045), Vector3(0.000383079, 0.0319243, 0.000148091), Vector3(0.000383094, 0.00181995, 0.000357188), Vector3(0, 0, 0), Vector3(-0.0322464, -0.0452825, 0.085524), Vector3(-0.0301166, -0.0443088, 0.0804849), Vector3(-0.0322464, -0.0452825, 0.085524), Vector3(-0.00215101, 0.0136642, 0.00695057), Vector3(-0.0301166, -0.0443088, 0.0804849), Vector3(0, -0.008, 0), Vector3(-0.0313848, 0.00973533, 0.0633531), Vector3(-0.00215101, 0.0136642, 0.00695057), Vector3(-0.0321252, -0.0167175, 0.0746855), Vector3(0.000383094, 0.0316042, 0.000163045), Vector3(0.000383079, 0.0319243, 0.000148091), Vector3(0.000383094, 0.00181995, 0.000357188), Vector3(0, 0, 0), Vector3(-0.0301166, -0.0443088, 0.0804849), Vector3(0, -0.008, 0), Vector3(0.000383079, 0.0319243, 0.000148091), Vector3(0.000383094, 0.00181995, 0.000357188), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LayerWalk/ArmRight/LayerIdle/LayerWalk/LayerCrouch/LayerJump/LayerPack/LayerSwitch:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(-0.0333405, 0, 0.0666667, 0.333333, 0.499999, 0.533333, 0.633334, 0.866663, 0.966664, 0.999997, 1.03334, 1.16667, 1.23333, 1.53333, 1.93333, 2.13333, 2.16667, 2.26667, 2.3, 2.46667, 2.53333, 2.6, 2.63333, 2.66667, 2.73333, 2.76666, 3.03333, 3.1, 3.13333, 3.36667, 3.4, 3.53333, 3.6, 3.7, 4.23334, 4.33334, 4.6, 4.7, 4.93333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.742853, -0.01743, -0.0413571), Vector3(0, 0, 0), Vector3(-0.118128, -0.0502634, -0.0500417), Vector3(-0.581189, -0.0562238, -0.178212), Vector3(-0.0301166, -0.0443088, 0.0804849), Vector3(1.7174, -0.820305, -0.602139), Vector3(1.53641, -0.503677, -0.379676), Vector3(-0.349066, 0, 0), Vector3(-0.20944, 0, 0), Vector3(-0.164342, 0.00253918, -0.00494536), Vector3(-0.0322464, -0.0452825, 0.085524), Vector3(-0.0301166, -0.0443088, 0.0804849), Vector3(0, 0, 0), Vector3(-0.00215101, 0.0136642, 0.00695057), Vector3(0.0356342, 6.86357e-05, -1.49046e-09), Vector3(0.742853, -0.01743, -0.0413571), Vector3(-0.0322464, -0.0452825, 0.085524), Vector3(-0.634978, -0.0676081, -0.201424), Vector3(-0.0301166, -0.0443088, 0.0804849), Vector3(-0.581189, -0.0562238, -0.178212), Vector3(-0.098127, -0.0863056, -0.123563), Vector3(-0.0322464, -0.0452825, 0.085524), Vector3(-0.0301166, -0.0443088, 0.0804849), Vector3(1.7174, -0.820305, -0.602139), Vector3(0, -0.008, 0), Vector3(0, -0.008, 0), Vector3(-0.349066, 0, 0), Vector3(-0.00215101, 0.0136642, 0.00695057), Vector3(-0.20944, 0, 0), Vector3(0.0180002, 6.86357e-05, -1.48976e-09), Vector3(0, 0, 0), Vector3(-0.43235, -0.0929634, -0.148998), Vector3(1.53641, -0.503677, -0.379676), Vector3(0.742853, -0.01743, -0.0413571), Vector3(-0.0301166, -0.0443088, 0.0804849), Vector3(0, -0.008, 0), Vector3(-0.349066, 0, 0), Vector3(-0.20944, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("LayerWalk/ArmRight/LayerIdle/LayerWalk/LayerCrouch/LayerJump/LayerPack/LayerSwitch/LayerShoot/HandAttach/HandPos:rotation")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.433333, 0.5, 0.566667, 0.83333, 0.999997, 1.16666, 1.33333, 1.43334, 1.50001, 1.76667, 1.93334, 2.1, 2.16667, 2.26667, 2.43334, 2.56667, 2.83334, 3.10001, 3.26667, 3.43333, 3.50001, 3.6, 3.76668, 4.03333, 4.66667, 4.83333, 4.9, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 3.14159, 0), Vector3(0, 3.14159, 0), Vector3(0, 3.14159, 0), Vector3(0, 3.14159, 8.20305), Vector3(0, 3.14159, 2.0944), Vector3(0, 3.14159, 0.9163), Vector3(0, 3.14159, -0.261799), Vector3(0, 3.14159, 0.0872665), Vector3(0, 3.14159, 0), Vector3(0, 3.14159, 8.20305), Vector3(0, 3.14159, 2.0944), Vector3(0, 3.14159, 0.9163), Vector3(0, 3.14159, -0.261799), Vector3(-0.00215101, 0.0136642, 0.00695057), Vector3(0, 3.14159, 0.0872665), Vector3(0, 3.14159, 0), Vector3(0.0356342, 6.86357e-05, -1.49046e-09), Vector3(0, 3.14159, 8.20305), Vector3(-0.00215101, 0.0136642, 0.00695057), Vector3(0, 3.14159, 0.9163), Vector3(0, 3.14159, -0.261799), Vector3(0.0356342, 6.86357e-05, -1.49046e-09), Vector3(0, 3.14159, 0.0872665), Vector3(0, 3.14159, 8.20305), Vector3(-0.634978, -0.0676081, -0.201424), Vector3(0.0180002, 6.86357e-05, -1.48976e-09), Vector3(-0.43235, -0.0929634, -0.148998), Vector3(1.53641, -0.503677, -0.379676), Vector3(0, 3.14159, 0)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RightHandContainer")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(3.63333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"set_queued_hand"
+}]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../../SoundManager")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.0333333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"switch_hand"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gpjlu"]
 _data = {
 &"CollectSwitch": SubResource("Animation_gpjlu"),
 &"RESET": SubResource("Animation_hshwv"),
-&"ScrewSwitch": SubResource("Animation_7emwf")
+&"ScrewSwitch": SubResource("Animation_7emwf"),
+&"ScrewSwitch_2": SubResource("Animation_11wp0")
 }
 
 [sub_resource type="Animation" id="Animation_bbimk"]
@@ -3817,7 +3900,7 @@ bones/6/parent = 5
 bones/6/rest = Transform3D(1, 0, 0, 0, 1, -7.45058e-07, 0, 7.45058e-07, 1, -0.13434, -0.080193, 0.132049)
 bones/6/enabled = true
 bones/6/position = Vector3(-0.13334, -0.0801929, 0.131988)
-bones/6/rotation = Quaternion(0.00424936, -3.54605e-05, -1.41868e-06, 0.999991)
+bones/6/rotation = Quaternion(0.00425115, -3.54605e-05, -1.41862e-06, 0.999991)
 bones/6/scale = Vector3(1, 1, 1)
 bones/7/name = "JNT_R_Grabpack_Trigger_06"
 bones/7/parent = 6
@@ -3922,7 +4005,7 @@ bones/21/parent = 5
 bones/21/rest = Transform3D(1, -7.64274e-15, -8.74228e-08, 0, -1, 8.74228e-08, -8.74228e-08, -8.74228e-08, -1, 0.13434, -0.080193, 0.132049)
 bones/21/enabled = true
 bones/21/position = Vector3(0.135417, -0.0800722, 0.131952)
-bones/21/rotation = Quaternion(1, 6.08175e-14, -3.17865e-08, 1.8696e-06)
+bones/21/rotation = Quaternion(1, 3.97877e-15, -3.17865e-08, 8.14604e-08)
 bones/21/scale = Vector3(0.999999, 0.999999, 0.999999)
 bones/22/name = "JNT_L_Grabpack_Trigger_017"
 bones/22/parent = 21

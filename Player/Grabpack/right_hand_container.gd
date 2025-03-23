@@ -66,9 +66,9 @@ func _ready():
 
 func _process(delta):
 	if awaiting_switch and hand_attached:
-		print("yay")
 		current_hand = -1
-		switch_hand(1, hand_queue)
+		if grabpack.current_grabpack == 1: switch_hand(0, hand_queue)
+		else: switch_hand(1, hand_queue)
 		awaiting_switch = false
 	if holding_object:
 		if Input.is_action_pressed("handright"):
@@ -152,9 +152,9 @@ func _process(delta):
 	
 	if not holding_object:
 		if Input.is_action_just_pressed("hand_up"):
-			switch_hand(1, current_hand + 1)
+			if queue_test(current_hand+1): switch_hand(1, current_hand + 1)
 		elif Input.is_action_just_pressed("hand_down"):
-			switch_hand(1, current_hand - 1)
+			if queue_test(current_hand-1): switch_hand(1, current_hand - 1)
 
 func _input(event: InputEvent) -> void:
 	if not holding_object:
@@ -162,8 +162,17 @@ func _input(event: InputEvent) -> void:
 			if event.keycode >= KEY_0 and event.keycode <= KEY_9:
 				var switch_num: int = -1
 				switch_num = event.keycode - KEY_0 # Convert keycode to number
-				switch_hand(1, switch_num-1)
+				if queue_test(switch_num-1): switch_hand(1, switch_num-1)
 
+func queue_test(hand_index: int):
+	var test_queue: int = hand_index
+	if test_queue < 0:
+		test_queue = 0
+	if test_queue > hands.size()-1:
+		test_queue = hands.size()-1
+	if test_queue == current_hand:
+		return false
+	return true
 func sort_hand_use():
 	if not hand_useless:
 		if fire_mode_launch:
@@ -234,18 +243,14 @@ func retract_hand():
 
 func switch_hand(type: int, new_hand: int):
 		#MAKE SURE THE HAND IS ATTACHED
-		if not hand_attached:
-			return
-		if not grabpack.grabpack_switchable_hands:
-			return
+		if not hand_attached: return
 		
 		queue_hand(new_hand)
-		if hand_queue == current_hand:
-			return
 		if type == 0:
 			switch_animation.play("CollectSwitch")
 		elif type == 1:
-			switch_animation.play("ScrewSwitch")
+			if not grabpack.grabpack_switchable_hands: return
+			switch_animation.play("ScrewSwitch_2")
 
 #HAND DATA
 func set_hand(hand_index: int):
