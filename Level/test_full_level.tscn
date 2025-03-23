@@ -666,6 +666,7 @@ metadata/_custom_type_script = "uid://ckdvdouxaw4it"
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -9.2, 2, 23.2)
 locked = true
 unlockable_with_key = true
+key_name = "Demo Key"
 
 [node name="Door3" parent="Gates" instance=ExtResource("6_rtk1f")]
 transform = Transform3D(1, 0, 2.13163e-14, 0, 1, 0, -2.13163e-14, 0, 1, -5.5, 2, 29.9)
@@ -696,6 +697,8 @@ metadata/_custom_type_script = "uid://ckdvdouxaw4it"
 
 [node name="KeyItem" parent="Gates" instance=ExtResource("16_177fr")]
 transform = Transform3D(-0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, -6.7, 2.01732, 18)
+key_name = "Demo Key"
+key_description = "Used to unlock the first door requiring a key."
 
 [node name="Item" type="Node" parent="."]
 
@@ -974,7 +977,7 @@ omni_range = 6.5
 
 [node name="OmniLight3D3" type="OmniLight3D" parent="Light"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 3.7, 14.4)
-light_energy = 0.72189
+light_energy = 0.835101
 omni_range = 6.5
 script = ExtResource("18_86uxy")
 noise = SubResource("NoiseTexture2D_nwyu4")
@@ -982,7 +985,7 @@ max_energy = 7.68
 
 [node name="OmniLight3D9" type="OmniLight3D" parent="Light"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.6, 3.7, 19.9)
-light_energy = 1.12795
+light_energy = 1.30485
 omni_range = 6.5
 script = ExtResource("18_86uxy")
 noise = SubResource("NoiseTexture2D_nwyu4")
@@ -990,7 +993,7 @@ max_energy = 12.0
 
 [node name="OmniLight3D10" type="OmniLight3D" parent="Light"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 4.9, 36.6)
-light_energy = 3.36133
+light_energy = 1.04386
 omni_range = 6.5
 script = ExtResource("18_86uxy")
 noise = SubResource("NoiseTexture2D_uu150")
@@ -999,7 +1002,7 @@ max_energy = 12.0
 [node name="OmniLight3D7" type="OmniLight3D" parent="Light"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.9, 3.3, 14.4)
 light_color = Color(1, 0.313726, 0, 1)
-light_energy = 0.281988
+light_energy = 0.326212
 omni_range = 6.5
 script = ExtResource("18_86uxy")
 noise = SubResource("NoiseTexture2D_nwyu4")

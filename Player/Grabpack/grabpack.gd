@@ -158,6 +158,8 @@ func lower_grabpack():
 		sound_manager.lower_grabpack()
 		grabpack_usable = false
 		grabpack_lowered = true
+		if not left_hand.hand_attached: left_hand.retract_hand()
+		if not right_hand.hand_attached: right_hand.retract_hand()
 
 func raise_grabpack():
 	if grabpack_lowered:

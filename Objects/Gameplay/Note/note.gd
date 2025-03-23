@@ -5,6 +5,7 @@ extends Node3D
 @export_multiline var note_message: String = ""
 
 @onready var inventory_item: InventoryItem = $InventoryItem
+@onready var hand_grab: HandGrab = $HandGrab
 
 func _ready() -> void:
 	inventory_item.item_name = note_title
@@ -13,6 +14,7 @@ func _ready() -> void:
 func collect():
 	inventory_item.add_to_inventory()
 	Inventory.notes_data.append(note_message)
+	hand_grab.release_grabbed()
 	
 	queue_free()
 
