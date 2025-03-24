@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c0m5e8gn1gvgi"
-path.s3tc="res://.godot/imported/T_GunHand_NRM.png-ef65bf2c5603a0edff95bdbe42356fb8.s3tc.ctex"
+uid="uid://b348m6xk5eo7l"
+path.s3tc="res://.godot/imported/T_RustDetailTrimA_DIF.png-5dd3fbaa34b84bdca93d902f0f231b5d.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Objects/Gameplay/Puzzles/Turret/Mesh/T_GunHand_NRM.png"
-dest_files=["res://.godot/imported/T_GunHand_NRM.png-ef65bf2c5603a0edff95bdbe42356fb8.s3tc.ctex"]
+source_file="res://Objects/Gameplay/Puzzles/Turret(BROKEN)/Mesh/T_RustDetailTrimA_DIF.png"
+dest_files=["res://.godot/imported/T_RustDetailTrimA_DIF.png-5dd3fbaa34b84bdca93d902f0f231b5d.s3tc.ctex"]
 
 [params]
 
@@ -20,12 +20,12 @@ compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/normal_map=1
+compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=1
-roughness/src_normal="res://Puzzle/Turret/Model/Textures/T_GunHand_NRM.png"
+roughness/mode=0
+roughness/src_normal=""
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://wt62py1d01et"
-path.s3tc="res://.godot/imported/T_GunHand_ORM.png-5849d481c90823f6ae7ffe789d8f9ac0.s3tc.ctex"
+uid="uid://b8vu1sxltxo35"
+path.s3tc="res://.godot/imported/T_CoatedMetalPaint_Rusted_ORMH.png-be501be6da400e3c14063dc026868460.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Objects/Gameplay/Puzzles/Turret/Mesh/T_GunHand_ORM.png"
-dest_files=["res://.godot/imported/T_GunHand_ORM.png-5849d481c90823f6ae7ffe789d8f9ac0.s3tc.ctex"]
+source_file="res://Objects/Gameplay/Puzzles/Turret(BROKEN)/Mesh/T_CoatedMetalPaint_Rusted_ORMH.png"
+dest_files=["res://.godot/imported/T_CoatedMetalPaint_Rusted_ORMH.png-be501be6da400e3c14063dc026868460.s3tc.ctex"]
 
 [params]
 
@@ -20,12 +20,12 @@ compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/normal_map=1
+compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=1
-roughness/src_normal="res://Puzzle/Turret/Model/Textures/T_GunHand_ORM.png"
+roughness/mode=0
+roughness/src_normal=""
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://b740e13ethrql"
-path="res://.godot/imported/turret.glb-6faed3418242a5564648730305e92119.scn"
+path="res://.godot/imported/turret.glb-474fae5491339f50913ae6508e7f805e.scn"
 
 [deps]
 
-source_file="res://Objects/Gameplay/Puzzles/Turret/Mesh/turret.glb"
-dest_files=["res://.godot/imported/turret.glb-6faed3418242a5564648730305e92119.scn"]
+source_file="res://Objects/Gameplay/Puzzles/Turret(BROKEN)/Mesh/turret.glb"
+dest_files=["res://.godot/imported/turret.glb-474fae5491339f50913ae6508e7f805e.scn"]
 
 [params]
 

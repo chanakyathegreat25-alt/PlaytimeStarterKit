@@ -1,11 +1,11 @@
-[gd_scene load_steps=88 format=4 uid="uid://bifmmultpyw0x"]
+[gd_scene load_steps=87 format=4 uid="uid://bifmmultpyw0x"]
 
 [ext_resource type="Script" uid="uid://b7a5hf3ljmyj5" path="res://Level/Scripts/test_map.gd" id="1_d6ggl"]
 [ext_resource type="Material" uid="uid://dl7krlcnai0qx" path="res://Level/Assets/Materials/ProtoDark.tres" id="1_teiv4"]
 [ext_resource type="PackedScene" uid="uid://rfnlwudwu2cl" path="res://Objects/Gameplay/Puzzles/Battery/battery_holder.tscn" id="2_3jmk0"]
 [ext_resource type="PackedScene" uid="uid://dkty77argxwyc" path="res://Player/player.tscn" id="3_bdoa4"]
 [ext_resource type="PackedScene" uid="uid://cci31kuqdnklx" path="res://Objects/Gameplay/Gates/gate.tscn" id="3_ea5ej"]
-[ext_resource type="Material" uid="uid://bu5pivb2jcdqa" path="res://Objects/Gameplay/Puzzles/Turret/Mesh/CoatedMetal.tres" id="3_lxs5s"]
+[ext_resource type="Material" uid="uid://bu5pivb2jcdqa" path="res://Objects/Gameplay/Puzzles/Turret(BROKEN)/Mesh/CoatedMetal.tres" id="3_lxs5s"]
 [ext_resource type="PackedScene" uid="uid://cgfr84c3rrtym" path="res://Objects/Gameplay/Gates/door.tscn" id="3_ojsmx"]
 [ext_resource type="Script" uid="uid://dfqo6wm5ms6dl" path="res://Objects/Gameplay/Puzzles/Battery/Scripts/battery_linker.gd" id="3_teiv4"]
 [ext_resource type="PackedScene" uid="uid://pcbe4d8vixhy" path="res://Objects/Gameplay/Puzzles/Battery/battery.tscn" id="3_u7kn2"]
@@ -46,8 +46,7 @@
 [ext_resource type="PackedScene" uid="uid://e2hero4ao2k" path="res://Objects/Gameplay/Gas/valve_item.tscn" id="35_qu7le"]
 [ext_resource type="PackedScene" uid="uid://bca26vpymh0mn" path="res://Objects/Gameplay/PullOff/pullable_plank.tscn" id="36_ng01g"]
 [ext_resource type="PackedScene" uid="uid://bqbhkd8ba6j1o" path="res://Objects/Gameplay/Puzzles/OutletPower/power_pole.tscn" id="36_vi7rx"]
-[ext_resource type="PackedScene" uid="uid://sv186jhp6a0j" path="res://Objects/Gameplay/Puzzles/OutletPower/enhanced_power_pole.tscn" id="37_1qyy0"]
-[ext_resource type="PackedScene" uid="uid://rjqpvuw0grvx" path="res://Objects/Gameplay/Puzzles/Turret/turret.tscn" id="38_f0vfr"]
+[ext_resource type="PackedScene" uid="uid://sv186jhp6a0j" path="res://Objects/Gameplay/Puzzles/OutletPower/(BROKEN)enhanced_power_pole.tscn" id="37_1qyy0"]
 [ext_resource type="PackedScene" uid="uid://5xwl88xktvuo" path="res://Player/Grabpack/Hands/flare.tscn" id="38_sj8vn"]
 [ext_resource type="Texture2D" uid="uid://et73llohisu2" path="res://TEMP/Screenshot_2025-02-22_150242.png" id="39_sj8vn"]
 [ext_resource type="PackedScene" uid="uid://cgkb5qxyeyi26" path="res://Objects/Gameplay/Puzzles/Scanners/scanner_omni.tscn" id="41_36i0g"]
@@ -1012,9 +1011,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.9, 0, -8.9)
 [node name="EnhancedPowerPole2" parent="Puzzles" instance=ExtResource("37_1qyy0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.6, 0, -4.4)
 
-[node name="Turret" parent="Puzzles" instance=ExtResource("38_f0vfr")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -14, 0.1, -3.9)
-
 [node name="Keypad" parent="Puzzles" instance=ExtResource("41_flyvg")]
 transform = Transform3D(4.37114e-08, -1, -3.9081e-15, -1, -4.37114e-08, 8.9407e-08, -8.9407e-08, 0, -1, 11.2039, 3.6, 2.9)
 code = 1234
@@ -1030,6 +1026,12 @@ metadata/_custom_type_script = "uid://ckdvdouxaw4it"
 [node name="HandScannerOmni" parent="Puzzles" instance=ExtResource("41_36i0g")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -8, 1.5, 1.2)
 scan_time = 3.0
+
+[node name="Label3D" type="Label3D" parent="Puzzles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.1, 4.8, -10.7)
+text = "THESE PUZZLE ELEMENTS ARE UNFINISHED!!!
+They will be fixed in a later update :["
+font_size = 52
 
 [node name="Passages" type="Node" parent="."]
 
@@ -1330,7 +1332,7 @@ light_color = Color(1, 1, 0.796078, 1)
 [node name="OmniLight3D4" type="OmniLight3D" parent="Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.4958, 3.8, 15.6)
 light_color = Color(1, 1, 0.796078, 1)
-light_energy = 1.32085
+light_energy = 0.068407
 omni_range = 5.7
 script = ExtResource("54_lxs5s")
 noise = SubResource("NoiseTexture2D_36i0g")
@@ -1339,7 +1341,7 @@ max_energy = 6.0
 [node name="OmniLight3D6" type="OmniLight3D" parent="Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.2042, 2.7, -16.3)
 light_color = Color(1, 1, 0.796078, 1)
-light_energy = 1.32085
+light_energy = 0.068407
 omni_range = 5.7
 script = ExtResource("54_lxs5s")
 noise = SubResource("NoiseTexture2D_36i0g")
@@ -1348,7 +1350,7 @@ max_energy = 6.0
 [node name="OmniLight3D7" type="OmniLight3D" parent="Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5042, 2.7, -16.3)
 light_color = Color(1, 1, 0.796078, 1)
-light_energy = 1.32085
+light_energy = 0.068407
 omni_range = 5.7
 script = ExtResource("54_lxs5s")
 noise = SubResource("NoiseTexture2D_36i0g")
@@ -1357,7 +1359,7 @@ max_energy = 6.0
 [node name="OmniLight3D8" type="OmniLight3D" parent="Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.7042, 2.7, -16.3)
 light_color = Color(1, 1, 0.796078, 1)
-light_energy = 1.32085
+light_energy = 0.068407
 omni_range = 5.7
 script = ExtResource("54_lxs5s")
 noise = SubResource("NoiseTexture2D_36i0g")

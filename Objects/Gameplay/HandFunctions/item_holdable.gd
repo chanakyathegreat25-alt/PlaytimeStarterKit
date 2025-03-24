@@ -42,11 +42,15 @@ func stop_hold(hand):
 		Grabpack.right_hand.holding_object = false 
 		Grabpack.animate_right("retract")
 		Grabpack.right_seek(0.1)
+		if not Grabpack.right_hand.hand_retracting and not Grabpack.right_hand.hand_attached:
+			Grabpack.right_hand.retract_hand()
 		parent.global_transform = Grabpack.right_hand.hand_fake.global_transform
 	if not hand: 
 		Grabpack.left_hand.holding_object = false
 		Grabpack.animate_left("retract")
 		Grabpack.left_seek(0.1)
+		if not Grabpack.left_hand.hand_retracting and not Grabpack.left_hand.hand_attached:
+			Grabpack.left_hand.retract_hand()
 		parent.global_transform = Grabpack.left_hand.hand_fake.global_transform
 	parent.collision_layer |= 1  # Enable layer 1
 	parent.collision_mask |= 1   # Enable mask 1

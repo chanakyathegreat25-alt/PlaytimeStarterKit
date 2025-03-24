@@ -28,6 +28,7 @@ func enable_battery():
 	freeze = false
 func disable_battery():
 	if item_holdable.holding:
+		
 		item_holdable.stop_hold(item_holdable.hold_hand)
 	collision_layer &= ~1  # Disable layer 1
 	collision_mask &= ~1   # Disable mask 1

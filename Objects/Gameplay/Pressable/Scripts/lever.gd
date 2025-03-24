@@ -53,7 +53,7 @@ func _on_hand_grab_pulled(_hand):
 	if pullable_once:
 		pulled_once = true
 
-func _on_hand_grab_let_go(hand: bool) -> void:
+func _on_hand_grab_let_go(_hand: bool) -> void:
 	if animation_player.is_playing():
 		if animation_player.current_animation == "pull" or animation_player.current_animation == "pull_down":
 			pass

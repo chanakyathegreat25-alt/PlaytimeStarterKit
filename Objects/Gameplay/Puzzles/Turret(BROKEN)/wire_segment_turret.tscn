@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bv7pkdrph4h88"]
 
-[ext_resource type="Script" uid="uid://cviiqoaanj3b0" path="res://Objects/Gameplay/Puzzles/Turret/wire_segment_turret.gd" id="1_arvy5"]
+[ext_resource type="Script" uid="uid://cviiqoaanj3b0" path="res://Objects/Gameplay/Puzzles/Turret(BROKEN)/wire_segment_turret.gd" id="1_arvy5"]
 [ext_resource type="Material" uid="uid://k64313mf7hr5" path="res://Player/Grabpack/Wire/WireMaterialRight.tres" id="2_wkjod"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_ac2ak"]

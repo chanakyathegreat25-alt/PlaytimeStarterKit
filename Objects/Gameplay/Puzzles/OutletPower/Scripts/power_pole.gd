@@ -10,7 +10,7 @@ var areas: int = 0
 func _ready():
 	light.visible = false
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if not Grabpack.grabpack.wire_powered and is_powered:
 		set_power(false)
 

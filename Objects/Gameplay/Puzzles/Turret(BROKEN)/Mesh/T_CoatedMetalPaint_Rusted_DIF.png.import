@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b8vu1sxltxo35"
-path.s3tc="res://.godot/imported/T_CoatedMetalPaint_Rusted_ORMH.png-e28f473aa845ad6ce17c5c024f19799a.s3tc.ctex"
+uid="uid://dfv0qicsa5xoo"
+path.s3tc="res://.godot/imported/T_CoatedMetalPaint_Rusted_DIF.png-d0d1babc80495dd8ece4f813767761e2.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Objects/Gameplay/Puzzles/Turret/Mesh/T_CoatedMetalPaint_Rusted_ORMH.png"
-dest_files=["res://.godot/imported/T_CoatedMetalPaint_Rusted_ORMH.png-e28f473aa845ad6ce17c5c024f19799a.s3tc.ctex"]
+source_file="res://Objects/Gameplay/Puzzles/Turret(BROKEN)/Mesh/T_CoatedMetalPaint_Rusted_DIF.png"
+dest_files=["res://.godot/imported/T_CoatedMetalPaint_Rusted_DIF.png-d0d1babc80495dd8ece4f813767761e2.s3tc.ctex"]
 
 [params]
 
