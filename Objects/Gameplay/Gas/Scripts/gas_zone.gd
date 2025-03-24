@@ -2,6 +2,8 @@ extends Area3D
 class_name GasZone
 
 @export var enabled: bool = false
+##Seconds until the gas kills the player
+@export var death_time: float = 30.0
 
 @onready var gas_cover = $CanvasLayer/ColorRect
 @onready var gas_shader: ShaderMaterial = gas_cover.material
@@ -16,6 +18,7 @@ var speed = 0.01
 var increase_speed = 0.01
 var decrease_speed = -0.1
 var current_increase = 0.0
+var current_gas_time: float = 0.0
 
 var awaiting_enable: bool = false
 
@@ -34,6 +37,8 @@ func _process(delta):
 		layer_1.playing = false
 		layer_2.playing = false
 		layer_3.playing = false
+		current_gas_time = 0.0
+		
 		return
 	if awaiting_enable:
 		if enabled:
@@ -49,6 +54,7 @@ func _process(delta):
 		player_in_gas = false
 		awaiting_enable = false
 		speed = decrease_speed
+		current_gas_time -= 10.0 * delta
 	gas_cover.visible = true
 	# Gradually increase the values over time
 	if gas_cover.material and gas_cover.material.shader:
@@ -72,6 +78,9 @@ func _process(delta):
 		shader_material.set_shader_parameter("color_distortion_amount", current_color_distortion_amount + speed * 0.01 * delta)  # Very subtle increase
 		shader_material.set_shader_parameter("chromatic_aberration_amount", current_chromatic_aberration_amount + speed * 0.01 * delta)  # Subtle increase
 		current_increase += speed * delta
+		current_gas_time += 1.0 * delta
+		if current_gas_time > death_time:
+			Grabpack.kill_player()
 		layer_1.volume_db += speed * 1000.0 * delta
 		if layer_1.volume_db > 1.0:
 			layer_1.volume_db = 1.0
