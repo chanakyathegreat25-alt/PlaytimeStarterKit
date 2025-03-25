@@ -1,4 +1,4 @@
-[gd_scene load_steps=164 format=4 uid="uid://dkty77argxwyc"]
+[gd_scene load_steps=169 format=4 uid="uid://dkty77argxwyc"]
 
 [ext_resource type="Texture2D" uid="uid://cl7alwgeec33w" path="res://Player/Grabpack/Models/grabpack_chapter_3_-_poppy_playtime_0.png" id="1_00tjw"]
 [ext_resource type="Script" uid="uid://dkgdss1i1qci7" path="res://Player/player.gd" id="1_od3ui"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dvp8vrn72f6i" path="res://Player/Grabpack/Models/grabpack_chapter_3_-_poppy_playtime_2.png" id="3_apopc"]
 [ext_resource type="PackedScene" uid="uid://b5hqdrggpb7dw" path="res://Player/Grabpack/Grabpacks/grabpack_one.tscn" id="4_ie76m"]
 [ext_resource type="PackedScene" uid="uid://b6jjiwvgofq7d" path="res://Player/Grabpack/Grabpacks/grabpack_two.tscn" id="5_ie76m"]
+[ext_resource type="PackedScene" uid="uid://baopxxyawgnob" path="res://Player/Grabpack/Grabpacks/grabpack_three.tscn" id="6_soeee"]
 [ext_resource type="Texture2D" uid="uid://inhgvawo2ubt" path="res://Player/Grabpack/Models/Hands/T_BlueHand_BC.png" id="10_7x5p2"]
 [ext_resource type="Script" uid="uid://6a1qq5wdt3ff" path="res://Player/Grabpack/left_hand_container.gd" id="10_p5o4e"]
 [ext_resource type="Texture2D" uid="uid://djaph3pqt6xig" path="res://Player/Grabpack/Models/Hands/T_BlueHand_Nt.png" id="11_6eb1q"]
@@ -50,6 +51,8 @@
 [ext_resource type="AudioStream" uid="uid://c7rdq8ypp0lks" path="res://Player/Sound/Inventory/item_grab_v3.wav" id="45_1kmt7"]
 [ext_resource type="AudioStream" uid="uid://je6p8sf07015" path="res://Player/Sound/Grabpack/SW_SFX_Inventory_SwitchTabs_03.wav" id="46_lgaa7"]
 [ext_resource type="FontFile" uid="uid://b15pnbjgpussj" path="res://Interface/Font/NotoSansJP-VariableFont_wght.ttf" id="47_6rl0i"]
+[ext_resource type="AudioStream" uid="uid://c3ihq6e51p4xw" path="res://Player/Sound/Grabpack/SW_Jingle_Grabpack2_Obtain.wav" id="48_qns6m"]
+[ext_resource type="AudioStream" uid="uid://l5q40iypyf78" path="res://Player/Sound/Grabpack/SFX puzzle complete sfx.mp3" id="49_fatyj"]
 [ext_resource type="AudioStream" uid="uid://bw0dntgx8r73d" path="res://Interface/Sound/SW_NewObjective.wav" id="49_wvbyc"]
 [ext_resource type="AudioStream" uid="uid://d3tt8btvtapd3" path="res://Interface/Sound/SW_TooltipIndicator.wav" id="50_gvnt1"]
 [ext_resource type="Texture2D" uid="uid://cg8fpx4l4o3mk" path="res://Interface/Loading/T_SavingIcon.png" id="51_f8nak"]
@@ -1572,6 +1575,58 @@ _data = {
 &"start_fall": SubResource("Animation_ac8n6")
 }
 
+[sub_resource type="Animation" id="Animation_t7sh4"]
+resource_name = "EnterWatch"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LayerWalk/ArmLeft/LayerIdle/LayerWalk/LayerCrouch/LayerJump/LayerPack:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.466667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.05, -0.001, 0), Vector3(-0.134, -0.01, 0.08), Vector3(-0.134, -0.01, 0.08)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LayerWalk/ArmLeft/LayerIdle/LayerWalk/LayerCrouch/LayerJump/LayerPack:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.466667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.0872665, 0, 0.349066), Vector3(-0.785398, 0, 0), Vector3(-0.785398, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("LayerWalk/ArmRight/LayerIdle/LayerWalk/LayerCrouch/LayerJump/LayerPack:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.133333, 0.233333, 0.333333, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-7.45058e-08, -0.00318158, -0.0011967), Vector3(-0.0167595, 0.0297475, 0.0267598), Vector3(-0.0313848, 0.00973533, 0.0633531), Vector3(-0.0321252, -0.0167175, 0.0746855), Vector3(-0.0322464, -0.0452825, 0.085524), Vector3(-0.0322464, -0.0452825, 0.085524), Vector3(-0.0322464, -0.0452825, 0.085524)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("LayerWalk/ArmRight/LayerIdle/LayerWalk/LayerCrouch/LayerJump/LayerPack:rotation")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.166667, 0.2, 0.3, 0.366667, 0.433333, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(-0.634978, -0.0676081, -0.201424), Vector3(-0.581189, -0.0562238, -0.178212), Vector3(-0.098127, -0.0863056, -0.123563), Vector3(1.7174, -0.820305, -0.602139), Vector3(1.7174, -0.820305, -0.602139), Vector3(1.7174, -0.820305, -0.602139)]
+}
+
 [sub_resource type="Animation" id="Animation_o28un"]
 resource_name = "LowerPack"
 length = 0.5
@@ -1868,8 +1923,62 @@ tracks/5/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_fhogf"]
+resource_name = "ExitWatch"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LayerWalk/ArmLeft/LayerIdle/LayerWalk/LayerCrouch/LayerJump/LayerPack:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.266667, 0.4, 0.466667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.05, -0.001, 0), Vector3(-0.134, -0.01, 0.08), Vector3(-0.134, -0.01, 0.08)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LayerWalk/ArmLeft/LayerIdle/LayerWalk/LayerCrouch/LayerJump/LayerPack:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.4, 0.466667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.0872665, 0, -0.349066), Vector3(-0.785398, 0, 0), Vector3(-0.785398, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("LayerWalk/ArmRight/LayerIdle/LayerWalk/LayerCrouch/LayerJump/LayerPack:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.233333, 0.333333, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.0313848, 0.00973533, 0.0633531), Vector3(-0.0321252, -0.0167175, 0.0746855), Vector3(-0.0322464, -0.0452825, 0.085524), Vector3(-0.0322464, -0.0452825, 0.085524)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("LayerWalk/ArmRight/LayerIdle/LayerWalk/LayerCrouch/LayerJump/LayerPack:rotation")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.3, 0.433333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.634978, -0.0676081, -0.201424), Vector3(-0.098127, -0.0863056, -0.123563), Vector3(1.7174, -0.820305, -0.602139)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7emwf"]
 _data = {
+&"EnterWatch": SubResource("Animation_t7sh4"),
+&"ExitWatch": SubResource("Animation_fhogf"),
 &"LowerPack": SubResource("Animation_o28un"),
 &"RESET": SubResource("Animation_n471f"),
 &"RaisePack": SubResource("Animation_8mwp6"),
@@ -3844,7 +3953,7 @@ script = ExtResource("1_od3ui")
 [node name="Grabpack" type="Node3D" parent="." groups=["Grabpack"]]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 1.7, 0)
 script = ExtResource("2_apopc")
-grabpacks = Array[PackedScene]([ExtResource("3_6pogt"), ExtResource("4_ie76m"), ExtResource("5_ie76m")])
+grabpacks = Array[PackedScene]([ExtResource("3_6pogt"), ExtResource("4_ie76m"), ExtResource("5_ie76m"), ExtResource("6_soeee")])
 
 [node name="Pack" type="Node3D" parent="Grabpack"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.002, -0.235, -0.37)
@@ -4651,7 +4760,7 @@ target_position = Vector3(0, 0.78, 0)
 target_position = Vector3(0, -0.15, 0)
 script = ExtResource("24_8mwp6")
 
-[node name="SoundManager" type="Node" parent="."]
+[node name="SoundManager" type="Node" parent="." groups=["SoundManager"]]
 script = ExtResource("15_c6x0f")
 
 [node name="land1" type="AudioStreamPlayer" parent="SoundManager"]
@@ -4779,6 +4888,12 @@ stream = ExtResource("45_1kmt7")
 
 [node name="flashlight" type="AudioStreamPlayer" parent="SoundManager"]
 stream = ExtResource("46_lgaa7")
+
+[node name="puzzlejingle" type="AudioStreamPlayer" parent="SoundManager"]
+stream = ExtResource("48_qns6m")
+
+[node name="puzzlecomplete" type="AudioStreamPlayer" parent="SoundManager"]
+stream = ExtResource("49_fatyj")
 
 [node name="UI" type="CanvasLayer" parent="." groups=["HUD"]]
 process_mode = 3

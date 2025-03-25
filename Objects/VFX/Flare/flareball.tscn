@@ -37,10 +37,10 @@ size = Vector2(0.75, 0.75)
 orientation = 2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_dedsw"]
-radius = 0.107165
+radius = 0.3
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_24cya"]
-radius = 0.212774
+radius = 0.4
 
 [node name="FlareBall" type="RigidBody3D"]
 collision_layer = 0

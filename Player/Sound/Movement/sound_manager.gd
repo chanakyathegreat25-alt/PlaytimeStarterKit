@@ -100,3 +100,10 @@ func load_soundpack(pack_folder: String):
 			var file_path = str(folder_path, file_name)
 			var stream = ResourceLoader.load(file_path) as AudioStream
 			sound_node.stream = stream
+
+func puzzle_sfx():
+	var sound_node: String = "puzzlecomplete"
+	get_node(sound_node).play()
+func jingle_sfx():
+	var sound_node: String = "puzzlejingle"
+	get_node(sound_node).play()

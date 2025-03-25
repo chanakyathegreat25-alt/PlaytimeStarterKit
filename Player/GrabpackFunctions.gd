@@ -6,11 +6,13 @@ var left_hand: Node3D = null
 var right_hand: Node3D = null
 var item_raycast: RayCast3D = null
 var hud: CanvasLayer = null
+var sound_manager: Node = null
 
 func reset_objects():
 	grabpack = get_tree().get_first_node_in_group("Grabpack")
 	player = get_tree().get_first_node_in_group("Player")
 	hud = get_tree().get_first_node_in_group("HUD")
+	sound_manager = get_tree().get_first_node_in_group("SoundManager")
 	
 	left_hand = get_tree().get_first_node_in_group("LeftHand")
 	right_hand = get_tree().get_first_node_in_group("RightHand")

@@ -177,7 +177,7 @@ func sort_hand_use():
 	if not hand_useless:
 		if fire_mode_launch:
 			if hand_attached:
-				if grabpack.grabpack_lowered: return
+				if grabpack.grabpack_lowered or not player.movable: return
 				launch_hand()
 				
 				#Send Signals

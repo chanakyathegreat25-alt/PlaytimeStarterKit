@@ -1,4 +1,4 @@
-[gd_scene load_steps=87 format=4 uid="uid://bifmmultpyw0x"]
+[gd_scene load_steps=88 format=4 uid="uid://bifmmultpyw0x"]
 
 [ext_resource type="Script" uid="uid://b7a5hf3ljmyj5" path="res://Level/Scripts/test_map.gd" id="1_d6ggl"]
 [ext_resource type="Material" uid="uid://dl7krlcnai0qx" path="res://Level/Assets/Materials/ProtoDark.tres" id="1_teiv4"]
@@ -51,6 +51,7 @@
 [ext_resource type="Texture2D" uid="uid://et73llohisu2" path="res://TEMP/Screenshot_2025-02-22_150242.png" id="39_sj8vn"]
 [ext_resource type="PackedScene" uid="uid://cgkb5qxyeyi26" path="res://Objects/Gameplay/Puzzles/Scanners/scanner_omni.tscn" id="41_36i0g"]
 [ext_resource type="PackedScene" uid="uid://cd47wb6hqy68j" path="res://Objects/Gameplay/ControlPanel/keypad.tscn" id="41_flyvg"]
+[ext_resource type="Script" uid="uid://c43uaje0uamr6" path="res://Objects/Gameplay/watch_camera.gd" id="42_lxs5s"]
 [ext_resource type="Texture2D" uid="uid://d1s8ic6c0c634" path="res://Player/Grabpack/Models/Hands/T_OmniHand_BC.png" id="46_lxs5s"]
 [ext_resource type="Texture2D" uid="uid://bsgqx2nu8s7i6" path="res://Player/Grabpack/Models/Hands/T_OmniHand_Nb.png" id="47_flyvg"]
 [ext_resource type="Texture2D" uid="uid://cyjvafqliagnq" path="res://Player/Grabpack/Models/Hands/T_OmniHand_ORM.png" id="48_36i0g"]
@@ -955,6 +956,7 @@ material = SubResource("ShaderMaterial_v8n35")
 offset_right = 1152.0
 offset_bottom = 648.0
 mouse_filter = 2
+color = Color(0, 0, 0, 0.960784)
 
 [node name="Layer1" type="AudioStreamPlayer" parent="Puzzles/Gas/GasZone/CanvasLayer"]
 stream = ExtResource("26_4yy1v")
@@ -1063,6 +1065,16 @@ open_by_defualt = false
 
 [node name="Gate3" parent="Passages" instance=ExtResource("3_ea5ej")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5.73727, 4, -15.3)
+
+[node name="Camera3D" type="Camera3D" parent="Passages"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.9, 0)
+script = ExtResource("42_lxs5s")
+
+[node name="Camera3D2" type="Camera3D" parent="Passages"]
+transform = Transform3D(1, 0, 0, 0, -0.5, 0.866025, 0, -0.866025, -0.5, 0, 3.7, -2.7)
+script = ExtResource("42_lxs5s")
+play_puzzle_complete_sound = true
+complete_sound = 1
 
 [node name="Triggers" type="Node" parent="."]
 
@@ -1316,6 +1328,7 @@ transform = Transform3D(-0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819
 
 [node name="GrabpackItem" parent="Items" instance=ExtResource("48_u8ypr")]
 transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 0.546447, 0.105652, -1.08763)
+grabpack_number = 3
 
 [node name="GrabpackOneItemMesh" parent="Items/GrabpackItem" instance=ExtResource("49_0ptqi")]
 
@@ -1332,7 +1345,7 @@ light_color = Color(1, 1, 0.796078, 1)
 [node name="OmniLight3D4" type="OmniLight3D" parent="Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.4958, 3.8, 15.6)
 light_color = Color(1, 1, 0.796078, 1)
-light_energy = 0.068407
+light_energy = 0.801075
 omni_range = 5.7
 script = ExtResource("54_lxs5s")
 noise = SubResource("NoiseTexture2D_36i0g")
@@ -1341,7 +1354,7 @@ max_energy = 6.0
 [node name="OmniLight3D6" type="OmniLight3D" parent="Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.2042, 2.7, -16.3)
 light_color = Color(1, 1, 0.796078, 1)
-light_energy = 0.068407
+light_energy = 0.801075
 omni_range = 5.7
 script = ExtResource("54_lxs5s")
 noise = SubResource("NoiseTexture2D_36i0g")
@@ -1350,7 +1363,7 @@ max_energy = 6.0
 [node name="OmniLight3D7" type="OmniLight3D" parent="Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5042, 2.7, -16.3)
 light_color = Color(1, 1, 0.796078, 1)
-light_energy = 0.068407
+light_energy = 0.801075
 omni_range = 5.7
 script = ExtResource("54_lxs5s")
 noise = SubResource("NoiseTexture2D_36i0g")
@@ -1359,7 +1372,7 @@ max_energy = 6.0
 [node name="OmniLight3D8" type="OmniLight3D" parent="Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.7042, 2.7, -16.3)
 light_color = Color(1, 1, 0.796078, 1)
-light_energy = 0.068407
+light_energy = 0.801075
 omni_range = 5.7
 script = ExtResource("54_lxs5s")
 noise = SubResource("NoiseTexture2D_36i0g")
