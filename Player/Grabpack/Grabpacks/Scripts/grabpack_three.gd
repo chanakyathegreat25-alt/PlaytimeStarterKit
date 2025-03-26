@@ -18,9 +18,6 @@ var using: bool = false
 var cameras: Array
 var current_cam: int = 0
 
-func _ready() -> void:
-	cameras = get_tree().get_nodes_in_group("WatchCamera")
-
 func _process(_delta: float) -> void:
 	watch.global_transform = arm_attach.global_transform
 
@@ -44,6 +41,7 @@ func exit_watch():
 	exit.play()
 	using = false
 func enter_watch():
+	cameras = get_tree().get_nodes_in_group("WatchCamera")
 	item_animation.play("EnterWatch")
 	animation_player.play("enable")
 	
