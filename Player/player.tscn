@@ -1627,6 +1627,58 @@ tracks/3/keys = {
 "values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(-0.634978, -0.0676081, -0.201424), Vector3(-0.581189, -0.0562238, -0.178212), Vector3(-0.098127, -0.0863056, -0.123563), Vector3(1.7174, -0.820305, -0.602139), Vector3(1.7174, -0.820305, -0.602139), Vector3(1.7174, -0.820305, -0.602139)]
 }
 
+[sub_resource type="Animation" id="Animation_fhogf"]
+resource_name = "ExitWatch"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LayerWalk/ArmLeft/LayerIdle/LayerWalk/LayerCrouch/LayerJump/LayerPack:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.266667, 0.4, 0.466667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.05, -0.001, 0), Vector3(-0.134, -0.01, 0.08), Vector3(-0.134, -0.01, 0.08)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LayerWalk/ArmLeft/LayerIdle/LayerWalk/LayerCrouch/LayerJump/LayerPack:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.4, 0.466667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.0872665, 0, -0.349066), Vector3(-0.785398, 0, 0), Vector3(-0.785398, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("LayerWalk/ArmRight/LayerIdle/LayerWalk/LayerCrouch/LayerJump/LayerPack:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.233333, 0.333333, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.0313848, 0.00973533, 0.0633531), Vector3(-0.0321252, -0.0167175, 0.0746855), Vector3(-0.0322464, -0.0452825, 0.085524), Vector3(-0.0322464, -0.0452825, 0.085524)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("LayerWalk/ArmRight/LayerIdle/LayerWalk/LayerCrouch/LayerJump/LayerPack:rotation")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.3, 0.433333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.634978, -0.0676081, -0.201424), Vector3(-0.098127, -0.0863056, -0.123563), Vector3(1.7174, -0.820305, -0.602139)]
+}
+
 [sub_resource type="Animation" id="Animation_o28un"]
 resource_name = "LowerPack"
 length = 0.5
@@ -1921,58 +1973,6 @@ tracks/5/keys = {
 "args": [],
 "method": &"raise_grabpack"
 }]
-}
-
-[sub_resource type="Animation" id="Animation_fhogf"]
-resource_name = "ExitWatch"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("LayerWalk/ArmLeft/LayerIdle/LayerWalk/LayerCrouch/LayerJump/LayerPack:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.266667, 0.4, 0.466667),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(-0.05, -0.001, 0), Vector3(-0.134, -0.01, 0.08), Vector3(-0.134, -0.01, 0.08)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("LayerWalk/ArmLeft/LayerIdle/LayerWalk/LayerCrouch/LayerJump/LayerPack:rotation")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.4, 0.466667),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(-0.0872665, 0, -0.349066), Vector3(-0.785398, 0, 0), Vector3(-0.785398, 0, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("LayerWalk/ArmRight/LayerIdle/LayerWalk/LayerCrouch/LayerJump/LayerPack:position")
-tracks/2/interp = 2
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.133333, 0.233333, 0.333333, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(-0.0313848, 0.00973533, 0.0633531), Vector3(-0.0321252, -0.0167175, 0.0746855), Vector3(-0.0322464, -0.0452825, 0.085524), Vector3(-0.0322464, -0.0452825, 0.085524)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("LayerWalk/ArmRight/LayerIdle/LayerWalk/LayerCrouch/LayerJump/LayerPack:rotation")
-tracks/3/interp = 2
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.166667, 0.3, 0.433333),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(-0.634978, -0.0676081, -0.201424), Vector3(-0.098127, -0.0863056, -0.123563), Vector3(1.7174, -0.820305, -0.602139)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7emwf"]

@@ -90,7 +90,7 @@ height = 0.0664856
 radius = 0.104492
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_frpan"]
-size = Vector3(0.2, 0.148456, 0.2)
+size = Vector3(0.5, 0.3, 0.5)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_oiegv"]
 height = 0.0120361
@@ -163,7 +163,7 @@ grab_marker = NodePath("HandPositionMarker")
 metadata/_custom_type_script = "uid://d4joakp74nxnn"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Press/HandGrab"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00897522, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0667968, 0)
 shape = SubResource("BoxShape3D_frpan")
 
 [node name="HandPositionMarker" type="Marker3D" parent="Press/HandGrab"]

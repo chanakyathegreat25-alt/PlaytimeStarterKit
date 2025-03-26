@@ -46,7 +46,7 @@ func exit_watch():
 func enter_watch():
 	item_animation.play("EnterWatch")
 	animation_player.play("enable")
-	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	
 	Grabpack.set_movable(false)
 	camera_3d.position = cameras[current_cam].global_position
 	ui.visible = true
@@ -58,6 +58,7 @@ func enter_watch():
 	sub.visible = true
 	buttons.visible = true
 	vcr.visible = true
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 func _on_button_2_pressed() -> void:
 	animation_player.play("switch_cam")
