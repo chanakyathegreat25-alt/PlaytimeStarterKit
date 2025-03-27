@@ -1118,6 +1118,7 @@ skeleton = NodePath("")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="ui" type="Control" parent="CanvasLayer"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
