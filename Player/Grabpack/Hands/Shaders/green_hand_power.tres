@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=9 format=3 uid="uid://bxh6nik6yr3ij"]
 
-[ext_resource type="Shader" path="res://Player/Grabpack/Hands/electricity.gdshader" id="1_xweqa"]
+[ext_resource type="Shader" uid="uid://ba5ymrpy1g1w4" path="res://Player/Grabpack/Hands/electricity.gdshader" id="1_xweqa"]
 
 [sub_resource type="Gradient" id="Gradient_mhoco"]
 offsets = PackedFloat32Array(0.631769, 0.696751, 0.714801)
