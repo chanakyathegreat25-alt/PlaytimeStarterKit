@@ -9,7 +9,7 @@
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_i11kf"]
 color = Color(0.411765, 0.858824, 1, 1)
-thickness = 2
+thickness = 3
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_31qhp"]
 
@@ -30,17 +30,20 @@ script = ExtResource("1_4tta7")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 modulate = Color(1, 1, 1, 0.517647)
-layout_mode = 0
-offset_right = 1152.0
-offset_bottom = 648.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="Background" type="Sprite2D" parent="."]
-position = Vector2(576, 324)
-scale = Vector2(0.6, 0.6)
+position = Vector2(960, 540)
 texture = ExtResource("2_qky38")
 
 [node name="buttons" type="Node2D" parent="."]
+position = Vector2(477, 148)
 
 [node name="defualt" type="Marker2D" parent="buttons"]
 position = Vector2(326, 133)
@@ -50,19 +53,19 @@ position = Vector2(295, 133)
 
 [node name="ColorRect" type="ColorRect" parent="buttons/Current"]
 offset_right = 9.0
-offset_bottom = 73.0
+offset_bottom = 81.0
 color = Color(0.411765, 0.858824, 1, 1)
 
 [node name="Load0" parent="buttons" instance=ExtResource("3_vsoh4")]
 
 [node name="Title" type="Label" parent="."]
 layout_mode = 0
-offset_top = 19.0
-offset_right = 406.0
-offset_bottom = 100.0
+offset_top = 62.0
+offset_right = 599.0
+offset_bottom = 170.0
 theme_override_colors/font_color = Color(0.411765, 0.858824, 1, 1)
 theme_override_fonts/font = ExtResource("4_4tta7")
-theme_override_font_sizes/font_size = 60
+theme_override_font_sizes/font_size = 80
 text = "Load Game"
 horizontal_alignment = 2
 vertical_alignment = 1
@@ -70,9 +73,12 @@ uppercase = true
 
 [node name="None" type="Label" parent="."]
 visible = false
-layout_mode = 0
-offset_right = 1152.0
-offset_bottom = 648.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("5_yk4jq")
 theme_override_font_sizes/font_size = 30
@@ -83,18 +89,19 @@ uppercase = true
 
 [node name="Seperator" type="HSeparator" parent="."]
 layout_mode = 0
-offset_top = 100.0
-offset_right = 406.0
-offset_bottom = 113.0
+offset_top = 150.0
+offset_right = 599.0
+offset_bottom = 175.0
 theme_override_styles/separator = SubResource("StyleBoxLine_i11kf")
 
 [node name="Back" type="Button" parent="."]
 layout_mode = 0
-offset_left = 1063.0
-offset_top = 603.0
-offset_right = 1127.0
-offset_bottom = 631.0
+offset_left = 1744.0
+offset_top = 1007.0
+offset_right = 1900.0
+offset_bottom = 1067.0
 theme_override_fonts/font = ExtResource("5_yk4jq")
+theme_override_font_sizes/font_size = 35
 theme_override_styles/focus = SubResource("StyleBoxEmpty_31qhp")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_ebtn8")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_4tta7")

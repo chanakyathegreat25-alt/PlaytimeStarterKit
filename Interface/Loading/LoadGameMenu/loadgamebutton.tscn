@@ -33,27 +33,28 @@ offset_left = 125.0
 offset_top = 15.0
 offset_right = 500.0
 offset_bottom = 37.0
-theme_override_font_sizes/font_size = 18
+theme_override_font_sizes/font_size = 30
 text = "Load Title"
+metadata/_edit_use_anchors_ = true
 
 [node name="Objective" type="Label" parent="."]
 layout_mode = 0
-offset_left = 151.0
-offset_top = 37.0
-offset_right = 500.0
-offset_bottom = 70.0
+offset_left = 152.0
+offset_top = 42.0
+offset_right = 497.0
+offset_bottom = 75.0
 theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_fonts/font = ExtResource("3_js3q3")
-theme_override_font_sizes/font_size = 13
+theme_override_font_sizes/font_size = 20
 text = "THIS IS AN OBJECTIVE :O"
 
 [node name="Sprite2D" type="MeshInstance2D" parent="."]
-position = Vector2(48, 37)
-scale = Vector2(0.0661765, 0.0672783)
+position = Vector2(46, 40.5)
+scale = Vector2(0.0682773, 0.0825688)
 mesh = SubResource("ArrayMesh_5jc76")
 
 [node name="Objective2" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 0, 1)
-position = Vector2(134, 48)
+position = Vector2(138, 58)
 scale = Vector2(0.109375, 0.101563)
 texture = ExtResource("5_rwlj6")

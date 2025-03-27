@@ -18,13 +18,13 @@
 color = Color(0.411765, 0.858824, 1, 1)
 thickness = 2
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xtlhd"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ubcy4"]
 bg_color = Color(0, 0, 0, 1)
 border_width_top = 2
 border_width_bottom = 2
 border_color = Color(0.417257, 0.417257, 0.417257, 1)
 
-[sub_resource type="FontVariation" id="FontVariation_bslv7"]
+[sub_resource type="FontVariation" id="FontVariation_3do1l"]
 base_font = ExtResource("5_sa6jc")
 spacing_bottom = -5
 
@@ -130,93 +130,96 @@ script = ExtResource("1_tymi6")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 modulate = Color(1, 1, 1, 0.690196)
-layout_mode = 0
-offset_right = 1152.0
-offset_bottom = 648.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="Background" type="Sprite2D" parent="."]
-position = Vector2(576, 324)
-scale = Vector2(0.6, 0.6)
+position = Vector2(962, 540)
+scale = Vector2(1.00208, 1)
 texture = ExtResource("2_sa6jc")
 
 [node name="Title" type="Label" parent="."]
 layout_mode = 0
 offset_left = 98.0
 offset_top = 10.0
-offset_right = 361.0
-offset_bottom = 91.0
+offset_right = 365.0
+offset_bottom = 146.0
 theme_override_colors/font_color = Color(0.411765, 0.858824, 1, 1)
 theme_override_fonts/font = ExtResource("2_atxbg")
-theme_override_font_sizes/font_size = 60
+theme_override_font_sizes/font_size = 80
 text = "PAUSED"
 vertical_alignment = 1
 uppercase = true
 
 [node name="Seperator" type="HSeparator" parent="."]
 layout_mode = 0
-offset_top = 85.0
-offset_right = 314.0
-offset_bottom = 89.0
+offset_top = 111.0
+offset_right = 385.0
+offset_bottom = 146.0
 theme_override_styles/separator = SubResource("StyleBoxLine_w20tc")
 
 [node name="buttons" type="Node2D" parent="."]
 
 [node name="Resume" type="Button" parent="buttons"]
-offset_left = 111.0
-offset_top = 345.0
-offset_right = 366.0
-offset_bottom = 379.0
+offset_left = 98.0
+offset_top = 588.0
+offset_right = 552.0
+offset_bottom = 656.0
 theme = ExtResource("2_2wx6c")
 text = "RESUME"
 alignment = 0
 script = ExtResource("3_atxbg")
 
 [node name="Restart" type="Button" parent="buttons"]
-offset_left = 111.0
-offset_top = 380.0
-offset_right = 366.0
-offset_bottom = 414.0
+offset_left = 98.0
+offset_top = 656.0
+offset_right = 552.0
+offset_bottom = 724.0
 theme = ExtResource("2_2wx6c")
 text = "RESTART CHECKPOINT"
 alignment = 0
 script = ExtResource("3_atxbg")
 
 [node name="Load" type="Button" parent="buttons"]
-offset_left = 111.0
-offset_top = 415.0
-offset_right = 366.0
-offset_bottom = 449.0
+offset_left = 98.0
+offset_top = 724.0
+offset_right = 552.0
+offset_bottom = 792.0
 theme = ExtResource("2_2wx6c")
 text = "LOAD GAME"
 alignment = 0
 script = ExtResource("3_atxbg")
 
 [node name="Settings" type="Button" parent="buttons"]
-offset_left = 111.0
-offset_top = 450.0
-offset_right = 366.0
-offset_bottom = 484.0
+offset_left = 98.0
+offset_top = 792.0
+offset_right = 552.0
+offset_bottom = 860.0
 theme = ExtResource("2_2wx6c")
 text = "SETTINGS"
 alignment = 0
 script = ExtResource("3_atxbg")
 
 [node name="Main" type="Button" parent="buttons"]
-offset_left = 111.0
-offset_top = 485.0
-offset_right = 366.0
-offset_bottom = 519.0
+offset_left = 98.0
+offset_top = 860.0
+offset_right = 552.0
+offset_bottom = 928.0
 theme = ExtResource("2_2wx6c")
 text = "MAIN MENU"
 alignment = 0
 script = ExtResource("3_atxbg")
 
 [node name="Quit" type="Button" parent="buttons"]
-offset_left = 111.0
-offset_top = 520.0
-offset_right = 366.0
-offset_bottom = 554.0
+offset_left = 98.0
+offset_top = 928.0
+offset_right = 552.0
+offset_bottom = 996.0
 theme = ExtResource("2_2wx6c")
 text = "QUIT GAME"
 alignment = 0
@@ -232,24 +235,24 @@ offset_bottom = 35.0
 color = Color(0.411765, 0.858824, 1, 1)
 
 [node name="Objective" type="Node2D" parent="."]
-position = Vector2(1111, 38)
+position = Vector2(1865, 53)
 
 [node name="Label" type="Label" parent="Objective"]
-offset_left = -594.0
+offset_left = -638.0
 offset_top = 1.0
 offset_right = -35.0
-offset_bottom = 47.0
+offset_bottom = 100.0
 theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_fonts/font = ExtResource("5_sa6jc")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 30
 text = "Avoid detection from yarnaby"
 horizontal_alignment = 2
 uppercase = true
 
 [node name="Objective2" type="Sprite2D" parent="Objective"]
 modulate = Color(1, 1, 0, 1)
-position = Vector2(-16, 15.5)
-scale = Vector2(0.125, 0.121094)
+position = Vector2(-7.5, 24)
+scale = Vector2(0.191406, 0.1875)
 texture = ExtResource("6_0mkij")
 
 [node name="Screenshot2025-03-02105152" type="Sprite2D" parent="."]
@@ -280,63 +283,56 @@ grow_vertical = 2
 script = ExtResource("11_ubcy4")
 
 [node name="Background" type="Sprite2D" parent="menu_popup"]
-position = Vector2(576, 324)
-scale = Vector2(0.6, 0.6)
+position = Vector2(960, 540)
 texture = ExtResource("2_sa6jc")
 
 [node name="Panel" type="Panel" parent="menu_popup"]
-layout_mode = 0
-offset_top = 228.0
-offset_right = 1152.0
-offset_bottom = 448.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_xtlhd")
+offset_top = 359.0
+offset_right = 1920.0
+offset_bottom = 724.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ubcy4")
 
 [node name="Prompt" type="Label" parent="menu_popup"]
-layout_mode = 0
-offset_left = 285.0
-offset_top = 255.0
-offset_right = 867.0
-offset_bottom = 287.0
+offset_top = 362.0
+offset_right = 1920.0
+offset_bottom = 493.0
 theme_override_colors/font_color = Color(0.411765, 0.858824, 1, 1)
 theme_override_fonts/font = ExtResource("2_atxbg")
-theme_override_font_sizes/font_size = 23
+theme_override_font_sizes/font_size = 40
 text = "EXIT GAME"
 horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
 [node name="SubPrompt" type="Label" parent="menu_popup"]
-layout_mode = 0
-offset_left = 203.0
-offset_top = 307.0
-offset_right = 950.0
-offset_bottom = 362.0
+offset_left = 3.0
+offset_top = 473.0
+offset_right = 1920.0
+offset_bottom = 724.0
 theme_override_colors/font_color = Color(0.721859, 0.721859, 0.721859, 1)
-theme_override_fonts/font = SubResource("FontVariation_bslv7")
-theme_override_font_sizes/font_size = 14
+theme_override_fonts/font = SubResource("FontVariation_3do1l")
+theme_override_font_sizes/font_size = 25
 text = "Are you sure you want to exit the game?"
 horizontal_alignment = 1
 
 [node name="Yes" type="Button" parent="menu_popup"]
-layout_mode = 0
-offset_left = 480.0
-offset_top = 377.0
-offset_right = 560.0
-offset_bottom = 423.0
+offset_left = 738.0
+offset_top = 588.0
+offset_right = 918.0
+offset_bottom = 666.0
 theme = ExtResource("12_3do1l")
 theme_override_fonts/font = ExtResource("5_sa6jc")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 30
 text = "YES"
 
 [node name="No" type="Button" parent="menu_popup"]
-layout_mode = 0
-offset_left = 588.0
-offset_top = 377.0
-offset_right = 668.0
-offset_bottom = 423.0
+offset_left = 1002.0
+offset_top = 588.0
+offset_right = 1182.0
+offset_bottom = 666.0
 theme = ExtResource("12_3do1l")
 theme_override_fonts/font = ExtResource("5_sa6jc")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 30
 text = "NO"
 
 [node name="ButtonSFXPlayer" type="Node" parent="menu_popup"]

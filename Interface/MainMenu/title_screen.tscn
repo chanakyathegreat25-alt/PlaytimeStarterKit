@@ -112,7 +112,7 @@ _data = {
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_s7yi2"]
 color = Color(0.411765, 0.858824, 1, 1)
-thickness = 2
+thickness = 3
 
 [sub_resource type="FontVariation" id="FontVariation_mh3bh"]
 base_font = ExtResource("8_s7yi2")
@@ -284,9 +284,12 @@ grow_vertical = 2
 script = ExtResource("1_dj2vu")
 
 [node name="BG" type="ColorRect" parent="."]
-layout_mode = 0
-offset_right = 1152.0
-offset_bottom = 648.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="BeforeIntroScreens" type="Control" parent="."]
@@ -303,40 +306,39 @@ screens = Array[NodePath]([NodePath("PlaytimeStarter"), NodePath("Warning")])
 visible = false
 
 [node name="WarningTitle" type="Label" parent="BeforeIntroScreens/PlaytimeStarter"]
-offset_left = 23.0
+offset_left = 3.0
 offset_top = -6.0
-offset_right = 1129.0
+offset_right = 1920.0
 offset_bottom = 167.0
 theme_override_colors/font_color = Color(0.411765, 0.858824, 1, 1)
 theme_override_fonts/font = ExtResource("2_dj2vu")
-theme_override_font_sizes/font_size = 71
+theme_override_font_sizes/font_size = 80
 text = "THIS FANGAME WAS MADE WITH"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="WarningText" type="Label" parent="BeforeIntroScreens/PlaytimeStarter"]
-offset_left = 77.0
-offset_top = 562.0
-offset_right = 1077.0
-offset_bottom = 598.0
+offset_left = 3.0
+offset_top = 978.0
+offset_right = 1920.0
+offset_bottom = 1080.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("2_dj2vu")
-theme_override_font_sizes/font_size = 36
+theme_override_font_sizes/font_size = 45
 text = "By @DetectivePikaC2 / Derective on Youtube..."
 horizontal_alignment = 1
 
 [node name="LogoImage" type="Sprite2D" parent="BeforeIntroScreens/PlaytimeStarter"]
-position = Vector2(574, 347.5)
-scale = Vector2(0.601563, 0.626389)
+position = Vector2(961.5, 567.75)
+scale = Vector2(1.18516, 1.19792)
 texture = ExtResource("5_2834n")
 
 [node name="Warning" type="Node2D" parent="BeforeIntroScreens"]
 visible = false
 
 [node name="WarningTitle" type="Label" parent="BeforeIntroScreens/Warning"]
-offset_left = 128.0
 offset_top = 202.0
-offset_right = 1024.0
+offset_right = 1920.0
 offset_bottom = 302.0
 theme_override_colors/font_color = Color(0.411765, 0.858824, 1, 1)
 theme_override_fonts/font = ExtResource("2_dj2vu")
@@ -346,10 +348,10 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="WarningText" type="Label" parent="BeforeIntroScreens/Warning"]
-offset_left = 134.0
-offset_top = 302.0
-offset_right = 1018.0
-offset_bottom = 541.0
+offset_left = 3.0
+offset_top = 307.0
+offset_right = 1920.0
+offset_bottom = 1080.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("2_dj2vu")
 theme_override_font_sizes/font_size = 36
@@ -387,13 +389,13 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 456.0
-offset_top = 391.0
+offset_top = 473.0
 offset_right = -456.0
 offset_bottom = -213.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("2_dj2vu")
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 35
 text = "Press Any Button"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -406,32 +408,32 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 456.0
-offset_top = 591.0
+offset_top = 713.0
 offset_right = -456.0
 offset_bottom = -35.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/font_size = 20
 text = "Created by [Your Name / Username]"
 horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
 [node name="GameLogo" type="Node2D" parent="title_intro"]
-position = Vector2(576, 253)
+position = Vector2(960, 342.12)
 
 [node name="LOGOTEMP" type="Label" parent="title_intro/GameLogo"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -276.0
-offset_top = -102.0
-offset_right = 276.0
-offset_bottom = 101.0
+offset_left = -425.0
+offset_top = -180.0
+offset_right = 425.0
+offset_bottom = 179.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("2_dj2vu")
-theme_override_font_sizes/font_size = 49
+theme_override_font_sizes/font_size = 100
 text = "YOUR
 LOGO"
 horizontal_alignment = 1
@@ -443,12 +445,16 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Pressed" type="AudioStreamPlayer" parent="menu"]
 stream = ExtResource("7_fg6rl")
+
+[node name="ButtonSFXPlayer" type="Node" parent="menu"]
+script = ExtResource("12_6wysa")
+root_path = NodePath("../Buttons")
+metadata/_custom_type_script = "uid://d02ndr1cfnfix"
 
 [node name="RenderBG" type="VideoStreamPlayer" parent="menu"]
 layout_mode = 1
@@ -463,24 +469,25 @@ loop = true
 
 [node name="Chapter" type="Label" parent="menu"]
 layout_mode = 0
-offset_left = 112.0
-offset_top = 54.0
-offset_right = 426.0
-offset_bottom = 87.0
+offset_left = 203.0
+offset_top = 41.0
+offset_right = 538.0
+offset_bottom = 237.0
 theme_override_fonts/font = ExtResource("7_sn61t")
-theme_override_font_sizes/font_size = 22
+theme_override_font_sizes/font_size = 30
 text = "Chapter 4"
 vertical_alignment = 1
 uppercase = true
 
 [node name="Title" type="Label" parent="menu"]
 layout_mode = 0
-offset_top = 71.0
-offset_right = 446.0
-offset_bottom = 152.0
+offset_left = 3.0
+offset_top = 131.0
+offset_right = 703.0
+offset_bottom = 251.0
 theme_override_colors/font_color = Color(0.411765, 0.858824, 1, 1)
 theme_override_fonts/font = ExtResource("7_sn61t")
-theme_override_font_sizes/font_size = 60
+theme_override_font_sizes/font_size = 90
 text = "Safe haven"
 horizontal_alignment = 2
 vertical_alignment = 1
@@ -488,19 +495,19 @@ uppercase = true
 
 [node name="Seperator" type="HSeparator" parent="menu"]
 layout_mode = 0
-offset_top = 145.0
-offset_right = 443.0
-offset_bottom = 150.0
+offset_top = 237.0
+offset_right = 698.0
+offset_bottom = 242.0
 theme_override_styles/separator = SubResource("StyleBoxLine_s7yi2")
 
 [node name="Description" type="Label" parent="menu"]
 layout_mode = 0
-offset_left = 111.0
-offset_top = 169.0
-offset_right = 503.0
-offset_bottom = 240.0
+offset_left = 203.0
+offset_top = 261.0
+offset_right = 744.0
+offset_bottom = 545.0
 theme_override_fonts/font = SubResource("FontVariation_mh3bh")
-theme_override_font_sizes/font_size = 14
+theme_override_font_sizes/font_size = 20
 text = "I forgot the chapter 4 menu text so here's my own version :0
 
 After purlple cat dies in a tragic fire, you run around some
@@ -511,13 +518,13 @@ remove this credit in your final project, as long as I'm credited
 somewhere else)"
 
 [node name="Buttons" type="Node2D" parent="menu"]
+position = Vector2(91, 0)
 
 [node name="Continue" type="Button" parent="menu/Buttons"]
-visible = false
 offset_left = 129.0
-offset_top = 364.0
-offset_right = 384.0
-offset_bottom = 398.0
+offset_top = 575.0
+offset_right = 580.0
+offset_bottom = 635.0
 theme = ExtResource("9_2653s")
 text = "CONTINUE"
 alignment = 0
@@ -525,9 +532,9 @@ script = ExtResource("10_2653s")
 
 [node name="New" type="Button" parent="menu/Buttons"]
 offset_left = 129.0
-offset_top = 403.0
-offset_right = 384.0
-offset_bottom = 437.0
+offset_top = 635.0
+offset_right = 580.0
+offset_bottom = 695.0
 theme = ExtResource("9_2653s")
 text = "NEW GAME"
 alignment = 0
@@ -535,9 +542,9 @@ script = ExtResource("10_2653s")
 
 [node name="Load" type="Button" parent="menu/Buttons"]
 offset_left = 129.0
-offset_top = 440.0
-offset_right = 384.0
-offset_bottom = 474.0
+offset_top = 695.0
+offset_right = 580.0
+offset_bottom = 755.0
 theme = ExtResource("9_2653s")
 text = "LOAD GAME"
 alignment = 0
@@ -545,9 +552,9 @@ script = ExtResource("10_2653s")
 
 [node name="Settings" type="Button" parent="menu/Buttons"]
 offset_left = 129.0
-offset_top = 479.0
-offset_right = 384.0
-offset_bottom = 513.0
+offset_top = 755.0
+offset_right = 580.0
+offset_bottom = 815.0
 theme = ExtResource("9_2653s")
 text = "SETTINGS"
 alignment = 0
@@ -555,9 +562,9 @@ script = ExtResource("10_2653s")
 
 [node name="Credits" type="Button" parent="menu/Buttons"]
 offset_left = 129.0
-offset_top = 516.0
-offset_right = 384.0
-offset_bottom = 550.0
+offset_top = 815.0
+offset_right = 580.0
+offset_bottom = 875.0
 theme = ExtResource("9_2653s")
 text = "CREDITS"
 alignment = 0
@@ -565,9 +572,9 @@ script = ExtResource("10_2653s")
 
 [node name="Quit" type="Button" parent="menu/Buttons"]
 offset_left = 129.0
-offset_top = 554.0
-offset_right = 384.0
-offset_bottom = 588.0
+offset_top = 875.0
+offset_right = 580.0
+offset_bottom = 935.0
 theme = ExtResource("9_2653s")
 text = "QUIT"
 alignment = 0
@@ -575,17 +582,12 @@ script = ExtResource("10_2653s")
 
 [node name="Current" type="Node2D" parent="menu/Buttons"]
 visible = false
-position = Vector2(99, 479)
+position = Vector2(93, 546)
 
 [node name="ColorRect" type="ColorRect" parent="menu/Buttons/Current"]
-offset_right = 9.0
-offset_bottom = 35.0
+offset_right = 13.0
+offset_bottom = 68.0
 color = Color(0.411765, 0.858824, 1, 1)
-
-[node name="ButtonSFXPlayer" type="Node" parent="menu"]
-script = ExtResource("12_6wysa")
-root_path = NodePath("../Buttons")
-metadata/_custom_type_script = "uid://d02ndr1cfnfix"
 
 [node name="LoadGame" parent="menu" instance=ExtResource("15_o37xk")]
 visible = false
@@ -609,26 +611,24 @@ grow_vertical = 2
 script = ExtResource("13_txout")
 
 [node name="Background" type="Sprite2D" parent="menu_popup"]
-position = Vector2(576, 324)
-scale = Vector2(0.6, 0.6)
+position = Vector2(960, 540)
 texture = ExtResource("13_wi7c2")
 
 [node name="Panel" type="Panel" parent="menu_popup"]
 layout_mode = 0
-offset_top = 228.0
-offset_right = 1152.0
-offset_bottom = 448.0
+offset_top = 359.0
+offset_right = 1920.0
+offset_bottom = 724.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_fi64f")
 
 [node name="Prompt" type="Label" parent="menu_popup"]
 layout_mode = 0
-offset_left = 285.0
-offset_top = 255.0
-offset_right = 867.0
-offset_bottom = 287.0
+offset_top = 362.0
+offset_right = 1920.0
+offset_bottom = 493.0
 theme_override_colors/font_color = Color(0.411765, 0.858824, 1, 1)
 theme_override_fonts/font = ExtResource("7_sn61t")
-theme_override_font_sizes/font_size = 23
+theme_override_font_sizes/font_size = 40
 text = "EXIT GAME"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -636,36 +636,36 @@ uppercase = true
 
 [node name="SubPrompt" type="Label" parent="menu_popup"]
 layout_mode = 0
-offset_left = 203.0
-offset_top = 307.0
-offset_right = 950.0
-offset_bottom = 362.0
+offset_left = 3.0
+offset_top = 473.0
+offset_right = 1920.0
+offset_bottom = 724.0
 theme_override_colors/font_color = Color(0.721859, 0.721859, 0.721859, 1)
 theme_override_fonts/font = SubResource("FontVariation_mh3bh")
-theme_override_font_sizes/font_size = 14
+theme_override_font_sizes/font_size = 25
 text = "Are you sure you want to exit the game?"
 horizontal_alignment = 1
 
 [node name="Yes" type="Button" parent="menu_popup"]
 layout_mode = 0
-offset_left = 480.0
-offset_top = 377.0
-offset_right = 560.0
-offset_bottom = 423.0
+offset_left = 738.0
+offset_top = 588.0
+offset_right = 918.0
+offset_bottom = 666.0
 theme = ExtResource("14_fi64f")
 theme_override_fonts/font = ExtResource("8_s7yi2")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 30
 text = "YES"
 
 [node name="No" type="Button" parent="menu_popup"]
 layout_mode = 0
-offset_left = 588.0
-offset_top = 377.0
-offset_right = 668.0
-offset_bottom = 423.0
+offset_left = 1002.0
+offset_top = 588.0
+offset_right = 1182.0
+offset_bottom = 666.0
 theme = ExtResource("14_fi64f")
 theme_override_fonts/font = ExtResource("8_s7yi2")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 30
 text = "NO"
 
 [node name="ButtonSFXPlayer" type="Node" parent="menu_popup"]
@@ -687,8 +687,8 @@ stream = ExtResource("16_xtj4b")
 visible = false
 
 [node name="Transition" type="ColorRect" parent="MenuTransition"]
-offset_right = 1152.0
-offset_bottom = 648.0
+offset_right = 1920.0
+offset_bottom = 1080.0
 color = Color(0, 0, 0, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="MenuTransition"]

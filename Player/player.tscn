@@ -3606,7 +3606,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(1156, 239)]
+"values": [Vector2(1920, 239)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -3643,10 +3643,10 @@ tracks/0/path = NodePath("tutorial:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 5),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.5, 4.5, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(1156, 239), Vector2(794, 239), Vector2(794, 239)]
+"values": [Vector2(1920, 239), Vector2(1400, 239), Vector2(1400, 239), Vector2(1920, 239)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -3691,7 +3691,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(576, 700)]
+"values": [Vector2(960, 1200)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -3779,7 +3779,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-12, -19)]
+"values": [Vector2(960, 1200)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -3807,7 +3807,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5, 4.5, 5),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(576, 700), Vector2(576, 600), Vector2(576, 600), Vector2(576, 700)]
+"values": [Vector2(960, 1200), Vector2(960, 950), Vector2(960, 950), Vector2(960, 1200)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -4009,7 +4009,7 @@ bones/6/parent = 5
 bones/6/rest = Transform3D(1, 0, 0, 0, 1, -7.45058e-07, 0, 7.45058e-07, 1, -0.13434, -0.080193, 0.132049)
 bones/6/enabled = true
 bones/6/position = Vector3(-0.13334, -0.0801929, 0.131988)
-bones/6/rotation = Quaternion(0.00425115, -3.54605e-05, -1.41862e-06, 0.999991)
+bones/6/rotation = Quaternion(0.00424936, -3.54605e-05, -1.41868e-06, 0.999991)
 bones/6/scale = Vector3(1, 1, 1)
 bones/7/name = "JNT_R_Grabpack_Trigger_06"
 bones/7/parent = 6
@@ -4114,7 +4114,7 @@ bones/21/parent = 5
 bones/21/rest = Transform3D(1, -7.64274e-15, -8.74228e-08, 0, -1, 8.74228e-08, -8.74228e-08, -8.74228e-08, -1, 0.13434, -0.080193, 0.132049)
 bones/21/enabled = true
 bones/21/position = Vector3(0.135417, -0.0800722, 0.131952)
-bones/21/rotation = Quaternion(1, 3.97877e-15, -3.17865e-08, 8.14604e-08)
+bones/21/rotation = Quaternion(1, 6.08175e-14, -3.17865e-08, 1.8696e-06)
 bones/21/scale = Vector3(0.999999, 0.999999, 0.999999)
 bones/22/name = "JNT_L_Grabpack_Trigger_017"
 bones/22/parent = 21
@@ -4900,7 +4900,7 @@ script = ExtResource("37_f4lon")
 [node name="objective" type="Node2D" parent="UI"]
 visible = false
 modulate = Color(1, 1, 1, 0)
-position = Vector2(576, 0)
+position = Vector2(960, 0)
 
 [node name="obj" type="Label" parent="UI/objective"]
 offset_left = -97.0
@@ -4935,38 +4935,38 @@ volume_db = 1.0
 [node name="tutorial" type="Node2D" parent="UI"]
 visible = false
 modulate = Color(1, 1, 1, 0)
-position = Vector2(1156, 239)
+position = Vector2(1920, 239)
 
 [node name="gradient" type="TextureRect" parent="UI/tutorial"]
-offset_right = 359.0
-offset_bottom = 133.0
+offset_right = 520.0
+offset_bottom = 184.0
 texture = SubResource("GradientTexture1D_6eb1q")
 
 [node name="tutorial" type="Label" parent="UI/tutorial"]
 offset_left = 20.0
 offset_top = 7.0
-offset_right = 356.0
-offset_bottom = 37.0
+offset_right = 520.0
+offset_bottom = 40.0
 theme_override_colors/font_color = Color(0.573113, 0.888242, 1, 1)
-theme_override_font_sizes/font_size = 21
+theme_override_font_sizes/font_size = 26
 text = "TUTORIAL"
 
 [node name="text" type="Label" parent="UI/tutorial"]
 offset_left = 20.0
-offset_top = 41.0
-offset_right = 356.0
-offset_bottom = 115.0
+offset_top = 46.0
+offset_right = 500.0
+offset_bottom = 175.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 17
+theme_override_font_sizes/font_size = 22
 text = "Place a Battery into the Reciever to
 Restore Power"
 autowrap_mode = 2
 
 [node name="seperator" type="HSeparator" parent="UI/tutorial"]
 offset_left = 20.0
-offset_top = 37.0
-offset_right = 359.0
-offset_bottom = 41.0
+offset_top = 41.0
+offset_right = 520.0
+offset_bottom = 46.0
 theme_override_styles/separator = SubResource("StyleBoxLine_7x5p2")
 
 [node name="tooltip" type="AudioStreamPlayer" parent="UI/tutorial"]
@@ -4975,7 +4975,7 @@ stream = ExtResource("50_gvnt1")
 [node name="tooltip" type="Node2D" parent="UI"]
 visible = false
 modulate = Color(1, 1, 1, 0)
-position = Vector2(576, 700)
+position = Vector2(960, 1200)
 metadata/_edit_use_anchors_ = true
 
 [node name="tooltiplabel" type="Label" parent="UI/tooltip"]
@@ -5003,12 +5003,13 @@ modulate = Color(1, 1, 1, 0)
 position = Vector2(83, 57)
 
 [node name="Sprite2D" type="Sprite2D" parent="UI/saving"]
-scale = Vector2(0.235, 0.235)
+position = Vector2(27.92, 31.42)
+scale = Vector2(0.344063, 0.357734)
 texture = ExtResource("51_f8nak")
 
 [node name="crosshair" type="Node2D" parent="UI"]
-position = Vector2(576, 324)
-scale = Vector2(0.35, 0.35)
+position = Vector2(960, 540)
+scale = Vector2(0.45, 0.45)
 script = ExtResource("38_8ynux")
 
 [node name="ColorRect" type="ColorRect" parent="UI/crosshair"]
@@ -5061,9 +5062,12 @@ mouse_filter = 2
 script = ExtResource("53_yxu6j")
 
 [node name="ColorRect2" type="ColorRect" parent="UI/inventory"]
-layout_mode = 0
-offset_right = 1152.0
-offset_bottom = 648.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0, 0, 0, 0.764706)
 
 [node name="ColorRect" type="TextureRect" parent="UI/inventory"]
@@ -5078,7 +5082,6 @@ expand_mode = 1
 
 [node name="Tabs" type="Node2D" parent="UI/inventory"]
 position = Vector2(62, 55)
-scale = Vector2(0.75, 0.75)
 
 [node name="Q" type="Label" parent="UI/inventory/Tabs"]
 offset_top = 1.0
@@ -5156,14 +5159,14 @@ vertical_alignment = 1
 [node name="TitleSeperator" type="HSeparator" parent="UI/inventory/Tabs"]
 offset_left = 620.0
 offset_top = 72.0
-offset_right = 1369.0
+offset_right = 1774.0
 offset_bottom = 76.0
 theme_override_styles/separator = SubResource("StyleBoxLine_uvbbp")
 
 [node name="TitleSeperator2" type="HSeparator" parent="UI/inventory/Tabs"]
-offset_top = 679.0
-offset_right = 1369.0
-offset_bottom = 708.0
+offset_top = 882.0
+offset_right = 1774.0
+offset_bottom = 911.0
 theme_override_styles/separator = SubResource("StyleBoxLine_uvbbp")
 
 [node name="TabIndecator" type="HSeparator" parent="UI/inventory/Tabs"]
@@ -5174,10 +5177,10 @@ offset_bottom = 91.0
 theme_override_styles/separator = SubResource("StyleBoxLine_3e3ym")
 
 [node name="back" type="Label" parent="UI/inventory/Tabs"]
-offset_left = 1181.0
-offset_top = 708.0
-offset_right = 1369.0
-offset_bottom = 771.0
+offset_left = 1580.0
+offset_top = 920.0
+offset_right = 1768.0
+offset_bottom = 983.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 3
@@ -5188,10 +5191,10 @@ horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="read" type="Label" parent="UI/inventory/Tabs"]
-offset_left = 992.0
-offset_top = 708.0
-offset_right = 1180.0
-offset_bottom = 771.0
+offset_left = 1391.0
+offset_top = 920.0
+offset_right = 1579.0
+offset_bottom = 983.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 3
@@ -5205,15 +5208,15 @@ vertical_alignment = 1
 position = Vector2(0, 109)
 
 [node name="HSeparator" type="HSeparator" parent="UI/inventory/section"]
-offset_top = 82.0
+offset_top = 121.875
 offset_right = 376.0
-offset_bottom = 86.0
+offset_bottom = 125.875
 theme_override_styles/separator = SubResource("StyleBoxLine_gxi5p")
 
 [node name="title" type="Label" parent="UI/inventory/section"]
-offset_top = 19.0
+offset_top = 58.875
 offset_right = 375.0
-offset_bottom = 95.0
+offset_bottom = 134.875
 theme_override_colors/font_color = Color(0.341176, 0.819608, 1, 1)
 theme_override_colors/font_outline_color = Color(0.341176, 0.819608, 1, 1)
 theme_override_constants/paragraph_spacing = 0
@@ -5225,15 +5228,15 @@ horizontal_alignment = 2
 uppercase = true
 
 [node name="decription" type="Label" parent="UI/inventory/section"]
-offset_left = 673.0
-offset_top = 421.0
-offset_right = 1108.0
-offset_bottom = 465.0
+offset_left = 1143.0
+offset_top = 698.0
+offset_right = 1830.0
+offset_bottom = 832.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/paragraph_spacing = 0
 theme_override_constants/outline_size = 0
 theme_override_fonts/font = ExtResource("51_gvnt1")
-theme_override_font_sizes/font_size = 18
+theme_override_font_sizes/font_size = 38
 text = "This is a description
 This is a description"
 horizontal_alignment = 1
@@ -5243,19 +5246,19 @@ uppercase = true
 
 [node name="Selected" type="VSeparator" parent="UI/inventory/section"]
 offset_left = 156.0
-offset_top = 104.0
+offset_top = 143.875
 offset_right = 166.0
-offset_bottom = 143.0
+offset_bottom = 182.875
 theme_override_styles/separator = SubResource("StyleBoxLine_yxu6j")
 
 [node name="item_image" type="MeshInstance2D" parent="UI/inventory/section"]
-position = Vector2(890.5, 214)
-scale = Vector2(435, 403.75)
+position = Vector2(1490, 376)
+scale = Vector2(552, 524)
 mesh = SubResource("QuadMesh_68syb")
 texture = ExtResource("61_x0uyb")
 
 [node name="buttons" type="Node2D" parent="UI/inventory/section"]
-position = Vector2(0, 86)
+position = Vector2(0, 125.875)
 
 [node name="InvButton" parent="UI/inventory/section/buttons" instance=ExtResource("60_mdkl3")]
 offset_left = 174.0
@@ -5267,53 +5270,53 @@ text = "Caution: This is a TEST!"
 [node name="Reading" type="Panel" parent="UI/inventory/section"]
 visible = false
 offset_top = -112.0
-offset_right = 1156.0
-offset_bottom = 539.0
+offset_right = 1920.0
+offset_bottom = 971.0
 
 [node name="Background" type="Sprite2D" parent="UI/inventory/section/Reading"]
-position = Vector2(576, 324)
-scale = Vector2(0.6, 0.6)
+position = Vector2(962, 541.5)
+scale = Vector2(1.00208, 1.00278)
 texture = ExtResource("65_lfyh2")
 
 [node name="notetitle" type="Label" parent="UI/inventory/section/Reading"]
 layout_mode = 0
-offset_left = 102.0
-offset_top = 72.0
-offset_right = 1050.0
-offset_bottom = 146.0
+offset_top = 123.0
+offset_right = 1924.0
+offset_bottom = 197.0
 theme_override_fonts/font = ExtResource("51_gvnt1")
-theme_override_font_sizes/font_size = 36
+theme_override_font_sizes/font_size = 40
 text = "Experiment 1006"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="notecontent" type="Label" parent="UI/inventory/section/Reading"]
 layout_mode = 0
-offset_left = 102.0
-offset_top = 172.0
-offset_right = 1050.0
-offset_bottom = 557.0
+offset_left = 394.0
+offset_top = 257.0
+offset_right = 1530.0
+offset_bottom = 940.0
 theme_override_fonts/font = ExtResource("51_gvnt1")
-theme_override_font_sizes/font_size = 21
+theme_override_font_sizes/font_size = 28
 text = "Experiment 1006"
 horizontal_alignment = 1
+autowrap_mode = 2
 
 [node name="Seperator" type="HSeparator" parent="UI/inventory/section/Reading"]
 layout_mode = 0
-offset_left = 317.0
-offset_top = 146.0
-offset_right = 833.0
-offset_bottom = 150.0
+offset_left = 557.0
+offset_top = 186.0
+offset_right = 1363.0
+offset_bottom = 245.0
 theme_override_styles/separator = SubResource("StyleBoxLine_soeee")
 
 [node name="Button" type="Button" parent="UI/inventory/section/Reading"]
 layout_mode = 0
-offset_left = 997.0
-offset_top = 597.0
-offset_right = 1093.0
-offset_bottom = 627.0
+offset_left = 1702.0
+offset_top = 982.0
+offset_right = 1862.0
+offset_bottom = 1040.0
 theme_override_fonts/font = ExtResource("51_gvnt1")
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 30
 text = "Back"
 flat = true
 
