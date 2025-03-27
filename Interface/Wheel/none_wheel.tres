@@ -9,3 +9,4 @@ atlas = SubResource("ImageTexture_v1uv1")
 region = Rect2(0, 0, 256, 256)
 script = ExtResource("2_4oueu")
 name = "None"
+hand_int = 0

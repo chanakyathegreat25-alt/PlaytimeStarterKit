@@ -19,6 +19,9 @@ const NONE_WHEEL = preload("res://Interface/Wheel/none_wheel.tres")
 
 var selection: int = 0
 
+func _ready() -> void:
+	visible = false
+
 func _unhandled_input(_event: InputEvent) -> void:
 	if Engine.is_editor_hint(): return
 	if Input.is_action_just_pressed("HandWheel"):
