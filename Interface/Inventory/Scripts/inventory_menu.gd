@@ -56,7 +56,7 @@ func load_section(section: String, tab_button: Button):
 	selected.visible = false
 	item_image.visible = false
 	title.text = tab_button.name
-	title.visible = false
+	title.visible = true
 	if tab_button.name == "Notes":
 		read.visible = true
 	else:
