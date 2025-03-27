@@ -1365,7 +1365,7 @@ light_color = Color(1, 1, 0.796078, 1)
 [node name="OmniLight3D4" type="OmniLight3D" parent="Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.4958, 3.8, 15.6)
 light_color = Color(1, 1, 0.796078, 1)
-light_energy = 2.8009
+light_energy = 1.71796
 omni_range = 5.7
 script = ExtResource("54_lxs5s")
 noise = SubResource("NoiseTexture2D_36i0g")
@@ -1374,7 +1374,7 @@ max_energy = 6.0
 [node name="OmniLight3D6" type="OmniLight3D" parent="Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.2042, 2.7, -16.3)
 light_color = Color(1, 1, 0.796078, 1)
-light_energy = 2.8009
+light_energy = 1.71796
 omni_range = 5.7
 script = ExtResource("54_lxs5s")
 noise = SubResource("NoiseTexture2D_36i0g")
@@ -1383,7 +1383,7 @@ max_energy = 6.0
 [node name="OmniLight3D7" type="OmniLight3D" parent="Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5042, 2.7, -16.3)
 light_color = Color(1, 1, 0.796078, 1)
-light_energy = 2.8009
+light_energy = 1.71796
 omni_range = 5.7
 script = ExtResource("54_lxs5s")
 noise = SubResource("NoiseTexture2D_36i0g")
@@ -1392,7 +1392,7 @@ max_energy = 6.0
 [node name="OmniLight3D8" type="OmniLight3D" parent="Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.7042, 2.7, -16.3)
 light_color = Color(1, 1, 0.796078, 1)
-light_energy = 2.8009
+light_energy = 1.71796
 omni_range = 5.7
 script = ExtResource("54_lxs5s")
 noise = SubResource("NoiseTexture2D_36i0g")
