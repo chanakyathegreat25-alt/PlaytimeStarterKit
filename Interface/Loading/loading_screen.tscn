@@ -135,10 +135,10 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_lrunc")
 
 [node name="label" type="Label" parent="Panel"]
 layout_mode = 0
-offset_left = 799.0
-offset_top = 555.0
-offset_right = 1053.0
-offset_bottom = 636.0
+offset_left = 1549.0
+offset_top = 975.0
+offset_right = 1803.0
+offset_bottom = 1056.0
 theme_override_colors/font_color = Color(0.411765, 0.858824, 1, 1)
 theme_override_fonts/font = ExtResource("1_fuyk4")
 theme_override_font_sizes/font_size = 41
@@ -147,7 +147,7 @@ horizontal_alignment = 2
 vertical_alignment = 2
 
 [node name="TextureRect" type="Sprite2D" parent="Panel"]
-position = Vector2(1102, 599)
+position = Vector2(1852, 1019)
 scale = Vector2(0.55, 0.55)
 texture = ExtResource("2_wm24b")
 
