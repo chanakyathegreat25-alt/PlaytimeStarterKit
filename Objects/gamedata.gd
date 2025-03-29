@@ -45,7 +45,8 @@ func reset_checkpoint():
 
 func load_checkpoint():
 	#ADD YOUR LOAD CHECKPOINT CODE HERE
-	pass
+	#THE CODE ALREADY HERE IS ONLY FOR TESTING
+	load_scene("res://Level/test_map.tscn")
 
 #CUSTOM DATA:
 
