@@ -9,4 +9,4 @@ func _ready():
 	get_parent().connect(signal_name, Callable(tooltip))
 
 func tooltip():
-	Game.tutorial(tooltip_text)
+	Game.tooltip(tooltip_text)
