@@ -1,4 +1,4 @@
-[gd_scene load_steps=170 format=4 uid="uid://dkty77argxwyc"]
+[gd_scene load_steps=171 format=4 uid="uid://dkty77argxwyc"]
 
 [ext_resource type="Texture2D" uid="uid://cl7alwgeec33w" path="res://Player/Grabpack/Models/grabpack_chapter_3_-_poppy_playtime_0.png" id="1_00tjw"]
 [ext_resource type="Script" uid="uid://dkgdss1i1qci7" path="res://Player/player.gd" id="1_od3ui"]
@@ -75,6 +75,7 @@
 [ext_resource type="Texture2D" uid="uid://ba641twe6vsbv" path="res://Interface/MainMenu/Texture/T_PauseBG.png" id="65_lfyh2"]
 [ext_resource type="Script" uid="uid://ctiwownyjmlkt" path="res://Player/Grabpack/hook_controller.gd" id="67_x0uyb"]
 [ext_resource type="PackedScene" uid="uid://dgwhev5imypr8" path="res://Interface/Pause/pause.tscn" id="68_pqfba"]
+[ext_resource type="PackedScene" uid="uid://qgpv2taxn2cs" path="res://Interface/Mobile/mobile_controls.tscn" id="76_32uw3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eecr6"]
 resource_name = "MI_GrabpackOriginal"
@@ -4010,7 +4011,7 @@ bones/6/parent = 5
 bones/6/rest = Transform3D(1, 0, 0, 0, 1, -7.45058e-07, 0, 7.45058e-07, 1, -0.13434, -0.080193, 0.132049)
 bones/6/enabled = true
 bones/6/position = Vector3(-0.13334, -0.0801929, 0.131988)
-bones/6/rotation = Quaternion(0.00424936, -3.54605e-05, -1.41868e-06, 0.999991)
+bones/6/rotation = Quaternion(0.00425115, -3.54605e-05, -1.41862e-06, 0.999991)
 bones/6/scale = Vector3(1, 1, 1)
 bones/7/name = "JNT_R_Grabpack_Trigger_06"
 bones/7/parent = 6
@@ -4115,7 +4116,7 @@ bones/21/parent = 5
 bones/21/rest = Transform3D(1, -7.64274e-15, -8.74228e-08, 0, -1, 8.74228e-08, -8.74228e-08, -8.74228e-08, -1, 0.13434, -0.080193, 0.132049)
 bones/21/enabled = true
 bones/21/position = Vector3(0.135417, -0.0800722, 0.131952)
-bones/21/rotation = Quaternion(1, 6.08175e-14, -3.17865e-08, 1.8696e-06)
+bones/21/rotation = Quaternion(1, 3.97877e-15, -3.17865e-08, 8.14604e-08)
 bones/21/scale = Vector3(0.999999, 0.999999, 0.999999)
 bones/22/name = "JNT_L_Grabpack_Trigger_017"
 bones/22/parent = 21
@@ -5342,6 +5343,8 @@ visible = false
 script = ExtResource("67_x0uyb")
 hook_raycast = NodePath("../Neck/RayCast3D")
 player_body = NodePath("..")
+
+[node name="MobileControls" parent="." instance=ExtResource("76_32uw3")]
 
 [connection signal="timeout" from="Grabpack/Pack/LeftHandContainer/Timer" to="Grabpack/Pack/LeftHandContainer" method="retract_hand"]
 [connection signal="timeout" from="Grabpack/Pack/RightHandContainer/Timer" to="Grabpack/Pack/RightHandContainer" method="retract_hand"]
