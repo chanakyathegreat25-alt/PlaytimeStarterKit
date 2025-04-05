@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://co8610op5cecn"]
+[gd_scene load_steps=10 format=3 uid="uid://co8610op5cecn"]
 
 [ext_resource type="Script" uid="uid://b7kuqc3t2qt5g" path="res://Interface/Wheel/selection_wheel.gd" id="1_4dds5"]
 [ext_resource type="Script" uid="uid://hmaa3k3pujgo" path="res://Interface/Wheel/wheel_option.gd" id="2_whbvj"]
 [ext_resource type="Texture2D" uid="uid://bg7inmk00ngba" path="res://Interface/Wheel/none_wheel.tres" id="3_p0qab"]
+[ext_resource type="FontFile" uid="uid://chffg27y683jt" path="res://Interface/Font/NotoSansJP-Bold.otf" id="4_xv4oj"]
 [ext_resource type="FontFile" uid="uid://dp3oq0ou16joq" path="res://Interface/Font/VCR_OSD_MONO_1.001.ttf" id="7_k174e"]
 
 [sub_resource type="Animation" id="Animation_xv4oj"]
@@ -147,12 +148,12 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.6, 0.6)
 script = ExtResource("1_4dds5")
-bkg_color = Color(0, 0, 0, 0.721569)
-line_color = Color(1, 1, 1, 1)
-highlight_color = Color(0.266667, 0.266667, 0.266667, 0.929412)
-outer_radius = 440
-inner_radius = 100
-options = Array[ExtResource("2_whbvj")]([ExtResource("3_p0qab")])
+bkg_color = Color(0, 0, 0, 0.513726)
+line_color = Color(0, 0.988235, 1, 1)
+highlight_color = Color(0.266667, 0.662745, 1, 0.517647)
+outer_radius = 475
+inner_radius = 160
+options = Array[ExtResource("2_whbvj")]([ExtResource("3_p0qab"), ExtResource("3_p0qab"), ExtResource("3_p0qab"), ExtResource("3_p0qab")])
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -168,9 +169,21 @@ offset_left = -98.0
 offset_top = -24.0
 offset_right = 99.0
 offset_bottom = 24.0
-theme_override_fonts/font = ExtResource("7_k174e")
-theme_override_font_sizes/font_size = 20
+theme_override_fonts/font = ExtResource("4_xv4oj")
+theme_override_font_sizes/font_size = 25
 text = "None"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = -98.0
+offset_top = 7.0
+offset_right = 99.0
+offset_bottom = 65.0
+theme_override_fonts/font = ExtResource("7_k174e")
+theme_override_font_sizes/font_size = 18
+text = "Flashlight [F]"
 horizontal_alignment = 1
 vertical_alignment = 1
 

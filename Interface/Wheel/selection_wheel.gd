@@ -16,6 +16,7 @@ const NONE_WHEEL = preload("res://Interface/Wheel/none_wheel.tres")
 
 @onready var label: Label = $Label
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var label_2: Label = $Label2
 
 var selection: int = 0
 
@@ -60,6 +61,7 @@ func Close():
 	return options[selection].name
 
 func _draw() -> void:
+	label_2.visible = Grabpack.player.flashlight_togglable
 	var offset = SPRITE_SIZE / -2
 	
 	draw_circle(Vector2.ZERO, outer_radius, bkg_color)
@@ -86,17 +88,20 @@ func _draw() -> void:
 				var points_inner = PackedVector2Array()
 				var points_outer = PackedVector2Array()
 				
-				for j in range(points_per_arc+1):
+				for j in range(points_per_arc + 1):
 					var angle = start_rads + j * (end_rads - start_rads) / points_per_arc
-					points_inner.append(inner_radius * Vector2.from_angle(TAU-angle))
-					points_outer.append(outer_radius * Vector2.from_angle(TAU-angle))
-				
+					points_inner.append(inner_radius * Vector2.from_angle(TAU - angle))
+					points_outer.append(outer_radius * Vector2.from_angle(TAU - angle))
+
 				points_outer.reverse()
-				draw_polygon(
-					points_inner + points_outer,
-					PackedColorArray([highlight_color])
-				)
-			
+				
+				# Fill highlight
+				draw_polygon(points_inner + points_outer, PackedColorArray([highlight_color]))
+
+				# Draw outline of the arc slot
+				for j in range(points_per_arc):
+					draw_line(points_inner[j], points_inner[j + 1], line_color, line_width, true)
+				
 			var draw_pos = radius_mid * Vector2.from_angle(mid_rads) + offset
 			draw_texture_rect_region(
 				options[i].atlas,
@@ -105,21 +110,22 @@ func _draw() -> void:
 			)
 		
 		#DRAW LINES
-		for i in range(len(options) - 1):
-			var rads = TAU * i / ((len(options) - 1))
-			var point = Vector2.from_angle(rads)
-			draw_line(
-				point*inner_radius,
-				point*outer_radius,
-				line_color,
-				line_width,
-				true
-			)
-	
+		#for i in range(len(options) - 1):
+			#var rads = TAU * i / ((len(options) - 1))
+			#var point = Vector2.from_angle(rads)
+			#draw_line(
+				#point*inner_radius,
+				#point*outer_radius,
+				#line_color,
+				#line_width,
+				#true
+			#)
+
 	#DRAW INNER LINE
-	draw_arc(Vector2.ZERO, inner_radius, 0, TAU, 128, line_color, line_width, true)
+	#draw_arc(Vector2.ZERO, inner_radius, 0, TAU, 128, line_color, line_width, true)
 
 func _process(_delta: float) -> void:
+	if not visible: return
 	var mouse_pos = get_local_mouse_position()
 	var mouse_radius = mouse_pos.length()
 	
