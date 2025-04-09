@@ -75,14 +75,14 @@ func _process(_delta):
 
 func hand_grabbed(area):
 	if enabled:
-		if area.is_in_group("LeftHandArea") and not Grabpack.left_hand.hand_attached and (both_hand or not only_hand) and not (grabR and one_at_once) and not (Grabpack.left_hand.hand_changed_point if usable_multiple_times else 0.0 == 1.0):
+		if area.is_in_group("LeftHandArea") and not Grabpack.left_hand.hand_attached and (both_hand or not only_hand) and not (grabR and one_at_once) and not (Grabpack.left_hand.hand_changed_point if not usable_multiple_times else 0.0 == 1.0):
 			emit_signal("grabbed", false)
 			if relative_to_grab_point: 
 				grab_marker.global_position = Grabpack.left_hand.global_position
 				grab_marker.global_rotation = Grabpack.left_hand.global_rotation
 			update_hand_position(false)
 			grabL = true
-		elif area.is_in_group("RightHandArea") and not Grabpack.right_hand.hand_attached and (both_hand or only_hand) and not (grabL and one_at_once) and not (Grabpack.right_hand.hand_changed_point if usable_multiple_times else 0.0 == 1.0):
+		elif area.is_in_group("RightHandArea") and not Grabpack.right_hand.hand_attached and (both_hand or only_hand) and not (grabL and one_at_once) and not (Grabpack.right_hand.hand_changed_point if not usable_multiple_times else 0.0 == 1.0):
 			emit_signal("grabbed", true)
 			if relative_to_grab_point: 
 				grab_marker.global_position = Grabpack.right_hand.global_position

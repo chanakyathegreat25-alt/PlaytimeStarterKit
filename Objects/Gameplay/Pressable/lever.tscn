@@ -261,7 +261,6 @@ shape = SubResource("BoxShape3D_erynx")
 
 [node name="BasicInteraction" type="Area3D" parent="."]
 script = ExtResource("7_ndhkg")
-enabled = false
 metadata/_custom_type_script = "uid://cp2nj828ny1um"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BasicInteraction"]

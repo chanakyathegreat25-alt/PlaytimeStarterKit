@@ -30,6 +30,7 @@ func set_has_lever(value: bool):
 	missing_lever = !value
 	interaction_indicator.visible = false
 	interaction_indicator.enabled = !value
+	#basic_interaction.enabled = !value
 
 func has_spare_lever():
 	return Inventory.scan_list("items_Keys", "Lever")
@@ -59,7 +60,7 @@ func _on_hand_grab_let_go(_hand: bool) -> void:
 			pass
 
 func _on_basic_interaction_player_interacted():
-	if has_spare_lever():
+	if has_spare_lever() and missing_lever:
 		set_has_lever(true)
 		Inventory.remove_item("items_Keys", "Lever")
 
