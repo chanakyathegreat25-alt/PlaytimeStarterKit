@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://qgpv2taxn2cs"]
+[gd_scene load_steps=10 format=3 uid="uid://qgpv2taxn2cs"]
 
 [ext_resource type="Script" uid="uid://4hsq8yi6fdck" path="res://Interface/Mobile/mobile_controls.gd" id="1_7me2c"]
 [ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="1_7sl6m"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://ckc56pv2yenj6" path="res://Interface/Mobile/Textures/Hands/left_hand.png" id="5_1kqgm"]
 [ext_resource type="Texture2D" uid="uid://bdexlc5xda7vw" path="res://Interface/Mobile/Textures/pause.png" id="6_7me2c"]
 [ext_resource type="Texture2D" uid="uid://deg6v0ah3nbmy" path="res://Interface/Mobile/Textures/Hands/redhand.png" id="6_pkqkk"]
+[ext_resource type="Script" uid="uid://c3ovcwcwawug" path="res://Interface/Mobile/drag.gd" id="9_2earh"]
 
 [node name="MobileControls" type="Control"]
 layout_mode = 3
@@ -55,3 +56,10 @@ action = "handleft"
 position = Vector2(1569, 697)
 texture_normal = ExtResource("6_pkqkk")
 action = "handright"
+
+[node name="Drag" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 305.0
+offset_right = 1911.0
+offset_bottom = 637.0
+script = ExtResource("9_2earh")

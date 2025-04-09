@@ -7,6 +7,8 @@ extends Node
 @onready var toggle_sprint = $"../Tab1/SettingsBox2"
 @onready var toggle_crouch = $"../Tab1/SettingsBox3"
 @onready var keybinds = $"../Tab1/SettingsBox4"
+@onready var mobile_controls: CheckButton = $"../Tab1/SettingsBox5"
+
 #TAB2
 @onready var window_mode = $"../Tab2/SettingsBox"
 @onready var vsync = $"../Tab2/SettingsBox2"
@@ -25,6 +27,7 @@ func update_all_visual():
 	camera_sense.value = GameSettings.fov
 	toggle_sprint.button_pressed = GameSettings.toggle_sprint
 	toggle_crouch.button_pressed = GameSettings.toggle_crouch
+	mobile_controls.button_pressed = GameSettings.mobile_controls
 	window_mode.selected = GameSettings.window_mode
 	vsync.button_pressed = GameSettings.vsync
 	show_fps.button_pressed = GameSettings.show_fps
@@ -41,6 +44,7 @@ func reset_to_defualts():
 	GameSettings.fov = 75
 	GameSettings.main_volume = 100
 	GameSettings.music_volume = 100
+	GameSettings.mobile_controls = false
 	
 	#RESET OTHER
 	DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
@@ -62,6 +66,17 @@ func toggle_sprint_changed(toggled_on):
 	GameSettings.toggle_sprint = toggled_on
 func toggle_crouch_changed(toggled_on):
 	GameSettings.toggle_crouch = toggled_on
+func _on_settings_box_5_toggled(toggled_on: bool) -> void:
+	GameSettings.mobile_controls = toggled_on
+	if Grabpack.player != null:
+		if toggled_on:
+			if Grabpack.player.has_node("MobileControls"): return
+			var mobile = load("res://Interface/Mobile/mobile_controls.tscn").instantiate()
+			mobile.name = "MobileControls"
+			Grabpack.player.add_child(mobile)
+		else:
+			if Grabpack.player.has_node("MobileControls"):
+				Grabpack.player.get_node("MobileControls").queue_free()
 
 #TAB2
 func window_mode_changed(index):

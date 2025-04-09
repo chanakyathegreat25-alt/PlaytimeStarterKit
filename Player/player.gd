@@ -80,7 +80,14 @@ func _ready() -> void:
 	
 	Grabpack.reset_objects()
 	Game.reset_nodes()
-	sound_manager.load_soundpack("Grass")
+	sound_manager.load_soundpack("Concrete")
+	
+	if GameSettings.mobile_controls:
+		if not has_node("MobileControls"):
+			var mobile = load("res://Interface/Mobile/mobile_controls.tscn").instantiate()
+			mobile.name = "MobileControls"
+			Grabpack.player.add_child(mobile)
+
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
@@ -88,6 +95,11 @@ func _unhandled_input(event: InputEvent) -> void:
 		look_dir = event.relative * 0.001
 		if mouse_captured: if camera_movable: _rotate_camera()
 	if Input.is_action_just_pressed("jump"): jumping = true
+func touch_dragged(delta: Vector2) -> void:
+	if not movable or not camera_movable: return
+
+	look_dir = delta * 0.001  # match mouse sens scale
+	_rotate_camera()
 
 func _physics_process(delta: float) -> void:
 	if not movable: return

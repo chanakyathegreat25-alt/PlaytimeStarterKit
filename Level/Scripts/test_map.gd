@@ -3,6 +3,7 @@ extends Node3D
 var power_direct: bool = false
 var power_direct_levers: bool = false
 @onready var gate_4 = $Passages/Gate4
+@onready var mobible_spawner_3d: MobibleSpawner3D = $Mobible/MobibleSpawner3D
 
 func check_power_direct_room():
 	if power_direct and power_direct_levers:
@@ -25,3 +26,6 @@ func _on_hand_scanner_right_3_scan_success():
 
 func _on_button_2_pressed():
 	Game.load_scene("res://Objects/Gameplay/Extra/Scripts/data_space.tscn")
+
+func _on_button_pressed() -> void:
+	mobible_spawner_3d.spawn()

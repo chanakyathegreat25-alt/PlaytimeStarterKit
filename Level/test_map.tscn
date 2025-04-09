@@ -1,4 +1,4 @@
-[gd_scene load_steps=100 format=4 uid="uid://bifmmultpyw0x"]
+[gd_scene load_steps=101 format=4 uid="uid://bifmmultpyw0x"]
 
 [ext_resource type="Script" uid="uid://b7a5hf3ljmyj5" path="res://Level/Scripts/test_map.gd" id="1_d6ggl"]
 [ext_resource type="Material" uid="uid://dl7krlcnai0qx" path="res://Level/Assets/Materials/ProtoDark.tres" id="1_teiv4"]
@@ -67,6 +67,7 @@
 [ext_resource type="Script" uid="uid://b1ny4m5gkjskn" path="res://Objects/Environment/Scripts/flicker_light.gd" id="54_lxs5s"]
 [ext_resource type="AudioStream" uid="uid://bw0dntgx8r73d" path="res://Interface/Sound/SW_NewObjective.wav" id="55_36i0g"]
 [ext_resource type="PackedScene" uid="uid://dd7igduoonl0g" path="res://Player/Grabpack/Hands/omni.tscn" id="56_lxs5s"]
+[ext_resource type="Script" uid="uid://chr8oaaulm2ye" path="res://Objects/Gameplay/Mobibles/mobible_spawner_3d.gd" id="69_qaf0a"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3mqk5"]
 sky_horizon_color = Color(1, 0.841716, 0.366897, 1)
@@ -457,6 +458,37 @@ environment = SubResource("Environment_c5qun")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.35, 0, -4.76837e-07)
 use_collision = true
 size = Vector3(50.3, 0.2, 36.4)
+material = ExtResource("1_teiv4")
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="Csg"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.55, 0.9, -14.75)
+use_collision = true
+size = Vector3(7.3, 2, 6.9)
+material = ExtResource("1_teiv4")
+
+[node name="CSGBox3D16" type="CSGBox3D" parent="Csg/CSGBox3D7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.400001)
+operation = 2
+use_collision = true
+size = Vector3(6.5, 2, 5.1)
+material = ExtResource("1_teiv4")
+
+[node name="CSGBox3D16" type="CSGBox3D" parent="Csg"]
+transform = Transform3D(0.965926, -0.258819, 0, 0.258819, 0.965926, 0, 0, 0, 1, 16.85, 0.815354, -10.45)
+use_collision = true
+size = Vector3(7.3, 0.3, 1.9)
+material = ExtResource("1_teiv4")
+
+[node name="CSGBox3D51" type="CSGBox3D" parent="Csg"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.3425, 1.75398, -10.45)
+use_collision = true
+size = Vector3(2, 0.3, 1.9)
+material = ExtResource("1_teiv4")
+
+[node name="CSGBox3D52" type="CSGBox3D" parent="Csg"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.5925, 3.45398, -11.95)
+use_collision = true
+size = Vector3(3.3, 3.3, 1.3)
 material = ExtResource("1_teiv4")
 
 [node name="CSGBox3D22" type="CSGBox3D" parent="Csg"]
@@ -1740,7 +1772,7 @@ light_color = Color(1, 1, 0.796078, 1)
 [node name="OmniLight3D4" type="OmniLight3D" parent="Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.4958, 3.8, 15.6)
 light_color = Color(1, 1, 0.796078, 1)
-light_energy = 2.72667
+light_energy = 0.234118
 omni_range = 5.7
 script = ExtResource("54_lxs5s")
 noise = SubResource("NoiseTexture2D_36i0g")
@@ -1749,7 +1781,7 @@ max_energy = 6.0
 [node name="OmniLight3D6" type="OmniLight3D" parent="Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.2042, 2.7, -16.3)
 light_color = Color(1, 1, 0.796078, 1)
-light_energy = 2.72667
+light_energy = 0.234118
 omni_range = 5.7
 script = ExtResource("54_lxs5s")
 noise = SubResource("NoiseTexture2D_36i0g")
@@ -1758,7 +1790,7 @@ max_energy = 6.0
 [node name="OmniLight3D7" type="OmniLight3D" parent="Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5042, 2.7, -16.3)
 light_color = Color(1, 1, 0.796078, 1)
-light_energy = 2.72667
+light_energy = 0.234118
 omni_range = 5.7
 script = ExtResource("54_lxs5s")
 noise = SubResource("NoiseTexture2D_36i0g")
@@ -1767,7 +1799,7 @@ max_energy = 6.0
 [node name="OmniLight3D8" type="OmniLight3D" parent="Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.7042, 2.7, -16.3)
 light_color = Color(1, 1, 0.796078, 1)
-light_energy = 2.72667
+light_energy = 0.234118
 omni_range = 5.7
 script = ExtResource("54_lxs5s")
 noise = SubResource("NoiseTexture2D_36i0g")
@@ -1810,8 +1842,23 @@ than I'm bored and need a goal)"
 font_size = 147
 outline_size = 42
 
+[node name="Mobible" type="Node" parent="."]
+
+[node name="MobibleSpawner3D" type="Node3D" parent="Mobible"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.6, 1.7, -15.3)
+script = ExtResource("69_qaf0a")
+
+[node name="Label3D" type="Label3D" parent="Mobible"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 18.3, 3.5626, -11.9218)
+text = "Begin
+Mobibles"
+
+[node name="Button" parent="Mobible" instance=ExtResource("24_hi01m")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 18.238, 2.8, -11.919)
+
 [connection signal="levers_down" from="Puzzles/LeverLinker" to="." method="_on_lever_linker_levers_down"]
 [connection signal="levers_up" from="Puzzles/LeverLinker" to="." method="_on_lever_linker_levers_up"]
 [connection signal="pressed" from="Puzzles/PowerDirectorButton" to="." method="_on_power_director_button_pressed"]
 [connection signal="pressed" from="Puzzles/Button2" to="." method="_on_button_2_pressed"]
 [connection signal="opened" from="Passages/Gate6" to="Puzzles/Gas/PipeValve" method="start_gas_leak"]
+[connection signal="pressed" from="Mobible/Button" to="." method="_on_button_pressed"]

@@ -413,7 +413,6 @@ libraries = {
 [node name="Tabs" type="Node2D" parent="section"]
 
 [node name="Tab1" type="Node2D" parent="section/Tabs"]
-visible = false
 
 [node name="SettingsBox" type="Button" parent="section/Tabs/Tab1"]
 offset_left = 144.0
@@ -473,6 +472,18 @@ setting_name = "Toggle Crouch"
 setting_description = "When enabled, instead of holding [CTRL] to crouch, you just press it to start crouching or stop crouching."
 settings_root = NodePath("../../../..")
 
+[node name="SettingsBox5" type="CheckButton" parent="section/Tabs/Tab1"]
+offset_left = 143.2
+offset_top = 313.6
+offset_right = 563.2
+offset_bottom = 345.6
+theme = SubResource("Theme_x0yxn")
+text = "MOBILE CONTROLS"
+script = ExtResource("13_e305e")
+setting_name = "Mobile Controls"
+setting_description = "When enabled, on screen controls will appear. Useful for players playing from a phone or tablet."
+settings_root = NodePath("../../../..")
+
 [node name="Section1" type="Label" parent="section/Tabs/Tab1"]
 offset_left = 132.0
 offset_top = 221.0
@@ -498,6 +509,19 @@ script = ExtResource("13_e305e")
 setting_name = "Keybinds"
 setting_description = "[W] [A] [S] [D] to walk around, [SHIFT] to sprint, [CTRL] to crouch, [E] to interact, [SPACE] to jump, [LMB] to use left grabpack hand, [RMB] to use right grabpack hand, press the number keys or the mouse scroll wheel to change hands."
 settings_root = NodePath("../../../..")
+
+[node name="Section2" type="Label" parent="section/Tabs/Tab1"]
+offset_left = 132.0
+offset_top = 284.0
+offset_right = 413.0
+offset_bottom = 308.0
+theme_override_colors/font_color = Color(0.341176, 0.819608, 1, 1)
+theme_override_constants/paragraph_spacing = 0
+theme_override_constants/outline_size = 0
+theme_override_fonts/font = ExtResource("12_x0yxn")
+theme_override_font_sizes/font_size = 18
+text = "Mobile"
+autowrap_mode = 2
 
 [node name="Tab2" type="Node2D" parent="section/Tabs"]
 visible = false
@@ -735,6 +759,7 @@ stream = ExtResource("15_d17gp")
 [connection signal="value_changed" from="section/Tabs/Tab1/SettingsBox/HSlider" to="section/Tabs/SettingsManager" method="cam_sense_changed"]
 [connection signal="toggled" from="section/Tabs/Tab1/SettingsBox2" to="section/Tabs/SettingsManager" method="toggle_sprint_changed"]
 [connection signal="toggled" from="section/Tabs/Tab1/SettingsBox3" to="section/Tabs/SettingsManager" method="toggle_crouch_changed"]
+[connection signal="toggled" from="section/Tabs/Tab1/SettingsBox5" to="section/Tabs/SettingsManager" method="_on_settings_box_5_toggled"]
 [connection signal="item_selected" from="section/Tabs/Tab2/SettingsBox" to="section/Tabs/SettingsManager" method="window_mode_changed"]
 [connection signal="toggled" from="section/Tabs/Tab2/SettingsBox2" to="section/Tabs/SettingsManager" method="vsync_toggled"]
 [connection signal="toggled" from="section/Tabs/Tab2/SettingsBox3" to="section/Tabs/SettingsManager" method="show_fps_toggled"]
