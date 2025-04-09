@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://qgpv2taxn2cs"]
+[gd_scene load_steps=13 format=3 uid="uid://qgpv2taxn2cs"]
 
 [ext_resource type="Script" uid="uid://4hsq8yi6fdck" path="res://Interface/Mobile/mobile_controls.gd" id="1_7me2c"]
 [ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="1_7sl6m"]
@@ -9,6 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://bdexlc5xda7vw" path="res://Interface/Mobile/Textures/pause.png" id="6_7me2c"]
 [ext_resource type="Texture2D" uid="uid://deg6v0ah3nbmy" path="res://Interface/Mobile/Textures/Hands/redhand.png" id="6_pkqkk"]
 [ext_resource type="Script" uid="uid://c3ovcwcwawug" path="res://Interface/Mobile/drag.gd" id="9_2earh"]
+[ext_resource type="Texture2D" uid="uid://dnq4b4hfb66bl" path="res://Objects/Gameplay/Mobibles/Textibles/9.png" id="10_8h4h3"]
+[ext_resource type="Texture2D" uid="uid://cw0cx3cm2w4h7" path="res://Objects/Gameplay/Mobibles/Textibles/8.png" id="11_lvf0c"]
+[ext_resource type="Texture2D" uid="uid://e4ecbfk4lrsl" path="res://Objects/Gameplay/Mobibles/Textibles/watch_icon.png" id="12_lvf0c"]
 
 [node name="MobileControls" type="Control"]
 layout_mode = 3
@@ -63,3 +66,25 @@ offset_left = 305.0
 offset_right = 1911.0
 offset_bottom = 637.0
 script = ExtResource("9_2earh")
+
+[node name="GP_Extra" type="Node2D" parent="."]
+visible = false
+
+[node name="Switch" type="TouchScreenButton" parent="GP_Extra"]
+position = Vector2(1698, 65)
+scale = Vector2(0.637168, 0.619469)
+texture_normal = ExtResource("10_8h4h3")
+action = "hand_up"
+
+[node name="Switch2" type="TouchScreenButton" parent="GP_Extra"]
+position = Vector2(1529, 65)
+scale = Vector2(0.637168, 0.619469)
+texture_normal = ExtResource("11_lvf0c")
+action = "hand_down"
+
+[node name="Watch" type="TouchScreenButton" parent="GP_Extra"]
+visible = false
+position = Vector2(1357, 65)
+scale = Vector2(0.565891, 0.54902)
+texture_normal = ExtResource("12_lvf0c")
+action = "togglewatch"
