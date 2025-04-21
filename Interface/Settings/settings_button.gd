@@ -12,6 +12,7 @@ func _ready():
 	connect("mouse_entered", Callable(send_data))
 	setting_node = get_node(settings_root)
 	connect("mouse_exited", Callable(setting_node.setting_exited))
+	connect("visibility_changed", Callable(new_vis))
 	if has_node("HSlider"):
 		var slider: HSlider = get_node("HSlider")
 		slider.connect("value_changed", Callable(update_slider))
@@ -24,3 +25,10 @@ func update_slider(value: int):
 		$Label.text = str(value, "%")
 	else:
 		$Label.text = str(value)
+
+func new_vis():
+	if has_node("HSlider"):
+		if slider_use_percentage:
+			$Label.text = str(get_node("HSlider").value, "%")
+		else:
+			$Label.text = str(get_node("HSlider").value)

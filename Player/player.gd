@@ -103,7 +103,7 @@ func touch_dragged(delta: Vector2) -> void:
 
 func _physics_process(delta: float) -> void:
 	if not movable: return
-	
+	camera_sens = GameSettings.camera_sens/30
 	#Handle Crouch:
 	var crouchable: bool = false
 	if Input.is_action_pressed("crouch"):
