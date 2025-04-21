@@ -17,6 +17,9 @@ var hand: bool = false
 func _process(_delta):
 	update_wire()
 	if not active: return
+	if next_node:
+		if next_node == get_parent().wire_point: 
+			get_parent().last_segment = self
 	if hand_node.wire_wrap: handle_wrap()
 	if hand_node.wire_unwrap: handle_unwrap()
 	if Input.is_action_just_pressed("toggle_grabpack"):
@@ -27,6 +30,8 @@ func handle_unwrap():
 		return
 	if not origin_node is Area3D:
 		return
+	#if origin_node.origin_node:
+		#if not origin_node.origin_node is Marker3D: return
 	if not origin_node.point == Vector3.ZERO:
 		return
 	if angle == 0.0:
@@ -70,6 +75,7 @@ func set_angle():
 	angle = -1.0 if diff > 0.0 else 1.0
 
 func handle_wrap():
+	if hand_node.hand_retracting: return
 	if not origin_node or not next_node: return
 	if ray_cast_3d.is_colliding():
 		if ray_cast_3d.get_collider() is CharacterBody3D: return

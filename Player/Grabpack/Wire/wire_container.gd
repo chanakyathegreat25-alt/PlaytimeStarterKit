@@ -10,6 +10,7 @@ const WIRE_SEGMENT_ONLY = preload("res://Player/Grabpack/Wire/wire_segment_only.
 
 var max_wire_length: float = 60.0
 var last_segment: Area3D = null
+var last_return: Vector3 = Vector3.ZERO
 
 func get_wire_length():
 	if get_child_count() > 0:
@@ -73,19 +74,25 @@ func remove_segment(segment, previous, last):
 		previous.next_node = last
 	if last is Area3D:
 		last.origin_node = previous
-		last_segment = previous
 	segment.queue_free()
 
 func get_retract_path():
 	if not last_segment:
-		return wire_fake.global_position
-	if hand_container.position.distance_to(last_segment.position) < 0.1:
+		if get_child_count() == 1:
+			return hand_container.hand_fake.global_position
+		return last_return
+	if hand_container.position.distance_to(last_segment.position) < 0.2:
+		if get_child_count() == 1:
+			hand_container.global_position = hand_container.hand_fake.global_position
+			return hand_container.hand_fake.global_position
 		remove_segment(last_segment, last_segment.origin_node, last_segment.next_node)
-		return last_segment.position
+		last_segment = null
+		return hand_container.hand_fake.global_position
 	else:
-		if last_segment.origin_node is Marker3D:
-			return wire_fake.global_position
+		#if last_segment.origin_node is Marker3D:
+			#return wire_fake.global_position
 		return last_segment.position
+		last_return = last_segment.position
 func end_wire():
 	for i in get_child_count():
 		get_child(i).queue_free()

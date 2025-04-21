@@ -9,7 +9,7 @@ var is_walking = false
 var is_falling = false
 var is_crouching = false
 var is_sidel_animation = false
-var tilt_lerp: float = 6.5
+var tilt_lerp: float = 0.2
 var start_tilt_lerp: float = 3.5
 @onready var idle_animation = $"../Pack/IdleAnimation"
 @onready var walk_animation = $"../Pack/WalkAnimation"
@@ -44,7 +44,7 @@ func handle_grabpack_animation(delta):
 			elif player.is_squeezing:
 				walk_animation.speed_scale = 1.0
 			elif player.is_sprinting:
-				walk_animation.speed_scale = 2.4
+				walk_animation.speed_scale = 2.2
 			else:
 				walk_animation.speed_scale = 1.75
 			if player.is_squeezing:
@@ -64,7 +64,7 @@ func handle_grabpack_animation(delta):
 				walk_animation.play("StopWalking")
 				walk_animation.queue("NotWalking")
 				walk_animation.seek(0)
-				walk_animation.speed_scale = 1.25
+				walk_animation.speed_scale = 1.5
 				idle_animation.play("idle")
 				is_walking = false
 				is_sidel_animation = false
@@ -79,9 +79,9 @@ func handle_grabpack_animation(delta):
 		grabpack_walk.position.z = lerp(grabpack_walk.position.z, move_back.position.z, start_tilt_lerp * delta)
 		grabpack_walk.rotation.x = lerp(grabpack_walk.rotation.x, move_back.rotation.x, start_tilt_lerp * delta)
 	else:
-		grabpack_walk.position.y = lerp(grabpack_walk.position.y, move_idle.position.y, tilt_lerp * delta)
-		grabpack_walk.position.z = lerp(grabpack_walk.position.z, move_idle.position.z, tilt_lerp * delta)
-		grabpack_walk.rotation.x = lerp(grabpack_walk.rotation.x, move_idle.rotation.x, tilt_lerp * delta)
+		grabpack_walk.position.y = move_toward(grabpack_walk.position.y, move_idle.position.y, tilt_lerp * delta)
+		grabpack_walk.position.z = move_toward(grabpack_walk.position.z, move_idle.position.z, tilt_lerp * delta)
+		grabpack_walk.rotation.x = move_toward(grabpack_walk.rotation.x, move_idle.rotation.x, tilt_lerp * delta)
 	if Input.is_action_pressed("left"):
 		grabpack_walk.position.x = lerp(grabpack_walk.position.x, move_left.position.x, start_tilt_lerp * delta)
 		grabpack_walk.rotation.z = lerp(grabpack_walk.rotation.z, move_left.rotation.z, start_tilt_lerp * delta)
@@ -89,8 +89,8 @@ func handle_grabpack_animation(delta):
 		grabpack_walk.position.x = lerp(grabpack_walk.position.x, move_right.position.x, start_tilt_lerp * delta)
 		grabpack_walk.rotation.z = lerp(grabpack_walk.rotation.z, move_right.rotation.z, start_tilt_lerp * delta)
 	else:
-		grabpack_walk.position.x = lerp(grabpack_walk.position.x, move_idle.position.x, tilt_lerp * delta)
-		grabpack_walk.rotation.z = lerp(grabpack_walk.rotation.z, move_idle.rotation.z, tilt_lerp * delta)
+		grabpack_walk.position.x = move_toward(grabpack_walk.position.x, move_idle.position.x, tilt_lerp * delta)
+		grabpack_walk.rotation.z = move_toward(grabpack_walk.rotation.z, move_idle.rotation.z, tilt_lerp * delta)
 	
 	if not player.is_on_floor():
 		if not is_falling:
@@ -103,6 +103,8 @@ func handle_grabpack_animation(delta):
 	else:
 		if is_falling:
 			jump_animation.play("land")
+			if not is_walking:
+				idle_animation.play("idle")
 			is_falling = false
 			
 			sound_manager.land()
