@@ -648,7 +648,7 @@ description = "A flare gun that shoots flares."
 
 [node name="FireModeAnimation" type="Node" parent="."]
 script = ExtResource("4_t6rkj")
-animation_string = "ShootFlare"
+animation_string = "ShootOut"
 metadata/_custom_type_script = "uid://cqqanlceprki5"
 
 [node name="HandSignalConnector" type="Node" parent="."]
