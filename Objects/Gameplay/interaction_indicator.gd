@@ -14,6 +14,7 @@ var ind_node: Area3D = null
 func _ready():
 	ready_mesh.visible = false
 	circle.visible = false
+	visible = false
 	$Area/CollisionShape3D.shape.radius = radius
 	
 	if get_parent() is BasicInteraction:

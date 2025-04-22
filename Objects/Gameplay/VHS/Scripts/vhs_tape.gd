@@ -7,6 +7,8 @@ extends StaticBody3D
 @export var title: String = "Tape"
 @export var has_description: bool = false
 @export var description: String = "none"
+@export var custom_inventory_image: bool = false
+@export var inventory_image: Texture2D = null
 
 @onready var tape_name = $TapeName
 @onready var sm_vhs_tape = $SM_VHS_Tape
@@ -27,6 +29,8 @@ func _ready():
 		inventory_item.item_description = description
 	else:
 		inventory_item.item_has_description = false
+	if custom_inventory_image:
+		inventory_item.item_image = inventory_image
 
 func _process(_delta):
 	if Engine.is_editor_hint():

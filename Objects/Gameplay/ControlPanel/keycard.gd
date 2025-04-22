@@ -3,6 +3,8 @@ extends Node3D
 
 @export var keycard_name: String = ""
 @export var colour: Color
+@export var custom_inventory_image: bool = false
+@export var inventory_image: Texture2D = null
 
 @onready var inventory_item: InventoryItem = $InventoryItem
 @onready var hand_grab: HandGrab = $HandGrab
@@ -12,6 +14,8 @@ extends Node3D
 func _ready() -> void:
 	material.albedo_color = colour
 	inventory_item.item_name = keycard_name
+	if custom_inventory_image:
+		inventory_item.item_image = inventory_image
 
 func _process(_delta: float) -> void:
 	if Engine.is_editor_hint():

@@ -13,7 +13,6 @@
 [ext_resource type="Texture2D" uid="uid://depqv51ii12e5" path="res://Objects/Gameplay/VHS/Model/T_VHS_Tape_ORM.png" id="10_bb08v"]
 [ext_resource type="AudioStream" uid="uid://bn4nmjq6e2pkj" path="res://Objects/Gameplay/VHS/Sound/SW_VHS_Insert.wav" id="12_7ydp0"]
 
-
 [sub_resource type="ArrayMesh" id="ArrayMesh_y5m0v"]
 _surfaces = [{
 "aabb": AABB(-0.328256, -3.3575e-08, -0.25681, 0.655457, 0.182604, 0.462892),
@@ -52,6 +51,8 @@ render_priority = 0
 shader = ExtResource("3_1mni2")
 shader_parameter/base_texture = ExtResource("1_le7vx")
 shader_parameter/mask_texture = ExtResource("4_33nry")
+shader_parameter/normal_texture = ExtResource("2_2q4pt")
+shader_parameter/orm_texture = ExtResource("3_hrtal")
 shader_parameter/alpha_threshold = 0.5
 
 [sub_resource type="ORMMaterial3D" id="ORMMaterial3D_33nry"]
@@ -100,6 +101,8 @@ render_priority = 0
 shader = ExtResource("3_1mni2")
 shader_parameter/base_texture = ExtResource("7_2vkd5")
 shader_parameter/mask_texture = ExtResource("8_7ydp0")
+shader_parameter/normal_texture = ExtResource("9_c4k18")
+shader_parameter/orm_texture = ExtResource("10_bb08v")
 shader_parameter/alpha_threshold = 0.5
 
 [sub_resource type="ORMMaterial3D" id="ORMMaterial3D_yx45y"]

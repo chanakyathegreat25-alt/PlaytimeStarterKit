@@ -1,4 +1,4 @@
-[gd_scene load_steps=106 format=4 uid="uid://bifmmultpyw0x"]
+[gd_scene load_steps=108 format=4 uid="uid://bifmmultpyw0x"]
 
 [ext_resource type="Script" uid="uid://b7a5hf3ljmyj5" path="res://Level/Scripts/test_map.gd" id="1_d6ggl"]
 [ext_resource type="Material" uid="uid://dl7krlcnai0qx" path="res://Level/Assets/Materials/ProtoDark.tres" id="1_teiv4"]
@@ -48,6 +48,8 @@
 [ext_resource type="PackedScene" uid="uid://bqbhkd8ba6j1o" path="res://Objects/Gameplay/Puzzles/OutletPower/power_pole.tscn" id="36_vi7rx"]
 [ext_resource type="PackedScene" uid="uid://sv186jhp6a0j" path="res://Objects/Gameplay/Puzzles/OutletPower/(BROKEN)enhanced_power_pole.tscn" id="37_1qyy0"]
 [ext_resource type="PackedScene" uid="uid://5xwl88xktvuo" path="res://Player/Grabpack/Hands/flare.tscn" id="38_sj8vn"]
+[ext_resource type="PackedScene" uid="uid://d0a61yl37s346" path="res://Objects/Gameplay/ControlPanel/keycard.tscn" id="39_aawk2"]
+[ext_resource type="PackedScene" uid="uid://cn6s3f1x5eiy4" path="res://Objects/Gameplay/ControlPanel/keycard_reader.tscn" id="39_jmj8m"]
 [ext_resource type="Texture2D" uid="uid://et73llohisu2" path="res://TEMP/Screenshot_2025-02-22_150242.png" id="39_sj8vn"]
 [ext_resource type="PackedScene" uid="uid://cgkb5qxyeyi26" path="res://Objects/Gameplay/Puzzles/Scanners/scanner_omni.tscn" id="41_36i0g"]
 [ext_resource type="PackedScene" uid="uid://cd47wb6hqy68j" path="res://Objects/Gameplay/ControlPanel/keypad.tscn" id="41_flyvg"]
@@ -1197,6 +1199,33 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.9, 0, -8.9)
 [node name="EnhancedPowerPole2" parent="Puzzles" instance=ExtResource("37_1qyy0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.6, 0, -4.4)
 
+[node name="KeycardReader" parent="Puzzles" instance=ExtResource("39_jmj8m")]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 21.8, 0.90021, -5.4)
+needed_keycard_name = "I"
+needed_keycard_color = Color(0, 1, 0, 1)
+
+[node name="ConsoleBase" parent="Puzzles/KeycardReader" instance=ExtResource("45_7e643")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.8, 0)
+
+[node name="Keycard" parent="Puzzles" instance=ExtResource("39_aawk2")]
+transform = Transform3D(-0.866025, 0.5, -5.38547e-08, -8.74228e-08, -4.37114e-08, 1, 0.5, 0.866025, 8.15666e-08, 17.9, 0.145044, -3.9)
+keycard_name = "I"
+colour = Color(0, 1, 0, 1)
+
+[node name="ConsoleScannerLeft" parent="Puzzles" instance=ExtResource("44_i2gxe")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 17.1, 0.9, -2.1)
+
+[node name="ConsoleBase" parent="Puzzles/ConsoleScannerLeft" instance=ExtResource("45_7e643")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.8, 0)
+
+[node name="PuzzleGateLinker" type="Node" parent="Puzzles/ConsoleScannerLeft" node_paths=PackedStringArray("connected_gate")]
+script = ExtResource("4_3mqk5")
+connected_gate = NodePath("../../../Passages/SliderGate")
+puzzle = NodePath("..")
+enable_signal = "scan_success"
+use_disable_signal = false
+metadata/_custom_type_script = "uid://ckdvdouxaw4it"
+
 [node name="Keypad" parent="Puzzles" instance=ExtResource("41_flyvg")]
 transform = Transform3D(4.37114e-08, -1, -3.9081e-15, -1, -4.37114e-08, 8.9407e-08, -8.9407e-08, 0, -1, 11.2039, 3.6, 2.9)
 code = 1234
@@ -1276,17 +1305,14 @@ key_name = "E"
 [node name="SliderGate" parent="Passages" instance=ExtResource("43_qaf0a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.8, 0.1, -1.9)
 
-[node name="ConsoleScannerLeft" parent="Passages" instance=ExtResource("44_i2gxe")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 17.1, 0.9, -2.1)
+[node name="SliderGate2" parent="Passages" instance=ExtResource("43_qaf0a")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 22.3, 0.1, -4.3)
 
-[node name="ConsoleBase" parent="Passages/ConsoleScannerLeft" instance=ExtResource("45_7e643")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.8, 0)
-
-[node name="PuzzleGateLinker" type="Node" parent="Passages/ConsoleScannerLeft" node_paths=PackedStringArray("connected_gate")]
+[node name="PuzzleGateLinker" type="Node" parent="Passages/SliderGate2" node_paths=PackedStringArray("connected_gate")]
 script = ExtResource("4_3mqk5")
-connected_gate = NodePath("../../SliderGate")
-puzzle = NodePath("..")
-enable_signal = "scan_success"
+connected_gate = NodePath("..")
+puzzle = NodePath("../../../Puzzles/KeycardReader")
+enable_signal = "inserted"
 use_disable_signal = false
 metadata/_custom_type_script = "uid://ckdvdouxaw4it"
 
@@ -1829,7 +1855,7 @@ light_color = Color(1, 1, 0.796078, 1)
 [node name="OmniLight3D4" type="OmniLight3D" parent="Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.4958, 3.8, 15.6)
 light_color = Color(1, 1, 0.796078, 1)
-light_energy = 0.599031
+light_energy = 4.02339
 omni_range = 5.7
 script = ExtResource("54_lxs5s")
 noise = SubResource("NoiseTexture2D_36i0g")
@@ -1838,7 +1864,7 @@ max_energy = 6.0
 [node name="OmniLight3D6" type="OmniLight3D" parent="Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.2042, 2.7, -16.3)
 light_color = Color(1, 1, 0.796078, 1)
-light_energy = 0.599031
+light_energy = 4.02339
 omni_range = 5.7
 script = ExtResource("54_lxs5s")
 noise = SubResource("NoiseTexture2D_36i0g")
@@ -1847,7 +1873,7 @@ max_energy = 6.0
 [node name="OmniLight3D7" type="OmniLight3D" parent="Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5042, 2.7, -16.3)
 light_color = Color(1, 1, 0.796078, 1)
-light_energy = 0.599031
+light_energy = 4.02339
 omni_range = 5.7
 script = ExtResource("54_lxs5s")
 noise = SubResource("NoiseTexture2D_36i0g")
@@ -1856,7 +1882,7 @@ max_energy = 6.0
 [node name="OmniLight3D8" type="OmniLight3D" parent="Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.7042, 2.7, -16.3)
 light_color = Color(1, 1, 0.796078, 1)
-light_energy = 0.599031
+light_energy = 4.02339
 omni_range = 5.7
 script = ExtResource("54_lxs5s")
 noise = SubResource("NoiseTexture2D_36i0g")
@@ -1871,7 +1897,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.8142, 3.8, 20.4)
 light_color = Color(1, 1, 0.796078, 1)
 
 [node name="Player" parent="." instance=ExtResource("3_bdoa4")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 3.55, 0.15, -3.2)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.65, 0.15, -2)
 flashlight_togglable = true
 starting_grabpack = 2
 enabled_hands = Array[PackedScene]([ExtResource("35_mvn8e"), ExtResource("8_c5qun"), ExtResource("38_sj8vn")])

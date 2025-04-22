@@ -1,16 +1,33 @@
-[gd_scene load_steps=22 format=4 uid="uid://cn6s3f1x5eiy4"]
+[gd_scene load_steps=38 format=4 uid="uid://cn6s3f1x5eiy4"]
 
 [ext_resource type="Script" uid="uid://k1bwt1bnp1cd" path="res://Objects/Gameplay/ControlPanel/keycard_reader.gd" id="1_mpk0e"]
 [ext_resource type="Texture2D" uid="uid://bve5nbgubt0k0" path="res://Objects/Gameplay/ControlPanel/Mesh/T_ConsolesKeycardSwipe_A_BC.png" id="2_73r68"]
 [ext_resource type="Texture2D" uid="uid://bw0s5oadrqc30" path="res://Objects/Gameplay/ControlPanel/Mesh/T_ConsolesKeycardSwipe_A_N.png" id="3_pvswf"]
 [ext_resource type="Texture2D" uid="uid://bwfei2ou6yj8l" path="res://Objects/Gameplay/ControlPanel/Mesh/T_ConsolesKeycardSwipe_A_ORM.png" id="4_4n4qt"]
+[ext_resource type="Texture2D" uid="uid://uqpusmmr7tvb" path="res://Objects/Gameplay/ControlPanel/Mesh/T_ConsolesKeycardSwipe_A_Mask.png" id="4_rvw23"]
 [ext_resource type="Script" uid="uid://cp2nj828ny1um" path="res://Objects/Gameplay/HandFunctions/interaction.gd" id="5_4n4qt"]
-[ext_resource type="PackedScene" uid="uid://b6d8fh6o30302" path="res://Objects/Gameplay/interaction_indicator.tscn" id="6_cybfa"]
+[ext_resource type="Texture2D" uid="uid://cwewgst4udpwe" path="res://Objects/Gameplay/ControlPanel/Mesh/T_ConsolsKeyPad_B_redesign_N.png" id="5_35pmr"]
+[ext_resource type="Texture2D" uid="uid://c4bm4ehb3i7o1" path="res://Objects/Gameplay/ControlPanel/Mesh/T_ConsolsKeyPad_B_redesign_ORM.png" id="6_l6ge0"]
 [ext_resource type="AudioStream" uid="uid://boug3o5pjw6ee" path="res://Objects/Gameplay/ControlPanel/Sound/SW_SFX_Keycard_Insert.wav" id="7_ury17"]
+[ext_resource type="Texture2D" uid="uid://cnqiytf38ocbb" path="res://Objects/Gameplay/ControlPanel/Mesh/T_KeyCard_BC.png" id="7_w2ga2"]
 [ext_resource type="AudioStream" uid="uid://d27e6wuk45quk" path="res://Objects/Gameplay/ControlPanel/Sound/SW_SFX_Keycard_Beep.wav" id="8_bbqs8"]
+[ext_resource type="Shader" uid="uid://bxynrfqin42r4" path="res://Objects/Gameplay/VHS/Model/colormask.gdshader" id="8_rvw23"]
+[ext_resource type="Texture2D" uid="uid://b5gdl8hhxojcf" path="res://Objects/Gameplay/ControlPanel/Mesh/keymask.png" id="9_hk3gb"]
+[ext_resource type="Texture2D" uid="uid://7web2x3rwpwp" path="res://Objects/Gameplay/ControlPanel/Mesh/T_KeyCard_N.png" id="10_35pmr"]
+[ext_resource type="Texture2D" uid="uid://cvqer146kjwkc" path="res://Objects/Gameplay/ControlPanel/Mesh/T_KeyCard_ORM.png" id="11_l6ge0"]
+[ext_resource type="Texture2D" uid="uid://bmh4rmptpek24" path="res://Objects/Gameplay/Extra/Texture/E.png" id="11_lrq7d"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hk3gb"]
+render_priority = 0
+shader = ExtResource("8_rvw23")
+shader_parameter/base_texture = ExtResource("2_73r68")
+shader_parameter/mask_texture = ExtResource("4_rvw23")
+shader_parameter/normal_texture = ExtResource("5_35pmr")
+shader_parameter/orm_texture = ExtResource("6_l6ge0")
+shader_parameter/alpha_threshold = 0.5
 
 [sub_resource type="ORMMaterial3D" id="ORMMaterial3D_cybfa"]
-albedo_texture = ExtResource("2_73r68")
+next_pass = SubResource("ShaderMaterial_hk3gb")
 orm_texture = ExtResource("4_4n4qt")
 normal_enabled = true
 normal_texture = ExtResource("3_pvswf")
@@ -58,6 +75,84 @@ size = Vector3(0.8, 0.487036, 0.0857422)
 [sub_resource type="BoxShape3D" id="BoxShape3D_4n4qt"]
 size = Vector3(0.8, 0.727893, 0.0931641)
 
+[sub_resource type="GDScript" id="GDScript_35pmr"]
+resource_local_to_scene = true
+script/source = "extends Node3D
+
+##The distance the player must be from the indicator for it to appear
+@export var radius: float = 1.0
+@export var enabled: bool = true
+
+const ITEM_OUTLINE = preload(\"res://Objects/VFX/Item/item_outline.tres\")
+
+@onready var circle: MeshInstance3D = $Circle
+@onready var ready_mesh: Node3D = $ReadyMesh
+@onready var keycard_reader: StaticBody3D = $\"../..\"
+
+var ind_node: Area3D = null
+
+func _ready():
+	ready_mesh.visible = false
+	circle.visible = false
+	visible = false
+	$Area/CollisionShape3D.shape.radius = radius
+	
+	if get_parent() is BasicInteraction:
+		ind_node = get_parent()
+		ind_node.connect(\"player_started_look\", Callable(start_look))
+		ind_node.connect(\"player_ended_look\", Callable(end_look))
+
+func start_look():
+	if not Inventory.scan_list(\"items_Keys\", keycard_reader.needed_keycard_name):
+		return
+	circle.visible = false
+	ready_mesh.visible = true
+func end_look():
+	circle.visible = true
+	ready_mesh.visible = false
+
+func _on_area_body_entered(body):
+	if body.is_in_group(\"Player\"):
+		if not Inventory.scan_list(\"items_Keys\", keycard_reader.needed_keycard_name):
+			return
+		if ind_node and not ind_node.enabled:
+			return
+		circle.visible = true
+		visible = true
+
+func _on_area_body_exited(body):
+	if body.is_in_group(\"Player\"):
+		circle.visible = false
+		ready_mesh.visible = false
+		visible = false
+"
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_3bkgw"]
+resource_local_to_scene = true
+radius = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gkafu"]
+no_depth_test = true
+shading_mode = 0
+
+[sub_resource type="SphereMesh" id="SphereMesh_xrws7"]
+material = SubResource("StandardMaterial3D_gkafu")
+radius = 0.02
+height = 0.04
+radial_segments = 16
+rings = 8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b7psr"]
+transparency = 1
+no_depth_test = true
+shading_mode = 0
+albedo_texture = ExtResource("11_lrq7d")
+billboard_mode = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_xrws7"]
+material = SubResource("StandardMaterial3D_b7psr")
+size = Vector2(0.15, 0.15)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_ury17"]
 size = Vector3(0.174187, 0.331604, 0.341553)
 
@@ -94,9 +189,20 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_v0ae3")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lrq7d"]
+render_priority = 0
+shader = ExtResource("8_rvw23")
+shader_parameter/base_texture = ExtResource("7_w2ga2")
+shader_parameter/mask_texture = ExtResource("9_hk3gb")
+shader_parameter/alpha_threshold = 0.5
+
 [sub_resource type="ORMMaterial3D" id="ORMMaterial3D_xv8up"]
 resource_local_to_scene = true
+next_pass = SubResource("ShaderMaterial_lrq7d")
 albedo_color = Color(1, 0.772178, 0.734597, 1)
+orm_texture = ExtResource("11_l6ge0")
+normal_enabled = true
+normal_texture = ExtResource("10_35pmr")
 
 [sub_resource type="Animation" id="Animation_ury17"]
 length = 0.001
@@ -141,6 +247,7 @@ script = ExtResource("1_mpk0e")
 [node name="SM_ConsolsKeycardSwipe_A" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_if07i")
 skeleton = NodePath("")
+surface_material_override/0 = SubResource("ORMMaterial3D_cybfa")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 2.98023e-08)
@@ -159,8 +266,25 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.113993, 0.43222, 0.0286386)
 script = ExtResource("5_4n4qt")
 metadata/_custom_type_script = "uid://cp2nj828ny1um"
 
-[node name="InteractionIndicator" parent="BasicInteraction" instance=ExtResource("6_cybfa")]
+[node name="InteractionIndicator" type="Node3D" parent="BasicInteraction"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0131994, 0.0120284)
+script = SubResource("GDScript_35pmr")
+
+[node name="Area" type="Area3D" parent="BasicInteraction/InteractionIndicator"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BasicInteraction/InteractionIndicator/Area"]
+shape = SubResource("SphereShape3D_3bkgw")
+
+[node name="Circle" type="MeshInstance3D" parent="BasicInteraction/InteractionIndicator"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.0068787, 0)
+mesh = SubResource("SphereMesh_xrws7")
+
+[node name="ReadyMesh" type="Node3D" parent="BasicInteraction/InteractionIndicator"]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BasicInteraction/InteractionIndicator/ReadyMesh"]
+mesh = SubResource("QuadMesh_xrws7")
+skeleton = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BasicInteraction"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0159416, -0.0834655, -0.0394287)
@@ -188,3 +312,5 @@ stream = ExtResource("7_ury17")
 stream = ExtResource("8_bbqs8")
 
 [connection signal="player_interacted" from="BasicInteraction" to="." method="_on_basic_interaction_player_interacted"]
+[connection signal="body_entered" from="BasicInteraction/InteractionIndicator/Area" to="BasicInteraction/InteractionIndicator" method="_on_area_body_entered"]
+[connection signal="body_exited" from="BasicInteraction/InteractionIndicator/Area" to="BasicInteraction/InteractionIndicator" method="_on_area_body_exited"]

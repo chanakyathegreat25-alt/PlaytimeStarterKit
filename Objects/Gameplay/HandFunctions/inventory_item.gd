@@ -14,7 +14,10 @@ enum tabs {
 @export var item_image: Texture2D
 @export var play_collect_sound: bool = true
 
+var added: bool = false
+
 func add_to_inventory():
+	if added: return
 	var list: String = tabs.keys()[item_type]
 	var item_array: Array = Inventory.get(str("items_", list))
 	
@@ -25,3 +28,5 @@ func add_to_inventory():
 	
 	if play_collect_sound:
 		Grabpack.player.sound_manager.collect()
+	
+	added = true

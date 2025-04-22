@@ -3,6 +3,7 @@ extends Control
 @onready var drag: Control = $Drag
 @onready var gp_extra: Node2D = $GP_Extra
 @onready var watch: TouchScreenButton = $GP_Extra/Watch
+@onready var f: TouchScreenButton = $F
 
 func _enter_tree() -> void:
 	disable_input("handleft", MOUSE_BUTTON_LEFT)
@@ -37,3 +38,7 @@ func _process(_delta: float) -> void:
 			watch.visible = false
 	else:
 		gp_extra.visible = false
+	if Grabpack.player.flashlight_togglable:
+		f.visible = true
+	else:
+		f.visible = false

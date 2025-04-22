@@ -62,6 +62,8 @@ var crouch_speed = 2.5
 @onready var length_calculator: Node = $Grabpack/Pack/LengthCalculator
 @onready var left_hand: Node3D = $Grabpack/Pack/LeftHandContainer
 @onready var right_hand: Node3D = $Grabpack/Pack/RightHandContainer
+@onready var left_wire_container: Node3D = $Grabpack/Pack/LeftWireContainer
+@onready var right_wire_container: Node3D = $Grabpack/Pack/RightWireContainer
 var wire_1_length:float = 0.0
 var wire_2_length:float = 0.0
 
@@ -158,12 +160,12 @@ func _physics_process(delta: float) -> void:
 		# Simulate the new position
 		var max_total_length: float = length_calculator.max_length
 		var desired_velocity: Vector3 = velocity  # Example speed
-		var current_position = global_position
+		#var current_position = global_position
 		
-		wire_1_length = current_position.distance_to(left_hand.global_position)
-		wire_2_length = current_position.distance_to(right_hand.global_position)
+		wire_1_length = left_wire_container.get_wire_distance()
+		wire_2_length = right_wire_container.get_wire_distance()
 		var total_length: float = wire_1_length + wire_2_length
-	
+		
 		# Prevent exceeding max length
 		if total_length > max_total_length:
 			var hand_limits: bool = false
@@ -177,7 +179,7 @@ func _physics_process(delta: float) -> void:
 				var excess_length: float = total_length - max_total_length
 		
 				# Find the direction toward the center point between anchors
-				var direction_to_center: Vector3 = ((left_hand.global_position + right_hand.global_position) / 2 - global_position).normalized()
+				var direction_to_center: Vector3 = ((left_wire_container.get_wire_second() + right_wire_container.get_wire_second()) / 2 - global_position).normalized()
 		
 				# Apply a correction that keeps the player within the allowed range
 				global_position += direction_to_center * excess_length

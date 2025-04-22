@@ -130,8 +130,9 @@ func _process(delta):
 				position = hand_fake.position
 			else:
 				position = position.move_toward(next_point, hand_speed * delta)
-			look_at(hand_pos.global_transform.origin)
-			rotation_degrees.y += 180
+				if position.distance_to(next_point) > 0.1:
+					look_at(next_point, Vector3.DOWN)
+					rotation.x += 3.0
 			if position.distance_to(hand_fake.global_position) < 0.2:
 				canon_right_animation.play("ShootOut")
 				hand_motions_animation.play("retract_impact")

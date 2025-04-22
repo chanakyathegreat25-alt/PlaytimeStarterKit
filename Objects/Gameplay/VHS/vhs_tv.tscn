@@ -12,7 +12,6 @@
 [ext_resource type="VideoStream" uid="uid://dtl0wkh0at5ua" path="res://Interface/Video/FlareHand_VHS.ogv" id="10_41w8w"]
 [ext_resource type="AudioStream" uid="uid://cyjai871fqmsf" path="res://Objects/Gameplay/VHS/Sound/SW_VHS_Static_LOOP.wav" id="11_rymi5"]
 
-
 [sub_resource type="ArrayMesh" id="ArrayMesh_no640"]
 _surfaces = [{
 "aabb": AABB(-0.371582, -1.77359e-07, -0.278056, 0.743164, 0.598503, 0.556112),
@@ -74,6 +73,8 @@ render_priority = 0
 shader = ExtResource("2_obcpi")
 shader_parameter/base_texture = ExtResource("2_vpusp")
 shader_parameter/mask_texture = ExtResource("4_vpusp")
+shader_parameter/normal_texture = ExtResource("3_41uuo")
+shader_parameter/orm_texture = ExtResource("4_a3cm1")
 shader_parameter/alpha_threshold = 0.5
 
 [sub_resource type="ORMMaterial3D" id="ORMMaterial3D_a3cm1"]

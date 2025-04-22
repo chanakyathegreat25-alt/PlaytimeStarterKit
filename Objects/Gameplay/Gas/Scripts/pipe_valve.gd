@@ -22,7 +22,6 @@ var fog_material: FogMaterial
 @onready var loop = $Loop
 @onready var turning = $Turning
 @onready var hand_grab = $Valve/HandGrab
-@onready var interaction_indicator = $BasicInteraction/InteractionIndicator
 
 var pull_speed: float = 130.0
 var pulling: bool = false
@@ -36,7 +35,6 @@ func _ready():
 		return
 	gas_material.gravity = gas_leak_direction
 	gas_particles.emitting = false
-	interaction_indicator.enabled = false
 	if use_fog:
 		fog_material = fog_node.material
 	if use_gas_zone:
@@ -100,6 +98,9 @@ func _on_hand_grab_let_go(_hand):
 	pulling = false
 	turning.stop()
 
-func _on_basic_interaction_player_interacted():
-	if Inventory.scan_list("items_Keys", "Valve") and missing_valve:
+func _on_valve_area_area_entered(area: Area3D) -> void:
+	if area.is_in_group("Valve"):
+		var body = area.get_parent()
 		set_valve(true)
+		body.holdable_item.stop_hold(body.holdable_item.hold_hand)
+		body.queue_free()

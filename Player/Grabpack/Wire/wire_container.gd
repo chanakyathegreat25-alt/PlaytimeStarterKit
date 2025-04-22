@@ -11,20 +11,39 @@ const WIRE_SEGMENT_ONLY = preload("res://Player/Grabpack/Wire/wire_segment_only.
 var max_wire_length: float = 60.0
 var last_segment: Area3D = null
 var last_return: Vector3 = Vector3.ZERO
+var first_segment: Area3D = null
 
 func get_wire_length():
-	if get_child_count() > 0:
-		var child = get_child(0)
-		var distance = child.position.distance_to(child.hand_node.position)
-		var length = distance / max_wire_length
-		return length
-	return 0.0
-	#var length = 0.0
-	#for i in get_child_count():
+	#if get_child_count() > 0:
 		#var child = get_child(0)
-		#var distance = child.position.distance_to(child.next_node.position)
-		#length += distance / max_wire_length
-	#return length
+		#var distance = child.position.distance_to(child.hand_node.position)
+		#var length = distance / max_wire_length
+		#return length
+	#return 0.0
+	var length = 0.0
+	for i in get_child_count():
+		var child = get_child(i)
+		var distance = child.scale.z
+		length += distance / max_wire_length
+	return length
+func get_wire_distance():
+	#if get_child_count() > 0:
+		#var child = get_child(0)
+		#var distance = child.position.distance_to(child.hand_node.position)
+		#var length = distance / max_wire_length
+		#return length
+	#return 0.0
+	var length = 0.0
+	for i in get_child_count():
+		var child = get_child(i)
+		var distance = child.scale.z
+		length += distance
+	return length
+func get_wire_second():
+	if first_segment:
+		return first_segment.next_node.global_position
+	
+	return hand_container.global_position
 
 func start_wire():
 	var only_segment = WIRE_SEGMENT_ONLY.instantiate()
@@ -39,6 +58,7 @@ func start_wire():
 		only_segment.get_node("MeshInstance3D").set_surface_override_material(0, preload("res://Player/Grabpack/Wire/WireMaterialLeft.tres"))
 	only_segment.hand = hand
 	add_child(only_segment)
+	first_segment = only_segment
 	last_segment = only_segment
 
 func add_segment(previous, next, point):
@@ -92,8 +112,9 @@ func get_retract_path():
 		#if last_segment.origin_node is Marker3D:
 			#return wire_fake.global_position
 		return last_segment.position
-		last_return = last_segment.position
+		#last_return = last_segment.position
 func end_wire():
 	for i in get_child_count():
 		get_child(i).queue_free()
+	first_segment = null
 	last_segment = null

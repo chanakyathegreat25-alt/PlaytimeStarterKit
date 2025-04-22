@@ -13,7 +13,6 @@
 [ext_resource type="PackedScene" uid="uid://b6d8fh6o30302" path="res://Objects/Gameplay/interaction_indicator.tscn" id="9_u55k2"]
 [ext_resource type="Texture2D" uid="uid://334aj5uxiovb" path="res://Interface/Inventory/ItemIcons/vhs.png" id="10_k2rbw"]
 
-
 [sub_resource type="ArrayMesh" id="ArrayMesh_c6wvn"]
 _surfaces = [{
 "aabb": AABB(-0.177901, 0.000367123, -0.106255, 0.356202, 0.0462353, 0.21251),
@@ -52,6 +51,8 @@ render_priority = 0
 shader = ExtResource("3_kkv0h")
 shader_parameter/base_texture = ExtResource("1_oc5t2")
 shader_parameter/mask_texture = ExtResource("4_2vttc")
+shader_parameter/normal_texture = ExtResource("2_lnarq")
+shader_parameter/orm_texture = ExtResource("3_smlkj")
 shader_parameter/alpha_threshold = 0.5
 
 [sub_resource type="ORMMaterial3D" id="ORMMaterial3D_rkywg"]
@@ -77,6 +78,7 @@ size = Vector3(0.4, 0.1, 0.25)
 
 [node name="VhsTape" type="StaticBody3D"]
 script = ExtResource("1_lnarq")
+custom_inventory_image = null
 
 [node name="SM_VHS_Tape" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_kkv0h")

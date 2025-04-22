@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://tgj85w0xfm5k"]
+[gd_scene load_steps=20 format=4 uid="uid://tgj85w0xfm5k"]
 
 [ext_resource type="Script" uid="uid://desigrp0smliv" path="res://Objects/Gameplay/Gas/Scripts/pipe_valve.gd" id="1_etc8b"]
 [ext_resource type="Material" uid="uid://dnia3t1wv87a0" path="res://Objects/Materials/Trims/PaintedMetalTrim.tres" id="1_p6tpf"]
@@ -8,8 +8,6 @@
 [ext_resource type="AudioStream" uid="uid://fmh5nh7newpe" path="res://Objects/Gameplay/Gas/Audio/SW_SFX_Pipe_Rumbling_LOOP.wav" id="5_y0l6g"]
 [ext_resource type="AudioStream" uid="uid://1es1dr023g7j" path="res://Objects/Gameplay/Gas/Audio/SW_SFX_Steam_Valve_Stop.wav" id="6_0umur"]
 [ext_resource type="AudioStream" uid="uid://bmuiry1t0uf6o" path="res://Objects/Gameplay/Gas/Audio/SW_SFX_Steam_Valve_Turning_LOOP.wav" id="7_1fr7m"]
-[ext_resource type="Script" uid="uid://cp2nj828ny1um" path="res://Objects/Gameplay/HandFunctions/interaction.gd" id="9_1fr7m"]
-[ext_resource type="PackedScene" uid="uid://b6d8fh6o30302" path="res://Objects/Gameplay/interaction_indicator.tscn" id="10_6uh0x"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_36bbe"]
 _surfaces = [{
@@ -114,8 +112,8 @@ material = SubResource("StandardMaterial3D_67q0s")
 size = Vector2(1, 1)
 orientation = 2
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_jnvfb"]
-size = Vector3(0.6, 0.6, 0.4)
+[sub_resource type="BoxShape3D" id="BoxShape3D_1fr7m"]
+size = Vector3(0.5, 0.4, 0.343359)
 
 [node name="PipeValve" type="StaticBody3D"]
 script = ExtResource("1_etc8b")
@@ -177,17 +175,13 @@ stream = ExtResource("5_y0l6g")
 volume_db = 6.0
 max_db = 6.0
 
-[node name="BasicInteraction" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0.4)
-script = ExtResource("9_1fr7m")
-metadata/_custom_type_script = "uid://cp2nj828ny1um"
+[node name="ValveArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0.5)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="BasicInteraction"]
-shape = SubResource("BoxShape3D_jnvfb")
-
-[node name="InteractionIndicator" parent="BasicInteraction" instance=ExtResource("10_6uh0x")]
-player_requires_item = true
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ValveArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.12168)
+shape = SubResource("BoxShape3D_1fr7m")
 
 [connection signal="let_go" from="Valve/HandGrab" to="." method="_on_hand_grab_let_go"]
 [connection signal="pulled" from="Valve/HandGrab" to="." method="_on_hand_grab_pulled"]
-[connection signal="player_interacted" from="BasicInteraction" to="." method="_on_basic_interaction_player_interacted"]
+[connection signal="area_entered" from="ValveArea" to="." method="_on_valve_area_area_entered"]
