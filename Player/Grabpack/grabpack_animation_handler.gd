@@ -40,13 +40,13 @@ func handle_grabpack_animation(delta):
 	if not is_falling:
 		if not walking_vector == Vector2.ZERO:
 			if is_crouching:
-				walk_animation.speed_scale = 0.7
+				walk_animation.speed_scale = 0.5
 			elif player.is_squeezing:
 				walk_animation.speed_scale = 1.0
 			elif player.is_sprinting:
-				walk_animation.speed_scale = 2.2
+				walk_animation.speed_scale = 2.0
 			else:
-				walk_animation.speed_scale = 1.75
+				walk_animation.speed_scale = 1.25
 			if player.is_squeezing:
 				if not is_sidel_animation:
 					walk_animation.play("WalkSidel")

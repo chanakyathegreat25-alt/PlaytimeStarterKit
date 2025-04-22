@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://b6d8fh6o30302"]
 
 [ext_resource type="Script" uid="uid://bhunsqjesn8kw" path="res://Objects/Gameplay/interaction_indicator.gd" id="1_b7psr"]
-[ext_resource type="FontFile" uid="uid://dp3oq0ou16joq" path="res://Interface/Font/VCR_OSD_MONO_1.001.ttf" id="2_xrws7"]
+[ext_resource type="Texture2D" uid="uid://bmh4rmptpek24" path="res://Objects/Gameplay/Extra/Texture/E.png" id="2_xrws7"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_xrws7"]
 resource_local_to_scene = true
@@ -21,12 +21,13 @@ rings = 8
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b7psr"]
 transparency = 1
 no_depth_test = true
-albedo_color = Color(0, 0, 0, 0.654902)
+shading_mode = 0
+albedo_texture = ExtResource("2_xrws7")
 billboard_mode = 1
 
 [sub_resource type="QuadMesh" id="QuadMesh_xrws7"]
 material = SubResource("StandardMaterial3D_b7psr")
-size = Vector2(0.08, 0.08)
+size = Vector2(0.15, 0.15)
 
 [node name="InteractionIndicator" type="Node3D"]
 script = ExtResource("1_b7psr")
@@ -38,7 +39,6 @@ shape = SubResource("SphereShape3D_xrws7")
 
 [node name="Circle" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.0068787, 0)
-visible = false
 mesh = SubResource("SphereMesh_xrws7")
 
 [node name="ReadyMesh" type="Node3D" parent="."]
@@ -47,14 +47,6 @@ transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
 [node name="MeshInstance3D" type="MeshInstance3D" parent="ReadyMesh"]
 mesh = SubResource("QuadMesh_xrws7")
 skeleton = NodePath("../..")
-
-[node name="Label3D" type="Label3D" parent="ReadyMesh"]
-transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 0, 0.00664148, 0)
-billboard = 1
-no_depth_test = true
-text = "E"
-font = ExtResource("2_xrws7")
-outline_size = 0
 
 [connection signal="body_entered" from="Area" to="." method="_on_area_body_entered"]
 [connection signal="body_exited" from="Area" to="." method="_on_area_body_exited"]

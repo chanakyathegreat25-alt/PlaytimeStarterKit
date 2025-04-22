@@ -50,7 +50,7 @@ var jump_vel: Vector3 # Jumping velocity
 var player_height: float = 1.7
 var crouch_depth: float = 0.85
 var crouched: bool = false
-var crouch_speed = 6.0
+var crouch_speed = 2.5
 @onready var standing_collision = $StandingCollision
 @onready var crouch_collision = $CrouchCollision
 @onready var crouch_cast = $RayCast3D
@@ -116,7 +116,7 @@ func _physics_process(delta: float) -> void:
 		standing_collision.disabled = true
 		crouch_collision.disabled = false
 		
-		neck.position.y = move_toward(neck.position.y, crouch_depth, (crouch_speed - 4.0) * delta)
+		neck.position.y = move_toward(neck.position.y, crouch_depth, (crouch_speed) * delta)
 		grabpack.position.y = neck.position.y
 		crouched = true
 	else:
@@ -124,7 +124,7 @@ func _physics_process(delta: float) -> void:
 			standing_collision.disabled = false
 			crouch_collision.disabled = true
 			
-			neck.position.y = lerp(neck.position.y, player_height, crouch_speed * delta)
+			neck.position.y = move_toward(neck.position.y, player_height, crouch_speed * delta)
 			grabpack.position.y = neck.position.y
 			crouched = false
 	

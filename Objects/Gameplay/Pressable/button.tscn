@@ -169,10 +169,6 @@ shape = SubResource("BoxShape3D_frpan")
 [node name="HandPositionMarker" type="Marker3D" parent="Press/HandGrab"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.011995, -0.0192318, 0.1)
 
-[node name="InteractionIndicator" parent="Press" instance=ExtResource("8_48jal")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0319009, 0)
-radius = 1.5
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0118774, 0)
 shape = SubResource("CylinderShape3D_oiegv")
@@ -192,6 +188,10 @@ metadata/_custom_type_script = "uid://cp2nj828ny1um"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BasicInteraction"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
 shape = SubResource("BoxShape3D_nmy5e")
+
+[node name="InteractionIndicator" parent="BasicInteraction" instance=ExtResource("8_48jal")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0319009, 0)
+radius = 1.5
 
 [connection signal="grabbed" from="Press/HandGrab" to="." method="_on_hand_grab_grabbed"]
 [connection signal="player_interacted" from="BasicInteraction" to="." method="_on_basic_interaction_player_interacted"]
