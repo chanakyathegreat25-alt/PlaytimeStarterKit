@@ -2,19 +2,23 @@ extends Node
 
 @onready var player: CharacterBody3D = $".."
 
+signal sound(sound_name: String)
+
 func toggle_flashlight():
 	get_node("flashlight").play()
 
 func step():
 	var walk_node: String = "none"
-	
+	var step_type: String = "walk"
 	if player.is_squeezing:
 		walk_node = str("sidelStep", randi_range(1, 3))
 	elif player.is_sprinting:
 		walk_node = str("run", randi_range(1, 6))
+		step_type = "run"
 	else:
 		walk_node = str("walk", randi_range(1, 6))
 	
+	sound.emit(step_type)
 	get_node(walk_node).play()
 
 func collect():
@@ -36,6 +40,7 @@ func jump():
 	sound_node = str("jump", randi_range(1, 3))
 	
 	get_node(sound_node).play()
+	sound.emit("jump")
 func crouch(type: bool):
 	var sound_node: String = "none"
 	
@@ -51,6 +56,7 @@ func launch_hand():
 	sound_node = str("launch", randi_range(1, 3))
 	
 	get_node(sound_node).play()
+	sound.emit("grabpack")
 func retract_hand():
 	var sound_node: String = "none"
 	
@@ -58,12 +64,12 @@ func retract_hand():
 	
 	get_node(sound_node).play()
 func switch_hand():
-	var sound_node: String = "none"
+	var sound_path: String = "none"
 	
-	sound_node = "switchhand"
+	sound_path = "switchhand"
 	
-	var sound: AudioStreamPlayer = get_node(sound_node)
-	sound.play()
+	var sound_node: AudioStreamPlayer = get_node(sound_path)
+	sound_node.play()
 	#sound.seek(0.45)
 func cable_sound(hand: bool, play: bool):
 	var sound_node: String = "none"
