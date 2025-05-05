@@ -26,6 +26,7 @@ Game="*res://Objects/gamedata.gd"
 Inventory="*res://Interface/Inventory/inventory.gd"
 CameraTransition="*res://Objects/Gameplay/camera_transition.tscn"
 GameSettings="*res://Interface/Settings/GameSettings.gd"
+GlobalSound="*res://Objects/Environment/Scripts/global_sound.tscn"
 
 [debug]
 
