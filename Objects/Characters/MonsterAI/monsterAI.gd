@@ -64,8 +64,10 @@ var current_action: actions = actions.walk
 var current_mark: Marker3D = null
 var tracking_sound: bool = false
 var tracking_sound_position: Vector3 = Vector3.ZERO
+
 #PATH FOLLOW VARIABLES:
 var on_path: bool = false
+
 func _ready() -> void:
 	set_state(default_state)
 	Grabpack.player.sound_manager.connect("sound",Callable(heard_sound))

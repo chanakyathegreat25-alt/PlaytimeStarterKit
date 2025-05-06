@@ -27,12 +27,15 @@ enum anims {
 
 func play_animation(anim_name: anims = anims.idle):
 	if anim_name == anims.idle:
+		if sound.idle_sounds.size() > 0: GlobalSound.quicksfx(sound.idle_sounds[randi_range(0, (sound.idle_sounds.size()-1))], 0.0, global_position)
 		animation_player.play(idle_animation_name)
 		animation_player.speed_scale = idle_animation_speed
 	elif anim_name == anims.walk:
+		if sound.idle_sounds.size() > 0: GlobalSound.quicksfx(sound.moving_sounds[randi_range(0, (sound.moving_sounds.size()-1))], 0.0, global_position)
 		animation_player.play(walk_animation_name)
 		animation_player.speed_scale = walk_animation_speed
 	elif anim_name == anims.run:
+		if sound.idle_sounds.size() > 0: GlobalSound.quicksfx(sound.moving_sounds[randi_range(0, (sound.moving_sounds.size()-1))], 0.0, global_position)
 		animation_player.play(run_animation_name)
 		animation_player.speed_scale = run_animation_speed
 	elif anim_name == anims.jumpscare:

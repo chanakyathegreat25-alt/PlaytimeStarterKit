@@ -1,9 +1,10 @@
-[gd_scene load_steps=32 format=4 uid="uid://xmerc1mcwygl"]
+[gd_scene load_steps=33 format=4 uid="uid://xmerc1mcwygl"]
 
 [ext_resource type="Texture2D" uid="uid://inhgvawo2ubt" path="res://Player/Grabpack/Models/Hands/T_BlueHand_BC.png" id="1_lv5dj"]
 [ext_resource type="Script" uid="uid://226a4bp8ns23" path="res://Player/Grabpack/Hands/Scripts/green.gd" id="1_mhoco"]
 [ext_resource type="Texture2D" uid="uid://djaph3pqt6xig" path="res://Player/Grabpack/Models/Hands/T_BlueHand_Nt.png" id="2_lj6md"]
 [ext_resource type="Material" uid="uid://bxh6nik6yr3ij" path="res://Player/Grabpack/Hands/Shaders/green_hand_power.tres" id="2_mhoco"]
+[ext_resource type="Texture2D" uid="uid://c8htyvkfo57eb" path="res://Player/Grabpack/Models/Hands/T_HandOriginalScrewed_Green_BC.png" id="2_y6jkr"]
 [ext_resource type="Texture2D" uid="uid://cjmaoqjquc6wo" path="res://Player/Grabpack/Models/Hands/T_BlueHand_ORM.png" id="3_mhoco"]
 [ext_resource type="Script" uid="uid://gs4nfpgi5328" path="res://Player/Grabpack/Hands/SettingsComponents/fire_mode_launch.gd" id="4_dr127"]
 [ext_resource type="Script" uid="uid://e26flvrrg06t" path="res://Player/Grabpack/Hands/SettingsComponents/hand_inventory_icon.gd" id="8_xkth6"]
@@ -841,8 +842,7 @@ _data = {
 }
 
 [sub_resource type="ORMMaterial3D" id="ORMMaterial3D_xkth6"]
-albedo_color = Color(0, 0.981967, 3.85046e-07, 1)
-albedo_texture = ExtResource("1_lv5dj")
+albedo_texture = ExtResource("2_y6jkr")
 orm_texture = ExtResource("3_mhoco")
 emission = Color(0, 0.188235, 0, 1)
 normal_enabled = true
