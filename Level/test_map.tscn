@@ -1,4 +1,4 @@
-[gd_scene load_steps=113 format=4 uid="uid://bifmmultpyw0x"]
+[gd_scene load_steps=108 format=4 uid="uid://bifmmultpyw0x"]
 
 [ext_resource type="Script" uid="uid://b7a5hf3ljmyj5" path="res://Level/Scripts/test_map.gd" id="1_d6ggl"]
 [ext_resource type="Material" uid="uid://dl7krlcnai0qx" path="res://Level/Assets/Materials/ProtoDark.tres" id="1_teiv4"]
@@ -75,9 +75,6 @@
 [ext_resource type="AudioStream" uid="uid://bw0dntgx8r73d" path="res://Interface/Sound/SW_NewObjective.wav" id="55_36i0g"]
 [ext_resource type="PackedScene" uid="uid://dd7igduoonl0g" path="res://Player/Grabpack/Hands/omni.tscn" id="56_lxs5s"]
 [ext_resource type="Script" uid="uid://chr8oaaulm2ye" path="res://Objects/Gameplay/Mobibles/mobible_spawner_3d.gd" id="69_qaf0a"]
-[ext_resource type="Script" uid="uid://dvnct2v5c3y25" path="res://Objects/Characters/MonsterAI/monstercontroller.gd" id="76_ckkth"]
-[ext_resource type="Script" uid="uid://cr2jbisbr4qh3" path="res://Objects/Characters/MonsterAI/monster_activator.gd" id="78_ckkth"]
-[ext_resource type="PackedScene" uid="uid://c6t324pe1kky2" path="res://Objects/Characters/MonsterAI/VisualTemplates/Yarnaby/YarnabyTemplate.tscn" id="78_vv6b6"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3mqk5"]
 sky_horizon_color = Color(1, 0.841716, 0.366897, 1)
@@ -98,10 +95,6 @@ volumetric_fog_density = 0.0
 adjustment_enabled = true
 adjustment_contrast = 1.2
 adjustment_saturation = 1.2
-
-[sub_resource type="NavigationMesh" id="NavigationMesh_03c0h"]
-vertices = PackedVector3Array(1.3, 0.4, -41.55, 3.55, 0.4, -41.8, 3.55, 0.4, -45.8, -2.7, 0.4, -45.8, -2.7, 0.4, -35.8, 1.3, 0.4, -35.8, 13.55, 0.4, -41.8, 13.55, 0.4, -45.8, 1.55, 0.4, -33.55, -2.7, 0.4, -22.55, 3.55, 0.4, -22.3, 3.8, 0.4, -24.05, 5.55, 0.4, -24.05, 5.55, 0.4, -33.55, 7.3, 0.4, -24.05, 7.55, 0.4, -22.3, 13.8, 0.4, -22.55, 13.8, 0.4, -33.55, 5.55, 0.4, -18.55, 5.55, 0.4, -21.8, 3.8, 0.4, -21.8, -2.7, 0.4, -18.55, 7.3, 0.4, -21.8, 13.8, 0.4, -18.55)
-polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(5, 4, 0), PackedInt32Array(0, 4, 3), PackedInt32Array(2, 7, 1), PackedInt32Array(1, 7, 6), PackedInt32Array(4, 5, 8), PackedInt32Array(10, 9, 11), PackedInt32Array(11, 9, 8), PackedInt32Array(8, 9, 4), PackedInt32Array(12, 11, 13), PackedInt32Array(13, 11, 8), PackedInt32Array(14, 16, 15), PackedInt32Array(14, 12, 13), PackedInt32Array(16, 14, 17), PackedInt32Array(17, 14, 13), PackedInt32Array(20, 19, 18), PackedInt32Array(9, 10, 20), PackedInt32Array(9, 20, 21), PackedInt32Array(21, 20, 18), PackedInt32Array(18, 19, 22), PackedInt32Array(22, 15, 16), PackedInt32Array(16, 23, 22), PackedInt32Array(22, 23, 18)]
 
 [sub_resource type="Curve3D" id="Curve3D_fw62i"]
 closed = true
@@ -454,13 +447,6 @@ frequency = 0.2337
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_36i0g"]
 color_ramp = SubResource("Gradient_lxs5s")
 noise = SubResource("FastNoiseLite_flyvg")
-
-[sub_resource type="Curve3D" id="Curve3D_03c0h"]
-_data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.0437536, 0.240324, 0.272045, 1.02087, -0.00110435, -0.724865, -1.02087, 0.00110435, 0.724865, -11.3082, 0.355365, 0.333725, 0, 0, 0, 0, 0, 0, -11.8654, 0.181189, 13.0064),
-"tilts": PackedFloat32Array(0, 0, 0)
-}
-point_count = 3
 
 [node name="TestMap" type="Node3D"]
 script = ExtResource("1_d6ggl")
@@ -921,33 +907,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.6, 1.9, -15.9474)
 text = "PRESS THIS 
 BUTTON"
 
-[node name="NavigationRegion3D" type="NavigationRegion3D" parent="Csg"]
-navigation_mesh = SubResource("NavigationMesh_03c0h")
-
-[node name="CSGBox3D53" type="CSGBox3D" parent="Csg/NavigationRegion3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 0, -26.05)
-use_collision = true
-size = Vector3(17.4, 0.2, 15.9)
-material = ExtResource("1_teiv4")
-
-[node name="CSGBox3D55" type="CSGBox3D" parent="Csg/NavigationRegion3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8, 0, -40.1)
-use_collision = true
-size = Vector3(4.8, 0.2, 12.4)
-material = ExtResource("1_teiv4")
-
-[node name="CSGBox3D56" type="CSGBox3D" parent="Csg/NavigationRegion3D"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 7.6, 0, -43.9)
-use_collision = true
-size = Vector3(4.8, 0.2, 12.4)
-material = ExtResource("1_teiv4")
-
-[node name="CSGBox3D54" type="CSGBox3D" parent="Csg/NavigationRegion3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 2.1, -22.85)
-use_collision = true
-size = Vector3(2.9, 4.4, 1.1)
-material = ExtResource("1_teiv4")
-
 [node name="Puzzles" type="Node" parent="."]
 
 [node name="BatteryHolder" parent="Puzzles" instance=ExtResource("2_3jmk0")]
@@ -969,12 +928,6 @@ powered_puzzle_off_signal = "dispower_scanner"
 
 [node name="Battery" parent="Puzzles" instance=ExtResource("3_u7kn2")]
 transform = Transform3D(0.901221, -0.224144, 0.370891, -0.0173376, 0.836516, 0.547668, -0.433013, -0.5, 0.75, -1.1, 0.9, -5.5)
-
-[node name="BatteryHolder4" parent="Puzzles" instance=ExtResource("2_3jmk0")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 10, 0.4, -17.5)
-
-[node name="Battery3" parent="Puzzles" instance=ExtResource("3_u7kn2")]
-transform = Transform3D(0.901221, -0.224144, 0.370891, -0.0173376, 0.836516, 0.547668, -0.433013, -0.5, 0.75, 11.1, 0.9, -16.4)
 
 [node name="Battery2" parent="Puzzles" instance=ExtResource("3_u7kn2")]
 transform = Transform3D(0.901221, -0.224144, 0.370891, -0.0173376, 0.836516, 0.547668, -0.433013, -0.5, 0.75, 23.4, 2.6, 14.2477)
@@ -1902,7 +1855,7 @@ light_color = Color(1, 1, 0.796078, 1)
 [node name="OmniLight3D4" type="OmniLight3D" parent="Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.4958, 3.8, 15.6)
 light_color = Color(1, 1, 0.796078, 1)
-light_energy = 0.478742
+light_energy = 3.20315
 omni_range = 5.7
 script = ExtResource("54_lxs5s")
 noise = SubResource("NoiseTexture2D_36i0g")
@@ -1911,7 +1864,7 @@ max_energy = 6.0
 [node name="OmniLight3D6" type="OmniLight3D" parent="Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.2042, 2.7, -16.3)
 light_color = Color(1, 1, 0.796078, 1)
-light_energy = 0.478742
+light_energy = 3.20315
 omni_range = 5.7
 script = ExtResource("54_lxs5s")
 noise = SubResource("NoiseTexture2D_36i0g")
@@ -1920,7 +1873,7 @@ max_energy = 6.0
 [node name="OmniLight3D7" type="OmniLight3D" parent="Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5042, 2.7, -16.3)
 light_color = Color(1, 1, 0.796078, 1)
-light_energy = 0.478742
+light_energy = 3.20315
 omni_range = 5.7
 script = ExtResource("54_lxs5s")
 noise = SubResource("NoiseTexture2D_36i0g")
@@ -1929,7 +1882,7 @@ max_energy = 6.0
 [node name="OmniLight3D8" type="OmniLight3D" parent="Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.7042, 2.7, -16.3)
 light_color = Color(1, 1, 0.796078, 1)
-light_energy = 0.478742
+light_energy = 3.20315
 omni_range = 5.7
 script = ExtResource("54_lxs5s")
 noise = SubResource("NoiseTexture2D_36i0g")
@@ -1987,44 +1940,6 @@ Mobibles"
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 18.238, 2.8, -11.919)
 
 [node name="Monster" type="Node" parent="."]
-
-[node name="Path3D" type="Path3D" parent="Monster"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.9986, 0, -44.0656)
-curve = SubResource("Curve3D_03c0h")
-
-[node name="Monster" type="PathFollow3D" parent="Monster/Path3D"]
-transform = Transform3D(-0.00543331, 0.0101332, 0.999933, -4.65659e-10, 0.999947, -0.0101333, -0.99998, -5.50583e-05, -0.00543305, 0.0437536, 0.240324, 0.272045)
-script = ExtResource("76_ckkth")
-
-[node name="RoamingMarks" type="Node" parent="Monster"]
-
-[node name="Marker3D" type="Marker3D" parent="Monster/RoamingMarks"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0.5, -30.7)
-
-[node name="Marker3D2" type="Marker3D" parent="Monster/RoamingMarks"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 0.5, -22.8)
-
-[node name="Marker3D3" type="Marker3D" parent="Monster/RoamingMarks"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.9, 0.5, -26.9)
-
-[node name="Marker3D4" type="Marker3D" parent="Monster/RoamingMarks"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.7, 0.5, -30.4)
-
-[node name="Marker3D5" type="Marker3D" parent="Monster/RoamingMarks"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.2, 0.5, -21.8)
-
-[node name="MonsterActivator" type="Node" parent="Monster" node_paths=PackedStringArray("monster")]
-script = ExtResource("78_ckkth")
-monster = NodePath("../Yarnaby")
-state = 2
-node = NodePath("../../Puzzles/BatteryHolder4")
-node_signal = "powered_on"
-
-[node name="Yarnaby" parent="Monster" node_paths=PackedStringArray("roaming_ai_marks", "path_follow_node") instance=ExtResource("78_vv6b6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.1, 0.3, -43.9)
-roaming_ai_marks = NodePath("../RoamingMarks")
-path_follow_node = NodePath("../Path3D/Monster")
-path_move_action = 0
 
 [connection signal="levers_down" from="Puzzles/LeverLinker" to="." method="_on_lever_linker_levers_down"]
 [connection signal="levers_up" from="Puzzles/LeverLinker" to="." method="_on_lever_linker_levers_up"]

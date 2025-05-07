@@ -1,4 +1,5 @@
 extends Node
+class_name MonsterActivator
 
 enum states {
 	disabled,

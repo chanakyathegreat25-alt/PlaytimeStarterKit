@@ -9,6 +9,8 @@ class_name MonsterVisual
 @export var walk_animation_speed: float = 1.0
 @export var run_animation_name: String = ""
 @export var run_animation_speed: float = 1.5
+@export var spawn_animation_name: String = ""
+@export var spawn_animation_speed: float = 1.0
 @export var jumpscare_animation_name: String = ""
 @export var jumpscare_animation_speed: float = 1.0
 @export var jumpscare_camera: Camera3D = null
@@ -22,7 +24,8 @@ enum anims {
 	walk,
 	run,
 	jumpscare,
-	taunt
+	taunt,
+	spawn
 }
 
 func play_animation(anim_name: anims = anims.idle):
@@ -51,5 +54,8 @@ func play_animation(anim_name: anims = anims.idle):
 	elif anim_name == anims.taunt:
 		animation_player.play(taunt_name)
 		animation_player.speed_scale = taunt_speed
+	elif anim_name == anims.spawn:
+		animation_player.play(spawn_animation_name)
+		animation_player.speed_scale = spawn_animation_speed
 func step():
 	GlobalSound.quicksfx(sound.footstep_sounds[randi_range(0, (sound.footstep_sounds.size()-1))], sound.footstep_volume,global_position)

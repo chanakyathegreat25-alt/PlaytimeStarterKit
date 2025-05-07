@@ -6,6 +6,7 @@ extends CharacterBody3D
 @onready var tauntsfx: AudioStreamPlayer3D = $Taunt
 var prev_look: Vector3 = transform.origin
 var LERP_SPEED: float = 5.0
+var spawning: bool = false
 
 enum states {
 	disabled,
@@ -31,6 +32,8 @@ enum path_follow_state {
 @export_category("State Settings")
 @export var default_state: states = states.disabled
 @export var kill_distance: float = 3.0
+##Plays when state switches from disabled to something else.
+@export var spawn_animation: bool = false
 @export_subgroup("Roaming")
 @export var roaming_ai_marks: Node = null
 @export var use_sound_tracking: bool = true
@@ -47,6 +50,12 @@ enum path_follow_state {
 @export var glide_to_start: bool = true
 @export var glide_to_path_speed: float = 5.0
 @export var look_at_player_on_path: bool = false
+@export var base_speed_on_player: bool = false
+##Mess with this number until you feel the monster travels at an appropriate speed for your purpose.
+@export var speed_divider: float = 1.5
+@export var speed_animation_divider: float = 12.0
+@export var max_speed: float = 12.0
+@export var min_speed: float = 4.0
 @export_subgroup("Chase")
 @export var chase_move_action: path_follow_state = path_follow_state.run
 @export var starting_taunt: bool = false
@@ -77,6 +86,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if current_state == states.disabled: return
 	
+	if spawning: return
 	if global_position.distance_to(Grabpack.player.global_position) < kill_distance:
 		set_state(states.disabled)
 		set_action(actions.jumpscare)
@@ -115,7 +125,13 @@ func path_follow_process(delta: float) -> void:
 	var speed: float = 0.0
 	if path_move_action == path_follow_state.walk: speed = walk_speed
 	else: speed = run_speed
-	
+	if base_speed_on_player:
+		speed = global_position.distance_to(Grabpack.player.global_position) / speed_divider
+		speed = clamp(speed, min_speed, max_speed)
+		if path_move_action == path_follow_state.walk:
+			monster_visual.animation_player.speed_scale = speed / speed_animation_divider
+		else:
+			monster_visual.animation_player.speed_scale = speed / speed_animation_divider
 	path_follow_node.progress += speed * delta
 	global_transform = path_follow_node.global_transform
 	if path_follow_node.progress_ratio > 0.99:
@@ -133,6 +149,10 @@ func move_ai(delta):
 func set_state(state: states):
 	idle_timer.stop()
 	prev_look = $PrevLookReset.global_position
+	if not state == states.disabled: visible = true
+	if current_state == states.disabled and spawn_animation and not state == states.disabled:
+		monster_visual.play_animation(monster_visual.anims.spawn)
+		await monster_visual.animation_player.animation_finished
 	current_state = state
 	if head_look_at: look_at_modifier.active = false
 	if state == states.roaming:
