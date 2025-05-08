@@ -16,8 +16,8 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if not is_equal_approx(rotation_degrees.x, 0.0):
 		var target_rotation = 0.0
-		var stiffness = 10.0
-		var damping = 0.8
+		var stiffness =2.0
+		var damping = 0.95
 		
 		var force = (target_rotation - rotation_degrees.x) * stiffness
 		velocity += force * delta
@@ -26,7 +26,7 @@ func _process(delta: float) -> void:
 		rotation_degrees.x += velocity
 
 func used():
-	velocity = 10.0
+	velocity = 2.0
 	rotation_degrees.x = 2.0
 	audio_stream_player.stream = voicelines[current_line]
 	audio_stream_player.play()

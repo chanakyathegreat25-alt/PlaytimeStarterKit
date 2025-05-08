@@ -66,6 +66,8 @@ enum path_follow_state {
 @export var run_speed: float = 6.0
 @export var idle_time: Vector2 = Vector2(2.0, 4.0)
 
+signal caught_player
+
 var current_state: states = states.disabled
 var current_action: actions = actions.walk
 
@@ -152,6 +154,7 @@ func set_state(state: states):
 	if not state == states.disabled: visible = true
 	if current_state == states.disabled and spawn_animation and not state == states.disabled:
 		monster_visual.play_animation(monster_visual.anims.spawn)
+		GlobalSound.quicksfx(monster_visual.sound.spawn_sound, 0.0, global_position)
 		await monster_visual.animation_player.animation_finished
 	current_state = state
 	if head_look_at: look_at_modifier.active = false
@@ -185,6 +188,7 @@ func set_action(action: actions):
 	elif action == actions.run:
 		monster_visual.play_animation(actions.run)
 	elif action == actions.jumpscare:
+		caught_player.emit()
 		Grabpack.set_movable(false)
 		Grabpack.player.visible = false
 		monster_visual.play_animation(actions.jumpscare)

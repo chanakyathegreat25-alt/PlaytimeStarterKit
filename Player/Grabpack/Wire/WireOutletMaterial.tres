@@ -1,21 +1,7 @@
-[gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://ct4nlhogs4fwq"]
-
-[sub_resource type="Gradient" id="Gradient_bs44q"]
-offsets = PackedFloat32Array(0, 0.0344086, 0.539785)
-colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1, 0.537255, 1, 1, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_vxv1q"]
-gradient = SubResource("Gradient_bs44q")
-fill_from = Vector2(1, 0.527066)
-fill_to = Vector2(0.997151, 0.00854701)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_e1u6h"]
-gradient = SubResource("Gradient_bs44q")
-fill_from = Vector2(1, 0.527066)
-fill_to = Vector2(0.997151, 0.00854701)
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://ct4nlhogs4fwq"]
 
 [resource]
-albedo_texture = SubResource("GradientTexture2D_vxv1q")
+albedo_color = Color(0, 0.717647, 1, 1)
 emission_enabled = true
+emission = Color(0, 0.717647, 1, 1)
 emission_energy_multiplier = 6.0
-emission_texture = SubResource("GradientTexture2D_e1u6h")

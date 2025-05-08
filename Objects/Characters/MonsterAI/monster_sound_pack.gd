@@ -7,3 +7,4 @@ class_name MonsterSoundPack
 @export var footstep_volume: float = 0.0
 @export var taunt_sound: AudioStream
 @export var jumpscare_sound: AudioStream
+@export var spawn_sound: AudioStream
