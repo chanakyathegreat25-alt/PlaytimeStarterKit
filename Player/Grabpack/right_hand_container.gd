@@ -134,7 +134,7 @@ func _process(delta):
 					look_at(next_point, Vector3.DOWN)
 					rotation.x += 3.0
 			if position.distance_to(hand_fake.global_position) < 0.2:
-				canon_right_animation.play("ShootOut")
+				canon_right_animation.play("ShootIn")
 				hand_motions_animation.play("retract_impact")
 				play_animation("retract")
 				sound_manager.cable_sound(true, false)
