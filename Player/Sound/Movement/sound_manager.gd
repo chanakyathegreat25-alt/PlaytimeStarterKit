@@ -63,13 +63,15 @@ func retract_hand():
 	sound_node = str("retract", randi_range(1, 3))
 	
 	get_node(sound_node).play()
-func switch_hand():
+func switch_hand(type: bool = false):
 	var sound_path: String = "none"
 	
-	sound_path = "switchhand"
+	if type: sound_path = "switchhand2"
+	else: sound_path = "switchhand"
 	
 	var sound_node: AudioStreamPlayer = get_node(sound_path)
 	sound_node.play()
+	if type: sound_node.seek(0.37)
 	#sound.seek(0.45)
 func cable_sound(hand: bool, play: bool):
 	var sound_node: String = "none"

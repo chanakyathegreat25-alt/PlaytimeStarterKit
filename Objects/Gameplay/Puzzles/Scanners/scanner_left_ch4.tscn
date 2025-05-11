@@ -347,9 +347,9 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1.07177),
 "update": 0,
-"values": [Color(0, 1, 0, 1)]
+"values": [Color(0.642578, 1, 0.616307, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8tkly"]
@@ -374,6 +374,7 @@ size = Vector3(0.45, 0.15, 0.15)
 size = Vector3(0.25, 0.3, 0.1)
 
 [node name="HandScannerLeft" type="StaticBody3D"]
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, 0, 0)
 script = ExtResource("1_w413f")
 
 [node name="SM_HandScanner_NoWire" type="MeshInstance3D" parent="."]
@@ -432,6 +433,11 @@ stream = ExtResource("8_vhg7k")
 
 [node name="Fail" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("10_4osnw")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0.32, 0.4)
+light_color = Color(0.372455, 0.567747, 1, 1)
+omni_range = 1.6
 
 [connection signal="grabbed" from="HandGrab" to="." method="_on_hand_grab_grabbed"]
 [connection signal="let_go" from="HandGrab" to="." method="_on_hand_grab_let_go"]

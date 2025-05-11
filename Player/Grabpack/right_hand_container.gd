@@ -139,7 +139,6 @@ func _process(delta):
 				play_animation("retract")
 				sound_manager.cable_sound(true, false)
 				sound_manager.retract_hand()
-				canon_right_animation.seek(0.1)
 				wire_container.end_wire()
 				hand_attached = true
 				hand_retracting = false
@@ -248,10 +247,16 @@ func switch_hand(type: int, new_hand: int):
 		
 		queue_hand(new_hand)
 		if type == 0:
+			switch_animation.speed_scale = 1.5
 			switch_animation.play("CollectSwitch")
 		elif type == 1:
 			if not grabpack.grabpack_switchable_hands: return
-			switch_animation.play("ScrewSwitch")
+			if player.hand_switch_animation == player.hand_anims.Ch4:
+				switch_animation.speed_scale = 2.2
+				switch_animation.play("ScrewSwitch")
+			else:
+				switch_animation.speed_scale = 1.5
+				switch_animation.play("ScrewSwitch_3")
 
 #HAND DATA
 func set_hand(hand_index: int):

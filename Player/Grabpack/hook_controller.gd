@@ -8,8 +8,8 @@ extends Node
 
 @export_group("Optional Settings")
 var swing_force: float = 3.0  # Strength of initial movement
-var gravity_scale: float = 1.0  # Multiplier for gravity while swinging
-var damping: float = 1.0  # Reduces infinite swinging over time
+var gravity_scale: float = 0.5  # Multiplier for gravity while swinging
+var damping: float = 0.999  # Reduces infinite swinging over time
 
 var is_hook_launched: bool = false
 var hook_target_pos: Vector3 = Vector3.ZERO
@@ -29,7 +29,7 @@ func _launch_hook(pos: Vector3) -> void:
 
 	# Set rope length to match initial distance
 	rope_length = (hook_target_pos - player_body.global_position).length()
-
+	rope_length -= 0.07
 	# Preserve lateral velocity while hooking, ensuring smoother initial swing
 	var to_hook = (hook_target_pos - player_body.global_position).normalized()
 	swing_velocity = player_body.velocity - to_hook * player_body.velocity.dot(to_hook)
@@ -66,4 +66,5 @@ func _handle_swinging(delta: float) -> void:
 	# Apply final velocity to player
 	if swing_velocity.length() < 0.1:
 		swing_velocity = Vector3.ZERO
+
 	player_body.velocity = swing_velocity

@@ -104,7 +104,6 @@ func _process(delta):
 				play_animation("retract")
 				sound_manager.retract_hand()
 				sound_manager.cable_sound(false, false)
-				canon_right_animation.seek(0.1)
 				wire_container.end_wire()
 				hand_attached = true
 				hand_retracting = false

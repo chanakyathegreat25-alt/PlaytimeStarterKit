@@ -74,6 +74,7 @@ skeleton = NodePath("")
 
 [node name="HandGrab" type="Area3D" parent="." node_paths=PackedStringArray("grab_marker")]
 script = ExtResource("4_14c70")
+stop_hand = false
 grab_animation = "sphere"
 grab_marker = NodePath("HandPositionMarker")
 metadata/_custom_type_script = "uid://d4joakp74nxnn"

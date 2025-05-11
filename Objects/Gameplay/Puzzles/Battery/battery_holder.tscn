@@ -11,7 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://dbpgwmp5oahy3" path="res://Objects/Gameplay/Puzzles/Battery/Sound/SW_Battery_LockIn_01.wav" id="9_p1xte"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bp6j4"]
-size = Vector3(0.85, 1.25, 0.7)
+size = Vector3(1, 1.5, 0.7)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6k68m"]
 transparency = 1
@@ -100,16 +100,17 @@ material = SubResource("StandardMaterial3D_kari3")
 size = Vector2(0.475, 0.475)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mixr2"]
-size = Vector3(0.4, 0.4, 0.2)
+size = Vector3(0.5, 0.5, 0.2)
 
 [node name="BatteryHolder" type="StaticBody3D"]
 script = ExtResource("1_c2y7u")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.625, -0.3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, -0.3)
 shape = SubResource("BoxShape3D_bp6j4")
 
 [node name="SM_BatteryFrame" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, 0, 0)
 mesh = SubResource("ArrayMesh_1btyg")
 skeleton = NodePath("")
 
@@ -118,15 +119,15 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.4
 mesh = SubResource("PlaneMesh_kari3")
 
 [node name="Battery" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.477159, -0.878817, 0, 0.878817, 0.477159, 0, 0.409844, 0.101616)
+transform = Transform3D(1, 0, 0, 0, 0.477159, -0.878817, 0, 0.878817, 0.477159, 0, 0.509844, 0.101616)
 
 [node name="BatteryNode" parent="." instance=ExtResource("5_ssdk3")]
-transform = Transform3D(1, 0, 0, 0, 0.477159, -0.878817, 0, 0.878817, 0.477159, 0, 0.409844, 0.101616)
+transform = Transform3D(1, 0, 0, 0, 0.477159, -0.878817, 0, 0.878817, 0.477159, 0, 0.509844, 0.101616)
 
 [node name="Area" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.425, 0.05)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.525, 0.05)
 shape = SubResource("BoxShape3D_mixr2")
 
 [node name="PowerUp" type="AudioStreamPlayer3D" parent="."]

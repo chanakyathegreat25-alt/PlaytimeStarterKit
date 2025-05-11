@@ -5,6 +5,7 @@ extends StaticBody3D
 @onready var text = $Text
 @onready var screen_animation = $ScreenAnimation
 @onready var screen = $SM_HandScanner_NoWire
+@onready var omni_light_3d: OmniLight3D = $OmniLight3D
 
 #Sounds:
 @onready var scanning = $Scanning
@@ -41,12 +42,15 @@ signal scan_incorrect
 func _ready():
 	text_material = text.get_surface_override_material(0)
 	screen_material = screen.get_surface_override_material(1)
+	screen_material.albedo_color = Color.BLACK
 	set_state(0)
 	if not powered:
 		dispower_scanner()
 
 func set_state(state: int):
+	screen_material.albedo_color = Color.BLACK
 	if state == 0:
+		omni_light_3d.light_color = scanner_color
 		text_animation.play("ready")
 		text_material.emission_texture = T_READY
 		text_material.emission = scanner_color
@@ -66,9 +70,12 @@ func set_state(state: int):
 		text_material.emission_texture = T_VERIFIED
 		screen_animation.play("verified")
 		screen_material.emission_texture = T_VERIFIED_TEXT
+		omni_light_3d.light_color = Color.GREEN
+		#screen_material.albedo_color = Color.LAWN_GREEN
 		scanning.stop()
 		scan_complete.play()
 	else:
+		omni_light_3d.light_color = Color.RED
 		text_animation.play("error")
 		text_material.emission_texture = T_ERROR
 		screen_animation.play("error")
@@ -104,14 +111,17 @@ func stop_scan(hand):
 		emit_signal("scan_cancelled")
 
 func power_scanner():
+	omni_light_3d.visible = true
 	powered = true
 	text_material.emission_texture = T_READY
 	text_material.emission_energy_multiplier = 1.0
 	screen_material.emission_texture = T_HAND_SCANNER
 	screen_material.emission_energy_multiplier = 1.0
+	omni_light_3d.light_color = scanner_color
 	screen_animation.play("ready")
 	text_animation.play("ready")
 func dispower_scanner():
+	omni_light_3d.visible = false
 	powered = false
 	screen_material.emission_energy_multiplier = 0.0
 	text_material.emission_energy_multiplier = 0.0

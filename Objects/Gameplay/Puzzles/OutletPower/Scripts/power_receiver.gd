@@ -6,6 +6,7 @@ extends StaticBody3D
 @onready var grabbed = $Grabbed
 
 var completed: bool = false
+var grabbedhand: bool = false
 
 signal powered
 
@@ -16,8 +17,10 @@ func grabbed_success():
 	light.visible = true
 	powered.emit()
 	grabbed.play()
-	Grabpack.left_retract()
-	Grabpack.right_retract()
+	if grabbedhand:
+		Grabpack.left_retract()
+	else:
+		Grabpack.right_retract()
 	completed = true
 func check_poles():
 	for i in power_poles.size():
@@ -26,6 +29,7 @@ func check_poles():
 			return false
 	return true
 
-func _on_hand_grab_grabbed(_hand):
+func _on_hand_grab_grabbed(hand):
+	grabbedhand = hand
 	if check_poles() and Grabpack.grabpack.wire_powered and not completed:
 		grabbed_success()

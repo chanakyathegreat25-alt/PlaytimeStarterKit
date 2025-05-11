@@ -13,6 +13,12 @@ extends CharacterBody3D
 #0 is no grabpack, and numbers 1 and 2 are grabpack versions 1 and 2.
 @export_range(0, 3) var starting_grabpack: int = 0
 @export var enabled_hands: Array [PackedScene] = [preload("res://Player/Grabpack/Hands/none.tscn")]
+@export_group("Animation")
+enum hand_anims {
+	Ch3,
+	Ch4
+}
+@export var hand_switch_animation: hand_anims = hand_anims.Ch4
 
 @export_category("Player")
 var speed: float = 10 # m/s
@@ -57,6 +63,7 @@ var crouch_speed = 2.5
 
 @onready var grabpack = $Grabpack
 @onready var animation_manager: Node = $Grabpack/GrabpackAnimationHandler
+@onready var crouch_animation: AnimationPlayer = $Grabpack/Pack/CrouchAnimation
 
 #Wire Constraints
 @onready var length_calculator: Node = $Grabpack/Pack/LengthCalculator
@@ -113,6 +120,10 @@ func _physics_process(delta: float) -> void:
 			crouchable = true
 	if crouch_cast.is_colliding():
 		crouchable = true
+	if (crouch_animation.is_playing() and crouch_animation.current_animation == "EnterCrouch"):
+		crouchable = true
+	if (crouch_animation.is_playing() and crouch_animation.current_animation == "ExitCrouch"):
+		crouchable = false
 	
 	if crouchable:
 		standing_collision.disabled = true

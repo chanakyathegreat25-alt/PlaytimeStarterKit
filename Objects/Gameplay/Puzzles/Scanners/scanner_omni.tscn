@@ -338,6 +338,11 @@ stream = ExtResource("9_nkp5l")
 [node name="Fail" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("10_83pjn")
 
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0.32, 0.4)
+light_color = Color(1, 0, 0, 1)
+omni_range = 1.6
+
 [connection signal="grabbed" from="HandGrab" to="." method="_on_hand_grab_grabbed"]
 [connection signal="let_go" from="HandGrab" to="." method="_on_hand_grab_let_go"]
 [connection signal="timeout" from="Timer" to="." method="scan_finished"]

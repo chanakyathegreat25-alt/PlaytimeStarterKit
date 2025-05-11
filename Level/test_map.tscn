@@ -1,4 +1,4 @@
-[gd_scene load_steps=108 format=4 uid="uid://bifmmultpyw0x"]
+[gd_scene load_steps=109 format=4 uid="uid://bifmmultpyw0x"]
 
 [ext_resource type="Script" uid="uid://b7a5hf3ljmyj5" path="res://Level/Scripts/test_map.gd" id="1_d6ggl"]
 [ext_resource type="Material" uid="uid://dl7krlcnai0qx" path="res://Level/Assets/Materials/ProtoDark.tres" id="1_teiv4"]
@@ -74,6 +74,7 @@
 [ext_resource type="Script" uid="uid://b1ny4m5gkjskn" path="res://Objects/Environment/Scripts/flicker_light.gd" id="54_lxs5s"]
 [ext_resource type="AudioStream" uid="uid://bw0dntgx8r73d" path="res://Interface/Sound/SW_NewObjective.wav" id="55_36i0g"]
 [ext_resource type="PackedScene" uid="uid://dd7igduoonl0g" path="res://Player/Grabpack/Hands/omni.tscn" id="56_lxs5s"]
+[ext_resource type="PackedScene" uid="uid://cmy5x06xqde83" path="res://Objects/Gameplay/HandFunctions/Grabpack/grabpack_one_item_mesh.tscn" id="66_uu0ey"]
 [ext_resource type="Script" uid="uid://chr8oaaulm2ye" path="res://Objects/Gameplay/Mobibles/mobible_spawner_3d.gd" id="69_qaf0a"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3mqk5"]
@@ -910,7 +911,7 @@ BUTTON"
 [node name="Puzzles" type="Node" parent="."]
 
 [node name="BatteryHolder" parent="Puzzles" instance=ExtResource("2_3jmk0")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.1, 1.7, 0)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.1, 2.1, 0)
 allow_battery_removal = true
 starts_with_battery = true
 
@@ -919,7 +920,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.1, 
 allow_battery_removal = true
 
 [node name="BatteryHolder3" parent="Puzzles" instance=ExtResource("2_3jmk0")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 11.3, 3.2, 14.4)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 11.3, 2.8, 14.2)
 allow_battery_removal = true
 powers_puzzle = true
 puzzle_node = NodePath("../HandScannerLeft")
@@ -985,13 +986,14 @@ transform = Transform3D(0.00582286, -1.27327e-06, 0.799979, -1.73266e-06, 0.8, 1
 
 [node name="GrabHandle" parent="Puzzles" instance=ExtResource("9_8tp42")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 18.3, 6.1, 9.5)
+auto_swing_release = true
 
 [node name="GrabHandle2" parent="Puzzles" instance=ExtResource("9_8tp42")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.0499997, 7.6, -15.65)
 handle_behaviour = 1
 
 [node name="HandScannerLeft" parent="Puzzles" instance=ExtResource("11_8jck2")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 11.2, 3.3, 16.6)
+transform = Transform3D(-5.46392e-08, 0, 1.25, 0, 1.25, 0, -1.25, 0, -5.46392e-08, 11.2, 3.5, 16.7)
 powered = false
 
 [node name="PuzzleGateLinker" type="Node" parent="Puzzles/HandScannerLeft" node_paths=PackedStringArray("connected_door")]
@@ -1003,12 +1005,12 @@ use_disable_signal = false
 metadata/_custom_type_script = "uid://ckdvdouxaw4it"
 
 [node name="HandScannerRight" parent="Puzzles" instance=ExtResource("12_oxf1b")]
-transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, -17.4, 4.1, 0.799999)
+transform = Transform3D(1.25, 0, 1.33226e-14, 0, 1.25, 0, -1.33226e-14, 0, 1.25, -17.4, 4.1, 0.799999)
 scanner_color = Color(1, 0, 0, 1)
 
 [node name="HandScannerRight2" parent="Puzzles" instance=ExtResource("12_oxf1b")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.8, 1.5, 3.4)
-scan_time = 10.0
+transform = Transform3D(-1.25, 0, -1.88745e-07, 0, 1.25, 0, 1.88745e-07, 0, -1.25, -1.8, 1.5, 3.4)
+scan_time = 3.0
 scanner_color = Color(1, 0, 0, 1)
 
 [node name="PuzzleGateLinker" type="Node" parent="Puzzles/HandScannerRight2" node_paths=PackedStringArray("connected_gate")]
@@ -1018,6 +1020,11 @@ puzzle = NodePath("..")
 enable_signal = "scan_success"
 use_disable_signal = false
 metadata/_custom_type_script = "uid://ckdvdouxaw4it"
+
+[node name="HandScannerRight3" parent="Puzzles" instance=ExtResource("12_oxf1b")]
+transform = Transform3D(-1.25, 0, -1.88745e-07, 0, 1.25, 0, 1.88745e-07, 0, -1.25, -6.6, 1.5, 12.2)
+scan_time = 3.0
+scanner_color = Color(1, 0, 0, 1)
 
 [node name="PuzzleGateLinker3" type="Node" parent="Puzzles" node_paths=PackedStringArray("connected_gate")]
 script = ExtResource("4_3mqk5")
@@ -1827,6 +1834,11 @@ grabpack_number = 3
 
 [node name="GrabpackThreeItemMesh" parent="Items/GrabpackItem" instance=ExtResource("53_lxs5s")]
 
+[node name="GrabpackItem2" parent="Items" instance=ExtResource("48_u8ypr")]
+transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 1.84645, 0.105652, -3.68763)
+
+[node name="GrabpackOneItemMesh" parent="Items/GrabpackItem2" instance=ExtResource("66_uu0ey")]
+
 [node name="CardboardCutout" type="Node3D" parent="Items"]
 transform = Transform3D(-0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, -0.965926, 7, 0.103271, -7.8)
 script = ExtResource("54_flyvg")
@@ -1855,7 +1867,7 @@ light_color = Color(1, 1, 0.796078, 1)
 [node name="OmniLight3D4" type="OmniLight3D" parent="Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.4958, 3.8, 15.6)
 light_color = Color(1, 1, 0.796078, 1)
-light_energy = 0.867668
+light_energy = 1.90664
 omni_range = 5.7
 script = ExtResource("54_lxs5s")
 noise = SubResource("NoiseTexture2D_36i0g")
@@ -1864,7 +1876,7 @@ max_energy = 6.0
 [node name="OmniLight3D6" type="OmniLight3D" parent="Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.2042, 2.7, -16.3)
 light_color = Color(1, 1, 0.796078, 1)
-light_energy = 0.867668
+light_energy = 1.90664
 omni_range = 5.7
 script = ExtResource("54_lxs5s")
 noise = SubResource("NoiseTexture2D_36i0g")
@@ -1873,7 +1885,7 @@ max_energy = 6.0
 [node name="OmniLight3D7" type="OmniLight3D" parent="Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5042, 2.7, -16.3)
 light_color = Color(1, 1, 0.796078, 1)
-light_energy = 0.867668
+light_energy = 1.90664
 omni_range = 5.7
 script = ExtResource("54_lxs5s")
 noise = SubResource("NoiseTexture2D_36i0g")
@@ -1882,7 +1894,7 @@ max_energy = 6.0
 [node name="OmniLight3D8" type="OmniLight3D" parent="Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.7042, 2.7, -16.3)
 light_color = Color(1, 1, 0.796078, 1)
-light_energy = 0.867668
+light_energy = 1.90664
 omni_range = 5.7
 script = ExtResource("54_lxs5s")
 noise = SubResource("NoiseTexture2D_36i0g")
@@ -1941,6 +1953,7 @@ transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 18.238
 
 [node name="Monster" type="Node" parent="."]
 
+[connection signal="scan_success" from="Puzzles/HandScannerRight3" to="." method="_on_hand_scanner_right_3_scan_success"]
 [connection signal="levers_down" from="Puzzles/LeverLinker" to="." method="_on_lever_linker_levers_down"]
 [connection signal="levers_up" from="Puzzles/LeverLinker" to="." method="_on_lever_linker_levers_up"]
 [connection signal="pressed" from="Puzzles/PowerDirectorButton" to="." method="_on_power_director_button_pressed"]

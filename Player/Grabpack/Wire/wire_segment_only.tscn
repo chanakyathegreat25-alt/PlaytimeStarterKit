@@ -11,9 +11,8 @@ top_radius = 0.03
 bottom_radius = 0.03
 height = 1.0
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_ac2ak"]
-height = 1.0
-radius = 0.0664063
+[sub_resource type="BoxShape3D" id="BoxShape3D_g6y7j"]
+size = Vector3(0.2, 1.2, 0.2)
 
 [node name="WireSegmentOnly" type="Area3D" groups=["WireSegment"]]
 process_priority = 100
@@ -25,7 +24,7 @@ mesh = SubResource("CylinderMesh_ac2ak")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, -0.5)
-shape = SubResource("CylinderShape3D_ac2ak")
+shape = SubResource("BoxShape3D_g6y7j")
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
 target_position = Vector3(0, 0, -1)

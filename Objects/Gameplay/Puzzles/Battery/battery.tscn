@@ -55,10 +55,10 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_p2q63")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8g1su"]
-size = Vector3(0.4, 0.65, 0.4)
+size = Vector3(0.5, 0.8, 0.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_palx8"]
-size = Vector3(0.45, 0.7, 0.45)
+size = Vector3(0.6, 0.9, 0.6)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bbbkq"]
 size = Vector3(0.45, 0.7, 0.45)
@@ -67,19 +67,19 @@ size = Vector3(0.45, 0.7, 0.45)
 script = ExtResource("1_fwmpr")
 
 [node name="SM_Battery" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.883357, -0.468701, 0, 0.468701, 0.883357, 0, 0.0785136, 0.00734931)
+transform = Transform3D(1.25, 0, 0, 0, 1.1042, -0.585876, 0, 0.585876, 1.1042, 0, 0.0785136, 0.00734931)
 mesh = SubResource("ArrayMesh_fjsgh")
 skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.883357, -0.468701, 0, 0.468701, 0.883357, 0, -0.274829, -0.180131)
+transform = Transform3D(1, 0, 0, 0, 0.883357, -0.468701, 0, 0.468701, 0.883357, 0, -0.341081, -0.215284)
 shape = SubResource("BoxShape3D_8g1su")
 
 [node name="Battery" type="Area3D" parent="." groups=["Battery"]]
 transform = Transform3D(1, 0, 0, 0, 0.883357, -0.468701, 0, 0.468701, 0.883357, 0, 0.0343451, -0.0160858)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Battery"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.35, 0)
+transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 0, -0.45, 5.40167e-08)
 shape = SubResource("BoxShape3D_palx8")
 
 [node name="HandGrab" type="Area3D" parent="." node_paths=PackedStringArray("grab_marker")]

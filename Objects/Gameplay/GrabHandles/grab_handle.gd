@@ -6,6 +6,7 @@ enum pull_type {
 }
 
 @export var handle_behaviour: pull_type = pull_type.Swing
+@export var auto_swing_release: bool = false
 
 var grabbed: bool = false
 var physics: bool = false

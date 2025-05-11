@@ -30,7 +30,7 @@ func _unhandled_input(_event: InputEvent) -> void:
 		else:
 			enter_watch()
 func exit_watch():
-	item_animation.play_backwards("ExitWatch")
+	item_animation.play("ExitWatch")
 	animation_player.play_backwards("enable")
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	Grabpack.set_movable(true)
