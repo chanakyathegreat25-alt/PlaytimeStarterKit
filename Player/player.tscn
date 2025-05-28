@@ -1,4 +1,4 @@
-[gd_scene load_steps=199 format=4 uid="uid://dkty77argxwyc"]
+[gd_scene load_steps=189 format=4 uid="uid://dkty77argxwyc"]
 
 [ext_resource type="Texture2D" uid="uid://cl7alwgeec33w" path="res://Player/Grabpack/Models/grabpack_chapter_3_-_poppy_playtime_0.png" id="1_00tjw"]
 [ext_resource type="Script" uid="uid://dkgdss1i1qci7" path="res://Player/player.gd" id="1_od3ui"]
@@ -21,25 +21,15 @@
 [ext_resource type="Texture2D" uid="uid://cyjvafqliagnq" path="res://Player/Grabpack/Models/Hands/T_OmniHand_ORM.png" id="12_11wp0"]
 [ext_resource type="Texture2D" uid="uid://cjmaoqjquc6wo" path="res://Player/Grabpack/Models/Hands/T_BlueHand_ORM.png" id="12_wvbyc"]
 [ext_resource type="Script" uid="uid://ddjm4sk2t0r6q" path="res://Player/Sound/Movement/sound_manager.gd" id="15_c6x0f"]
-[ext_resource type="AudioStream" uid="uid://c0e0vrlq55o2i" path="res://Player/Sound/Movement/Metal/land1.wav" id="16_jp1hh"]
-[ext_resource type="AudioStream" uid="uid://cy0dxl627gl7b" path="res://Player/Sound/Movement/Jump/SW_Player_Default_Jump_01.wav" id="19_f4lon"]
-[ext_resource type="AudioStream" uid="uid://cpwj8nk135cd0" path="res://Player/Sound/Movement/Jump/SW_Player_Default_Jump_02.wav" id="20_8ynux"]
-[ext_resource type="AudioStream" uid="uid://cb5ohcgv5683k" path="res://Player/Sound/Movement/Jump/SW_Player_Default_Jump_03.wav" id="21_d30e8"]
-[ext_resource type="AudioStream" uid="uid://cjutoswst21u3" path="res://Player/Sound/Movement/Crouch/SW_Player_Crouch_03.wav" id="22_6pogt"]
-[ext_resource type="AudioStream" uid="uid://bv6rjqmkfovbq" path="res://Player/Sound/Movement/Crouch/SW_Player_Crouch_02.wav" id="23_ie76m"]
+[ext_resource type="AudioStream" uid="uid://dggc26rmp17u" path="res://Player/Sound/Movement/Crouch/SW_SFX_Player_Crouch_01.wav" id="23_pqfba"]
 [ext_resource type="Script" uid="uid://c68txpntyq12e" path="res://Player/Sound/Movement/stepcast.gd" id="24_8mwp6"]
-[ext_resource type="AudioStream" uid="uid://do66nn0qet470" path="res://Player/Sound/Movement/Metal/walk1.wav" id="24_dy65m"]
 [ext_resource type="AudioStream" uid="uid://c1l3dfie00bl0" path="res://Player/Sound/Grabpack/SW_Grabpack_HandLaunch_01.wav" id="24_jp1hh"]
+[ext_resource type="AudioStream" uid="uid://bl8o80xw8hp6o" path="res://Player/Sound/Movement/Crouch/SW_SFX_Player_UnCrouch_01.wav" id="24_lgaa7"]
 [ext_resource type="AudioStream" uid="uid://crhgoxu6us3de" path="res://Player/Sound/Grabpack/SW_Grabpack_HandLaunch_02.wav" id="25_qs4pp"]
 [ext_resource type="AudioStream" uid="uid://c0l5cjfykxf6l" path="res://Player/Sound/Grabpack/SW_Grabpack_HandLaunch_03.wav" id="26_iyprq"]
 [ext_resource type="AudioStream" uid="uid://cqftuiatom5ct" path="res://Player/Sound/Grabpack/SW_Grabpack_HandRetract_01.wav" id="27_f4lon"]
 [ext_resource type="AudioStream" uid="uid://bexmsh6hmw8c0" path="res://Player/Sound/Grabpack/SW_Grabpack_HandRetract_02.wav" id="28_8ynux"]
 [ext_resource type="AudioStream" uid="uid://cuomj2rfod7lc" path="res://Player/Sound/Grabpack/SW_Grabpack_HandRetract_03.wav" id="29_d30e8"]
-[ext_resource type="AudioStream" uid="uid://btnuqpk4s6kpe" path="res://Player/Sound/Movement/Metal/run1.wav" id="30_wvbyc"]
-[ext_resource type="AudioStream" uid="uid://ddv2r81gj4w5h" path="res://Player/Sound/Grabpack/SW_Grabpack_RopeSwing_01.wav" id="31_ie76m"]
-[ext_resource type="AudioStream" uid="uid://b673wed8myb10" path="res://Player/Sound/Grabpack/SW_Grabpack_RopeSwing_02.wav" id="32_dy65m"]
-[ext_resource type="AudioStream" uid="uid://cl2agra71u3b0" path="res://Player/Sound/Grabpack/SW_Grabpack_RopeSwing_03.wav" id="33_maysp"]
-[ext_resource type="AudioStream" uid="uid://bo8c7msse6qwx" path="res://Player/Sound/Grabpack/SW_Grabpack_RopeSwing_04.wav" id="34_1l10g"]
 [ext_resource type="AudioStream" uid="uid://bisw54rf34p0" path="res://Player/Sound/Grabpack/SW_Grabpack_HandLaunch_Cable_LOOP.wav" id="35_6rl0i"]
 [ext_resource type="Script" uid="uid://pllra0rdye58" path="res://Interface/Scripts/ui_player.gd" id="37_f4lon"]
 [ext_resource type="Shader" uid="uid://oy7l6v7d1mw3" path="res://Interface/Shader/crosshair.gdshader" id="37_qs4pp"]
@@ -52,7 +42,6 @@
 [ext_resource type="AudioStream" uid="uid://bhaf70sbwjn68" path="res://Player/Sound/Grabpack/SW_Grabpack_SwitchHands_01.wav" id="44_7x5p2"]
 [ext_resource type="AudioStream" uid="uid://c8blvg2tgohf" path="res://Player/Sound/Grabpack/hand_switch_sound.wav" id="44_lgaa7"]
 [ext_resource type="AudioStream" uid="uid://c7rdq8ypp0lks" path="res://Player/Sound/Inventory/item_grab_v3.wav" id="45_1kmt7"]
-[ext_resource type="AudioStream" uid="uid://je6p8sf07015" path="res://Player/Sound/Grabpack/SW_SFX_Inventory_SwitchTabs_03.wav" id="46_lgaa7"]
 [ext_resource type="FontFile" uid="uid://b15pnbjgpussj" path="res://Interface/Font/NotoSansJP-VariableFont_wght.ttf" id="47_6rl0i"]
 [ext_resource type="AudioStream" uid="uid://c3ihq6e51p4xw" path="res://Player/Sound/Grabpack/SW_Jingle_Grabpack2_Obtain.wav" id="48_qns6m"]
 [ext_resource type="AudioStream" uid="uid://l5q40iypyf78" path="res://Player/Sound/Grabpack/SFX puzzle complete sfx.mp3" id="49_fatyj"]
@@ -61,6 +50,7 @@
 [ext_resource type="AudioStream" uid="uid://d3tt8btvtapd3" path="res://Interface/Sound/SW_TooltipIndicator.wav" id="50_gvnt1"]
 [ext_resource type="Texture2D" uid="uid://cg8fpx4l4o3mk" path="res://Interface/Loading/T_SavingIcon.png" id="51_f8nak"]
 [ext_resource type="FontFile" uid="uid://dp3oq0ou16joq" path="res://Interface/Font/VCR_OSD_MONO_1.001.ttf" id="51_gvnt1"]
+[ext_resource type="AudioStream" uid="uid://e7up2m15kl13" path="res://Player/Grabpack/Flashlight/SW_SFX_Grabpack_SlackTension_01.wav" id="51_lhliw"]
 [ext_resource type="Theme" uid="uid://dk0tum6xf51mt" path="res://Interface/Inventory/Themes/inventory_tab_button.tres" id="53_ntwt4"]
 [ext_resource type="Script" uid="uid://dpqnejbait8kc" path="res://Interface/Inventory/Scripts/inventory_menu.gd" id="53_yxu6j"]
 [ext_resource type="Texture2D" uid="uid://dgnbram6dypqw" path="res://Interface/Inventory/Texture/T_InventoryBG.png" id="54_68syb"]
@@ -2399,10 +2389,10 @@ tracks/0/path = NodePath("LayerWalk/ArmRight/LayerIdle/LayerWalk/LayerCrouch/Lay
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.466667, 0.6, 0.7, 0.833333, 1.06667, 1.1, 1.2, 1.26667, 1.36667, 1.46667, 1.73333, 1.9, 2.06667),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.466667, 0.6, 0.7, 0.833333, 0.9, 1, 1.03333, 1.13333, 1.2, 1.3, 1.4, 1.66666, 1.83333, 2.06666),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(-0.000488997, 0.000229001, -0.000306688), Vector3(-0.0107048, 0.00639248, 0.014611), Vector3(-0.022945, 0.00785863, 0.0364716), Vector3(-0.031, 0.007, 0.057), Vector3(-0.0326413, -0.00557005, 0.0682183), Vector3(-0.0328432, -0.0169023, 0.0745301), Vector3(-0.0327496, -0.0461184, 0.0861674), Vector3(-0.0324855, -0.0569271, 0.0865063), Vector3(-0.0322887, -0.0602256, 0.0862376), Vector3(-0.0322887, -0.0602256, 0.0862376), Vector3(-0.0322887, -0.0602256, 0.0862376), Vector3(-0.0157884, -0.0195416, 0.0407747), Vector3(-0.00326005, 0.000497103, 0.0071402), Vector3(-0.000663206, 0.00926363, -7.27698e-05), Vector3(-0.000647128, 0.00858676, -0.000140227), Vector3(0, -0.007, 0), Vector3(-0.000504136, 0.000222445, -0.000245646), Vector3(-0.000489026, 0.000231028, -0.000280708)]
+"values": [Vector3(-0.000488997, 0.000229001, -0.000306688), Vector3(-0.0107048, 0.00639248, 0.014611), Vector3(-0.022945, 0.00785863, 0.0364716), Vector3(-0.031, 0.007, 0.057), Vector3(-0.0326413, -0.00557005, 0.0682183), Vector3(-0.0328432, -0.0169023, 0.0745301), Vector3(-0.0327496, -0.0461184, 0.0861674), Vector3(-0.0324855, -0.0569271, 0.0865063), Vector3(-0.0322887, -0.0602256, 0.0862376), Vector3(-0.032, -0.065, 0.086), Vector3(-0.0322887, -0.0602256, 0.0862376), Vector3(-0.0322887, -0.0602256, 0.0862376), Vector3(-0.0157884, -0.0195416, 0.0407747), Vector3(-0.00326005, 0.000497103, 0.0071402), Vector3(-0.000663206, 0.00926363, -7.27698e-05), Vector3(-0.000647128, 0.00858676, -0.000140227), Vector3(0, -0.006, 0), Vector3(-0.000504136, 0.000222445, -0.000245646), Vector3(-0.000489026, 0.000231028, -0.000280708)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -2411,10 +2401,10 @@ tracks/1/path = NodePath("LayerWalk/ArmRight/LayerIdle/LayerWalk/LayerCrouch/Lay
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.466667, 0.6, 0.733333, 0.833333, 1.06667, 1.1, 1.2, 1.26667, 1.36667, 1.46667, 1.73333, 1.9, 2.06667),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.466667, 0.6, 0.733333, 0.833333, 1, 1.03333, 1.13333, 1.2, 1.3, 1.4, 1.66666, 1.83333, 2.06666),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(-0.00846105, 6.40927e-05, 0.0139762), Vector3(-0.116093, -0.071338, -0.0569403), Vector3(-0.383972, -0.120428, -0.10472), Vector3(0.0698132, -0.0942478, -0.10821), Vector3(1.67552, 0.394444, 0.528835), Vector3(1.6057, 0.394444, 0.523599), Vector3(1.55334, 0.287979, 0.523599), Vector3(1.55334, 0.287979, 0.523599), Vector3(1.55334, 0.287979, 0.523599), Vector3(0.761185, -0.00477397, -0.0222736), Vector3(-0.0240667, 0.00182439, 0.00865226), Vector3(-0.393323, -0.00561479, 0.0151312), Vector3(-0.422405, -0.00609715, 0.0153226), Vector3(0.0593412, 0.00174533, 0.0139626), Vector3(-0.00872665, 0, 0.0139626), Vector3(-0.00872665, 0, 0.0139626)]
+"values": [Vector3(-0.00846105, 6.40927e-05, 0.0139762), Vector3(-0.116093, -0.071338, -0.0569403), Vector3(-0.383972, -0.120428, -0.10472), Vector3(0.0698132, -0.0942478, -0.10821), Vector3(1.51844, 0.394444, 0.528835), Vector3(1.6057, 0.394444, 0.523599), Vector3(1.55334, 0.287979, 0.523599), Vector3(1.55334, 0.287979, 0.523599), Vector3(1.55334, 0.287979, 0.523599), Vector3(0.761185, -0.00477397, -0.0222736), Vector3(-0.0240667, 0.00182439, 0.00865226), Vector3(-0.393323, -0.00561479, 0.0151312), Vector3(-0.422405, -0.00609715, 0.0153226), Vector3(0.0244346, 0.00174533, 0.0139626), Vector3(-0.00872665, 0, 0.0139626), Vector3(-0.00872665, 0, 0.0139626)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -2423,10 +2413,10 @@ tracks/2/path = NodePath("LayerWalk/ArmRight/LayerIdle/LayerWalk/LayerCrouch/Lay
 tracks/2/interp = 2
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.433333, 0.6, 1, 1.23333, 1.5, 1.73333, 2.03333),
+"times": PackedFloat32Array(0, 0.433333, 0.466667, 1, 1.1, 1.46667, 1.73333, 2.06667),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 3.14159, 0), Vector3(0, 3.14159, 0), Vector3(0, 3.14159, 0), Vector3(0, 3.14159, 1.5708), Vector3(0, 3.14159, 1.74533), Vector3(0, 3.14159, -0.0523599), Vector3(0, 3.14159, 0.0349066), Vector3(0, 3.14159, 0)]
+"values": [Vector3(0, 3.14159, 0), Vector3(0, 3.14159, 0), Vector3(0, 3.14159, 0), Vector3(0, 3.14159, 1.5708), Vector3(0, 3.14159, 1.5708), Vector3(0, 3.14159, -0.0610865), Vector3(0, 3.14159, 0.0523599), Vector3(0, 3.14159, 0)]
 }
 tracks/3/type = "method"
 tracks/3/imported = false
@@ -4418,8 +4408,8 @@ bones/6/name = "JNT_R_Grabpack_Gun_05"
 bones/6/parent = 5
 bones/6/rest = Transform3D(1, 0, 0, 0, 1, -7.45058e-07, 0, 7.45058e-07, 1, -0.13434, -0.080193, 0.132049)
 bones/6/enabled = true
-bones/6/position = Vector3(-0.132708, -0.0826764, 0.131691)
-bones/6/rotation = Quaternion(-0.00228077, -5.70644e-05, -7.74241e-06, 0.999997)
+bones/6/position = Vector3(-0.132183, -0.0833721, 0.131952)
+bones/6/rotation = Quaternion(0.0042615, -6.28515e-05, -0.0069881, 0.999967)
 bones/6/scale = Vector3(0.999999, 0.999999, 1)
 bones/7/name = "JNT_R_Grabpack_Trigger_06"
 bones/7/parent = 6
@@ -4945,10 +4935,10 @@ use_external_skeleton = true
 external_skeleton = NodePath("")
 
 [node name="TubeLeft" type="Marker3D" parent="Grabpack/Pack/LayerWalk"]
-transform = Transform3D(-0.999609, 0.0279435, 5.08969e-07, 0.0279435, 0.999609, 4.26777e-05, 6.83799e-07, 4.26753e-05, -1, 0.694368, -0.568937, 0.113527)
+transform = Transform3D(-0.999609, 0.0279435, 5.08969e-07, 0.0279435, 0.999609, 4.26777e-05, 6.838e-07, 4.26753e-05, -1, 0.694368, -0.712045, 0.18445)
 
 [node name="RightTube" type="Marker3D" parent="Grabpack/Pack/LayerWalk"]
-transform = Transform3D(-0.999609, 0.0279435, 5.08969e-07, 0.0279435, 0.999609, 4.26777e-05, 6.83799e-07, 4.26753e-05, -1, -0.70514, -0.531813, 0.121528)
+transform = Transform3D(-0.999609, 0.0279435, 5.08969e-07, 0.0279435, 0.999609, 4.26777e-05, 6.838e-07, 4.26753e-05, -1, -0.70514, -0.674921, 0.192451)
 
 [node name="Camera3D" type="Camera3D" parent="Grabpack/Pack/LayerWalk"]
 transform = Transform3D(-2.5, 0, -2.18557e-07, 0, 2.5, 0, 2.18557e-07, 0, -2.5, 0, 0, -0.05)
@@ -4996,21 +4986,21 @@ libraries = {
 &"": SubResource("AnimationLibrary_gpjlu")
 }
 playback_default_blend_time = 0.1
-speed_scale = 1.5
+speed_scale = 2.2
 
 [node name="CanonLeftAnimation" type="AnimationPlayer" parent="Grabpack/Pack"]
 libraries = {
 &"": SubResource("AnimationLibrary_755ss")
 }
 playback_default_blend_time = 0.1
-speed_scale = 2.0
+speed_scale = 2.5
 
 [node name="CanonRightAnimation" type="AnimationPlayer" parent="Grabpack/Pack"]
 libraries = {
 &"": SubResource("AnimationLibrary_j2n6q")
 }
 playback_default_blend_time = 0.1
-speed_scale = 2.0
+speed_scale = 2.5
 
 [node name="LeftHandContainer" type="Node3D" parent="Grabpack/Pack" groups=["LeftHand"]]
 process_priority = 100
@@ -5427,65 +5417,11 @@ script = ExtResource("24_8mwp6")
 [node name="SoundManager" type="Node" parent="." groups=["SoundManager"]]
 script = ExtResource("15_c6x0f")
 
-[node name="land1" type="AudioStreamPlayer" parent="SoundManager"]
-stream = ExtResource("16_jp1hh")
-
-[node name="land2" type="AudioStreamPlayer" parent="SoundManager"]
-stream = ExtResource("16_jp1hh")
-
-[node name="land3" type="AudioStreamPlayer" parent="SoundManager"]
-stream = ExtResource("16_jp1hh")
-
-[node name="walk1" type="AudioStreamPlayer" parent="SoundManager"]
-stream = ExtResource("24_dy65m")
-
-[node name="walk2" type="AudioStreamPlayer" parent="SoundManager"]
-stream = ExtResource("24_dy65m")
-
-[node name="walk3" type="AudioStreamPlayer" parent="SoundManager"]
-stream = ExtResource("24_dy65m")
-
-[node name="walk4" type="AudioStreamPlayer" parent="SoundManager"]
-stream = ExtResource("24_dy65m")
-
-[node name="walk5" type="AudioStreamPlayer" parent="SoundManager"]
-stream = ExtResource("24_dy65m")
-
-[node name="walk6" type="AudioStreamPlayer" parent="SoundManager"]
-stream = ExtResource("24_dy65m")
-
-[node name="run1" type="AudioStreamPlayer" parent="SoundManager"]
-stream = ExtResource("30_wvbyc")
-
-[node name="run2" type="AudioStreamPlayer" parent="SoundManager"]
-stream = ExtResource("30_wvbyc")
-
-[node name="run3" type="AudioStreamPlayer" parent="SoundManager"]
-stream = ExtResource("30_wvbyc")
-
-[node name="run4" type="AudioStreamPlayer" parent="SoundManager"]
-stream = ExtResource("30_wvbyc")
-
-[node name="run5" type="AudioStreamPlayer" parent="SoundManager"]
-stream = ExtResource("30_wvbyc")
-
-[node name="run6" type="AudioStreamPlayer" parent="SoundManager"]
-stream = ExtResource("30_wvbyc")
-
-[node name="jump1" type="AudioStreamPlayer" parent="SoundManager"]
-stream = ExtResource("19_f4lon")
-
-[node name="jump2" type="AudioStreamPlayer" parent="SoundManager"]
-stream = ExtResource("20_8ynux")
-
-[node name="jump3" type="AudioStreamPlayer" parent="SoundManager"]
-stream = ExtResource("21_d30e8")
-
 [node name="crouch1" type="AudioStreamPlayer" parent="SoundManager"]
-stream = ExtResource("23_ie76m")
+stream = ExtResource("23_pqfba")
 
 [node name="crouch2" type="AudioStreamPlayer" parent="SoundManager"]
-stream = ExtResource("22_6pogt")
+stream = ExtResource("24_lgaa7")
 
 [node name="launch1" type="AudioStreamPlayer" parent="SoundManager"]
 stream = ExtResource("24_jp1hh")
@@ -5507,18 +5443,6 @@ stream = ExtResource("29_d30e8")
 
 [node name="switch_hand" type="AudioStreamPlayer" parent="SoundManager"]
 stream = ExtResource("44_7x5p2")
-
-[node name="swing1" type="AudioStreamPlayer" parent="SoundManager"]
-stream = ExtResource("31_ie76m")
-
-[node name="swing2" type="AudioStreamPlayer" parent="SoundManager"]
-stream = ExtResource("32_dy65m")
-
-[node name="swing3" type="AudioStreamPlayer" parent="SoundManager"]
-stream = ExtResource("33_maysp")
-
-[node name="swing4" type="AudioStreamPlayer" parent="SoundManager"]
-stream = ExtResource("34_1l10g")
 
 [node name="cableloopleft" type="AudioStreamPlayer" parent="SoundManager"]
 stream = ExtResource("35_6rl0i")
@@ -5551,7 +5475,7 @@ stream = ExtResource("49_lhliw")
 stream = ExtResource("45_1kmt7")
 
 [node name="flashlight" type="AudioStreamPlayer" parent="SoundManager"]
-stream = ExtResource("46_lgaa7")
+stream = ExtResource("51_lhliw")
 
 [node name="puzzlejingle" type="AudioStreamPlayer" parent="SoundManager"]
 stream = ExtResource("48_qns6m")

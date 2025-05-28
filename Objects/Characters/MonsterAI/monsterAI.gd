@@ -32,6 +32,7 @@ enum path_follow_state {
 @export_category("State Settings")
 @export var default_state: states = states.disabled
 @export var kill_distance: float = 3.0
+@export var death_screen_after_jumpscare: bool = true
 ##Plays when state switches from disabled to something else.
 @export var spawn_animation: bool = false
 @export_subgroup("Roaming")
@@ -67,6 +68,8 @@ enum path_follow_state {
 @export var idle_time: Vector2 = Vector2(2.0, 4.0)
 
 signal caught_player
+@warning_ignore("unused_signal")
+signal jumpscare_finished
 
 var current_state: states = states.disabled
 var current_action: actions = actions.walk
@@ -81,6 +84,7 @@ var on_path: bool = false
 
 func _ready() -> void:
 	set_state(default_state)
+	await get_tree().create_timer(0.05).timeout
 	Grabpack.player.sound_manager.connect("sound",Callable(heard_sound))
 	if head_look_at:
 		look_at_modifier.target_node = look_at_modifier.get_path_to(Grabpack.player.camera)

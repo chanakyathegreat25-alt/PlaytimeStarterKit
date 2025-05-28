@@ -9,7 +9,7 @@ var is_walking = false
 var is_falling = false
 var is_crouching = false
 var is_sidel_animation = false
-var tilt_lerp: float = 0.2
+var tilt_lerp: float = 0.3
 var start_tilt_lerp: float = 3.5
 @onready var idle_animation = $"../Pack/IdleAnimation"
 @onready var walk_animation = $"../Pack/WalkAnimation"
@@ -64,7 +64,7 @@ func handle_grabpack_animation(delta):
 				walk_animation.play("StopWalking")
 				walk_animation.queue("NotWalking")
 				walk_animation.seek(0)
-				walk_animation.speed_scale = 1.5
+				walk_animation.speed_scale = 1.7
 				idle_animation.play("idle")
 				is_walking = false
 				is_sidel_animation = false

@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://bmh4rmptpek24" path="res://Objects/Gameplay/Extra/Texture/E.png" id="11_lrq7d"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hk3gb"]
+resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("8_rvw23")
 shader_parameter/base_texture = ExtResource("2_73r68")
@@ -27,6 +28,7 @@ shader_parameter/orm_texture = ExtResource("6_l6ge0")
 shader_parameter/alpha_threshold = 0.5
 
 [sub_resource type="ORMMaterial3D" id="ORMMaterial3D_cybfa"]
+resource_local_to_scene = true
 next_pass = SubResource("ShaderMaterial_hk3gb")
 orm_texture = ExtResource("4_4n4qt")
 normal_enabled = true

@@ -50,7 +50,9 @@ func play_animation(anim_name: anims = anims.idle):
 		GlobalSound.stream = sound.jumpscare_sound
 		GlobalSound.play()
 		await animation_player.animation_finished
-		Grabpack.kill_player(true)
+		
+		get_parent().jumpscare_finished.emit()
+		if get_parent().death_screen_after_jumpscare: Grabpack.kill_player(true)
 	elif anim_name == anims.taunt:
 		animation_player.play(taunt_name)
 		animation_player.speed_scale = taunt_speed

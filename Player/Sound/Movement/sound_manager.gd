@@ -4,22 +4,28 @@ extends Node
 
 signal sound(sound_name: String)
 
+var current_soundpack: String = ""
+
 func toggle_flashlight():
 	get_node("flashlight").play()
 
 func step():
-	var walk_node: String = "none"
-	var step_type: String = "walk"
-	if player.is_squeezing:
-		walk_node = str("sidelStep", randi_range(1, 3))
-	elif player.is_sprinting:
-		walk_node = str("run", randi_range(1, 6))
-		step_type = "run"
-	else:
-		walk_node = str("walk", randi_range(1, 6))
+	var folder_path: String = str("res://Player/Sound/Movement/", current_soundpack, "/")
+	var sound_name: String = ""
 	
-	sound.emit(step_type)
-	get_node(walk_node).play()
+	if player.is_squeezing:
+		sound_name = str("walk",randi_range(1, 6))
+	elif player.is_sprinting:
+		sound_name = str("run",randi_range(1, 6))
+	else:
+		sound_name = str("walk",randi_range(1, 6))
+	
+	var file_name = str(sound_name, ".wav")
+	var file_path = str(folder_path, file_name)
+	var stream = ResourceLoader.load(file_path) as AudioStream
+	play_sound(stream)
+	
+	sound.emit(sound_name)
 
 func collect():
 	var sound_node: String = "none"
@@ -29,18 +35,16 @@ func collect():
 	get_node(sound_node).play()
 
 func land():
-	var sound_node: String = "none"
-	
-	sound_node = str("land", randi_range(1, 3))
-	
-	get_node(sound_node).play()
+	var sound_node: String = str("res://Player/Sound/Movement/", current_soundpack, "/land", randi_range(1, 3), ".wav")
+	var stream = ResourceLoader.load(sound_node) as AudioStream
+	play_sound(stream)
+
 func jump():
-	var sound_node: String = "none"
-	
-	sound_node = str("jump", randi_range(1, 3))
-	
-	get_node(sound_node).play()
+	var sound_node: String = str("res://Player/Sound/Movement/Jump/jump", randi_range(1, 3), ".wav")
+	var stream = ResourceLoader.load(sound_node) as AudioStream
+	play_sound(stream)
 	sound.emit("jump")
+
 func crouch(type: bool):
 	var sound_node: String = "none"
 	
@@ -99,15 +103,7 @@ func raise_grabpack():
 	get_node(sound_node).play()
 
 func load_soundpack(pack_folder: String):
-	var folder_path: String = str("res://Player/Sound/Movement/", pack_folder, "/")
-	
-	for i in 15:
-		var sound_node: AudioStreamPlayer = get_child(i)
-		if sound_node.name.contains("walk") or sound_node.name.contains("run") or sound_node.name.contains("land"):
-			var file_name = str(sound_node.name, ".wav")
-			var file_path = str(folder_path, file_name)
-			var stream = ResourceLoader.load(file_path) as AudioStream
-			sound_node.stream = stream
+	current_soundpack = pack_folder
 
 func puzzle_sfx():
 	var sound_node: String = "puzzlecomplete"
@@ -115,3 +111,9 @@ func puzzle_sfx():
 func jingle_sfx():
 	var sound_node: String = "puzzlejingle"
 	get_node(sound_node).play()
+
+func play_sound(sound_stream: AudioStream):
+	var new_sound: QuickSFXNoDir = QuickSFXNoDir.new()
+	add_child(new_sound)
+	new_sound.stream = sound_stream
+	new_sound.play()

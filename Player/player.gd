@@ -22,7 +22,8 @@ enum hand_anims {
 
 @export_category("Player")
 var speed: float = 10 # m/s
-var acceleration: float = 40 # m/s^2
+var acceleration: float = 20 # m/s^2
+var decelleration: float = 45
 
 var normal_speed: float = 4.0
 var sprint_speed: float = 6.0
@@ -227,7 +228,7 @@ func _walk(delta: float) -> Vector3:
 	move_dir = Input.get_vector("left", "right", "forward", "back")
 	var _forward: Vector3 = neck.global_transform.basis * Vector3(move_dir.x, 0, move_dir.y)
 	var walk_dir: Vector3 = Vector3(_forward.x, 0, _forward.z).normalized()
-	walk_vel = walk_vel.move_toward(walk_dir * speed * move_dir.length(), acceleration * delta)
+	walk_vel = walk_vel.move_toward(walk_dir * speed * move_dir.length(), (acceleration if move_dir != Vector2.ZERO else decelleration) * delta)
 	return walk_vel
 func _gravity(delta: float) -> Vector3:
 	grav_vel = Vector3.ZERO if is_on_floor() else grav_vel.move_toward(Vector3(0, velocity.y - gravity, 0), gravity * delta)

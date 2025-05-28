@@ -11,6 +11,9 @@ enum surfaces {
 	Vent,
 	Wood,
 	Carpet,
+	Mud,
+	Puddle,
+	Rock,
 }
 
 @export var surface = surfaces.Concrete
