@@ -20,6 +20,7 @@ enum hands {
 @export var only_usable_by: hands = hands.Both
 @export var usable_multiple_times: bool = false
 @export var usable_while_retracting: bool = false
+@export var display_editor_preview: bool = false
 
 signal grabbed(hand: bool)
 signal pulled(hand: bool)
@@ -38,6 +39,8 @@ var only_hand: bool = false
 var one_at_once: bool = false
 
 func _ready():
+	if not Engine.is_editor_hint() and grab_marker.has_node("PreviewHand"):
+		grab_marker.get_node("PreviewHand").queue_free()
 	connect("area_entered", Callable(hand_grabbed))
 	connect("area_exited", Callable(hand_released))
 	if only_usable_by == hands.Both:
@@ -50,6 +53,18 @@ func _ready():
 		only_hand = only_usable_by == hands.Right
 
 func _process(_delta):
+	if Engine.is_editor_hint():
+		if display_editor_preview:
+			if not grab_marker.has_node("PreviewHand"):
+				var new_preview_hand = preload("res://Objects/Gameplay/preview_hand.tscn").instantiate()
+				grab_marker.add_child(new_preview_hand)
+			
+			if grab_marker.has_node("PreviewHand"):
+				if grab_marker.get_node("PreviewHand").cur_anim != grab_animation:
+					grab_marker.get_node("PreviewHand").play(grab_animation)
+		else:
+			if grab_marker.has_node("PreviewHand"):
+				grab_marker.get_node("PreviewHand").queue_free()
 	if enabled and not Engine.is_editor_hint():
 		if grabbed_left:
 			if update_every_frame:
