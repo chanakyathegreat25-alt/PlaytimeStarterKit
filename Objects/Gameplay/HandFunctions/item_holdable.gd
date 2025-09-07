@@ -17,12 +17,12 @@ func _ready():
 func _process(_delta):
 	if holding:
 		if not hold_hand:
-			parent.global_transform = Grabpack.left_hand.global_transform
+			parent.global_transform = Grabpack.left_hand.item_pos.global_transform
 			Grabpack.animate_left(hold_animation)
 			if not Grabpack.left_hand.holding_object:
 				stop_hold(hold_hand)
 		else:
-			parent.global_transform = Grabpack.right_hand.global_transform
+			parent.global_transform = Grabpack.right_hand.item_pos.global_transform
 			Grabpack.animate_right(hold_animation)
 			if not Grabpack.right_hand.holding_object:
 				stop_hold(hold_hand)

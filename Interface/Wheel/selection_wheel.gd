@@ -1,7 +1,7 @@
 @tool
 extends Control
 
-const SPRITE_SIZE = Vector2(130, 130)
+const SPRITE_SIZE = Vector2(160, 160)
 const NONE_WHEEL = preload("res://Interface/Wheel/none_wheel.tres")
 
 @export var bkg_color: Color
@@ -17,7 +17,11 @@ const NONE_WHEEL = preload("res://Interface/Wheel/none_wheel.tres")
 @onready var label: Label = $Label
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var label_2: Label = $Label2
+@onready var changed: AudioStreamPlayer = $Changed
+@onready var openned: AudioStreamPlayer = $Openned
+@onready var closed: AudioStreamPlayer = $Closed
 
+var prev_selection: int = 0
 var selection: int = 0
 
 func _ready() -> void:
@@ -25,13 +29,14 @@ func _ready() -> void:
 
 func _unhandled_input(_event: InputEvent) -> void:
 	if Engine.is_editor_hint(): return
-	if Input.is_action_just_pressed("HandWheel"):
+	if Input.is_action_just_pressed("HandWheel") and Grabpack.selection_wheel:
 		if not visible:
 			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 			animation_player.play("in")
+			Game.hud.set_crosshair(false)
 			show()
 			Open()
-	elif Input.is_action_just_released("HandWheel"):
+	elif Input.is_action_just_released("HandWheel") and Grabpack.selection_wheel:
 		if visible:
 			if selection > 0:
 				Grabpack.right_hand.switch_hand(1, options[selection].hand_int)
@@ -39,8 +44,10 @@ func _unhandled_input(_event: InputEvent) -> void:
 			animation_player.play("out")
 			await animation_player.animation_finished
 			hide()
+			Game.hud.set_crosshair(true)
 
 func Open():
+	openned.play()
 	options = [NONE_WHEEL]
 	var hands = Grabpack.right_hand.hands
 	for i in hands.size():
@@ -58,6 +65,7 @@ func Open():
 		hand_instance.queue_free()
 
 func Close():
+	closed.play()
 	return options[selection].name
 
 func _draw() -> void:
@@ -136,5 +144,8 @@ func _process(_delta: float) -> void:
 		selection = ceil((mouse_rads / TAU) * (len(options) - 1))
 	
 	label.text = options[selection].name
+	
+	if prev_selection != selection: changed.play()
+	prev_selection = selection
 	
 	queue_redraw()

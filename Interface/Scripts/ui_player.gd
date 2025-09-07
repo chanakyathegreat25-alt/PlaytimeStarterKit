@@ -22,6 +22,8 @@ extends CanvasLayer
 
 #Basic Interface
 @onready var crosshair = $crosshair
+@onready var gas_mask: Node2D = $GasMask
+@onready var damage: Node2D = $damage
 
 func _input(_event):
 	if Input.is_action_just_pressed("inventory"):

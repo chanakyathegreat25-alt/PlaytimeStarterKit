@@ -26,7 +26,9 @@ func step():
 	play_sound(stream)
 	
 	sound.emit(sound_name)
-
+func sidlestep():
+	var s_path: String = str("sidelStep", randi_range(1, 3))
+	get_node(s_path).play()
 func collect():
 	var sound_node: String = "none"
 	

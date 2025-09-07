@@ -20,6 +20,7 @@ var current_cam: int = 0
 
 func _process(_delta: float) -> void:
 	watch.global_transform = arm_attach.global_transform
+	watch.scale = Vector3(0.008, 0.008, 0.008)
 
 func _unhandled_input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("togglewatch"):

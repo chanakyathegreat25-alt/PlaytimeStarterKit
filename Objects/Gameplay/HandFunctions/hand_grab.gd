@@ -19,6 +19,7 @@ enum hands {
 @export var grab_marker: Marker3D
 @export var only_usable_by: hands = hands.Both
 @export var usable_multiple_times: bool = false
+@export var usable_while_retracting: bool = false
 
 signal grabbed(hand: bool)
 signal pulled(hand: bool)
@@ -56,8 +57,9 @@ func _process(_delta):
 			if Grabpack.left_hand.pulling and not pulling_left:
 				pulled.emit(false)
 				pulling_left = true
-			if Grabpack.left_hand.hand_retracting or Grabpack.left_hand.hand_attached:
+			if (Grabpack.left_hand.hand_retracting and not usable_while_retracting) or Grabpack.left_hand.hand_attached:
 				grabbed_left = false
+				print(randi())
 				pulling_left = false
 				emit_signal("let_go", false)
 				grabL = false
@@ -67,7 +69,7 @@ func _process(_delta):
 			if Grabpack.right_hand.pulling and not pulling_right:
 				pulled.emit(true)
 				pulling_right = true
-			if Grabpack.right_hand.hand_retracting or Grabpack.right_hand.hand_attached:
+			if (Grabpack.right_hand.hand_retracting and not usable_while_retracting) or Grabpack.right_hand.hand_attached:
 				grabbed_right = false
 				pulling_right = false
 				emit_signal("let_go", true)
@@ -75,14 +77,29 @@ func _process(_delta):
 
 func hand_grabbed(area):
 	if enabled:
-		if area.is_in_group("LeftHandArea") and not Grabpack.left_hand.hand_attached and (both_hand or not only_hand) and not (grabR and one_at_once) and not (Grabpack.left_hand.hand_changed_point if not usable_multiple_times else 0.0 == 1.0):
-			emit_signal("grabbed", false)
-			if relative_to_grab_point: 
-				grab_marker.global_position = Grabpack.left_hand.global_position
-				grab_marker.global_rotation = Grabpack.left_hand.global_rotation
-			update_hand_position(false)
-			grabL = true
-		elif area.is_in_group("RightHandArea") and not Grabpack.right_hand.hand_attached and (both_hand or only_hand) and not (grabL and one_at_once) and not (Grabpack.right_hand.hand_changed_point if not usable_multiple_times else 0.0 == 1.0):
+		if area.is_in_group("LeftHandArea") or area.is_in_group("LeftHandCorrecter"):
+			if not Grabpack.left_hand.hand_attached and (both_hand or not only_hand) and not (grabR and one_at_once) and not (Grabpack.left_hand.hand_changed_point if not usable_multiple_times else 0.0 == 1.0):
+				if not area.is_in_group("LeftHandArea"):
+					if area.is_in_group("LeftHandCorrecter") and not relative_to_grab_point:
+						Grabpack.left_hand.hand_grab_point = grab_marker.global_position
+						return
+					else:
+						return
+				if Grabpack.left_hand.holding_object: return
+				emit_signal("grabbed", false)
+				if relative_to_grab_point: 
+					grab_marker.global_position = Grabpack.left_hand.global_position
+					grab_marker.global_rotation = Grabpack.left_hand.global_rotation
+				update_hand_position(false)
+				grabL = true
+		if not Grabpack.right_hand.hand_attached and (both_hand or only_hand) and not (grabL and one_at_once) and not (Grabpack.right_hand.hand_changed_point if not usable_multiple_times else 0.0 == 1.0):
+			if not area.is_in_group("RightHandArea"):
+				if area.is_in_group("RightHandCorrecter") and not relative_to_grab_point:
+					Grabpack.right_hand.hand_grab_point = grab_marker.global_position
+					return
+				else:
+					return
+			if Grabpack.right_hand.holding_object: return
 			emit_signal("grabbed", true)
 			if relative_to_grab_point: 
 				grab_marker.global_position = Grabpack.right_hand.global_position
@@ -107,6 +124,8 @@ func update_hand_position(hand: bool):
 	if hand:
 		grabbed_right = true
 		if affect_position:
+			if usable_while_retracting:
+				Grabpack.right_hand.position = grab_marker.global_position
 			Grabpack.right_position(grab_marker.global_position)
 		if affect_rotation:
 			Grabpack.right_rotation(grab_marker.global_rotation)
@@ -116,6 +135,8 @@ func update_hand_position(hand: bool):
 	else:
 		grabbed_left = true
 		if affect_position:
+			if usable_while_retracting:
+				Grabpack.left_hand.position = grab_marker.global_position
 			Grabpack.left_position(grab_marker.global_position)
 		if affect_rotation:
 			Grabpack.left_rotation(grab_marker.global_rotation)

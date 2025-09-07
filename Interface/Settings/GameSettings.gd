@@ -8,7 +8,7 @@ var mobile_controls: bool = false #CHANGE TO TRUE FOR MOBILE TO BE ENABLED BY DE
 var window_mode: int = 0
 var vsync: bool = false
 var show_fps: bool = false
-var fov: int = 65
+var fov: int = 60
 
 var main_volume: float = 100.0
 var music_volume: float = 100.0

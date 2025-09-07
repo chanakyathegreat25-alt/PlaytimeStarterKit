@@ -67,23 +67,23 @@ size = Vector3(0.45, 0.7, 0.45)
 script = ExtResource("1_fwmpr")
 
 [node name="SM_Battery" type="MeshInstance3D" parent="."]
-transform = Transform3D(1.25, 0, 0, 0, 1.1042, -0.585876, 0, 0.585876, 1.1042, 0, 0.0785136, 0.00734931)
+transform = Transform3D(1.25, 0, 0, 0, 1.2309712, -0.21729538, 0, 0.21729538, 1.2309712, -1.1920929e-07, 0.09019145, -0.082893774)
 mesh = SubResource("ArrayMesh_fjsgh")
 skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.883357, -0.468701, 0, 0.468701, 0.883357, 0, -0.341081, -0.215284)
+transform = Transform3D(1, 0, 0, 0, 0.9847744, -0.17383713, 0, 0.17383713, 0.9847744, -1.1920929e-07, -0.37757668, -0.16546722)
 shape = SubResource("BoxShape3D_8g1su")
 
 [node name="Battery" type="Area3D" parent="." groups=["Battery"]]
-transform = Transform3D(1, 0, 0, 0, 0.883357, -0.468701, 0, 0.468701, 0.883357, 0, 0.0343451, -0.0160858)
+transform = Transform3D(1, 0, 0, 0, 0.9847744, -0.17383713, 0, 0.17383713, 0.9847744, -1.1920929e-07, 0.04095243, -0.091585696)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Battery"]
 transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 0, -0.45, 5.40167e-08)
 shape = SubResource("BoxShape3D_palx8")
 
 [node name="HandGrab" type="Area3D" parent="." node_paths=PackedStringArray("grab_marker")]
-transform = Transform3D(1, 0, 0, 0, 0.883357, -0.468701, 0, 0.468701, 0.883357, 0, 0.0785136, 0.00734931)
+transform = Transform3D(1, 0, 0, 0, 0.9847744, -0.17383713, 0, 0.17383713, 0.9847744, -1.1920929e-07, 0.09019145, -0.082893774)
 script = ExtResource("4_x3t7i")
 update_every_frame = true
 stop_hand = false
@@ -101,6 +101,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0985467, 0)
 [node name="ItemHoldable" type="Node" parent="."]
 process_priority = 200
 script = ExtResource("6_fjsgh")
+hold_animation = "grabhalf"
 
 [connection signal="let_go" from="HandGrab" to="." method="_on_hand_grab_let_go"]
 [connection signal="let_go" from="ItemHoldable" to="." method="_on_item_holdable_let_go"]

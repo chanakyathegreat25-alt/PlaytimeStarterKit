@@ -9,8 +9,8 @@ var is_walking = false
 var is_falling = false
 var is_crouching = false
 var is_sidel_animation = false
-var tilt_lerp: float = 0.3
-var start_tilt_lerp: float = 3.5
+var tilt_lerp: float = 4.0
+var start_tilt_lerp: float = 0.23
 @onready var idle_animation = $"../Pack/IdleAnimation"
 @onready var walk_animation = $"../Pack/WalkAnimation"
 @onready var crouch_animation = $"../Pack/CrouchAnimation"
@@ -36,6 +36,7 @@ func _process(delta):
 	handle_grabpack_animation(delta)
 
 func handle_grabpack_animation(delta):
+	tilt_lerp = 0.25
 	var walking_vector = Input.get_vector("left", "right", "forward", "back")
 	if not is_falling:
 		if not walking_vector == Vector2.ZERO:
@@ -54,43 +55,52 @@ func handle_grabpack_animation(delta):
 					is_walking = false
 					is_sidel_animation = true
 			else:
-				if not is_walking:
+				if player.movable and not is_walking:
 					idle_animation.play("StopIdle")
-					walk_animation.play("walk")
+					if player.movement_animations < 1: walk_animation.play("walk_old")
+					else: walk_animation.play("walk")
 					walk_animation.speed_scale = 1.5
 					is_walking = true
 		else:
-			if is_walking or is_sidel_animation:
+			if is_walking or is_sidel_animation or is_walking and not player.movable:
 				walk_animation.play("StopWalking")
 				walk_animation.queue("NotWalking")
-				walk_animation.seek(0)
-				walk_animation.speed_scale = 1.7
-				idle_animation.play("idle")
+				walk_animation.seek(0.28)
+				walk_animation.speed_scale = 0.8
+				if player.movement_animations > 0: idle_animation.play("idle")
 				is_walking = false
 				is_sidel_animation = false
 	
 	#DirectionalTilt:
-	if Input.is_action_pressed("forward"):
-		grabpack_walk.position.y = lerp(grabpack_walk.position.y, move_forward.position.y, start_tilt_lerp * delta)
-		grabpack_walk.position.z = lerp(grabpack_walk.position.z, move_forward.position.z, start_tilt_lerp * delta)
-		grabpack_walk.rotation.x = lerp(grabpack_walk.rotation.x, move_forward.rotation.x, start_tilt_lerp * delta)
-	elif Input.is_action_pressed("back"):
-		grabpack_walk.position.y = lerp(grabpack_walk.position.y, move_back.position.y, start_tilt_lerp * delta)
-		grabpack_walk.position.z = lerp(grabpack_walk.position.z, move_back.position.z, start_tilt_lerp * delta)
-		grabpack_walk.rotation.x = lerp(grabpack_walk.rotation.x, move_back.rotation.x, start_tilt_lerp * delta)
-	else:
-		grabpack_walk.position.y = move_toward(grabpack_walk.position.y, move_idle.position.y, tilt_lerp * delta)
-		grabpack_walk.position.z = move_toward(grabpack_walk.position.z, move_idle.position.z, tilt_lerp * delta)
-		grabpack_walk.rotation.x = move_toward(grabpack_walk.rotation.x, move_idle.rotation.x, tilt_lerp * delta)
-	if Input.is_action_pressed("left"):
-		grabpack_walk.position.x = lerp(grabpack_walk.position.x, move_left.position.x, start_tilt_lerp * delta)
-		grabpack_walk.rotation.z = lerp(grabpack_walk.rotation.z, move_left.rotation.z, start_tilt_lerp * delta)
-	elif Input.is_action_pressed("right"):
-		grabpack_walk.position.x = lerp(grabpack_walk.position.x, move_right.position.x, start_tilt_lerp * delta)
-		grabpack_walk.rotation.z = lerp(grabpack_walk.rotation.z, move_right.rotation.z, start_tilt_lerp * delta)
-	else:
-		grabpack_walk.position.x = move_toward(grabpack_walk.position.x, move_idle.position.x, tilt_lerp * delta)
-		grabpack_walk.rotation.z = move_toward(grabpack_walk.rotation.z, move_idle.rotation.z, tilt_lerp * delta)
+	if player.movement_animations > 0:
+		tilt_lerp = 6.5
+		if Input.is_action_pressed("forward"):
+			grabpack_walk.position.y = move_toward(grabpack_walk.position.y, move_forward.position.y, start_tilt_lerp * delta)
+			grabpack_walk.position.z = move_toward(grabpack_walk.position.z, move_forward.position.z, start_tilt_lerp * delta)
+			grabpack_walk.rotation.x = move_toward(grabpack_walk.rotation.x, move_forward.rotation.x, start_tilt_lerp * delta)
+		elif Input.is_action_pressed("back"):
+			grabpack_walk.position.y = move_toward(grabpack_walk.position.y, move_back.position.y, start_tilt_lerp * delta)
+			grabpack_walk.position.z = move_toward(grabpack_walk.position.z, move_back.position.z, start_tilt_lerp * delta)
+			grabpack_walk.rotation.x = move_toward(grabpack_walk.rotation.x, move_back.rotation.x, start_tilt_lerp * delta)
+		else:
+			grabpack_walk.position.y = lerp(grabpack_walk.position.y, move_idle.position.y, tilt_lerp * delta)
+			grabpack_walk.position.z = lerp(grabpack_walk.position.z, move_idle.position.z, tilt_lerp * delta)
+			grabpack_walk.rotation.x = lerp(grabpack_walk.rotation.x, move_idle.rotation.x, tilt_lerp * delta)
+		if Input.is_action_pressed("left"):
+			grabpack_walk.position.x = move_toward(grabpack_walk.position.x, move_left.position.x, start_tilt_lerp * delta)
+			grabpack_walk.rotation.z = move_toward(grabpack_walk.rotation.z, move_left.rotation.z, start_tilt_lerp * delta)
+		elif Input.is_action_pressed("right"):
+			grabpack_walk.position.x = move_toward(grabpack_walk.position.x, move_right.position.x, start_tilt_lerp * delta)
+			grabpack_walk.rotation.z = move_toward(grabpack_walk.rotation.z, move_right.rotation.z, start_tilt_lerp * delta)
+		else:
+			grabpack_walk.position.x = lerp(grabpack_walk.position.x, move_idle.position.x, tilt_lerp * delta)
+			grabpack_walk.rotation.z = lerp(grabpack_walk.rotation.z, move_idle.rotation.z, tilt_lerp * delta)
+	
+	#if is_walking:
+		#if before_pos == grabpack_walk.position:
+			#walk_animation.play("walk")
+		#else:
+			#walk_animation.pause()
 	
 	if not player.is_on_floor():
 		if not is_falling:
@@ -102,9 +112,10 @@ func handle_grabpack_animation(delta):
 				is_falling = true
 	else:
 		if is_falling:
-			jump_animation.play("land")
+			if player.movement_animations > 0: jump_animation.play("land")
+			else: jump_animation.play("landCh2")
 			if not is_walking:
-				idle_animation.play("idle")
+				if player.movement_animations > 0: idle_animation.play("idle")
 			is_falling = false
 			
 			sound_manager.land()
@@ -112,19 +123,24 @@ func handle_grabpack_animation(delta):
 	if player.crouched:
 		if not is_crouching:
 			sound_manager.crouch(true)
-			crouch_animation.play("EnterCrouch")
+			if player.movement_animations > 0: crouch_animation.play("EnterCrouch")
+			else: crouch_animation.play("EnterCrouchCh2")
 			walk_animation.play("NotWalking")
 			is_walking = false
 			is_crouching = true
 	else:
 		if is_crouching:
 			sound_manager.crouch(false)
-			crouch_animation.play("ExitCrouch")
+			if player.movement_animations > 0: crouch_animation.play("ExitCrouch")
+			else: crouch_animation.play("ExitCrouchCh2")
 			is_crouching = false
 
 func jump():
-	jump_animation.play("Jump")
-	jump_animation.queue("fall")
+	if player.movement_animations > 0: 
+		jump_animation.play("Jump")
+		jump_animation.queue("fall")
+	else: jump_animation.play("JumpCh2")
+	
 	is_falling = true
 	
 	if is_walking:

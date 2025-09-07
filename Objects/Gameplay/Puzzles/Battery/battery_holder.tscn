@@ -119,10 +119,10 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.4
 mesh = SubResource("PlaneMesh_kari3")
 
 [node name="Battery" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.477159, -0.878817, 0, 0.878817, 0.477159, 0, 0.509844, 0.101616)
+transform = Transform3D(1, 0, 0, 0, 0.16864464, -0.985677, 0, 0.985677, 0.16864464, 0, 0.45006627, 0.12991539)
 
 [node name="BatteryNode" parent="." instance=ExtResource("5_ssdk3")]
-transform = Transform3D(1, 0, 0, 0, 0.477159, -0.878817, 0, 0.878817, 0.477159, 0, 0.509844, 0.101616)
+transform = Transform3D(1, 0, 0, 0, 0.16864464, -0.985677, 0, 0.985677, 0.16864464, 0, 0.45006627, 0.12991539)
 
 [node name="Area" type="Area3D" parent="."]
 

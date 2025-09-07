@@ -66,6 +66,8 @@ func _ready():
 	update_grabpack_data()
 	await get_tree().create_timer(0.1).timeout
 	update_grabpack_visibility(true)
+	grabpack_lowered = true
+	Grabpack.raise_grabpack()
 	
 	if player.start_lowered:
 		item_animation.play("StartLowered")
@@ -76,10 +78,27 @@ func _process(delta):
 	rotation.y = lerp_angle(rotation.y, neck.rotation.y, sway_speed * delta)
 
 	if current_grabpack_skeleton_node:
+		attachment_left.position = Vector3.ZERO
+		attachment_right.position = Vector3.ZERO
+		attachment_left.rotation = Vector3.ZERO
+		attachment_right.rotation = Vector3.ZERO
 		current_grabpack_skeleton_node.force_update_transform()
 		attachment_left.force_update_transform()
 		attachment_right.force_update_transform()
-
+	
+	if player.movement_animations < 1:
+		if not left_hand.hand_attached: 
+			$Pack/LayerWalk/ArmLeft/LayerIdle/LayerWalk/LayerCrouch/LayerJump/LayerPack/LayerShoot.look_at(left_hand.position, Vector3.DOWN)
+		else: $Pack/LayerWalk/ArmLeft/LayerIdle/LayerWalk/LayerCrouch/LayerJump/LayerPack/LayerShoot.rotation_degrees = Vector3.ZERO
+		if not right_hand.hand_attached: 
+			$Pack/LayerWalk/ArmRight/LayerIdle/LayerWalk/LayerCrouch/LayerJump/LayerPack/LayerSwitch/LayerShoot.look_at(right_hand.position, Vector3.BACK)
+			$Pack/LayerWalk/ArmRight/LayerIdle/LayerWalk/LayerCrouch/LayerJump/LayerPack/LayerSwitch/LayerShoot/CanonAttach.rotation = Vector3(deg_to_rad(-180),deg_to_rad(0.0),deg_to_rad(90))
+			$Pack/LayerWalk/ArmRight/LayerIdle/LayerWalk/LayerCrouch/LayerJump/LayerPack/LayerSwitch/LayerShoot/HandAttach.rotation = Vector3(deg_to_rad(-180),deg_to_rad(0.0),deg_to_rad(90))
+		else:
+			$Pack/LayerWalk/ArmRight/LayerIdle/LayerWalk/LayerCrouch/LayerJump/LayerPack/LayerSwitch/LayerShoot.rotation_degrees = Vector3.ZERO
+			$Pack/LayerWalk/ArmRight/LayerIdle/LayerWalk/LayerCrouch/LayerJump/LayerPack/LayerSwitch/LayerShoot/CanonAttach.rotation = Vector3(deg_to_rad(0.0),deg_to_rad(0.0),deg_to_rad(0.0))
+			$Pack/LayerWalk/ArmRight/LayerIdle/LayerWalk/LayerCrouch/LayerJump/LayerPack/LayerSwitch/LayerShoot/HandAttach.rotation = Vector3(deg_to_rad(0.0),deg_to_rad(0.0),deg_to_rad(0.0))
+	
 # Grabpack Control
 func switch_grabpack(grabpack_index: int):
 	if grabpack_index == current_grabpack:
@@ -154,7 +173,8 @@ func queue_grabpack(grabpack_index: int):
 
 func lower_grabpack():
 	if not grabpack_lowered:
-		item_animation.play("LowerPack")
+		if player.movement_animations > 0: item_animation.play("LowerPack")
+		else: item_animation.play("LowerPackCh2")
 		sound_manager.lower_grabpack()
 		grabpack_usable = false
 		grabpack_lowered = true
@@ -163,7 +183,8 @@ func lower_grabpack():
 
 func raise_grabpack():
 	if grabpack_lowered:
-		item_animation.play("RaisePack")
+		if player.movement_animations > 0: item_animation.play("RaisePack")
+		else: item_animation.play("RaisePackCh2")
 		sound_manager.raise_grabpack()
 		grabpack_usable = current_grabpack_node.has_node("GrabpackLaunchable")
 		grabpack_lowered = false

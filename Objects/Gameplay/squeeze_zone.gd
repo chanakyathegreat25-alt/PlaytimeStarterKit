@@ -3,6 +3,7 @@ extends Area3D
 class_name SidleZone
 
 @export var player_camera_angle: float = 0.0
+@export var use_sidle_camera_and_speed: bool = true
 
 @onready var time: Timer = $Time
 
@@ -35,7 +36,7 @@ func _ready():
 	angle2 = player_camera_angle-1.0
 
 func _process(delta):
-	if player_squeezing:
+	if player_squeezing and use_sidle_camera_and_speed:
 		if entering_squeeze:
 			current_look_at = current_look_at.move_toward(global_position, 3.0 * delta)
 			player_head_clamp.y = lerp_clamp(player_head_clamp.y, angle2, angle1, 10.0 * delta)
@@ -69,6 +70,9 @@ func body_entered(body):
 	if body.is_in_group("Player"):
 		colliding = true
 		if usable:
+			if not use_sidle_camera_and_speed:
+				Grabpack.lower_grabpack()
+				return
 			player = body
 			player_squeezing = true
 			entering_squeeze = true
@@ -86,6 +90,9 @@ func body_exited(body):
 	if body.is_in_group("Player"):
 		colliding = false
 		if usable:
+			if not use_sidle_camera_and_speed:
+				Grabpack.raise_grabpack()
+				return
 			player = body
 			player_squeezing = false
 			entering_squeeze = false

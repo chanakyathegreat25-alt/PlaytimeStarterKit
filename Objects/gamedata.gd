@@ -42,11 +42,29 @@ func save_game(new_checkpoint, save_title: String = "Untitled Save", save_image:
 	saves.append([save_title, current_objective, save_image, new_checkpoint])
 func reset_checkpoint():
 	checkpoint = 0
+func delay(time: float = 1.0):
+	await get_tree().create_timer(time).timeout
+	return
 
 func load_checkpoint():
 	#ADD YOUR LOAD CHECKPOINT CODE HERE
 	#THE CODE ALREADY HERE IS ONLY FOR TESTING
 	load_scene("res://Level/test_map.tscn")
+
+func disable_input(action_name, button):
+	var button_to_remove = button  # Left mouse button (value = 1)
+
+	# Loop through all input events associated with the action
+	for event in InputMap.action_get_events(action_name):
+		if event is InputEventMouseButton and event.button_index == button_to_remove:
+			InputMap.action_erase_event(action_name, event)
+
+func enable_input(action_name, button):
+	var mouse_event := InputEventMouseButton.new()
+	mouse_event.button_index = button
+	mouse_event.pressed = true  # Required for the input to be considered valid
+
+	InputMap.action_add_event(action_name, mouse_event)
 
 #CUSTOM DATA:
 

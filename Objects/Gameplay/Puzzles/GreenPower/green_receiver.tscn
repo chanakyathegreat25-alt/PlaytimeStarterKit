@@ -10,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://dj75g3ncp5cjc" path="res://Player/Sound/Hands/Green/SW_Conduit_HandGrab_Coiling.wav" id="8_4bilv"]
 [ext_resource type="AudioStream" uid="uid://ch85xved0herh" path="res://Player/Sound/Hands/Green/SW_Conduit_ElectricPole_Discharged.wav" id="9_317sn"]
 
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_121du"]
 size = Vector3(0.6, 0.6, 0.4)
 

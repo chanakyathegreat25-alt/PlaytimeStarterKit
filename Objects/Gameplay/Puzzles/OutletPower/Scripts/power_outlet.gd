@@ -6,6 +6,7 @@ extends StaticBody3D
 @onready var grabbed = $Grabbed
 @onready var released = $Released
 @onready var powering = $Powering
+@onready var hit_particles: GPUParticles3D = $HitParticles
 
 var current_hands: int = 0
 var using: bool = false
@@ -26,6 +27,9 @@ func used(use_mode: bool):
 		Grabpack.power_wire(WIRE_OUTLET_MATERIAL)
 		grabbed.play()
 		powering.play()
+		hit_particles.emitting = true
+		await get_tree().create_timer(0.1).timeout
+		hit_particles.emitting = false
 	else:
 		Grabpack.dispower_wire()
 		released.play()

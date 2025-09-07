@@ -18,10 +18,10 @@ domain_warp_amplitude = 20.0
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_eapr4"]
 width = 500
 height = 500
-invert = true
-seamless = true
-color_ramp = SubResource("Gradient_mhoco")
 noise = SubResource("FastNoiseLite_xkth6")
+color_ramp = SubResource("Gradient_mhoco")
+seamless = true
+invert = true
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_xweqa"]
 noise_type = 2
@@ -34,16 +34,16 @@ domain_warp_enabled = true
 domain_warp_amplitude = 20.0
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_b10n3"]
-seamless = true
-color_ramp = SubResource("Gradient_mhoco")
 noise = SubResource("FastNoiseLite_xweqa")
+color_ramp = SubResource("Gradient_mhoco")
+seamless = true
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_aj0pe"]
 noise_type = 0
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_jduao"]
-seamless = true
 noise = SubResource("FastNoiseLite_aj0pe")
+seamless = true
 
 [resource]
 render_priority = 0

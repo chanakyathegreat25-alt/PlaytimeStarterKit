@@ -68,3 +68,6 @@ func _handle_swinging(delta: float) -> void:
 		swing_velocity = Vector3.ZERO
 
 	player_body.velocity = swing_velocity
+	
+	if radial_velocity > 1.0:
+		pass

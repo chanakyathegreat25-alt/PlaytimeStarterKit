@@ -10,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://dpqpunv2kdyxd" path="res://Player/Sound/Hands/Green/SW_Green_Hand_Hum_Countdown.wav" id="8_dwad4"]
 [ext_resource type="AudioStream" uid="uid://dj75g3ncp5cjc" path="res://Player/Sound/Hands/Green/SW_Conduit_HandGrab_Coiling.wav" id="9_dtd2e"]
 
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j4gol"]
 resource_name = "MI_ElectricalPanel_B"
 cull_mode = 2

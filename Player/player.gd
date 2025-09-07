@@ -6,32 +6,49 @@ extends CharacterBody3D
 @export_category("Settings")
 @export_group("Movement")
 @export var movable: bool = true
-@export_group("Grabpack")
+@export_group("Equipment")
+@export_subgroup("Flashlight")
 @export var flashlight: bool = false
 @export var flashlight_togglable: bool = false
+enum mask_types {
+	Normal,
+	Broken
+}
+@export_subgroup("Gas Mask")
+@export var gasmask: bool = false
+@export var gasmask_toggleable: bool = false
+@export var gasmask_type: mask_types = mask_types.Normal
+@export_subgroup("Grabpack")
+@export var hand_speed: float = 24.944
 @export var start_lowered: bool = false
 #0 is no grabpack, and numbers 1 and 2 are grabpack versions 1 and 2.
 @export_range(0, 3) var starting_grabpack: int = 0
 @export var enabled_hands: Array [PackedScene] = [preload("res://Player/Grabpack/Hands/none.tscn")]
 @export_group("Animation")
 enum hand_anims {
+	Ch2,
 	Ch3,
 	Ch4
 }
+enum grabpack_anims {
+	Ch2,
+	Ch4
+}
 @export var hand_switch_animation: hand_anims = hand_anims.Ch4
+@export var movement_animations: grabpack_anims = grabpack_anims.Ch4
 
 @export_category("Player")
 var speed: float = 10 # m/s
-var acceleration: float = 20 # m/s^2
-var decelleration: float = 45
+var acceleration: float = 20.24 # m/s^2
+var decelleration: float = 50
 
-var normal_speed: float = 4.0
-var sprint_speed: float = 6.0
-var crouching_speed: float = 2.0
+var normal_speed: float = 2.92
+var sprint_speed: float = 6.01
+var crouching_speed: float = 1.49
 var squeeze_speed: float = 1.0
 var speed_lerp: float = 12.0
 
-var jump_height: float = 1 # m
+var jump_height: float = 0.49 # m
 var camera_sens: float = 1
 var camera_movable: bool = true
 
@@ -81,15 +98,23 @@ var is_squeeze_hitbox: bool = false
 
 var swinging = false
 var swinging_point: Vector3 = Vector3.ZERO
+var swinging_time: float = 0.0
+
+var armleftdefaultpos: Vector3 = Vector3(0.444, -0.279, 0.44)
+var armrightdefaultpos: Vector3 = Vector3(-0.444, -0.279, 0.44)
+var armleftoldpos: Vector3 = Vector3(0.444, -0.279, 0.27)
+var armrightoldpos: Vector3 = Vector3(-0.444, -0.279, 0.27)
 
 @onready var hook_controller: HookController = $HookController
-@onready var flashlight_node: Node3D = $Grabpack/Flashlight
+@onready var flashlight_node: Node3D = $Neck/Head/CamLayerJump/CamLayerWalk/CamLayerCrouch/Camera3D/Flashlight
 
 func _ready() -> void:
 	capture_mouse(true)
 	
 	Grabpack.reset_objects()
 	Game.reset_nodes()
+	Grabpack.hud.crosshair.reset_crosshair()
+	right_hand.set_hand(0)
 	sound_manager.load_soundpack("Concrete")
 	
 	if GameSettings.mobile_controls:
@@ -97,14 +122,20 @@ func _ready() -> void:
 			var mobile = load("res://Interface/Mobile/mobile_controls.tscn").instantiate()
 			mobile.name = "MobileControls"
 			Grabpack.player.add_child(mobile)
-
+	
+	if movement_animations > 0:
+		$Grabpack/Pack/LayerWalk/ArmLeft.position = armleftdefaultpos
+		$Grabpack/Pack/LayerWalk/ArmRight.position = armrightdefaultpos
+	else:
+		$Grabpack/Pack/LayerWalk/ArmLeft.position = armleftoldpos
+		$Grabpack/Pack/LayerWalk/ArmRight.position = armrightoldpos
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		if not movable: return
 		look_dir = event.relative * 0.001
 		if mouse_captured: if camera_movable: _rotate_camera()
-	if Input.is_action_just_pressed("jump"): jumping = true
+	if Input.is_action_just_pressed("jump") and movable: jumping = true
 func touch_dragged(delta: Vector2) -> void:
 	if not movable or not camera_movable: return
 
@@ -130,7 +161,7 @@ func _physics_process(delta: float) -> void:
 		standing_collision.disabled = true
 		crouch_collision.disabled = false
 		
-		neck.position.y = move_toward(neck.position.y, crouch_depth, (crouch_speed) * delta)
+		#neck.position.y = move_toward(neck.position.y, crouch_depth, (crouch_speed) * delta)
 		grabpack.position.y = neck.position.y
 		crouched = true
 	else:
@@ -138,7 +169,7 @@ func _physics_process(delta: float) -> void:
 			standing_collision.disabled = false
 			crouch_collision.disabled = true
 			
-			neck.position.y = move_toward(neck.position.y, player_height, crouch_speed * delta)
+			#neck.position.y = move_toward(neck.position.y, player_height, crouch_speed * delta)
 			grabpack.position.y = neck.position.y
 			crouched = false
 	
@@ -159,14 +190,21 @@ func _physics_process(delta: float) -> void:
 		standing_collision.shape.radius = 0.19 if is_squeezing else 0.3
 		is_squeeze_hitbox = is_squeezing
 	
-	if not swinging: velocity = _walk(delta) + _gravity(delta) + _jump(delta)
+	if mouse_captured: _handle_joypad_camera_rotation(delta)
+	if not swinging: 
+		swinging_time = 0.0
+		velocity = _walk(delta) + _gravity(delta) + _jump(delta)
 	elif is_on_floor(): velocity = _walk(delta) + _gravity(delta) + _jump(delta)
-	
-	else: 
-		jump_vel = velocity
-		jump_vel.y = velocity.y * 1.5
-		if jump_vel.y > 9.0:
-			jump_vel.y = 9.0
+	else:
+		if not $SoundManager/Swing.playing: $SoundManager/Swing.play()
+		swinging_time += 1.0*delta
+		if swinging_time < 0.21:
+			velocity = _walk(delta) + _gravity(delta) + _jump(delta)
+		else:
+			jump_vel = velocity
+			jump_vel.y = velocity.y * 1.5
+			if jump_vel.y > 9.0:
+				jump_vel.y = 9.0
 	
 	if not left_hand.hand_attached or not right_hand.hand_attached:
 		# Simulate the new position
@@ -223,7 +261,13 @@ func release_mouse() -> void:
 func _rotate_camera(sens_mod: float = 1.0) -> void:
 	neck.rotation.y -= look_dir.x * camera_sens * sens_mod
 	neck.rotation.x = clamp(neck.rotation.x - look_dir.y * camera_sens * sens_mod, -1.5, 1.5)
-
+func _handle_joypad_camera_rotation(delta: float, sens_mod: float = 1.0) -> void:
+	var joypad_dir: Vector2 = Input.get_vector(&"look_left", &"look_right", &"look_up", &"look_down")
+	if joypad_dir.length() > 0:
+		camera_sens *= 2.0
+		look_dir += joypad_dir * delta
+		_rotate_camera(sens_mod)
+		look_dir = Vector2.ZERO
 func _walk(delta: float) -> Vector3:
 	move_dir = Input.get_vector("left", "right", "forward", "back")
 	var _forward: Vector3 = neck.global_transform.basis * Vector3(move_dir.x, 0, move_dir.y)

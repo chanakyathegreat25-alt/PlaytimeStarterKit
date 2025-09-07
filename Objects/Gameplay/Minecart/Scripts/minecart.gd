@@ -3,6 +3,7 @@ extends PathFollow3D
 @export var enabled: bool = true
 @export var max_speed: float = 3.0
 @export var acceleration: float = 1.0
+@export var looping_track: bool = true
 
 var speed: float = 0.0
 var moving: bool = false
@@ -25,7 +26,12 @@ func _process(delta):
 	
 	#Move Minecart
 	if enabled and not speed == 0.0:
+		var pre_progress: float = progress_ratio
 		progress += speed * delta
+		if pre_progress > 0.95 and progress_ratio < 0.1 and not looping_track:
+			progress -= speed * delta
+		if pre_progress < 0.1 and progress_ratio > 0.95 and not looping_track:
+			progress -= speed * delta
 
 func _on_hand_grab_pulled(_hand):
 	moving = true
