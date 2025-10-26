@@ -91,7 +91,7 @@ func scan_finished():
 		emit_signal("scan_incorrect")
 	else:
 		Grabpack.right_retract()
-		if Grabpack.right_hand.current_hand_node.name == required_hand:
+		if Grabpack.hand_check_for_use_as(required_hand):
 			set_state(2)
 			emit_signal("scan_success")
 		else:

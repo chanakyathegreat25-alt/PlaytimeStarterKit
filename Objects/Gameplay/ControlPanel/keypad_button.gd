@@ -1,6 +1,7 @@
 extends Node3D
 
 @export var button_number: int = 0
+@export var press_time: float = 0.65
 
 @onready var basic_interaction = $BasicInteraction
 @onready var keypad = $"../.."
@@ -17,9 +18,14 @@ func _process(delta):
 				position.y += 0.25* delta
 		else:
 			position.y -= 0.25 * delta
-		pressing_time -= 1.0 * delta
+		if press_time > 0.6: pressing_time -= 1.5 * delta
+		else: pressing_time -= 0.4 * delta
 
 func pressed():
 	if pressing_time > 0.0: return
+	if has_node("Mesh"): $Mesh.get_surface_override_material(0).emission_enabled = true
 	keypad.pressed(button_number)
-	pressing_time = 0.65
+	pressing_time = press_time
+
+func reset_button():
+	if has_node("Mesh"): $Mesh.get_surface_override_material(0).emission_enabled = false

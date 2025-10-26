@@ -3,7 +3,7 @@ extends Node3D
 ##The distance the player must be from the indicator for it to appear
 @export var radius: float = 1.0
 @export var enabled: bool = true
-@export var door: StaticBody3D = null
+@export var door: Node3D = null
 const ITEM_OUTLINE = preload("res://Objects/VFX/Item/item_outline.tres")
 
 @onready var circle: MeshInstance3D = $Circle

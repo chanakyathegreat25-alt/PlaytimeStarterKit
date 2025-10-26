@@ -1,5 +1,6 @@
-[gd_scene load_steps=23 format=4 uid="uid://bwhv76qv6mymk"]
+[gd_scene load_steps=27 format=4 uid="uid://bwhv76qv6mymk"]
 
+[ext_resource type="Script" uid="uid://b1pj1qhlcjmf" path="res://Objects/Gameplay/Puzzles/Battery/Scripts/power_cube.gd" id="1_jh4h1"]
 [ext_resource type="Texture2D" uid="uid://btc4fn7qig3h4" path="res://Decoration/Mesh/Material/Texture/T_Metal_N.png" id="1_xhhqa"]
 [ext_resource type="Texture2D" uid="uid://c87lkwke8dagp" path="res://Decoration/Mesh/Material/Texture/T_Metal_ORMH.png" id="2_0wofg"]
 [ext_resource type="Texture2D" uid="uid://ds4mk868rv5r2" path="res://Decoration/Mesh/Material/Texture/T_Metal_BC.png" id="3_a5t86"]
@@ -7,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://dgyvnh40vq06c" path="res://Objects/Gameplay/Puzzles/Battery/Model/electrical_panel_a_Normal.png" id="5_sch3q"]
 [ext_resource type="Texture2D" uid="uid://7bxeny0dhn2n" path="res://Objects/Gameplay/Puzzles/Battery/Model/electrical_panel_a_OcclusionRoughnessMetallic.png" id="6_rj1vi"]
 [ext_resource type="Script" uid="uid://d4joakp74nxnn" path="res://Objects/Gameplay/HandFunctions/hand_grab.gd" id="7_0wofg"]
+[ext_resource type="Script" uid="uid://cp2nj828ny1um" path="res://Objects/Gameplay/HandFunctions/interaction.gd" id="8_rj1vi"]
+[ext_resource type="Script" uid="uid://f1ql8nf8705p" path="res://Objects/Gameplay/HandFunctions/inventory_item.gd" id="9_sch3q"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mm6xq"]
 resource_name = "Base"
@@ -21,6 +24,7 @@ albedo_color = Color(0.9063318, 0.9063318, 0.9063318, 1)
 roughness = 0.5
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yupp7"]
+resource_local_to_scene = true
 emission_enabled = true
 emission = Color(1, 1, 1, 1)
 
@@ -145,7 +149,7 @@ metallic = 0.39
 normal_enabled = true
 normal_texture = ExtResource("1_xhhqa")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cff8i"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sch3q"]
 cull_mode = 2
 albedo_color = Color(0, 0, 0, 1)
 
@@ -220,10 +224,14 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_fxvj8")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_nvrdm"]
+size = Vector3(0.20410156, 0.19238281, 0.18774414)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_0wofg"]
-size = Vector3(0.25, 0.3, 0.2775879)
+size = Vector3(0.3779297, 0.36398926, 0.32983398)
 
 [node name="PowerCube" type="StaticBody3D"]
+script = ExtResource("1_jh4h1")
 
 [node name="Cube" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.085, 0, 0, 0, 0.085, 0, 0, 0, 0.085, 0, 0.080985844, 0)
@@ -232,7 +240,7 @@ skeleton = NodePath("")
 surface_material_override/0 = SubResource("ORMMaterial3D_nvrdm")
 surface_material_override/1 = SubResource("StandardMaterial3D_xhhqa")
 surface_material_override/2 = SubResource("StandardMaterial3D_yupp7")
-surface_material_override/3 = SubResource("StandardMaterial3D_cff8i")
+surface_material_override/3 = SubResource("StandardMaterial3D_sch3q")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.099340826, 0)
@@ -243,17 +251,36 @@ transform = Transform3D(6.7752643e-09, 6.775265e-09, 0.155, 0.155, -6.7752657e-0
 mesh = SubResource("ArrayMesh_8e77y")
 skeleton = NodePath("")
 
+[node name="BasicInteraction" type="Area3D" parent="."]
+script = ExtResource("8_rj1vi")
+metadata/_custom_type_script = "uid://cp2nj828ny1um"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BasicInteraction"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.09423828, 0)
+shape = SubResource("BoxShape3D_nvrdm")
+
 [node name="HandGrab" type="Area3D" parent="." node_paths=PackedStringArray("grab_marker")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.116136566, 0, -0.10996723)
 script = ExtResource("7_0wofg")
 grab_animation = "handlehalf"
 grab_marker = NodePath("HandPositionMarker")
-display_editor_preview = true
 metadata/_custom_type_script = "uid://d4joakp74nxnn"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HandGrab"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0.10000001, 0.09630557)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0.13199463, 0.09630557)
 shape = SubResource("BoxShape3D_0wofg")
 
 [node name="HandPositionMarker" type="Marker3D" parent="HandGrab"]
 transform = Transform3D(1, 0, 0, 0, -0.024362342, 0.99970317, 0, -0.99970317, -0.024362342, 0.11846115, 0.26098698, 0.26651293)
+
+[node name="InventoryItem" type="Node" parent="." node_paths=PackedStringArray("use_hand_grab", "use_basic_interaction", "root_item_node")]
+script = ExtResource("9_sch3q")
+item_name = "Power Cube"
+item_has_description = true
+item_description = "When 4 are inserted into the correct holder, it will gain power."
+use_hand_grab = NodePath("../HandGrab")
+use_basic_interaction = NodePath("../BasicInteraction")
+root_item_node = NodePath("..")
+metadata/_custom_type_script = "uid://f1ql8nf8705p"
+
+[connection signal="player_interacted" from="BasicInteraction" to="." method="_on_basic_interaction_player_interacted"]

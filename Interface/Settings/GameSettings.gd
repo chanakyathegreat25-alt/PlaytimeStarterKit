@@ -10,5 +10,9 @@ var vsync: bool = false
 var show_fps: bool = false
 var fov: int = 60
 
+var graphics_quality: int = 0
+var resolution_scale: float = 1.0
+var anti_aliasing: int = 0
+
 var main_volume: float = 100.0
 var music_volume: float = 100.0

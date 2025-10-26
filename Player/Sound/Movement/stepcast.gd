@@ -2,11 +2,9 @@ extends RayCast3D
 
 @onready var sound_manager: Node = $"../SoundManager"
 
-# Variable to track the last object the raycast was colliding with
 var last_collided_object: Object = null
 
 func _physics_process(_delta: float) -> void:
-	# Check if the raycast is colliding
 	if is_colliding():
 		var current_object = get_collider()
 		

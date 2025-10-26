@@ -174,7 +174,7 @@ func launch_hand():
 	position = hand_fake.global_position
 	left_auto_correct.position = hand_grab_point
 	await get_tree().create_timer(0.2).timeout
-	left_auto_correct.position = Vector3.ZERO
+	left_auto_correct.position = Vector3(0.0, -50.0, 0.0)
 func retract_hand():
 	if hand_attached:
 		return

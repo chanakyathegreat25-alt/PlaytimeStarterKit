@@ -1,8 +1,11 @@
-[gd_scene load_steps=8 format=4 uid="uid://gcvu42jeojmy"]
+[gd_scene load_steps=18 format=4 uid="uid://gcvu42jeojmy"]
 
+[ext_resource type="Script" uid="uid://hrhtw33bucdd" path="res://Objects/Gameplay/ControlPanel/console_keypad_monitor.gd" id="1_jgpfw"]
 [ext_resource type="Texture2D" uid="uid://ctqvqjdf3ykd8" path="res://Objects/Gameplay/ControlPanel/Mesh/T_ConsolesMonitor_A_BC.png" id="1_quagf"]
 [ext_resource type="Texture2D" uid="uid://deb4cvo2t6di0" path="res://Objects/Gameplay/ControlPanel/Mesh/T_ConsolesMonitor_A_N.png" id="2_7nv86"]
 [ext_resource type="Texture2D" uid="uid://gpo56mew181b" path="res://Objects/Gameplay/ControlPanel/Mesh/T_ConsolesMonitor_A_ORM.png" id="3_i245m"]
+[ext_resource type="FontFile" uid="uid://cfvfiw1qtrep1" path="res://Interface/Font/OverusedGrotesk-Bold.otf" id="5_1b00d"]
+[ext_resource type="FontFile" uid="uid://dp3oq0ou16joq" path="res://Interface/Font/VCR_OSD_MONO_1.001.ttf" id="6_lb8lw"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7rqnj"]
 resource_name = "MI_ConsolesMonitor_A_Screen"
@@ -72,8 +75,200 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_qnecw")
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_jgpfw"]
+viewport_path = NodePath("SM_ConsolsMonitor_A/SubViewportContainer/SubViewport")
+
+[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_1b00d"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_jgpfw")
+emission_enabled = true
+emission_texture = SubResource("ViewportTexture_jgpfw")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y10wl"]
+bg_color = Color(0, 0.756651, 0.53942615, 0.29803923)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jgpfw"]
+resource_local_to_scene = true
+bg_color = Color(0.264624, 0.9999997, 0.7370124, 0.29803923)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_bottom = 2.0
+
+[sub_resource type="Animation" id="Animation_k75k6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ScanLine:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 1, 0.537255, 0.541176)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ScanLine:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(500, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_7xmkv"]
+resource_name = "bg"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ScanLine:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 1, 0.537255, 0.541176), Color(0, 1, 0.537255, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ScanLine:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(500, 0), Vector2(500, 500)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gxtjk"]
+_data = {
+&"RESET": SubResource("Animation_k75k6"),
+&"bg": SubResource("Animation_7xmkv")
+}
+
 [node name="ConsoleKeypadMonitor" type="StaticBody3D"]
+script = ExtResource("1_jgpfw")
 
 [node name="SM_ConsolsMonitor_A" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_l0c5m")
 skeleton = NodePath("")
+surface_material_override/0 = SubResource("ORMMaterial3D_1b00d")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="SM_ConsolsMonitor_A"]
+offset_left = 1951.0
+offset_right = 2451.0
+offset_bottom = 500.0
+
+[node name="SubViewport" type="SubViewport" parent="SM_ConsolsMonitor_A/SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(500, 500)
+render_target_update_mode = 4
+
+[node name="Control" type="Control" parent="SM_ConsolsMonitor_A/SubViewportContainer/SubViewport"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Bg" type="Node2D" parent="SM_ConsolsMonitor_A/SubViewportContainer/SubViewport/Control"]
+
+[node name="Black" type="ColorRect" parent="SM_ConsolsMonitor_A/SubViewportContainer/SubViewport/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="ScanLine" type="ColorRect" parent="SM_ConsolsMonitor_A/SubViewportContainer/SubViewport/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -500.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 1, 0.537255, 0.541176)
+
+[node name="ColorRect4" type="Label" parent="SM_ConsolsMonitor_A/SubViewportContainer/SubViewport/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 68.0
+offset_top = 100.0
+offset_right = -68.0
+offset_bottom = -362.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_y10wl")
+
+[node name="EnterLabel" type="Label" parent="SM_ConsolsMonitor_A/SubViewportContainer/SubViewport/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 68.0
+offset_top = 193.0
+offset_right = -68.0
+offset_bottom = -284.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0.7411765, 0.43137255, 1)
+theme_override_fonts/font = ExtResource("5_1b00d")
+theme_override_font_sizes/font_size = 17
+theme_override_styles/normal = SubResource("StyleBoxFlat_jgpfw")
+text = "Enter Code"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Label3" type="Label" parent="SM_ConsolsMonitor_A/SubViewportContainer/SubViewport/Control"]
+layout_mode = 0
+offset_left = 47.0
+offset_top = 99.0
+offset_right = 453.0
+offset_bottom = 138.0
+theme_override_colors/font_color = Color(2.9841065e-06, 0.7186802, 0.51161784, 0.62352943)
+theme_override_fonts/font = ExtResource("5_1b00d")
+theme_override_font_sizes/font_size = 17
+text = "Modular Console System Interface V1.0.3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CodeLabel" type="Label" parent="SM_ConsolsMonitor_A/SubViewportContainer/SubViewport/Control"]
+layout_mode = 0
+offset_top = 238.0
+offset_right = 500.0
+offset_bottom = 283.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("6_lb8lw")
+theme_override_font_sizes/font_size = 50
+text = "_ _ _ _ _"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SM_ConsolsMonitor_A/SubViewportContainer/SubViewport/Control"]
+libraries = {
+&"": SubResource("AnimationLibrary_gxtjk")
+}
+autoplay = "bg"

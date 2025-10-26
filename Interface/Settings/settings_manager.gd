@@ -16,6 +16,8 @@ extends Node
 @onready var fov = $"../Tab2/SettingsBox4/HSlider"
 
 #TAB3
+@onready var graphics_quality: OptionButton = $"../Tab3/SettingsBox"
+@onready var resolution_scale: HSlider = $"../Tab3/SettingsBox4/HSlider"
 
 #TAB4
 @onready var main_volume = $"../Tab4/SettingsBox/HSlider"
@@ -32,6 +34,8 @@ func update_all_visual():
 	vsync.button_pressed = GameSettings.vsync
 	show_fps.button_pressed = GameSettings.show_fps
 	fov.value = GameSettings.fov
+	graphics_quality.selected = GameSettings.graphics_quality
+	resolution_scale.value = GameSettings.resolution_scale*100.0
 	main_volume.value = GameSettings.main_volume
 	music_volume.value = GameSettings.music_volume
 func reset_to_defualts():
@@ -42,12 +46,22 @@ func reset_to_defualts():
 	GameSettings.vsync = false
 	GameSettings.show_fps = false
 	GameSettings.fov = 75
+	GameSettings.graphics_quality = 0
+	GameSettings.resolution_scale = 1.0
+	GameSettings.anti_aliasing = 0
 	GameSettings.main_volume = 100
 	GameSettings.music_volume = 100
 	GameSettings.mobile_controls = false
 	
 	#RESET OTHER
 	DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
+	get_viewport().scaling_3d_scale = GameSettings.resolution_scale
+	Game.load_quality_environments()
+	var viewport: Viewport = get_viewport()
+	if GameSettings.anti_aliasing == 0: get_viewport().msaa_3d = Viewport.MSAA_DISABLED
+	elif GameSettings.anti_aliasing == 1: get_viewport().msaa_3d = Viewport.MSAA_2X
+	elif GameSettings.anti_aliasing == 2: get_viewport().msaa_3d = Viewport.MSAA_4X
+	elif GameSettings.anti_aliasing == 2: get_viewport().msaa_3d = Viewport.MSAA_8X
 	AudioServer.set_bus_volume_db(0, linear_to_db(GameSettings.main_volume/100))
 	AudioServer.set_bus_volume_db(0, linear_to_db(GameSettings.music_volume/100))
 	
@@ -99,6 +113,12 @@ func fov_changed(value):
 	GameSettings.fov = value
 
 #TAB3
+func _on_settings_box_item_selectedGraphics(index: int) -> void:
+	GameSettings.graphics_quality = index
+func _on_h_slider_value_changedRes(value: float) -> void:
+	GameSettings.resolution_scale = resolution_scale.value/100.0
+func _on_settings_box_2_item_selectedAnti(index: int) -> void:
+	GameSettings.anti_aliasing = index
 
 #TAB4
 func main_volume_changed(value):
@@ -111,3 +131,12 @@ func music_volume_changed(value):
 #TAB5
 func game_language_changed(_index):
 	pass # Replace with function body.
+
+func apply():
+	var viewport: Viewport = get_viewport()
+	viewport.scaling_3d_scale = GameSettings.resolution_scale
+	if GameSettings.anti_aliasing == 0: get_viewport().msaa_3d = Viewport.MSAA_DISABLED
+	elif GameSettings.anti_aliasing == 1: get_viewport().msaa_3d = Viewport.MSAA_2X
+	elif GameSettings.anti_aliasing == 2: get_viewport().msaa_3d = Viewport.MSAA_4X
+	elif GameSettings.anti_aliasing == 2: get_viewport().msaa_3d = Viewport.MSAA_8X
+	Game.load_quality_environments()

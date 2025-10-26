@@ -2,9 +2,9 @@ extends Node
 class_name PuzzleGateLinker
 
 ##Leave blank if this doesn't connect to a gate
-@export var connected_gate: StaticBody3D
+@export var connected_gate: Node3D
 ##Leave blank if this doesn't connect to a door
-@export var connected_door: StaticBody3D
+@export var connected_door: Node3D
 
 @export var puzzle: NodePath
 @export var use_enable_signal: bool = true

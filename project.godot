@@ -281,3 +281,7 @@ look_down={
 [input_devices]
 
 pointing/emulate_touch_from_mouse=true
+
+[rendering]
+
+global_illumination/sdfgi/frames_to_converge=2

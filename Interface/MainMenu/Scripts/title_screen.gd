@@ -36,7 +36,7 @@ func new_game():
 	var result = await menu_popup.prompt("NEW GAME", "This will overwrite any saved progress.")
 	if result:
 		Game.reset_checkpoint()
-		Game.load_checkpoint()
+		Game.load_scene("res://Interface/Credits/intro_tape.tscn")
 
 func _on_load_pressed():
 	load_game.toggle()

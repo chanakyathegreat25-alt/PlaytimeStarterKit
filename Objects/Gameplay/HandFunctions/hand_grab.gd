@@ -107,20 +107,21 @@ func hand_grabbed(area):
 					grab_marker.global_rotation = Grabpack.left_hand.global_rotation
 				update_hand_position(false)
 				grabL = true
-		if not Grabpack.right_hand.hand_attached and (both_hand or only_hand) and not (grabL and one_at_once) and not (Grabpack.right_hand.hand_changed_point if not usable_multiple_times else 0.0 == 1.0):
-			if not area.is_in_group("RightHandArea"):
-				if area.is_in_group("RightHandCorrecter") and not relative_to_grab_point:
-					Grabpack.right_hand.hand_grab_point = grab_marker.global_position
-					return
-				else:
-					return
-			if Grabpack.right_hand.holding_object: return
-			emit_signal("grabbed", true)
-			if relative_to_grab_point: 
-				grab_marker.global_position = Grabpack.right_hand.global_position
-				grab_marker.global_rotation = Grabpack.right_hand.global_rotation
-			update_hand_position(true)
-			grabR = true
+		if area.is_in_group("RightHandArea") or area.is_in_group("RightHandCorrecter"):
+			if not Grabpack.right_hand.hand_attached and (both_hand or only_hand) and not (grabL and one_at_once) and not (Grabpack.right_hand.hand_changed_point if not usable_multiple_times else 0.0 == 1.0):
+				if not area.is_in_group("RightHandArea"):
+					if area.is_in_group("RightHandCorrecter") and not relative_to_grab_point:
+						Grabpack.right_hand.hand_grab_point = grab_marker.global_position
+						return
+					else:
+						return
+				if Grabpack.right_hand.holding_object: return
+				emit_signal("grabbed", true)
+				if relative_to_grab_point: 
+					grab_marker.global_position = Grabpack.right_hand.global_position
+					grab_marker.global_rotation = Grabpack.right_hand.global_rotation
+				update_hand_position(true)
+				grabR = true
 func hand_released(_area):
 	pass
 	#if enabled:

@@ -11,6 +11,8 @@ extends Node3D
 
 const JUMP_PAD_POWERED = preload("res://Objects/Gameplay/HandFunctions/JumpPad/Mesh/jump_pad_powered.tres")
 
+signal player_jumped
+
 func _ready():
 	set_power(powered)
 
@@ -30,5 +32,6 @@ func area_entered(area):
 		if true_height < 0:
 			true_height = 0
 		jumped.play()
+		player_jumped.emit()
 		Grabpack.player_jump(true_height)
 		Grabpack.right_specific_rotation_axis("x", global_rotation.x-1.5)

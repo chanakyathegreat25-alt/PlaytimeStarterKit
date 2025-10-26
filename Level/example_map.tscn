@@ -18,7 +18,7 @@
 [ext_resource type="Script" uid="uid://dhjsvwgpbf3bx" path="res://Objects/Gameplay/event_trigger.gd" id="11_320o7"]
 [ext_resource type="AudioStream" uid="uid://b4wok8yvyhky0" path="res://Decoration/Sound/Ambient/SW_SFX_Alarm_Deep_01.wav" id="12_qiect"]
 [ext_resource type="PackedScene" uid="uid://mgaeb7vr4f7v" path="res://Objects/Gameplay/Puzzles/Scanners/scanner_left_ch4.tscn" id="12_r6jj4"]
-[ext_resource type="PackedScene" uid="uid://cuq8fp5meu5o" path="res://Objects/Gameplay/Gates/Types/metal_door.tscn" id="13_ajb23"]
+[ext_resource type="PackedScene" path="res://Objects/Gameplay/Gates/Types/metal_door.tscn" id="13_ajb23"]
 [ext_resource type="PackedScene" uid="uid://c48g55006jvua" path="res://Objects/Gameplay/Gates/key_item.tscn" id="14_h12gk"]
 [ext_resource type="PackedScene" uid="uid://djxegucg0r1te" path="res://Objects/Gameplay/Puzzles/Scanners/scanner_right_ch4.tscn" id="15_23j0v"]
 [ext_resource type="PackedScene" uid="uid://wdaboct67o3v" path="res://Objects/Gameplay/HandFunctions/JumpPad/jump_pad.tscn" id="16_23j0v"]
@@ -33,6 +33,7 @@
 [ext_resource type="PackedScene" uid="uid://b1p6mpsjn5qub" path="res://Objects/Gameplay/ControlPanel/console_battery_socket.tscn" id="23_a7lym"]
 [ext_resource type="PackedScene" uid="uid://pcbe4d8vixhy" path="res://Objects/Gameplay/Puzzles/Battery/battery.tscn" id="26_1lxvr"]
 [ext_resource type="PackedScene" uid="uid://dmbm8npfgtcbu" path="res://Objects/Characters/MonsterAI/VisualTemplates/Huggy/HuggyWuggyTemplate.tscn" id="33_5bw2j"]
+
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_y8auu"]
 sky_top_color = Color(0, 0, 0.0627451, 1)

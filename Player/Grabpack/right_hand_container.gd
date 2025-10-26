@@ -248,7 +248,7 @@ func launch_hand():
 	
 	right_auto_correct.position = hand_grab_point
 	await get_tree().create_timer(0.2).timeout
-	right_auto_correct.position = Vector3.ZERO
+	right_auto_correct.position = Vector3(0.0, -50.0, 0.0)
 func fire_non_launchable():
 	if not grabpack.grabpack_usable:
 		return
@@ -370,14 +370,8 @@ func seek_animation(time: float):
 func disable_hand():
 	disabled = true
 	if hand_uses_emitter:
-		hand_particle_emitter.emitting = true
-		if hand_particle_emitter.use_other_emitters:
-			for i in hand_particle_emitter.other_emitters.size():
-				hand_particle_emitter.other_emitters[i].emitting = true
+		hand_particle_emitter.enable()
 func enable_hand():
 	disabled = false
 	if hand_uses_emitter:
-		hand_particle_emitter.emitting = false
-		if hand_particle_emitter.use_other_emitters:
-			for i in hand_particle_emitter.other_emitters.size():
-				hand_particle_emitter.other_emitters[i].emitting = false
+		hand_particle_emitter.disable()

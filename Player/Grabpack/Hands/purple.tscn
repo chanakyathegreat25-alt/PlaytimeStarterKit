@@ -1,10 +1,11 @@
-[gd_scene load_steps=34 format=4 uid="uid://nkvm74l6uu31"]
+[gd_scene load_steps=36 format=4 uid="uid://nkvm74l6uu31"]
 
 [ext_resource type="Texture2D" uid="uid://cfs5hfr67cbm3" path="res://Player/Grabpack/Models/Hands/T_RocketHand_BCE.png" id="1_1agc2"]
 [ext_resource type="Script" uid="uid://ctek0ux7jb4ak" path="res://Player/Grabpack/Hands/Scripts/purple.gd" id="1_8jhsp"]
 [ext_resource type="Texture2D" uid="uid://c8r146q63i0df" path="res://Player/Grabpack/Models/Hands/T_RocketHand_ORM.png" id="3_2amae"]
 [ext_resource type="Texture2D" uid="uid://cpmfpo5dxrl5k" path="res://Player/Grabpack/Models/Hands/T_PurpleHand_BC.png" id="4_pb27o"]
 [ext_resource type="Script" uid="uid://gs4nfpgi5328" path="res://Player/Grabpack/Hands/SettingsComponents/fire_mode_launch.gd" id="7_8h0ls"]
+[ext_resource type="Script" uid="uid://dixsejkfjwh8a" path="res://Player/Grabpack/Hands/SettingsComponents/hand_disable_particles.gd" id="7_l8y3g"]
 [ext_resource type="Texture2D" uid="uid://cm1lawi7nysgl" path="res://Player/Grabpack/Models/Hands/T_HandBase_N.png" id="8_2amae"]
 [ext_resource type="Script" uid="uid://c263xrbrq4ymt" path="res://Player/Grabpack/Hands/SettingsComponents/hand_signal_connector.gd" id="8_8jhsp"]
 [ext_resource type="Texture2D" uid="uid://bp1rysgjl32b6" path="res://Player/Grabpack/Models/Hands/T_RocketHand_Nb.png" id="9_1agc2"]
@@ -147,6 +148,12 @@ bind/23/pose = Transform3D(75.6999, -6.68369e-27, 1.85411e-14, -1.10514e-20, 75.
 bind/24/name = &"CableSocket"
 bind/24/bone = -1
 bind/24/pose = Transform3D(75.6999, 6.88623e-21, 1.85411e-14, -3.56198e-20, 75.6999, 0.000117314, -1.85411e-14, -0.000116271, 75.6999, 2, -13, 17)
+
+[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_l8y3g"]
+albedo_texture = ExtResource("4_pb27o")
+orm_texture = ExtResource("9_pb27o")
+normal_enabled = true
+normal_texture = ExtResource("8_2amae")
 
 [sub_resource type="Animation" id="Animation_028yq"]
 resource_name = "bend"
@@ -4072,6 +4079,11 @@ script = ExtResource("12_2amae")
 animation_player = NodePath("../AnimationPlayer")
 metadata/_custom_type_script = "uid://byjxb5lhdyqeo"
 
+[node name="HandDisableParticles" type="Node" parent="." node_paths=PackedStringArray("add_effect_to_mesh")]
+script = ExtResource("7_l8y3g")
+add_effect_to_mesh = NodePath("../SK_PurpleHand/Skeleton3D/SK_PurpleHand_001")
+metadata/_custom_type_script = "uid://dixsejkfjwh8a"
+
 [node name="SK_PurpleHand" type="Node3D" parent="."]
 transform = Transform3D(0.033, 0, 0, 0, 0.033, 0, 0, 0, 0.033, 0.00601766, -0.0392437, -0.0499496)
 
@@ -4256,6 +4268,7 @@ bones/24/scale = Vector3(1, 1, 1)
 [node name="SK_PurpleHand_001" type="MeshInstance3D" parent="SK_PurpleHand/Skeleton3D"]
 mesh = SubResource("ArrayMesh_pb27o")
 skin = SubResource("Skin_r7ygk")
+surface_material_override/0 = SubResource("ORMMaterial3D_l8y3g")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

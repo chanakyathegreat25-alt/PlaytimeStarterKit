@@ -20,7 +20,7 @@ func _ready():
 
 func toggle():
 	if visible:
-		pass
+		$section/Tabs/SettingsManager.apply()
 	else:
 		pass
 	visible = !visible

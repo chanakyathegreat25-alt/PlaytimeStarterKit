@@ -66,7 +66,7 @@ func move_forward(delta):
 	var new_velocity = (next_location - current_location).normalized() * speed
 
 	prev_look = lerp(prev_look, global_transform.origin + velocity, LERP_SPEED * delta)
-	if not  global_position==prev_look: look_at(prev_look)
+	if not global_position.is_equal_approx(prev_look): look_at(prev_look)
 	
 	velocity = new_velocity
 

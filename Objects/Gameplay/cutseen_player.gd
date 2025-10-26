@@ -1,5 +1,5 @@
 extends Node
-class_name CutseenPlayer
+class_name CutscenePlayer
 
 @export var cutseen_camera: Camera3D
 @export var camera_transition_length_in: float = 1.0

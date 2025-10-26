@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=4 uid="uid://bifmmultpyw0x"]
+[gd_scene load_steps=61 format=4 uid="uid://bifmmultpyw0x"]
 
 [ext_resource type="Script" uid="uid://b7a5hf3ljmyj5" path="res://Level/Scripts/test_map.gd" id="1_d6ggl"]
 [ext_resource type="Material" uid="uid://dl7krlcnai0qx" path="res://Level/Assets/Materials/ProtoDark.tres" id="1_teiv4"]
@@ -14,39 +14,32 @@
 [ext_resource type="PackedScene" uid="uid://xmerc1mcwygl" path="res://Player/Grabpack/Hands/green.tscn" id="8_syxy8"]
 [ext_resource type="AudioStream" uid="uid://bubsi5ofn3jsv" path="res://Decoration/Sound/Sfx/SFX bone break neck snap crack 02.mp3" id="9_eyvyl"]
 [ext_resource type="PackedScene" uid="uid://cxbtcmk7ewecu" path="res://Objects/Gameplay/ControlPanel/ConsoleBase.tscn" id="11_eu3rf"]
-[ext_resource type="Script" uid="uid://boad7pm33g3dk" path="res://Objects/Gameplay/tutorial_trigger.gd" id="12_m6xow"]
 [ext_resource type="Script" uid="uid://ckdvdouxaw4it" path="res://Objects/Gameplay/Puzzles/ConnectionComponents/puzzle_gate_linker.gd" id="15_eyvyl"]
 [ext_resource type="PackedScene" uid="uid://bwhv76qv6mymk" path="res://Objects/Gameplay/Puzzles/Battery/power_cube.tscn" id="17_iti35"]
-[ext_resource type="PackedScene" uid="uid://c11m7frgbrh2j" path="res://Objects/Gameplay/Gates/Types/slider_gate.tscn" id="26_stmen"]
+[ext_resource type="PackedScene" uid="uid://cgfr84c3rrtym" path="res://Objects/Gameplay/Gates/door.tscn" id="17_nip8n"]
+[ext_resource type="PackedScene" uid="uid://beulqub30hkuo" path="res://Objects/Gameplay/Puzzles/Battery/power_cube_holder.tscn" id="18_6ffck"]
+[ext_resource type="PackedScene" uid="uid://dw0j2dfcr6rxu" path="res://Objects/Gameplay/Gates/DoorTypes/door_red.tscn" id="18_v8n35"]
+[ext_resource type="PackedScene" uid="uid://b7rx7eb0qoxc2" path="res://Objects/Gameplay/ControlPanel/ch1keypad.tscn" id="20_j8t6x"]
+[ext_resource type="PackedScene" uid="uid://cd47wb6hqy68j" path="res://Objects/Gameplay/ControlPanel/keypad.tscn" id="21_u1mi0"]
+[ext_resource type="PackedScene" uid="uid://gcvu42jeojmy" path="res://Objects/Gameplay/ControlPanel/console_keypad_monitor.tscn" id="22_hi01m"]
+[ext_resource type="PackedScene" uid="uid://8pe124iuwggi" path="res://Objects/Gameplay/HandFunctions/DashPanel/dash_panel.tscn" id="22_v8274"]
+[ext_resource type="PackedScene" uid="uid://bppbe0jmgklas" path="res://Objects/Gameplay/Gates/GateTypes/gate_slider.tscn" id="23_2qwny"]
+[ext_resource type="PackedScene" uid="uid://dd7igduoonl0g" path="res://Player/Grabpack/Hands/omni.tscn" id="24_j8t6x"]
+[ext_resource type="PackedScene" uid="uid://wdaboct67o3v" path="res://Objects/Gameplay/HandFunctions/JumpPad/jump_pad.tscn" id="24_stmen"]
+[ext_resource type="PackedScene" uid="uid://jwxx7wssjsy3" path="res://Objects/Gameplay/Gas/Mask/gas_mask.tscn" id="25_4yy1v"]
+[ext_resource type="PackedScene" uid="uid://cci31kuqdnklx" path="res://Objects/Gameplay/Gates/gate.tscn" id="25_v8n35"]
+[ext_resource type="PackedScene" uid="uid://cvvoilg0bvp2e" path="res://Objects/Gameplay/Gas/gas_zone.tscn" id="26_ojsmx"]
 [ext_resource type="PackedScene" uid="uid://4rciqrfbccha" path="res://Objects/Gameplay/ControlPanel/console_monitor.tscn" id="27_4yy1v"]
+[ext_resource type="PackedScene" uid="uid://dbkase7jfw72h" path="res://Objects/Gameplay/Gas/Mask/gas_mask_broken.tscn" id="27_v4kwe"]
 [ext_resource type="PackedScene" uid="uid://mgaeb7vr4f7v" path="res://Objects/Gameplay/Puzzles/Scanners/scanner_left_ch4.tscn" id="28_ojsmx"]
+[ext_resource type="PackedScene" uid="uid://34470wbwvfcs" path="res://Objects/Gameplay/ControlPanel/console_scanner_left.tscn" id="28_sj8vn"]
 [ext_resource type="PackedScene" uid="uid://5xwl88xktvuo" path="res://Player/Grabpack/Hands/flare.tscn" id="28_v8274"]
+[ext_resource type="PackedScene" uid="uid://bunoh0iahfrtv" path="res://Objects/Gameplay/ControlPanel/ConsoleDoubleBase.tscn" id="29_qu7le"]
 [ext_resource type="PackedScene" uid="uid://d72ccg8igawe" path="res://Player/Grabpack/Hands/dash.tscn" id="29_suxck"]
+[ext_resource type="Script" uid="uid://dhjsvwgpbf3bx" path="res://Objects/Gameplay/event_trigger.gd" id="30_sj8vn"]
+[ext_resource type="Script" uid="uid://chjg6itkbl4yq" path="res://Objects/graphics_compatible_level.gd" id="30_suxck"]
+[ext_resource type="PackedScene" uid="uid://bnw1mwm2pyrp0" path="res://Player/Grabpack/Hands/gun.tscn" id="30_v8n35"]
 [ext_resource type="Script" uid="uid://sd5i3nyjnc1n" path="res://Objects/Gameplay/cutseen_player.gd" id="32_2qwny"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3mqk5"]
-sky_top_color = Color(4.955963e-06, 0.008058461, 0.082810864, 1)
-sky_horizon_color = Color(0.55046314, 0.9112453, 0.99999994, 1)
-ground_bottom_color = Color(0, 0.007843138, 0.08235294, 1)
-ground_horizon_color = Color(0, 0.3213636, 0.6893783, 1)
-
-[sub_resource type="Sky" id="Sky_sgpca"]
-sky_material = SubResource("ProceduralSkyMaterial_3mqk5")
-
-[sub_resource type="Environment" id="Environment_c5qun"]
-background_mode = 2
-sky = SubResource("Sky_sgpca")
-tonemap_mode = 2
-ssr_enabled = true
-ssil_enabled = true
-sdfgi_read_sky_light = false
-glow_enabled = true
-glow_bloom = 0.6
-volumetric_fog_enabled = true
-volumetric_fog_density = 0.016
-adjustment_enabled = true
-adjustment_contrast = 1.2
-adjustment_color_correction = ExtResource("2_8s5l4")
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_eyvyl"]
 
@@ -113,6 +106,27 @@ _surfaces = [{
 "vertex_count": 225,
 "vertex_data": PackedByteArray("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AAD/v/9//n8AAP+//3/+fwAA/7//f/5/AAD/P/9//n8AAP8//3/+fwAA/z//f/5/AAD/v/9//n8AAP+//3/+fwAA/7//f/5/AAD/v/9//n8AAP+//3/+fwAA/7//f/5/AAD/v/5//n8AAP+//n/+fwAA/7/+f/5/AAD/PwCA/n8AAP8/AID+fwAA/z8AgP5/AAD/v/9//n8AAP+//3/+fwAA/7//f/5/+r8GgAyABoD6vwaADIAGgPq/BoAMgAaAAAD/v/9//n8AAP+//3/+fwAA/7//f/5//r//f/9/AID+v/9//38AgP6//3//fwCA+7/+f/5/AID7v/5//n8AgPu//n/+fwCA/7//f/9/AID/v/9//38AgP+//3//fwCA/7//f/9/AID/v/9//38AgP+//3//fwCAAAD/v/9//n8AAP+//3/+fwAA/7//f/5/AAD/P/9//n8AAP8//3/+fwAA/z//f/5//3///////t//f//////+3/9///////7f/38AAP///x//fwAA////H/9/AAD///8f/38AAP///x//fwAA////H/9/AAD///8f/38AAP///x//fwAA////H/9/AAD///8fAAD/v/9//n8AAP+//3/+fwAA/7//f/5//7//f/9/AID/v/9//38AgP+//3//fwCA/7//f/9/AID/v/9//38AgP+//3//fwCA/r//f/9/AID+v/9//38AgP6//3//fwCA/7//f/9/AID/v/9//38AgP+//3//fwCAAAD/P6ajFXcAAP8/pqMVdwAA/z+moxV3B8ABgAKAAYAHwAGAAoABgAfAAYACgAGA/38AAP//AeD/fwAA//8B4P9/AAD//wHg/3///////x//f///////H/9///////8f/3///////9//f///////3/9////////f/3///////x//f///////H/9///////8f/3///////x//f///////H/9///////8f/z//fwAA/x//P/9/AAD/H/8//38AAP8f/3///////9//f///////3/9////////f/38AAP///x//fwAA////H/9/AAD///8f/3//////A+D/f/////8D4P9////////f/z//fwAA/x//P/9/AAD/H/8//38AAP8f/3///////9//f///////3/9////////f/3//////A+D/f///////3/9////////f/3///////9//f///////3/9////////f/38AAP///x//fwAA////H/9/AAD//wAg/38AAP///x//fwAA////H/9/AAD///8f/3///////9//f///////3/9////////f/3///////x//f///////H/9///////8f/3///////x//f///////H/9///////8f/3///////x//f///////H/9///////8f/3///////x//f///////H/9///////8f/3///////x//f///////H/9///////8f/38AAP///9//fwAA////3/9/AAD////f/3///////x//f///////H/9///////8f/3///////x//f///////H/9///////8f/7//f/9//n//v/9//3/+f/+//3//f/5//7//f/9//n//v/9//3/+f/+//3//f/5//7//f/9//n//v/9//3/+f/+//3//f/5//7//f/9//n//v/9//3/+f/+//3//f/5/AMD/f/9//n8AwP9//3/+fwDA/3//f/5/AAD/v/9/AIAAAP+//38AgAAA/7//fwCA/7//f/9//n//v/9//3/+f/+//3//f/5/AAABwP9/AIAAAAHA/38AgAAAAcD/fwCAAAD/v/9/AIAAAP+//38AgAAA/7//fwCA/7//f/9//n//v/9//3/+f/+//3//f/5//7//f/9//n//v/9//3/+f/+//3//f/5//r//f/5//n/+v/9//n/+f/6//3/+f/5//7//f/9//n//v/9//3/+f/+//3//f/5//7//f/9//n//v/9//3/+f/+//3//f/5//7//f49sj2z/v/9/j2yPbP+//3+PbI9s/3///////x//f///////H/9///////8f/3///////x//f///////H/9///////8f/7//f/T6QmH/v/9/9PpCYf+//3/0+kJh/7//f/9//n//v/9//3/+f/+//3//f/5//7//f/9//n//v/9//3/+f/+//3//f/5//7//f/9//n//v/9//3/+f/+//3//f/5//7//f/9//n//v/9//3/+f/+//3//f/5//7//f/9//n//v/9//3/+f/+//3//f/5//7//f/9//n//v/9//3/+f/+//3//f/5/AQAAwP1/AIABAADA/X8AgAEAAMD9fwCA")
 }]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sgpca"]
+size = Vector3(13.5, 2.1000001, 17)
+
+[sub_resource type="Gradient" id="Gradient_ojsmx"]
+offsets = PackedFloat32Array(0.412, 1)
+colors = PackedColorArray(0, 0, 0, 1, 1, 0, 0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_sgpca"]
+frequency = 0.0595
+
+[sub_resource type="NoiseTexture3D" id="NoiseTexture3D_v4kwe"]
+noise = SubResource("FastNoiseLite_sgpca")
+color_ramp = SubResource("Gradient_ojsmx")
+
+[sub_resource type="FogMaterial" id="FogMaterial_sj8vn"]
+albedo = Color(1, 0, 0, 1)
+emission = Color(0.1882353, 0, 0, 1)
+density_texture = SubResource("NoiseTexture3D_v4kwe")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qu7le"]
 
 [sub_resource type="Shader" id="Shader_hi01m"]
 code = "shader_type canvas_item;
@@ -403,6 +417,30 @@ _data = {
 &"fall": SubResource("Animation_hi01m")
 }
 
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3mqk5"]
+sky_top_color = Color(4.955963e-06, 0.008058461, 0.082810864, 1)
+sky_horizon_color = Color(0.55046314, 0.9112453, 0.99999994, 1)
+ground_bottom_color = Color(0, 0.007843138, 0.08235294, 1)
+ground_horizon_color = Color(0, 0.3213636, 0.6893783, 1)
+
+[sub_resource type="Sky" id="Sky_sgpca"]
+sky_material = SubResource("ProceduralSkyMaterial_3mqk5")
+
+[sub_resource type="Environment" id="Environment_c5qun"]
+background_mode = 2
+sky = SubResource("Sky_sgpca")
+tonemap_mode = 2
+ssr_enabled = true
+ssil_enabled = true
+sdfgi_read_sky_light = false
+glow_enabled = true
+glow_bloom = 0.6
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.016
+adjustment_enabled = true
+adjustment_contrast = 1.2
+adjustment_color_correction = ExtResource("2_8s5l4")
+
 [node name="TestMap" type="Node3D"]
 script = ExtResource("1_d6ggl")
 
@@ -411,9 +449,6 @@ transform = Transform3D(-0.86602354, -0.43301606, 0.25000072, 0, 0.49999818, 0.8
 visible = false
 light_color = Color(1, 1, 0.898039, 1)
 shadow_enabled = true
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_c5qun")
 
 [node name="Csg" type="Node" parent="."]
 
@@ -448,6 +483,125 @@ use_collision = true
 size = Vector3(4.2000003, 0.1, 14.400001)
 material = ExtResource("1_teiv4")
 
+[node name="CSGBox3D6" type="CSGBox3D" parent="Csg"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1, -0.049999997, -11.320044)
+use_collision = true
+size = Vector3(4.2000003, 0.1, 9.400001)
+material = ExtResource("1_teiv4")
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="Csg"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.15, 2, -10.320044)
+use_collision = true
+size = Vector3(0.1, 4.2000003, 7.4)
+material = ExtResource("1_teiv4")
+
+[node name="CSGBox3D16" type="CSGBox3D" parent="Csg"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0500002, 2, -10.320044)
+use_collision = true
+size = Vector3(0.1, 4.2000003, 7.4)
+material = ExtResource("1_teiv4")
+
+[node name="CSGBox3D17" type="CSGBox3D" parent="Csg"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.15, 2, -13.870044)
+use_collision = true
+size = Vector3(4.3, 4.2000003, 0.3)
+material = ExtResource("1_teiv4")
+
+[node name="CSGBox3D18" type="CSGBox3D" parent="Csg"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.2500005, 2, -13.870044)
+use_collision = true
+size = Vector3(4.3, 4.2000003, 0.3)
+material = ExtResource("1_teiv4")
+
+[node name="CSGBox3D19" type="CSGBox3D" parent="Csg"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.3000007, 2, -18.320044)
+use_collision = true
+size = Vector3(0.2, 4.2000003, 8.8)
+material = ExtResource("1_teiv4")
+
+[node name="CSGBox3D23" type="CSGBox3D" parent="Csg"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0500011, 2, -22.670044)
+use_collision = true
+size = Vector3(12.7, 4.2000003, 0.1)
+material = ExtResource("1_teiv4")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Csg/CSGBox3D23"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0281739, -0.5281861, 0)
+operation = 2
+size = Vector3(1.5725586, 3.1436281, 1)
+
+[node name="CSGBox3D20" type="CSGBox3D" parent="Csg"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.1999993, 2, -18.370045)
+use_collision = true
+size = Vector3(0.2, 4.2000003, 8.900001)
+material = ExtResource("1_teiv4")
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="Csg"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.1000004, -0.049999997, -15.020044)
+use_collision = true
+size = Vector3(4.2000003, 0.1, 2)
+material = ExtResource("1_teiv4")
+
+[node name="CSGBox3D21" type="CSGBox3D" parent="Csg"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3499993, 1.9499999, -15.920044)
+use_collision = true
+size = Vector3(7.5, 4.1, 0.2)
+material = ExtResource("1_teiv4")
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="Csg"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.3, -0.049999997, -15.020044)
+use_collision = true
+size = Vector3(4.2000003, 0.1, 2)
+material = ExtResource("1_teiv4")
+
+[node name="CSGBox3D22" type="CSGBox3D" parent="Csg"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1000004, -0.049999997, -19.270044)
+use_collision = true
+size = Vector3(12.6, 0.1, 6.7000003)
+material = ExtResource("1_teiv4")
+
+[node name="CSGBox3D24" type="CSGBox3D" parent="Csg"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.799796e-07, -0.049999997, -24.520044)
+use_collision = true
+size = Vector3(3.1000001, 0.1, 3.8)
+material = ExtResource("1_teiv4")
+
+[node name="CSGBox3D11" type="CSGBox3D" parent="Csg"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3999996, -0.049999997, -3.4200428)
+use_collision = true
+size = Vector3(2.8, 0.1, 2)
+material = ExtResource("1_teiv4")
+
+[node name="CSGBox3D12" type="CSGBox3D" parent="Csg"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8499997, 1.5000001, -3.4200428)
+use_collision = true
+size = Vector3(0.1, 3.2, 2)
+material = ExtResource("1_teiv4")
+
+[node name="CSGBox3D14" type="CSGBox3D" parent="Csg"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4499996, 1.5000001, -2.4700427)
+use_collision = true
+size = Vector3(2.9, 3.2, 0.1)
+material = ExtResource("1_teiv4")
+
+[node name="CSGBox3D15" type="CSGBox3D" parent="Csg"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4499996, 1.5000001, -4.370043)
+use_collision = true
+size = Vector3(2.9, 3.2, 0.1)
+material = ExtResource("1_teiv4")
+
+[node name="CSGBox3D13" type="CSGBox3D" parent="Csg"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.3499994, 1.35, -3.4200428)
+use_collision = true
+size = Vector3(4.7000003, 0.3, 2)
+material = ExtResource("1_teiv4")
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="Csg"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.099999666, -0.049999997, -41.970047)
+use_collision = true
+size = Vector3(8.2, 0.1, 3.3)
+material = ExtResource("1_teiv4")
+
 [node name="CSGBox3D3" type="CSGBox3D" parent="Csg"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1, 1.9499999, 0.54999876)
 use_collision = true
@@ -461,9 +615,9 @@ size = Vector3(4.3, 4.1, 0.2)
 material = ExtResource("1_teiv4")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Csg/CSGBox3D5"]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, -0.8000001, -0.099999905)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.017089844, -0.51680017, -0.099999905)
 operation = 2
-size = Vector3(1, 2.6000001, 1.2)
+size = Vector3(1, 3.1664002, 1.4980469)
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="Csg"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1.9499999, 0.9999981)
@@ -532,15 +686,6 @@ stream = ExtResource("9_eyvyl")
 
 [node name="Puzzle" type="Node" parent="."]
 
-[node name="SliderGate" parent="Puzzle" instance=ExtResource("26_stmen")]
-transform = Transform3D(0.9716359, 0, 0.23648205, 0, 1, 0, -0.23648205, 0, 0.9716359, 1.1631246, -1.1920929e-07, 7.290861)
-
-[node name="TutorialTrigger" type="Node" parent="Puzzle/SliderGate"]
-script = ExtResource("12_m6xow")
-signal_name = "openned"
-tutorial_message = "Press [F] to toggle flashlight."
-metadata/_custom_type_script = "uid://boad7pm33g3dk"
-
 [node name="ConsoleBase" parent="Puzzle" instance=ExtResource("11_eu3rf")]
 transform = Transform3D(0.90402526, 0, 0.8632718, 0, 1.25, 0, -0.8632718, 0, 0.90402526, -0.009539247, -5.9604645e-07, 8.429517)
 
@@ -554,7 +699,7 @@ transform = Transform3D(0.90402526, 0, 0.8632718, 0, 1.25, 0, -0.8632718, 0, 0.9
 
 [node name="PuzzleGateLinker" type="Node" parent="Puzzle/HandScannerLeft" node_paths=PackedStringArray("connected_gate")]
 script = ExtResource("15_eyvyl")
-connected_gate = NodePath("../../SliderGate")
+connected_gate = NodePath("../../Gate2")
 puzzle = NodePath("..")
 enable_signal = "scan_success"
 use_disable_signal = false
@@ -565,11 +710,115 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 10.2)
 
 [node name="PowerCube" parent="Puzzle" instance=ExtResource("17_iti35")]
 
+[node name="PowerCube2" parent="Puzzle" instance=ExtResource("17_iti35")]
+transform = Transform3D(0.8257047, 0, 0.5641026, 0, 1, 0, -0.5641026, 0, 0.8257047, 0, 0, -1)
+cube_colour = 1
+
+[node name="PowerCube3" parent="Puzzle" instance=ExtResource("17_iti35")]
+transform = Transform3D(0.8132429, 0, -0.5819243, 0, 1, 0, 0.5819243, 0, 0.8132429, 0.60893285, 0, -0.45287025)
+cube_colour = 2
+
+[node name="PowerCube4" parent="Puzzle" instance=ExtResource("17_iti35")]
+transform = Transform3D(0.9724311, 0, 0.23319077, 0, 1, 0, -0.23319077, 0, 0.9724311, 0.40693736, 0, -1.9116106)
+cube_colour = 3
+
+[node name="Door" parent="Puzzle" instance=ExtResource("17_nip8n")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.7986893, -2.3841858e-07, -2.8579473)
+door_type = ExtResource("18_v8n35")
+
+[node name="PowerCubeHolder" parent="Puzzle" instance=ExtResource("18_6ffck")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.14818406, 0.054725587, -6.0970063)
+
+[node name="PuzzleGateLinker" type="Node" parent="Puzzle/PowerCubeHolder" node_paths=PackedStringArray("connected_gate")]
+script = ExtResource("15_eyvyl")
+connected_gate = NodePath("../../Gate")
+puzzle = NodePath("..")
+enable_signal = "completed"
+use_disable_signal = false
+metadata/_custom_type_script = "uid://ckdvdouxaw4it"
+
+[node name="Keypad" parent="Puzzle" instance=ExtResource("20_j8t6x")]
+transform = Transform3D(-4.371139e-08, 0, -1, -1, -4.371139e-08, 4.371139e-08, -4.371139e-08, 1, 1.9106855e-15, 2.120888, 1.9612246, -6.466922)
+code = 1234
+
+[node name="DashPanel" parent="Puzzle" instance=ExtResource("22_v8274")]
+transform = Transform3D(-4.371139e-08, 0, -1, -1, -4.371139e-08, 4.371139e-08, -4.371139e-08, 1, 1.9106855e-15, 0, 2.3, -43.4)
+
+[node name="Keypad2" parent="Puzzle" instance=ExtResource("21_u1mi0")]
+transform = Transform3D(1.9106855e-15, 1, -4.371139e-08, -1, 1.9106855e-15, 0, 0, 4.371139e-08, 1, -0.9, 1.8000001, -2.1000001)
+code = 199585
+
+[node name="ConsoleKeypadMonitor" parent="Puzzle/Keypad2" node_paths=PackedStringArray("keypad") instance=ExtResource("22_hi01m")]
+transform = Transform3D(-3.5527133e-15, -1, 1.9106855e-15, -8.742278e-08, -1.6420282e-15, 1, -1, 7.177533e-23, -8.742277e-08, 0.9000001, 0.19999999, 0)
+keypad = NodePath("..")
+
+[node name="ConsoleBase" parent="Puzzle/Keypad2" instance=ExtResource("11_eu3rf")]
+transform = Transform3D(-4.3711392e-08, -1, 4.3711392e-08, -8.742278e-08, 4.3711395e-08, 1, -1, 4.3711385e-08, -8.742278e-08, 1.7, 0.19999999, 0)
+
+[node name="Gate" parent="Puzzle" instance=ExtResource("25_v8n35")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -6.5)
+gate_type = ExtResource("23_2qwny")
+
+[node name="Gate3" parent="Puzzle" instance=ExtResource("25_v8n35")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -22.5)
+gate_type = ExtResource("23_2qwny")
+
+[node name="Gate2" parent="Puzzle" instance=ExtResource("25_v8n35")]
+transform = Transform3D(0.9812523, 0, 0.19272748, 0, 1, 0, -0.19272748, 0, 0.9812523, 1.1517743, 0, 7.2132845)
+gate_type = ExtResource("23_2qwny")
+
+[node name="JumpPad" parent="Puzzle" instance=ExtResource("24_stmen")]
+transform = Transform3D(0.99584794, 0, -0.09103235, 0, 1, 0, 0.09103235, 0, 0.99584794, -2.3000002, 0, -3.5000002)
+
+[node name="GasMask" parent="Puzzle" instance=ExtResource("25_4yy1v")]
+transform = Transform3D(-3.683791e-08, 0.5383002, 0.8427532, 2.352985e-08, 0.8427532, -0.5383002, -1, 0, -4.371139e-08, -3.6339307, 1.8, -3.4543312)
+
+[node name="GasZone" parent="Puzzle" instance=ExtResource("26_ojsmx")]
+enabled = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Puzzle/GasZone"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.25, -16.8)
+shape = SubResource("BoxShape3D_sgpca")
+
+[node name="FogVolume" type="FogVolume" parent="Puzzle/GasZone"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -16.2)
+size = Vector3(13.8, 5.3, 15.5)
+material = SubResource("FogMaterial_sj8vn")
+
+[node name="GasMaskBroken" parent="Puzzle" instance=ExtResource("27_v4kwe")]
+transform = Transform3D(-1, 0, -8.940697e-08, 4.4703484e-08, 0.8660254, -0.5, 7.74287e-08, -0.5, -0.8660254, 1.6000001, 2.4, -16.1)
+
+[node name="ConsoleScannerLeft" parent="Puzzle" instance=ExtResource("28_sj8vn")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 2.1000001, 0.8, -16.200003)
+
+[node name="ConsoleMonitor" parent="Puzzle/ConsoleScannerLeft" instance=ExtResource("27_4yy1v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.79999995, 0, 0)
+
+[node name="ConsoleDoubleBase" parent="Puzzle/ConsoleScannerLeft" instance=ExtResource("29_qu7le")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.39999998, -0.8000001, 0)
+
+[node name="PuzzleGateLinker" type="Node" parent="Puzzle/ConsoleScannerLeft" node_paths=PackedStringArray("connected_gate")]
+script = ExtResource("15_eyvyl")
+connected_gate = NodePath("../../Gate3")
+puzzle = NodePath("..")
+enable_signal = "scan_success"
+use_disable_signal = false
+metadata/_custom_type_script = "uid://ckdvdouxaw4it"
+
+[node name="EventTrigger" type="Area3D" parent="Puzzle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, -26.2)
+script = ExtResource("30_sj8vn")
+metadata/_custom_type_script = "uid://dhjsvwgpbf3bx"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Puzzle/EventTrigger"]
+shape = SubResource("BoxShape3D_qu7le")
+
 [node name="Player" parent="." instance=ExtResource("3_bdoa4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.9)
+flashlight_togglable = true
 start_lowered = true
 starting_grabpack = 2
-enabled_hands = Array[PackedScene]([ExtResource("8_c5qun"), ExtResource("8_syxy8"), ExtResource("28_v8274"), ExtResource("29_suxck")])
+enabled_hands = Array[PackedScene]([ExtResource("8_c5qun"), ExtResource("8_syxy8"), ExtResource("28_v8274"), ExtResource("29_suxck"), ExtResource("24_j8t6x"), ExtResource("30_v8n35")])
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -595,7 +844,7 @@ light_energy = 0.05
 omni_range = 4.921569
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.87035567, -0.47564456, -0.1274486, 0, 0.25881904, -0.9659258, 0.49242356, 0.8406989, 0.22526465, 0, 8.3, 9.5)
+transform = Transform3D(0.8703555, -0.4756445, -0.1274486, 0, 0.258819, -0.9659258, 0.49242344, 0.84069884, 0.22526465, 0, 8.3, 9.5)
 current = true
 
 [node name="CutseenPlayer" type="Node" parent="." node_paths=PackedStringArray("cutseen_camera", "animation_player")]
@@ -609,3 +858,17 @@ use_player_fov = true
 play_with_animation = true
 animation_player = NodePath("../AnimationPlayer")
 animation_name = "fall"
+
+[node name="GraphicsCompatibleLevel" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_c5qun")
+script = ExtResource("30_suxck")
+high_environment = SubResource("Environment_c5qun")
+metadata/_custom_type_script = "uid://chjg6itkbl4yq"
+
+[node name="Node" type="Node" parent="."]
+
+[node name="Marker3D" type="Marker3D" parent="Node"]
+
+[connection signal="code_success" from="Puzzle/Keypad" to="." method="_on_keypad_code_success"]
+[connection signal="player_jumped" from="Puzzle/JumpPad" to="." method="_on_jump_pad_player_jumped"]
+[connection signal="triggered" from="Puzzle/EventTrigger" to="." method="_on_event_trigger_triggered"]

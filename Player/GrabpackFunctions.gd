@@ -178,6 +178,15 @@ func right_wire_custom(first: bool = false, last: bool = false, look_at: Vector3
 	new_special_wire.for_hand = true
 	
 	right_hand.right_wire_special.add_child(new_special_wire)
+func hand_check_for_use_as(hand_name: String):
+	if right_hand.current_hand_node:
+		if right_hand.current_hand_node.name == hand_name: return true
+		if right_hand.current_hand_node.has_node("MultiHand"):
+			var multi_hand = right_hand.current_hand_node.get_node("MultiHand")
+			for i in multi_hand.usable_as_hands.size():
+				if multi_hand.usable_as_hands[i] == hand_name:
+					return true
+	return false
 
 func add_hand(hand_scene: PackedScene, hand_idx: int = -1):
 	var hand_instance = hand_scene.instantiate()

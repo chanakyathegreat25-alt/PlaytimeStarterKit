@@ -4,8 +4,8 @@ class_name PathSidleZone
 @export var entrance1: Area3D
 @export var entrance2: Area3D
 
-@onready var follow: PathFollow3D = $PathFollow3D
-@onready var follow_head: Marker3D = $PathFollow3D/followHead
+var follow: PathFollow3D
+var follow_head: Marker3D
 
 var rotation_speed: float = 5.0
 var player_rotation_target: Node3D
@@ -18,6 +18,12 @@ var exit_time: float = 0.0
 var in_sidle: bool = false
 
 func _ready() -> void:
+	if not has_node("PathFollow3D"):
+		var new_follow: PathFollow3D = preload("res://Objects/Gameplay/path_follow_sidle.tscn").instantiate()
+		add_child(new_follow)
+		new_follow.name = "PathFollow3D"
+	follow = $PathFollow3D
+	follow_head = $PathFollow3D/followHead
 	entrance1.connect("body_entered", Callable(ent1entered))
 	entrance2.connect("body_entered", Callable(ent2entered))
 

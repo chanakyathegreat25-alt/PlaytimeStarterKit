@@ -3,6 +3,7 @@ extends Node
 var hud = null
 var checkpoint: int = 0
 
+var current_environment_node: WorldEnvironmentGraphicsCompatible
 var current_objective = "none"
 var saves: Array = []
 
@@ -46,6 +47,13 @@ func delay(time: float = 1.0):
 	await get_tree().create_timer(time).timeout
 	return
 
+func load_quality_environments():
+	if not current_environment_node: return
+	
+	if GameSettings.graphics_quality == 0: current_environment_node.environment = current_environment_node.high_environment
+	elif GameSettings.graphics_quality == 1: current_environment_node.environment = current_environment_node.medium_environment
+	elif GameSettings.graphics_quality == 2: current_environment_node.environment = current_environment_node.low_environment
+
 func load_checkpoint():
 	#ADD YOUR LOAD CHECKPOINT CODE HERE
 	#THE CODE ALREADY HERE IS ONLY FOR TESTING
@@ -65,6 +73,16 @@ func enable_input(action_name, button):
 	mouse_event.pressed = true  # Required for the input to be considered valid
 
 	InputMap.action_add_event(action_name, mouse_event)
+
+func end(black_time: float = 1.5):
+	get_tree().current_scene.add_child(preload("res://Interface/Credits/game_end_black.tscn").instantiate())
+	Grabpack.player.capture_mouse(false)
+	Grabpack.set_movable(false)
+	hud.set_crosshair(false)
+	
+	await delay(black_time)
+	
+	get_tree().change_scene_to_file("res://Interface/Credits/credits.tscn")
 
 #CUSTOM DATA:
 

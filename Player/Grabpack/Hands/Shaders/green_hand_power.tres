@@ -3,7 +3,7 @@
 [ext_resource type="Shader" uid="uid://ba5ymrpy1g1w4" path="res://Player/Grabpack/Hands/electricity.gdshader" id="1_xweqa"]
 
 [sub_resource type="Gradient" id="Gradient_mhoco"]
-offsets = PackedFloat32Array(0.631769, 0.696751, 0.714801)
+offsets = PackedFloat32Array(0.6902655, 0.696751, 0.714801)
 colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_xkth6"]
@@ -51,6 +51,6 @@ shader = ExtResource("1_xweqa")
 shader_parameter/lightningNoise1 = SubResource("NoiseTexture2D_eapr4")
 shader_parameter/lightningNoise2 = SubResource("NoiseTexture2D_b10n3")
 shader_parameter/tint = Color(0.741176, 1, 0.976471, 1)
-shader_parameter/distortionVertex = 0.005
-shader_parameter/speedVertex = 0.235
+shader_parameter/distortionVertex = 0.16999999620016
+shader_parameter/speedVertex = 0.80499998200664
 shader_parameter/noiseVertex = SubResource("NoiseTexture2D_jduao")
