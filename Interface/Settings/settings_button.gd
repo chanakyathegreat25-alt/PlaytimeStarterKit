@@ -3,32 +3,95 @@ extends Button
 @export var setting_name: String = ""
 @export var setting_description:  String = ""
 @export var settings_root: NodePath
+@export_group("SettingData")
+@export var setting_code_name: String = ""
+@export var setting_default_value: float = 1.0
+@export_group("Slider")
+@export var slider_min: float = 0.0
+@export var slider_max: float = 100.0
+@export var slider_step: float = 5.0
+@export var slider_symbol: String = ""
+@export_group("MultiOption")
+@export var options: Array[String] = ["OFF", "ON"]
+@export_group("PreConfig")
+@export var multi_option: bool = false
+@export var no_setting_data: bool = false
 @export var is_slider: bool = false
-@export var slider_use_percentage: bool = false
-
+var current_option: int = 0
+var on_arrow: int = 0
+var hovered: bool = false
 var setting_node: Control = null
 
+signal value_changed(new_value: float)
+
 func _ready():
+	if no_setting_data: return
+	if is_slider:
+		$HSlider.min_value = slider_min
+		$HSlider.max_value = slider_max
+		$HSlider.step = slider_step
+		$HSlider.value = setting_default_value
+	if multi_option:
+		current_option = int(setting_default_value)
+	
 	connect("mouse_entered", Callable(send_data))
 	setting_node = get_node(settings_root)
 	connect("mouse_exited", Callable(setting_node.setting_exited))
 	connect("visibility_changed", Callable(new_vis))
 	if has_node("HSlider"):
 		var slider: HSlider = get_node("HSlider")
-		slider.connect("value_changed", Callable(update_slider))
+		slider.connect("value_changed", Callable(new_vis))
+	
+	get_node("ShiftLeft").mouse_entered.connect( func(): set_arrow(-1))
+	get_node("ShiftLeft").mouse_exited.connect( func(): set_arrow(0))
+	get_node("ShiftRight").mouse_entered.connect( func(): set_arrow(1))
+	get_node("ShiftRight").mouse_exited.connect( func(): set_arrow(0))
+	pressed.connect( func(): clicked())
+	mouse_entered.connect( func(): set_hover(true))
+	mouse_exited.connect( func(): set_hover(false))
+	new_vis()
 
 func send_data():
 	setting_node.setting_pressed(setting_name, setting_description, position.y)
 
-func update_slider(value: int):
-	if slider_use_percentage:
-		$Label.text = str(value, "%")
-	else:
-		$Label.text = str(value)
-
-func new_vis():
+func set_arrow(arrow: int):
+	on_arrow = arrow
+func set_hover(value: bool):
+	hovered = value
+	new_vis()
+func clicked():
+	if on_arrow == 0: return
+	
+	if multi_option:
+		var previous_option: int = current_option
+		current_option+=on_arrow
+		get_node("Anim").play("pressL" if on_arrow < 0 else "pressR")
+		current_option = clampi(current_option, 0, options.size()-1)
+		if previous_option != current_option:
+			get_node("Changed").play()
+			value_changed.emit(float(current_option))
+	elif is_slider:
+		var slider: HSlider = $HSlider
+		if not (slider.value==slider.min_value or slider.value==slider.max_value):
+			get_node("Anim").play("pressL" if on_arrow < 0 else "pressR")
+			get_node("Changed").play()
+		slider.value += on_arrow*slider.step
+	
+	new_vis()
+func new_vis(_optional = 10.0):
 	if has_node("HSlider"):
-		if slider_use_percentage:
-			$Label.text = str(get_node("HSlider").value, "%")
-		else:
-			$Label.text = str(get_node("HSlider").value)
+		var slider_value = int(get_node("HSlider").value) if get_node("HSlider").step==int(get_node("HSlider").step) else snappedf(get_node("HSlider").value, float(slider_step))
+		if slider_value is float:
+			slider_value = round(slider_value*1000.0) / 1000.0
+		$Label.text = str(slider_value, slider_symbol)
+	
+	get_node("Label").modulate = "ffffff" if hovered else "9b9faa"
+	
+	if multi_option:
+		get_node("Label").text = options[current_option]
+		get_node("ShiftLeftS").modulate = "5d5d5d" if current_option == 0 else ("ffffff" if hovered else "9b9faa")
+		get_node("ShiftRightS").modulate = "5d5d5d" if current_option == options.size()-1 else ("ffffff" if hovered else "9b9faa")
+	elif is_slider:
+		var slider: HSlider = $HSlider
+		get_node("ShiftLeftS").modulate = "5d5d5d" if slider.value == slider.min_value else ("ffffff" if hovered else "9b9faa")
+		get_node("ShiftRightS").modulate = "5d5d5d" if slider.value == slider.max_value else ("ffffff" if hovered else "9b9faa")

@@ -1,0 +1,57 @@
+[gd_scene load_steps=2 format=3 uid="uid://r62g5atp45ih"]
+
+[ext_resource type="PackedScene" uid="uid://bwefrsfxu7lxd" path="res://Interface/Settings/ButtonTypes/ButtonSlider.tscn" id="1_brp3b"]
+
+[node name="Tab4" type="Node2D"]
+visible = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_left = 144.8
+offset_top = 168.8
+offset_right = 144.8
+offset_bottom = 168.8
+theme_override_constants/separation = 3
+
+[node name="SettingsBox" parent="VBoxContainer" instance=ExtResource("1_brp3b")]
+layout_mode = 2
+text = "OVERALL VOLUME"
+setting_name = "OVERALL VOLUME"
+setting_description = "Adjust the overral game volume."
+settings_root = NodePath("../../../../..")
+setting_code_name = "master_volume"
+setting_default_value = 100.0
+slider_step = 1.0
+slider_symbol = "%"
+
+[node name="SettingsBox2" parent="VBoxContainer" instance=ExtResource("1_brp3b")]
+layout_mode = 2
+text = "MUSIC VOLUME"
+setting_name = "MUSIC VOLUME"
+setting_description = "Adjust the music volume."
+settings_root = NodePath("../../../../..")
+setting_code_name = "music_volume"
+setting_default_value = 100.0
+slider_step = 1.0
+slider_symbol = "%"
+
+[node name="SettingsBox3" parent="VBoxContainer" instance=ExtResource("1_brp3b")]
+layout_mode = 2
+text = "SOUND EFFECT VOLUME"
+setting_name = "SOUND EFFECT VOLUME"
+setting_description = "Adjust the sound effect volume."
+settings_root = NodePath("../../../../..")
+setting_code_name = "sfx_volume"
+setting_default_value = 100.0
+slider_step = 1.0
+slider_symbol = "%"
+
+[node name="SettingsBox4" parent="VBoxContainer" instance=ExtResource("1_brp3b")]
+layout_mode = 2
+text = "AMBIENCE VOLUME"
+setting_name = "AMBIENCE VOLUME"
+setting_description = "Adjust the ambience volume."
+settings_root = NodePath("../../../../..")
+setting_code_name = "ambience_volume"
+setting_default_value = 100.0
+slider_step = 1.0
+slider_symbol = "%"

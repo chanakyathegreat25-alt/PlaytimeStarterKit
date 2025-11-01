@@ -50,9 +50,9 @@ func delay(time: float = 1.0):
 func load_quality_environments():
 	if not current_environment_node: return
 	
-	if GameSettings.graphics_quality == 0: current_environment_node.environment = current_environment_node.high_environment
-	elif GameSettings.graphics_quality == 1: current_environment_node.environment = current_environment_node.medium_environment
-	elif GameSettings.graphics_quality == 2: current_environment_node.environment = current_environment_node.low_environment
+	if GameSettings.get_setting("graphics_quality") == 0: current_environment_node.environment = current_environment_node.high_environment
+	elif GameSettings.get_setting("graphics_quality") == 1: current_environment_node.environment = current_environment_node.medium_environment
+	elif GameSettings.get_setting("graphics_quality") == 2: current_environment_node.environment = current_environment_node.low_environment
 
 func load_checkpoint():
 	#ADD YOUR LOAD CHECKPOINT CODE HERE

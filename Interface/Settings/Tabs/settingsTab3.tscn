@@ -1,0 +1,33 @@
+[gd_scene load_steps=2 format=3 uid="uid://ctgp52pfpah65"]
+
+[ext_resource type="PackedScene" uid="uid://b1gvmkr1ehdnk" path="res://Interface/Settings/ButtonTypes/ButtonMultiOption.tscn" id="1_vct5h"]
+
+[node name="Tab3" type="Node2D"]
+visible = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_left = 144.8
+offset_top = 168.8
+offset_right = 144.8
+offset_bottom = 168.8
+theme_override_constants/separation = 3
+
+[node name="SettingsBox" parent="VBoxContainer" instance=ExtResource("1_vct5h")]
+layout_mode = 2
+text = "GRAPHICS QUALITY"
+setting_name = "GRAPHICS QUALITY"
+setting_description = "Adjust the overral graphics quality"
+settings_root = NodePath("../../../../..")
+setting_code_name = "graphics_quality"
+setting_default_value = 2.0
+options = Array[String](["LOW", "MEDIUM", "HIGH", "ULTRA"])
+
+[node name="SettingsBox2" parent="VBoxContainer" instance=ExtResource("1_vct5h")]
+layout_mode = 2
+text = "ANTI ALIASING SCALE"
+setting_name = "ANTI ALIASING SCALE"
+setting_description = "Adjust the scale/quality of the anti aliasing."
+settings_root = NodePath("../../../../..")
+setting_code_name = "anti_aliasing"
+setting_default_value = 0.0
+options = Array[String](["OFF", "2x", "4x", "8x"])

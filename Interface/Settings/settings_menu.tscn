@@ -1,26 +1,36 @@
-[gd_scene load_steps=44 format=3 uid="uid://wted730xx6x5"]
+[gd_scene load_steps=43 format=3 uid="uid://wted730xx6x5"]
 
 [ext_resource type="Script" uid="uid://1d8jpgk0gck3" path="res://Interface/Settings/settings_menu.gd" id="1_ah56o"]
-[ext_resource type="Texture2D" uid="uid://dgnbram6dypqw" path="res://Interface/Inventory/Texture/T_InventoryBG.png" id="1_i84y4"]
 [ext_resource type="FontFile" uid="uid://d02qiqkper325" path="res://Interface/Font/OverusedGrotesk-Medium.otf" id="2_e305e"]
-[ext_resource type="FontFile" uid="uid://b15pnbjgpussj" path="res://Interface/Font/NotoSansJP-VariableFont_wght.ttf" id="2_x0yxn"]
+[ext_resource type="Texture2D" uid="uid://brdh6bd0xmfpg" path="res://Interface/Settings/Textures/T_PauseBG.png" id="2_iybea"]
 [ext_resource type="Theme" uid="uid://dk0tum6xf51mt" path="res://Interface/Inventory/Themes/inventory_tab_button.tres" id="3_e305e"]
 [ext_resource type="Texture2D" uid="uid://8y2ipi32jls1" path="res://Interface/Settings/Textures/T_ControlsSettings.png" id="4_x0yxn"]
+[ext_resource type="Texture2D" uid="uid://nq6ofulh2k5p" path="res://Interface/Settings/Textures/T_NavigationBar_RightInputBorder.png" id="5_d17gp"]
 [ext_resource type="Texture2D" uid="uid://ce36hnqo8uru5" path="res://Interface/Settings/Textures/T_DisplaySettings.png" id="5_e305e"]
 [ext_resource type="Script" uid="uid://dla1lr2cy2qls" path="res://Interface/Settings/settings_tab_button.gd" id="5_tcs42"]
 [ext_resource type="Texture2D" uid="uid://dg6blw1d463b4" path="res://Interface/Settings/Textures/T_GraphicsSettings.png" id="6_lycpx"]
 [ext_resource type="Texture2D" uid="uid://bpec5p0i33x8e" path="res://Interface/Settings/Textures/T_AudioSettings.png" id="7_tcs42"]
 [ext_resource type="Texture2D" uid="uid://crsxxaypxgd42" path="res://Interface/Settings/Textures/T_LanguageSettings.png" id="8_ah56o"]
-[ext_resource type="Texture2D" uid="uid://c714hlncsx8ay" path="res://Interface/Settings/Textures/Screenshot 2025-03-02 171422.png" id="8_i84y4"]
-[ext_resource type="FontFile" uid="uid://dp3oq0ou16joq" path="res://Interface/Font/VCR_OSD_MONO_1.001.ttf" id="9_mtdyh"]
 [ext_resource type="AudioStream" uid="uid://41gw4esu1lc3" path="res://Interface/MainMenu/Sound/SW_SFX_Modal_PopUp.wav" id="12_42dg6"]
+[ext_resource type="Texture2D" uid="uid://ccao7o5vuq77u" path="res://Interface/Icons/Keyboard/T_ESC.png" id="12_iwa01"]
+[ext_resource type="Texture2D" uid="uid://do02fsa5fku7c" path="res://Interface/Settings/Textures/Screenshot 2025-10-31 233013.png" id="12_iybea"]
 [ext_resource type="FontFile" uid="uid://cfvfiw1qtrep1" path="res://Interface/Font/OverusedGrotesk-Bold.otf" id="12_x0yxn"]
-[ext_resource type="Script" uid="uid://dww2iuhrehksk" path="res://Interface/Settings/settings_button.gd" id="13_e305e"]
+[ext_resource type="Script" uid="uid://syb4cas6oqdo" path="res://Interface/MainMenu/button_sfx_player.gd" id="13_42dg6"]
+[ext_resource type="Texture2D" uid="uid://b81ad753ktxcl" path="res://Interface/Icons/Keyboard/T_R.png" id="13_iwa01"]
 [ext_resource type="AudioStream" uid="uid://d1u6111mtf4qu" path="res://Interface/MainMenu/Sound/SW_SFX_Closing_Menu.wav" id="13_kgpdl"]
 [ext_resource type="AudioStream" uid="uid://c7wgcc6jimvtc" path="res://Interface/MainMenu/Sound/SW_SFX_Menu_Forward.wav" id="14_iwa01"]
-[ext_resource type="Script" uid="uid://d02ndr1cfnfix" path="res://Interface/MainMenu/Sound/buttonSFX.gd" id="14_lycpx"]
+[ext_resource type="AudioStream" uid="uid://cr1h44t3w130f" path="res://Interface/MainMenu/Sound/hover.wav" id="14_kgpdl"]
 [ext_resource type="AudioStream" uid="uid://40v5446yti4l" path="res://Interface/Inventory/Sound/SW_SFX_Inventory_SwitchTabs_01.wav" id="15_d17gp"]
+[ext_resource type="AudioStream" uid="uid://d3q8178oe4ycy" path="res://Interface/MainMenu/Sound/SW_SFX_Menu_Backward.wav" id="16_iwa01"]
+[ext_resource type="AudioStream" uid="uid://bebahieimis82" path="res://Interface/MainMenu/Sound/select2.wav" id="17_d17gp"]
 [ext_resource type="Script" uid="uid://bs65c2yapygnv" path="res://Interface/Settings/settings_manager.gd" id="17_iybea"]
+[ext_resource type="PackedScene" uid="uid://bbyctaxc7r8yo" path="res://Interface/Settings/Tabs/settingsTab1.tscn" id="20_l7jyv"]
+[ext_resource type="PackedScene" uid="uid://gu7eilhp8bth" path="res://Interface/Settings/Tabs/settingsTab2.tscn" id="21_2otjx"]
+[ext_resource type="PackedScene" uid="uid://ctgp52pfpah65" path="res://Interface/Settings/Tabs/settingsTab3.tscn" id="22_inh12"]
+[ext_resource type="Script" uid="uid://cbvj3eu82rfm1" path="res://Interface/MainMenu/button_current.gd" id="23_42dg6"]
+[ext_resource type="Script" uid="uid://cfy8p6bec5h6o" path="res://Interface/Settings/settingsButtonSFX.gd" id="23_kgpdl"]
+[ext_resource type="PackedScene" uid="uid://r62g5atp45ih" path="res://Interface/Settings/Tabs/settingsTab4.tscn" id="23_wr453"]
+[ext_resource type="PackedScene" uid="uid://b4qeg77eflnu1" path="res://Interface/Settings/Tabs/settingsTab5.tscn" id="24_l5vf3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yum3l"]
 bg_color = Color(0, 0, 0, 0)
@@ -28,19 +38,10 @@ border_width_left = 4
 border_width_top = 3
 border_width_right = 4
 border_width_bottom = 3
-border_color = Color(1, 1, 1, 0.392157)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l7jyv"]
-bg_color = Color(0, 0, 0, 0)
-border_width_left = 4
-border_width_top = 3
-border_width_right = 4
-border_width_bottom = 3
-border_color = Color(1, 1, 1, 0.392157)
-corner_radius_top_right = 345
+border_color = Color(0.32941177, 0.36078432, 0.38431373, 1)
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_2otjx"]
-color = Color(1, 1, 1, 0.392157)
+color = Color(0.32941177, 0.36078432, 0.38431373, 1)
 thickness = 3
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_inh12"]
@@ -58,22 +59,8 @@ thickness = 6
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iybea"]
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_wr453"]
-color = Color(0.341176, 0.819608, 1, 1)
+color = Color(7.893444e-06, 0.6483667, 0.8285449, 1)
 thickness = 2
-
-[sub_resource type="StyleBoxLine" id="StyleBoxLine_i84y4"]
-color = Color(0.341176, 0.819608, 1, 1)
-grow_begin = 0.0
-grow_end = 0.0
-thickness = 8
-vertical = true
-
-[sub_resource type="StyleBoxLine" id="StyleBoxLine_iybea"]
-color = Color(0.341176, 0.819608, 1, 1)
-grow_begin = 0.0
-grow_end = 0.0
-thickness = 2
-vertical = true
 
 [sub_resource type="Animation" id="Animation_vkm2n"]
 length = 0.001
@@ -101,6 +88,30 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(0, 0)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Title:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Tabs:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_iybea"]
 resource_name = "loaded"
@@ -115,7 +126,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.25),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(-384.555, 0), Vector2(0, 0)]
+"values": [Vector2(-191.5, 0), Vector2(0, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -129,49 +140,36 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(0, 59.545), Vector2(0, 0)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Title:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.033333335, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Tabs:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.06666667, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vkm2n"]
 _data = {
 &"RESET": SubResource("Animation_vkm2n"),
 &"loaded": SubResource("Animation_iybea")
 }
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e305e"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ssprt"]
-content_margin_left = 14.0
-bg_color = Color(0.121569, 0.121569, 0.121569, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.717647, 0.717647, 0.717647, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wy2c7"]
-content_margin_left = 14.0
-bg_color = Color(0, 0, 0, 0)
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lycpx"]
-
-[sub_resource type="Theme" id="Theme_x0yxn"]
-default_font = ExtResource("9_mtdyh")
-Button/styles/focus = SubResource("StyleBoxEmpty_e305e")
-Button/styles/hover = SubResource("StyleBoxFlat_ssprt")
-Button/styles/hover_pressed = SubResource("StyleBoxFlat_ssprt")
-Button/styles/normal = SubResource("StyleBoxFlat_wy2c7")
-Button/styles/pressed = SubResource("StyleBoxEmpty_lycpx")
-PopupMenu/styles/panel = SubResource("StyleBoxFlat_ssprt")
-
-[sub_resource type="StyleBoxLine" id="StyleBoxLine_e305e"]
-color = Color(0.235294, 0.235294, 0.235294, 0.819608)
-thickness = 4
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lycpx"]
-bg_color = Color(0.733005, 0.733005, 0.733005, 0.819608)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e305e"]
-content_margin_left = 14.0
-bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [node name="SettingsMenu" type="Control" groups=["SettingsMenu"]]
 layout_mode = 3
@@ -195,651 +193,280 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_i84y4")
+texture = ExtResource("2_iybea")
 expand_mode = 1
 
 [node name="Tabs" type="Node2D" parent="."]
 position = Vector2(62, 55)
 
+[node name="Screenshot2025-03-02171422" type="Sprite2D" parent="Tabs"]
+visible = false
+position = Vector2(895, 486)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("12_iybea")
+
 [node name="Q" type="Label" parent="Tabs"]
-offset_top = 1.0
-offset_right = 149.0
-offset_bottom = 75.0
+offset_left = 3.0
+offset_top = 19.0
+offset_right = 115.0
+offset_bottom = 94.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-theme_override_constants/outline_size = 5
-theme_override_fonts/font = ExtResource("2_e305e")
-theme_override_font_sizes/font_size = 31
+theme_override_fonts/font = ExtResource("12_x0yxn")
+theme_override_font_sizes/font_size = 27
 theme_override_styles/normal = SubResource("StyleBoxFlat_yum3l")
 text = "Q"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Q2" type="Label" parent="Tabs"]
+offset_left = 509.0
+offset_top = 19.0
+offset_right = 616.0
+offset_bottom = 89.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("12_x0yxn")
+theme_override_font_sizes/font_size = 27
+text = "E"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EBG" type="TextureRect" parent="Tabs"]
+modulate = Color(0.33035854, 0.36006927, 0.38554204, 1)
+offset_left = 508.0
+offset_top = 19.0
+offset_right = 771.0
+offset_bottom = 94.0
+texture = ExtResource("5_d17gp")
+
 [node name="1" type="Button" parent="Tabs"]
-offset_left = 157.0
-offset_right = 232.0
-offset_bottom = 75.0
+modulate = Color(0.4624437, 0.49999315, 0.52820015, 1)
+offset_left = 118.0
+offset_top = 19.0
+offset_right = 193.0
+offset_bottom = 94.0
 theme = ExtResource("3_e305e")
 icon = ExtResource("4_x0yxn")
+icon_alignment = 1
 expand_icon = true
 script = ExtResource("5_tcs42")
 
 [node name="2" type="Button" parent="Tabs"]
-modulate = Color(1, 1, 1, 0.392157)
-offset_left = 240.0
-offset_right = 315.0
-offset_bottom = 75.0
+modulate = Color(0.4624437, 0.49999315, 0.52820015, 1)
+offset_left = 196.0
+offset_top = 19.333336
+offset_right = 271.0
+offset_bottom = 94.333336
 theme = ExtResource("3_e305e")
 icon = ExtResource("5_e305e")
 expand_icon = true
 script = ExtResource("5_tcs42")
 
 [node name="3" type="Button" parent="Tabs"]
-modulate = Color(1, 1, 1, 0.392157)
-offset_left = 323.0
-offset_right = 398.0
-offset_bottom = 75.0
+modulate = Color(0.4624437, 0.49999315, 0.52820015, 1)
+offset_left = 274.0
+offset_top = 19.0
+offset_right = 349.0
+offset_bottom = 94.0
 theme = ExtResource("3_e305e")
 icon = ExtResource("6_lycpx")
 expand_icon = true
 script = ExtResource("5_tcs42")
 
 [node name="4" type="Button" parent="Tabs"]
-modulate = Color(1, 1, 1, 0.392157)
-offset_left = 406.0
-offset_top = -0.333336
-offset_right = 481.0
-offset_bottom = 74.6667
+modulate = Color(0.4624437, 0.49999315, 0.52820015, 1)
+offset_left = 352.0
+offset_top = 19.0
+offset_right = 427.0
+offset_bottom = 94.00004
 theme = ExtResource("3_e305e")
 icon = ExtResource("7_tcs42")
 expand_icon = true
 script = ExtResource("5_tcs42")
 
 [node name="5" type="Button" parent="Tabs"]
-modulate = Color(1, 1, 1, 0.392157)
-offset_left = 488.667
-offset_top = -0.333336
-offset_right = 563.667
-offset_bottom = 74.6667
+modulate = Color(0.4624437, 0.49999315, 0.52820015, 1)
+offset_left = 429.667
+offset_top = 19.0
+offset_right = 504.667
+offset_bottom = 94.00004
 theme = ExtResource("3_e305e")
 icon = ExtResource("8_ah56o")
 expand_icon = true
 script = ExtResource("5_tcs42")
 
-[node name="E" type="Label" parent="Tabs"]
-offset_left = 571.333
-offset_right = 701.333
-offset_bottom = 75.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-theme_override_constants/outline_size = 5
-theme_override_fonts/font = ExtResource("2_e305e")
-theme_override_font_sizes/font_size = 31
-theme_override_styles/normal = SubResource("StyleBoxFlat_l7jyv")
-text = "E"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="TitleSeperator" type="HSeparator" parent="Tabs"]
-offset_left = 701.0
-offset_top = 72.0
-offset_right = 1782.0
-offset_bottom = 76.0
+offset_left = 771.0
+offset_top = 90.5
+offset_right = 1791.0
+offset_bottom = 94.5
 theme_override_styles/separator = SubResource("StyleBoxLine_2otjx")
 
 [node name="TitleSeperator2" type="HSeparator" parent="Tabs"]
-offset_top = 899.0
-offset_right = 1782.0
-offset_bottom = 914.0
+offset_top = 905.0
+offset_right = 1791.0
+offset_bottom = 920.0
 theme_override_styles/separator = SubResource("StyleBoxLine_2otjx")
 
 [node name="TabIndecator" type="HSeparator" parent="Tabs"]
-offset_left = 157.0
-offset_top = 76.0
-offset_right = 232.0
-offset_bottom = 91.0
+offset_left = 117.0
+offset_top = 95.0
+offset_right = 192.0
+offset_bottom = 110.0
 theme_override_styles/separator = SubResource("StyleBoxLine_inh12")
 
-[node name="back" type="Button" parent="Tabs"]
-offset_left = 1661.0
-offset_top = 935.0
-offset_right = 1784.0
-offset_bottom = 998.0
+[node name="backSF3" type="Button" parent="Tabs"]
+offset_left = 1696.0
+offset_top = 954.0
+offset_right = 1894.0769
+offset_bottom = 1018.0
+scale = Vector2(0.52, 0.52)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("9_mtdyh")
-theme_override_font_sizes/font_size = 31
+theme_override_fonts/font = ExtResource("2_e305e")
+theme_override_font_sizes/font_size = 42
 theme_override_styles/normal = SubResource("StyleBoxEmpty_f5303")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_mtdyh")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_vkm2n")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_iybea")
-text = "Back"
+text = "BACK"
+icon = ExtResource("12_iwa01")
 
-[node name="read" type="Label" parent="Tabs"]
-offset_left = 1166.0
-offset_top = 935.0
-offset_right = 1564.0
-offset_bottom = 998.0
+[node name="reset" type="Button" parent="Tabs"]
+offset_left = 1408.0
+offset_top = 954.0
+offset_right = 1867.6155
+offset_bottom = 1018.0
+scale = Vector2(0.52, 0.52)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("9_mtdyh")
-theme_override_font_sizes/font_size = 31
-text = "[R] Reset To Defualts"
-horizontal_alignment = 2
-vertical_alignment = 1
-
-[node name="Screenshot2025-03-02171422" type="Sprite2D" parent="Tabs"]
-position = Vector2(3308, 360)
-scale = Vector2(0.875, 0.875)
-texture = ExtResource("8_i84y4")
+theme_override_fonts/font = ExtResource("2_e305e")
+theme_override_font_sizes/font_size = 42
+theme_override_styles/normal = SubResource("StyleBoxEmpty_f5303")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_mtdyh")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_vkm2n")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_iybea")
+text = "RESET TO DEFAULTS"
+icon = ExtResource("13_iwa01")
 
 [node name="ButtonSFXPlayer" type="Node" parent="Tabs"]
-script = ExtResource("14_lycpx")
+script = ExtResource("13_42dg6")
 root_path = NodePath("..")
-metadata/_custom_type_script = "uid://d02ndr1cfnfix"
+
+[node name="Hover" type="AudioStreamPlayer" parent="Tabs/ButtonSFXPlayer"]
+stream = ExtResource("14_kgpdl")
+volume_db = -5.0
+
+[node name="Forward" type="AudioStreamPlayer" parent="Tabs/ButtonSFXPlayer"]
+stream = ExtResource("17_d17gp")
+
+[node name="Backward" type="AudioStreamPlayer" parent="Tabs/ButtonSFXPlayer"]
+stream = ExtResource("16_iwa01")
+
+[node name="Forward2" type="AudioStreamPlayer" parent="Tabs/ButtonSFXPlayer"]
+stream = ExtResource("17_d17gp")
 
 [node name="section" type="Node2D" parent="."]
 position = Vector2(0, 109)
 scale = Vector2(1.25, 1.25)
 
 [node name="Title" type="Node2D" parent="section"]
+modulate = Color(1, 1, 1, 0)
 
 [node name="title" type="Label" parent="section/Title"]
-offset_top = 25.0
-offset_right = 375.0
-offset_bottom = 95.0
+offset_top = 68.000015
+offset_right = 462.39996
+offset_bottom = 154.00002
 theme_override_colors/font_color = Color(0.341176, 0.819608, 1, 1)
-theme_override_colors/font_outline_color = Color(0.341176, 0.819608, 1, 1)
 theme_override_constants/paragraph_spacing = 0
-theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("12_x0yxn")
-theme_override_font_sizes/font_size = 46
-text = "Display"
+theme_override_font_sizes/font_size = 64
+text = "controls"
 horizontal_alignment = 2
 uppercase = true
 
 [node name="HSeparator" type="HSeparator" parent="section/Title"]
-offset_top = 82.0
-offset_right = 376.0
-offset_bottom = 86.0
+offset_top = 140.79999
+offset_right = 466.39996
+offset_bottom = 155.19998
 theme_override_styles/separator = SubResource("StyleBoxLine_wr453")
 
 [node name="setting_title" type="Label" parent="section"]
-offset_left = 765.6
-offset_top = 104.0
-offset_right = 1046.6
-offset_bottom = 128.0
+offset_left = 833.6
+offset_top = 171.20001
+offset_right = 1279.9999
+offset_bottom = 211.0
 theme_override_colors/font_color = Color(0.341176, 0.819608, 1, 1)
 theme_override_constants/paragraph_spacing = 0
 theme_override_constants/outline_size = 0
 theme_override_fonts/font = ExtResource("12_x0yxn")
-theme_override_font_sizes/font_size = 24
-text = "Title"
+theme_override_font_sizes/font_size = 29
+text = "INVERT LOOK Y"
 autowrap_mode = 2
 uppercase = true
 
 [node name="setting_description" type="Label" parent="section"]
-offset_left = 766.0
-offset_top = 137.0
-offset_right = 1236.0
-offset_bottom = 455.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
+offset_left = 832.8
+offset_top = 220.0
+offset_right = 1302.8
+offset_bottom = 538.0
+theme_override_colors/font_color = Color(0.728822, 0.728822, 0.728822, 1)
 theme_override_constants/paragraph_spacing = 0
 theme_override_constants/outline_size = 0
-theme_override_fonts/font = ExtResource("2_x0yxn")
+theme_override_fonts/font = ExtResource("2_e305e")
 theme_override_font_sizes/font_size = 18
-text = "Description"
+text = "Invert the vertical axis controls"
 autowrap_mode = 2
-
-[node name="Selected" type="VSeparator" parent="section"]
-offset_left = 132.0
-offset_top = 104.0
-offset_right = 143.0
-offset_bottom = 136.0
-theme_override_styles/separator = SubResource("StyleBoxLine_i84y4")
-
-[node name="Selected2" type="VSeparator" parent="section"]
-offset_left = 628.0
-offset_top = 56.0
-offset_right = 750.0
-offset_bottom = 637.0
-theme_override_styles/separator = SubResource("StyleBoxLine_iybea")
 
 [node name="LoadAnimation" type="AnimationPlayer" parent="section"]
 libraries = {
 &"": SubResource("AnimationLibrary_vkm2n")
 }
+speed_scale = 1.5
 
 [node name="Tabs" type="Node2D" parent="section"]
 
-[node name="Tab1" type="Node2D" parent="section/Tabs"]
+[node name="Tab1" parent="section/Tabs" instance=ExtResource("20_l7jyv")]
 
-[node name="SettingsBox" type="Button" parent="section/Tabs/Tab1"]
-offset_left = 144.0
-offset_top = 104.0
-offset_right = 564.0
-offset_bottom = 136.0
-theme = SubResource("Theme_x0yxn")
-text = "CAMERA SENSITIVITY"
-alignment = 0
-script = ExtResource("13_e305e")
-setting_name = "Camera Sensitivity"
-setting_description = "The sensitivity of your camera."
-settings_root = NodePath("../../../..")
-is_slider = true
+[node name="Tab2" parent="section/Tabs" instance=ExtResource("21_2otjx")]
 
-[node name="HSlider" type="HSlider" parent="section/Tabs/Tab1/SettingsBox"]
-layout_mode = 0
-offset_left = 232.0
-offset_right = 410.0
-offset_bottom = 32.0
-theme_override_styles/slider = SubResource("StyleBoxLine_e305e")
-theme_override_styles/grabber_area = SubResource("StyleBoxFlat_lycpx")
-value = 50.0
+[node name="Tab3" parent="section/Tabs" instance=ExtResource("22_inh12")]
 
-[node name="Label" type="Label" parent="section/Tabs/Tab1/SettingsBox"]
-layout_mode = 0
-offset_left = 187.0
-offset_top = 7.0
-offset_right = 231.0
-offset_bottom = 25.0
-theme_override_fonts/font = ExtResource("9_mtdyh")
-text = "50%"
-horizontal_alignment = 2
-vertical_alignment = 1
+[node name="Tab4" parent="section/Tabs" instance=ExtResource("23_wr453")]
 
-[node name="SettingsBox2" type="CheckButton" parent="section/Tabs/Tab1"]
-offset_left = 144.0
-offset_top = 141.0
-offset_right = 564.0
-offset_bottom = 173.0
-theme = SubResource("Theme_x0yxn")
-text = "TOGGLE SPRINT"
-script = ExtResource("13_e305e")
-setting_name = "Toggle Sprint"
-setting_description = "When enabled, instead of holding [SHIFT] to sprint, you only have to press it to start sprinting or stop sprinting."
-settings_root = NodePath("../../../..")
-
-[node name="SettingsBox3" type="CheckButton" parent="section/Tabs/Tab1"]
-offset_left = 144.0
-offset_top = 184.0
-offset_right = 564.0
-offset_bottom = 216.0
-theme = SubResource("Theme_x0yxn")
-text = "TOGGLE CROUCH"
-script = ExtResource("13_e305e")
-setting_name = "Toggle Crouch"
-setting_description = "When enabled, instead of holding [CTRL] to crouch, you just press it to start crouching or stop crouching."
-settings_root = NodePath("../../../..")
-
-[node name="SettingsBox5" type="CheckButton" parent="section/Tabs/Tab1"]
-offset_left = 143.2
-offset_top = 313.6
-offset_right = 563.2
-offset_bottom = 345.6
-theme = SubResource("Theme_x0yxn")
-text = "MOBILE CONTROLS"
-script = ExtResource("13_e305e")
-setting_name = "Mobile Controls"
-setting_description = "When enabled, on screen controls will appear. Useful for players playing from a phone or tablet."
-settings_root = NodePath("../../../..")
-
-[node name="Section1" type="Label" parent="section/Tabs/Tab1"]
-offset_left = 132.0
-offset_top = 221.0
-offset_right = 413.0
-offset_bottom = 245.0
-theme_override_colors/font_color = Color(0.341176, 0.819608, 1, 1)
-theme_override_constants/paragraph_spacing = 0
-theme_override_constants/outline_size = 0
-theme_override_fonts/font = ExtResource("12_x0yxn")
-theme_override_font_sizes/font_size = 18
-text = "Mouse And Keyboard"
-autowrap_mode = 2
-
-[node name="SettingsBox4" type="Button" parent="section/Tabs/Tab1"]
-offset_left = 144.0
-offset_top = 252.0
-offset_right = 564.0
-offset_bottom = 284.0
-theme = SubResource("Theme_x0yxn")
-text = "KEYBINDS"
-alignment = 0
-script = ExtResource("13_e305e")
-setting_name = "Keybinds"
-setting_description = "[W] [A] [S] [D] to walk around, [SHIFT] to sprint, [CTRL] to crouch, [E] to interact, [SPACE] to jump, [LMB] to use left grabpack hand, [RMB] to use right grabpack hand, press the number keys or the mouse scroll wheel to change hands."
-settings_root = NodePath("../../../..")
-
-[node name="Section2" type="Label" parent="section/Tabs/Tab1"]
-offset_left = 132.0
-offset_top = 284.0
-offset_right = 413.0
-offset_bottom = 308.0
-theme_override_colors/font_color = Color(0.341176, 0.819608, 1, 1)
-theme_override_constants/paragraph_spacing = 0
-theme_override_constants/outline_size = 0
-theme_override_fonts/font = ExtResource("12_x0yxn")
-theme_override_font_sizes/font_size = 18
-text = "Mobile"
-autowrap_mode = 2
-
-[node name="Tab2" type="Node2D" parent="section/Tabs"]
-visible = false
-
-[node name="SettingsBox" type="OptionButton" parent="section/Tabs/Tab2"]
-offset_left = 144.0
-offset_top = 104.0
-offset_right = 564.0
-offset_bottom = 136.0
-theme = SubResource("Theme_x0yxn")
-alignment = 2
-selected = 0
-item_count = 3
-popup/item_0/text = "WINDOWED"
-popup/item_0/id = 0
-popup/item_1/text = "WINDOWED FULLSCREEN"
-popup/item_1/id = 1
-popup/item_2/text = "FULLSCREEN"
-popup/item_2/id = 2
-script = ExtResource("13_e305e")
-setting_name = "Window Mode"
-setting_description = "The mode of the window the game is running in."
-settings_root = NodePath("../../../..")
-metadata/_edit_use_anchors_ = true
-
-[node name="ScreenMode" type="Label" parent="section/Tabs/Tab2/SettingsBox"]
-layout_mode = 0
-offset_right = 420.0
-offset_bottom = 32.0
-theme = SubResource("Theme_x0yxn")
-theme_override_styles/normal = SubResource("StyleBoxFlat_e305e")
-text = "SCREEN MODE"
-vertical_alignment = 1
-
-[node name="SettingsBox2" type="CheckButton" parent="section/Tabs/Tab2"]
-offset_left = 144.0
-offset_top = 141.0
-offset_right = 564.0
-offset_bottom = 173.0
-theme = SubResource("Theme_x0yxn")
-text = "VERTICLE SYNC"
-script = ExtResource("13_e305e")
-setting_name = "Verticle Sync"
-setting_description = "Syncs the framerate of the game with your monitors framerate, which helps prevent screen tearing. It help with performance or make it worse."
-settings_root = NodePath("../../../..")
-metadata/_edit_use_anchors_ = true
-
-[node name="SettingsBox3" type="CheckButton" parent="section/Tabs/Tab2"]
-offset_left = 144.0
-offset_top = 184.0
-offset_right = 564.0
-offset_bottom = 216.0
-theme = SubResource("Theme_x0yxn")
-text = "SHOW FPS"
-script = ExtResource("13_e305e")
-setting_name = "Show FPS"
-setting_description = "Displays the games fps in the top left corner of the screen."
-settings_root = NodePath("../../../..")
-metadata/_edit_use_anchors_ = true
-
-[node name="SettingsBox4" type="Button" parent="section/Tabs/Tab2"]
-offset_left = 143.0
-offset_top = 221.0
-offset_right = 563.0
-offset_bottom = 253.0
-theme = SubResource("Theme_x0yxn")
-text = "FIELD OF VIEW"
-alignment = 0
-script = ExtResource("13_e305e")
-setting_name = "Field Of View"
-setting_description = "The FOV of your camera."
-settings_root = NodePath("../../../..")
-is_slider = true
-
-[node name="HSlider" type="HSlider" parent="section/Tabs/Tab2/SettingsBox4"]
-layout_mode = 0
-offset_left = 221.0
-offset_right = 410.0
-offset_bottom = 32.0
-theme_override_styles/slider = SubResource("StyleBoxLine_e305e")
-theme_override_styles/grabber_area = SubResource("StyleBoxFlat_lycpx")
-min_value = 50.0
-value = 65.0
-
-[node name="Label" type="Label" parent="section/Tabs/Tab2/SettingsBox4"]
-layout_mode = 0
-offset_left = 172.0
-offset_top = 7.0
-offset_right = 216.0
-offset_bottom = 25.0
-theme_override_fonts/font = ExtResource("9_mtdyh")
-text = "65"
-horizontal_alignment = 2
-vertical_alignment = 1
-
-[node name="Tab3" type="Node2D" parent="section/Tabs"]
-visible = false
-
-[node name="Section1" type="Label" parent="section/Tabs/Tab3"]
-offset_left = 144.0
-offset_top = 104.0
-offset_right = 446.0
-offset_bottom = 128.0
-theme_override_colors/font_color = Color(0.341176, 0.819608, 1, 1)
-theme_override_constants/paragraph_spacing = 0
-theme_override_constants/outline_size = 0
-theme_override_fonts/font = ExtResource("12_x0yxn")
-theme_override_font_sizes/font_size = 18
-autowrap_mode = 2
-
-[node name="SettingsBox" type="OptionButton" parent="section/Tabs/Tab3"]
-offset_left = 144.0
-offset_top = 104.0
-offset_right = 564.0
-offset_bottom = 136.0
-theme = SubResource("Theme_x0yxn")
-alignment = 2
-selected = 0
-item_count = 3
-popup/item_0/text = "High"
-popup/item_0/id = 0
-popup/item_1/text = "Medium"
-popup/item_1/id = 1
-popup/item_2/text = "Low"
-popup/item_2/id = 2
-script = ExtResource("13_e305e")
-setting_name = "Graphics Quality"
-setting_description = "The overrall quality of the games lighting."
-settings_root = NodePath("../../../..")
-metadata/_edit_use_anchors_ = true
-
-[node name="ScreenMode" type="Label" parent="section/Tabs/Tab3/SettingsBox"]
-layout_mode = 0
-offset_right = 420.0
-offset_bottom = 32.0
-theme = SubResource("Theme_x0yxn")
-theme_override_styles/normal = SubResource("StyleBoxFlat_e305e")
-text = "Graphics Quality"
-vertical_alignment = 1
-
-[node name="SettingsBox2" type="OptionButton" parent="section/Tabs/Tab3"]
-offset_left = 144.0
-offset_top = 178.4
-offset_right = 564.0
-offset_bottom = 210.4
-theme = SubResource("Theme_x0yxn")
-alignment = 2
-selected = 0
-item_count = 4
-popup/item_0/text = "Disabled"
-popup/item_0/id = 0
-popup/item_1/text = "2x"
-popup/item_1/id = 1
-popup/item_2/text = "4x"
-popup/item_2/id = 2
-popup/item_3/text = "8x"
-popup/item_3/id = 3
-script = ExtResource("13_e305e")
-setting_name = "Anti Aliasing Scale"
-setting_description = "Reduces pixels around edges at a performance cost."
-settings_root = NodePath("../../../..")
-metadata/_edit_use_anchors_ = true
-
-[node name="ScreenMode" type="Label" parent="section/Tabs/Tab3/SettingsBox2"]
-layout_mode = 0
-offset_right = 420.0
-offset_bottom = 32.0
-theme = SubResource("Theme_x0yxn")
-theme_override_styles/normal = SubResource("StyleBoxFlat_e305e")
-text = "Anti Aliasing Scale"
-vertical_alignment = 1
-
-[node name="SettingsBox4" type="Button" parent="section/Tabs/Tab3"]
-offset_left = 143.2
-offset_top = 140.79999
-offset_right = 563.2
-offset_bottom = 172.79999
-theme = SubResource("Theme_x0yxn")
-text = "Resolution Scale"
-alignment = 0
-script = ExtResource("13_e305e")
-setting_name = "Resolution Scale"
-setting_description = "Scale of the games resolution."
-settings_root = NodePath("../../../..")
-is_slider = true
-slider_use_percentage = true
-
-[node name="HSlider" type="HSlider" parent="section/Tabs/Tab3/SettingsBox4"]
-layout_mode = 0
-offset_left = 230.4
-offset_right = 410.0
-offset_bottom = 32.0
-theme_override_styles/slider = SubResource("StyleBoxLine_e305e")
-theme_override_styles/grabber_area = SubResource("StyleBoxFlat_lycpx")
-min_value = 10.0
-step = 5.0
-value = 100.0
-
-[node name="Label" type="Label" parent="section/Tabs/Tab3/SettingsBox4"]
-layout_mode = 0
-offset_left = 172.0
-offset_top = 7.0
-offset_right = 216.0
-offset_bottom = 25.0
-theme_override_fonts/font = ExtResource("9_mtdyh")
-text = "100"
-horizontal_alignment = 2
-vertical_alignment = 1
-
-[node name="Tab4" type="Node2D" parent="section/Tabs"]
-visible = false
-
-[node name="SettingsBox" type="Button" parent="section/Tabs/Tab4"]
-offset_left = 144.0
-offset_top = 104.0
-offset_right = 564.0
-offset_bottom = 136.0
-theme = SubResource("Theme_x0yxn")
-text = "MAIN VOLUME"
-alignment = 0
-script = ExtResource("13_e305e")
-setting_name = "Main Volume"
-setting_description = "The volume of all of the games audio."
-settings_root = NodePath("../../../..")
-is_slider = true
-slider_use_percentage = true
-
-[node name="HSlider" type="HSlider" parent="section/Tabs/Tab4/SettingsBox"]
-layout_mode = 0
-offset_left = 221.0
-offset_right = 410.0
-offset_bottom = 32.0
-theme_override_styles/slider = SubResource("StyleBoxLine_e305e")
-theme_override_styles/grabber_area = SubResource("StyleBoxFlat_lycpx")
-value = 100.0
-
-[node name="Label" type="Label" parent="section/Tabs/Tab4/SettingsBox"]
-layout_mode = 0
-offset_left = 172.0
-offset_top = 7.0
-offset_right = 216.0
-offset_bottom = 25.0
-theme_override_fonts/font = ExtResource("9_mtdyh")
-text = "65"
-horizontal_alignment = 2
-vertical_alignment = 1
-
-[node name="SettingsBox2" type="Button" parent="section/Tabs/Tab4"]
-offset_left = 144.0
-offset_top = 146.0
-offset_right = 564.0
-offset_bottom = 178.0
-theme = SubResource("Theme_x0yxn")
-text = "MUSIC VOLUME"
-alignment = 0
-script = ExtResource("13_e305e")
-setting_name = "Music Volume"
-setting_description = "The volume of the games music."
-settings_root = NodePath("../../../..")
-is_slider = true
-slider_use_percentage = true
-
-[node name="HSlider" type="HSlider" parent="section/Tabs/Tab4/SettingsBox2"]
-layout_mode = 0
-offset_left = 221.0
-offset_right = 410.0
-offset_bottom = 32.0
-theme_override_styles/slider = SubResource("StyleBoxLine_e305e")
-theme_override_styles/grabber_area = SubResource("StyleBoxFlat_lycpx")
-value = 100.0
-
-[node name="Label" type="Label" parent="section/Tabs/Tab4/SettingsBox2"]
-layout_mode = 0
-offset_left = 172.0
-offset_top = 7.0
-offset_right = 216.0
-offset_bottom = 25.0
-theme_override_fonts/font = ExtResource("9_mtdyh")
-text = "65"
-horizontal_alignment = 2
-vertical_alignment = 1
-
-[node name="Tab5" type="Node2D" parent="section/Tabs"]
-visible = false
-
-[node name="SettingsBox" type="OptionButton" parent="section/Tabs/Tab5"]
-offset_left = 144.0
-offset_top = 104.0
-offset_right = 564.0
-offset_bottom = 136.0
-theme = SubResource("Theme_x0yxn")
-alignment = 2
-selected = 0
-item_count = 1
-popup/item_0/text = "THIS IS A LANGUAGE :O"
-popup/item_0/id = 0
-script = ExtResource("13_e305e")
-setting_name = "Language"
-setting_description = "The language of the games text."
-settings_root = NodePath("../../../..")
-metadata/_edit_use_anchors_ = true
-
-[node name="ScreenMode" type="Label" parent="section/Tabs/Tab5/SettingsBox"]
-layout_mode = 0
-offset_right = 420.0
-offset_bottom = 32.0
-theme = SubResource("Theme_x0yxn")
-theme_override_styles/normal = SubResource("StyleBoxFlat_e305e")
-text = "GAME LANGUAGE"
-vertical_alignment = 1
-
-[node name="ButtonSFXPlayer" type="Node" parent="section/Tabs"]
-script = ExtResource("14_lycpx")
-root_path = NodePath("..")
-metadata/_custom_type_script = "uid://d02ndr1cfnfix"
+[node name="Tab5" parent="section/Tabs" instance=ExtResource("24_l5vf3")]
 
 [node name="SettingsManager" type="Node" parent="section/Tabs"]
 script = ExtResource("17_iybea")
+
+[node name="ButtonSFXPlayer" type="Node" parent="section/Tabs"]
+script = ExtResource("23_kgpdl")
+root_path = NodePath("..")
+
+[node name="Hover" type="AudioStreamPlayer" parent="section/Tabs/ButtonSFXPlayer"]
+stream = ExtResource("14_kgpdl")
+volume_db = -5.0
+
+[node name="Forward" type="AudioStreamPlayer" parent="section/Tabs/ButtonSFXPlayer"]
+stream = ExtResource("14_iwa01")
+
+[node name="Backward" type="AudioStreamPlayer" parent="section/Tabs/ButtonSFXPlayer"]
+stream = ExtResource("16_iwa01")
+
+[node name="Forward2" type="AudioStreamPlayer" parent="section/Tabs/ButtonSFXPlayer"]
+stream = ExtResource("17_d17gp")
+
+[node name="Current" type="Node2D" parent="section/Tabs"]
+visible = false
+position = Vector2(-1.5999908, -90.39996)
+script = ExtResource("23_42dg6")
+root_path = NodePath("..")
+
+[node name="ColorRect" type="ColorRect" parent="section/Tabs/Current"]
+offset_right = 10.399994
+offset_bottom = 43.99996
+color = Color(0.19215687, 0.79607844, 1, 1)
 
 [node name="Open" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_42dg6")
@@ -853,18 +480,5 @@ stream = ExtResource("14_iwa01")
 [node name="Switch" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("15_d17gp")
 
-[connection signal="pressed" from="Tabs/back" to="." method="_on_back_pressed"]
-[connection signal="value_changed" from="section/Tabs/Tab1/SettingsBox/HSlider" to="section/Tabs/SettingsManager" method="cam_sense_changed"]
-[connection signal="toggled" from="section/Tabs/Tab1/SettingsBox2" to="section/Tabs/SettingsManager" method="toggle_sprint_changed"]
-[connection signal="toggled" from="section/Tabs/Tab1/SettingsBox3" to="section/Tabs/SettingsManager" method="toggle_crouch_changed"]
-[connection signal="toggled" from="section/Tabs/Tab1/SettingsBox5" to="section/Tabs/SettingsManager" method="_on_settings_box_5_toggled"]
-[connection signal="item_selected" from="section/Tabs/Tab2/SettingsBox" to="section/Tabs/SettingsManager" method="window_mode_changed"]
-[connection signal="toggled" from="section/Tabs/Tab2/SettingsBox2" to="section/Tabs/SettingsManager" method="vsync_toggled"]
-[connection signal="toggled" from="section/Tabs/Tab2/SettingsBox3" to="section/Tabs/SettingsManager" method="show_fps_toggled"]
-[connection signal="value_changed" from="section/Tabs/Tab2/SettingsBox4/HSlider" to="section/Tabs/SettingsManager" method="fov_changed"]
-[connection signal="item_selected" from="section/Tabs/Tab3/SettingsBox" to="section/Tabs/SettingsManager" method="_on_settings_box_item_selectedGraphics"]
-[connection signal="item_selected" from="section/Tabs/Tab3/SettingsBox2" to="section/Tabs/SettingsManager" method="_on_settings_box_2_item_selectedAnti"]
-[connection signal="value_changed" from="section/Tabs/Tab3/SettingsBox4/HSlider" to="section/Tabs/SettingsManager" method="_on_h_slider_value_changedRes"]
-[connection signal="value_changed" from="section/Tabs/Tab4/SettingsBox/HSlider" to="section/Tabs/SettingsManager" method="main_volume_changed"]
-[connection signal="value_changed" from="section/Tabs/Tab4/SettingsBox2/HSlider" to="section/Tabs/SettingsManager" method="music_volume_changed"]
-[connection signal="item_selected" from="section/Tabs/Tab5/SettingsBox" to="section/Tabs/SettingsManager" method="game_language_changed"]
+[connection signal="pressed" from="Tabs/backSF3" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="Tabs/reset" to="." method="_on_back_pressed"]

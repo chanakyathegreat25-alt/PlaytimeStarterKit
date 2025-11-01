@@ -117,7 +117,7 @@ func _ready() -> void:
 	right_hand.set_hand(0)
 	sound_manager.load_soundpack("Concrete")
 	
-	if GameSettings.mobile_controls:
+	if 1.0 == 2.0: #FIX LATER
 		if not has_node("MobileControls"):
 			var mobile = load("res://Interface/Mobile/mobile_controls.tscn").instantiate()
 			mobile.name = "MobileControls"
@@ -144,7 +144,7 @@ func touch_dragged(delta: Vector2) -> void:
 
 func _physics_process(delta: float) -> void:
 	if not movable: return
-	camera_sens = GameSettings.camera_sens/30
+	
 	#Handle Crouch:
 	var crouchable: bool = false
 	if Input.is_action_pressed("crouch"):
@@ -247,7 +247,8 @@ func _physics_process(delta: float) -> void:
 	flashlight_node.visible = flashlight
 	
 	#Settings Update:
-	camera.fov = GameSettings.fov
+	camera.fov = GameSettings.get_setting("fov")
+	camera_sens = GameSettings.get_setting("cam_sens")/30
 
 func capture_mouse(capture_mode: bool) -> void:
 	if capture_mode:

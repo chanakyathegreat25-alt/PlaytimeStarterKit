@@ -2,9 +2,10 @@ extends Control
 
 @onready var prompt_name = $Prompt
 @onready var sub_prompt = $SubPrompt
-@onready var yesbutton = $Yes
-@onready var nobutton = $No
+@onready var yesbutton = $YesNSF
+@onready var nobutton = $NoNSF
 @onready var animation = $Animation
+@onready var open_sound: AudioStreamPlayer = $OpenSound
 
 signal prompt_result(value: bool)
 
@@ -14,6 +15,7 @@ func _ready():
 	nobutton.connect("pressed", Callable(no))
 
 func prompt(title: String, subtitle: String):
+	open_sound.play()
 	prompt_name.text = title
 	sub_prompt.text = subtitle
 	animation.play("fadein")

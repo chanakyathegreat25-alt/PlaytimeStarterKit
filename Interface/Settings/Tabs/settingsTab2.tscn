@@ -1,0 +1,133 @@
+[gd_scene load_steps=5 format=3 uid="uid://gu7eilhp8bth"]
+
+[ext_resource type="PackedScene" uid="uid://b1gvmkr1ehdnk" path="res://Interface/Settings/ButtonTypes/ButtonMultiOption.tscn" id="1_mlb1w"]
+[ext_resource type="PackedScene" uid="uid://bwefrsfxu7lxd" path="res://Interface/Settings/ButtonTypes/ButtonSlider.tscn" id="2_bcchv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kgpdl"]
+bg_color = Color(0.34117648, 0.81960785, 1, 1)
+
+[sub_resource type="Theme" id="Theme_iwa01"]
+VScrollBar/styles/grabber = SubResource("StyleBoxFlat_kgpdl")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_kgpdl")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_kgpdl")
+
+[node name="Tab2" type="Node2D"]
+visible = false
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+offset_left = 144.8
+offset_top = 168.79999
+offset_right = 783.19995
+offset_bottom = 651.19995
+theme = SubResource("Theme_iwa01")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+theme_override_constants/separation = 3
+
+[node name="SettingsBox" parent="ScrollContainer/VBoxContainer" instance=ExtResource("1_mlb1w")]
+layout_mode = 2
+text = "SCREEN MODE"
+setting_name = "SCREEN MODE"
+setting_description = "Select whether to run the game in full-screen or windowed mode."
+settings_root = NodePath("../../../../../..")
+setting_code_name = "window_mode"
+setting_default_value = 2.0
+options = Array[String](["WINDOWED", "WINDOWED FULLSCREEN", "FULLSCREEN"])
+
+[node name="SettingsBox2" parent="ScrollContainer/VBoxContainer" instance=ExtResource("2_bcchv")]
+layout_mode = 2
+text = "RESOLUTION SCALE"
+setting_name = "RESOLUTION SCALE"
+setting_description = "Adjust the scale of the resolution."
+settings_root = NodePath("../../../../../..")
+setting_code_name = "resolution_scale"
+setting_default_value = 100.0
+slider_max = 150.0
+slider_step = 1.0
+slider_symbol = "%"
+
+[node name="SettingsBox3" parent="ScrollContainer/VBoxContainer" instance=ExtResource("1_mlb1w")]
+layout_mode = 2
+text = "VERTICLE SYNC"
+setting_name = "VERTICLE SYNC"
+setting_description = "Select whether to sync the game's frame rate to the refresh rate of the monitor."
+settings_root = NodePath("../../../../../..")
+setting_code_name = "vsync"
+setting_default_value = 0.0
+
+[node name="SettingsBox4" parent="ScrollContainer/VBoxContainer" instance=ExtResource("1_mlb1w")]
+layout_mode = 2
+text = "SHOW FPS"
+setting_name = "SHOW FPS"
+setting_description = "Select whether to show the in-game FPS counter."
+settings_root = NodePath("../../../../../..")
+setting_code_name = "show_fps"
+setting_default_value = 0.0
+
+[node name="SettingsBox5" parent="ScrollContainer/VBoxContainer" instance=ExtResource("2_bcchv")]
+layout_mode = 2
+text = "FIELF OF VIEW"
+setting_name = "FIELF OF VIEW"
+setting_description = "Adjust the height and width of the in-game view."
+settings_root = NodePath("../../../../../..")
+setting_code_name = "fov"
+setting_default_value = 75.0
+slider_min = 60.0
+slider_max = 120.0
+slider_step = 1.0
+slider_symbol = "°"
+
+[node name="SettingsBox6" parent="ScrollContainer/VBoxContainer" instance=ExtResource("1_mlb1w")]
+layout_mode = 2
+text = "CAMERA SHAKE"
+setting_name = "CAMERA SHAKE"
+setting_description = "Select whether to enable the camera shake effect."
+settings_root = NodePath("../../../../../..")
+setting_code_name = "camera_shake"
+
+[node name="SettingsBox7" parent="ScrollContainer/VBoxContainer" instance=ExtResource("2_bcchv")]
+layout_mode = 2
+text = "GAMMA"
+setting_name = "FIELF OF VIEW"
+setting_description = "Adjust the height and width of the in-game view."
+settings_root = NodePath("../../../../../..")
+setting_code_name = "gamma"
+setting_default_value = 2.1999999999970896
+slider_min = 1.4000000000087311
+slider_max = 3.0
+slider_step = 0.1999999999970896
+
+[node name="SettingsBox8" parent="ScrollContainer/VBoxContainer" instance=ExtResource("1_mlb1w")]
+layout_mode = 2
+text = "MOTION BLUR"
+setting_name = "MOTION BLUR"
+setting_description = "Select whether to enable the motion blur effect."
+settings_root = NodePath("../../../../../..")
+setting_code_name = "motion_blur"
+
+[node name="SettingsBox9" parent="ScrollContainer/VBoxContainer" instance=ExtResource("1_mlb1w")]
+layout_mode = 2
+text = "VIGNETTE"
+setting_name = "MOTION BLUR"
+setting_description = "Select whether to enable the vignette effect."
+settings_root = NodePath("../../../../../..")
+setting_code_name = "vignette"
+
+[node name="SettingsBox10" parent="ScrollContainer/VBoxContainer" instance=ExtResource("1_mlb1w")]
+layout_mode = 2
+text = "FILM GRAIN"
+setting_name = "FILM GRAIN"
+setting_description = "Select whether to enable the film grain effect."
+settings_root = NodePath("../../../../../..")
+setting_code_name = "film_grain"
+
+[node name="SettingsBox11" parent="ScrollContainer/VBoxContainer" instance=ExtResource("1_mlb1w")]
+layout_mode = 2
+text = "FRAME RATE LIMIT"
+setting_name = "FRAME RATE LIMIT"
+setting_description = "Limit the in-game frame rate."
+settings_root = NodePath("../../../../../..")
+setting_code_name = "fps_limit"
+setting_default_value = 10.0
+options = Array[String](["30", "60", "120", "144", "160", "165", "180", "200", "240", "360", "UNLIMITED"])

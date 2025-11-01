@@ -1,18 +1,34 @@
 extends Node
 
-var camera_sens: float = 50.0
-var toggle_sprint: bool = false
-var toggle_crouch: bool = false
-var mobile_controls: bool = false #CHANGE TO TRUE FOR MOBILE TO BE ENABLED BY DEFAULT
+var setting_names: Array[String]
+var setting_values: Array[float]
+var setting_type: Array[bool]
+var default_values: Array[float]
 
-var window_mode: int = 0
-var vsync: bool = false
-var show_fps: bool = false
-var fov: int = 60
+var built_settings: bool = false
 
-var graphics_quality: int = 0
-var resolution_scale: float = 1.0
-var anti_aliasing: int = 0
+func _ready() -> void:
+	
+	build_settings()
 
-var main_volume: float = 100.0
-var music_volume: float = 100.0
+func build_settings():
+	if built_settings: return
+	
+	for i in 5:
+		var current_tab = load(str("res://Interface/Settings/Tabs/settingsTab", i+1, ".tscn")).instantiate()
+		var getting_from = (current_tab if current_tab.get_child(0) is Button else (current_tab.get_child(0) if current_tab.get_child(0).get_child(0) is Button else current_tab.get_child(0).get_child(0)))
+		for g in getting_from.get_child_count():
+			if getting_from.get_child(g) is Button:
+				setting_names.append(getting_from.get_child(g).setting_code_name)
+				setting_values.append(getting_from.get_child(g).setting_default_value)
+				setting_type.append(false if (getting_from.get_child(g).multi_option and getting_from.get_child(g).options.size()==2 and getting_from.get_child(g).options[0]=="OFF") else true)
+		current_tab.queue_free()
+	
+	default_values = setting_values
+	built_settings = true
+
+func get_setting(setting: String):
+	if setting_type[setting_names.find(setting)]:
+		return setting_values[setting_names.find(setting)]
+	else:
+		return false if setting_values[setting_names.find(setting)]==0.0 else true
