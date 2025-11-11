@@ -1,18 +1,22 @@
-[gd_scene load_steps=5 format=3 uid="uid://gu7eilhp8bth"]
+[gd_scene load_steps=10 format=3 uid="uid://gu7eilhp8bth"]
 
 [ext_resource type="PackedScene" uid="uid://b1gvmkr1ehdnk" path="res://Interface/Settings/ButtonTypes/ButtonMultiOption.tscn" id="1_mlb1w"]
 [ext_resource type="PackedScene" uid="uid://bwefrsfxu7lxd" path="res://Interface/Settings/ButtonTypes/ButtonSlider.tscn" id="2_bcchv"]
+[ext_resource type="Script" uid="uid://cfy8p6bec5h6o" path="res://Interface/Settings/settingsButtonSFX.gd" id="3_uqyih"]
+[ext_resource type="AudioStream" uid="uid://cr1h44t3w130f" path="res://Interface/MainMenu/Sound/hover.wav" id="4_ywm8o"]
+[ext_resource type="AudioStream" uid="uid://c7wgcc6jimvtc" path="res://Interface/MainMenu/Sound/SW_SFX_Menu_Forward.wav" id="5_jbto7"]
+[ext_resource type="AudioStream" uid="uid://d3q8178oe4ycy" path="res://Interface/MainMenu/Sound/SW_SFX_Menu_Backward.wav" id="6_2l0em"]
+[ext_resource type="AudioStream" uid="uid://bebahieimis82" path="res://Interface/MainMenu/Sound/select2.wav" id="7_8lwlt"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kgpdl"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uqyih"]
 bg_color = Color(0.34117648, 0.81960785, 1, 1)
 
 [sub_resource type="Theme" id="Theme_iwa01"]
-VScrollBar/styles/grabber = SubResource("StyleBoxFlat_kgpdl")
-VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_kgpdl")
-VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_kgpdl")
+VScrollBar/styles/grabber = SubResource("StyleBoxFlat_uqyih")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_uqyih")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_uqyih")
 
 [node name="Tab2" type="Node2D"]
-visible = false
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 offset_left = 144.8
@@ -67,12 +71,12 @@ setting_default_value = 0.0
 
 [node name="SettingsBox5" parent="ScrollContainer/VBoxContainer" instance=ExtResource("2_bcchv")]
 layout_mode = 2
-text = "FIELF OF VIEW"
-setting_name = "FIELF OF VIEW"
+text = "FIELD OF VIEW"
+setting_name = "FIELD OF VIEW"
 setting_description = "Adjust the height and width of the in-game view."
 settings_root = NodePath("../../../../../..")
 setting_code_name = "fov"
-setting_default_value = 75.0
+setting_default_value = 90.0
 slider_min = 60.0
 slider_max = 120.0
 slider_step = 1.0
@@ -131,3 +135,20 @@ settings_root = NodePath("../../../../../..")
 setting_code_name = "fps_limit"
 setting_default_value = 10.0
 options = Array[String](["30", "60", "120", "144", "160", "165", "180", "200", "240", "360", "UNLIMITED"])
+
+[node name="ButtonSFXPlayer" type="Node" parent="."]
+script = ExtResource("3_uqyih")
+root_path = NodePath("..")
+
+[node name="Hover" type="AudioStreamPlayer" parent="ButtonSFXPlayer"]
+stream = ExtResource("4_ywm8o")
+volume_db = -5.0
+
+[node name="Forward" type="AudioStreamPlayer" parent="ButtonSFXPlayer"]
+stream = ExtResource("5_jbto7")
+
+[node name="Backward" type="AudioStreamPlayer" parent="ButtonSFXPlayer"]
+stream = ExtResource("6_2l0em")
+
+[node name="Forward2" type="AudioStreamPlayer" parent="ButtonSFXPlayer"]
+stream = ExtResource("7_8lwlt")

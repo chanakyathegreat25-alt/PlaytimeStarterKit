@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=4 uid="uid://3jxty3pr83fe"]
 
 [ext_resource type="Material" uid="uid://56ho0nobwxyd" path="res://Objects/Materials/Trims/MetalTrim.tres" id="1_suj7m"]
-[ext_resource type="Material" uid="uid://c07dodymuxgfw" path="res://Decoration/Mesh/Material/OrganizedTexture/Tread/TreadPlate.tres" id="2_d3cuy"]
+[ext_resource type="Material" uid="uid://cerle4vdlbaeh" path="res://Decoration/Mesh/Material/OrganizedTexture/GrippyMetal/GrippyMetal.tres" id="2_d3cuy"]
 [ext_resource type="Script" uid="uid://0ltxxdtkyj0o" path="res://Player/Sound/Movement/footstep_sound.gd" id="3_d3cuy"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_3vidn"]
@@ -59,7 +59,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_3vidn")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ioitv"]
-size = Vector3(2, 0.3, 3.57709)
+size = Vector3(2, 0.27976075, 3.57709)
 
 [node name="CatwalkStairs" type="StaticBody3D"]
 
@@ -68,7 +68,7 @@ mesh = SubResource("ArrayMesh_wvrnm")
 skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.833664, -0.552272, 0, 0.552272, 0.833664, -2.23517e-08, 0.860213, 0.0362619)
+transform = Transform3D(1, 0, 0, 0, 0.833664, -0.552272, 0, 0.552272, 0.833664, -2.23517e-08, 0.8517766, 0.030673113)
 shape = SubResource("BoxShape3D_ioitv")
 
 [node name="FootStepSurface" type="Node" parent="."]

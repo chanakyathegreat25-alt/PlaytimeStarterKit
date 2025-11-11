@@ -1,6 +1,6 @@
 extends Button
 
-@onready var inventory = $"../../.."
+@onready var inventory = $"../../../../.."
 
 var has_desc: bool = false
 var description: String = "none"

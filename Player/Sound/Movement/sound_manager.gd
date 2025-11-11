@@ -48,14 +48,9 @@ func jump():
 	sound.emit("jump")
 
 func crouch(type: bool):
-	var sound_node: String = "none"
-	
-	if type:
-		sound_node = "crouch2"
-	else:
-		sound_node = "crouch1"
-	
-	get_node(sound_node).play()
+	var sound_node: String = str("res://Player/Sound/Movement/Crouch/SW_SFX_Player_Crouch_0", randi_range(1, 3), ".wav")if not type else str("res://Player/Sound/Movement/Crouch/SW_SFX_Player_UnCrouch_0", randi_range(1, 3), ".wav")
+	var stream = ResourceLoader.load(sound_node) as AudioStream
+	play_sound(stream)
 func launch_hand():
 	var sound_node: String = "none"
 	
@@ -92,17 +87,13 @@ func cable_sound(hand: bool, play: bool):
 		get_node(sound_node).stop()
 
 func lower_grabpack():
-	var sound_node: String = "none"
-	
-	sound_node = "sidleEnter"
-	
-	get_node(sound_node).play()
+	var sound_node: String = str("res://Player/Sound/Grabpack/SW_SFX_Player_Sidle_Enter_0", randi_range(1, 3), ".wav")
+	var stream = ResourceLoader.load(sound_node) as AudioStream
+	play_sound(stream)
 func raise_grabpack():
-	var sound_node: String = "none"
-	
-	sound_node = "sidleExit"
-	
-	get_node(sound_node).play()
+	var sound_node: String = str("res://Player/Sound/Grabpack/SW_SFX_Player_Sidle_Exit_0", randi_range(1, 3), ".wav")
+	var stream = ResourceLoader.load(sound_node) as AudioStream
+	play_sound(stream)
 
 func load_soundpack(pack_folder: String):
 	current_soundpack = pack_folder

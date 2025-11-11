@@ -15,7 +15,7 @@ warnings/check_invalid_track_paths=false
 [application]
 
 config/name="PlaytimeStarterKit"
-run/main_scene="uid://bifmmultpyw0x"
+run/main_scene="uid://ckewkanebntfe"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -36,6 +36,7 @@ settings/stdout/print_fps=true
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
+window/size/mode=3
 window/stretch/mode="canvas_items"
 mouse_cursor/custom_image="uid://cxmgy7tkocyup"
 
@@ -49,7 +50,7 @@ movie_writer/movie_file="C:/Users/comma/Videos/rec1.avi"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/path_mesh_instance_3d/plugin.cfg", "res://addons/virtual_joystick/plugin.cfg")
+enabled=PackedStringArray("res://addons/SphynxMotionBlurToolkit/plugin.cfg", "res://addons/path_mesh_instance_3d/plugin.cfg", "res://addons/virtual_joystick/plugin.cfg")
 
 [input]
 

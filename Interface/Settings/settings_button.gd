@@ -79,8 +79,12 @@ func clicked():
 	
 	new_vis()
 func new_vis(_optional = 10.0):
+	if no_setting_data: return
+	GameSettings.change_setting(setting_code_name, $HSlider.value if is_slider else current_option)
+	
 	if has_node("HSlider"):
-		var slider_value = int(get_node("HSlider").value) if get_node("HSlider").step==int(get_node("HSlider").step) else snappedf(get_node("HSlider").value, float(slider_step))
+		@warning_ignore("incompatible_ternary")
+		var slider_value = int(get_node("HSlider").value) if get_node("HSlider").step==snapped(get_node("HSlider").step, 1.0) else snappedf(get_node("HSlider").value, float(slider_step))
 		if slider_value is float:
 			slider_value = round(slider_value*1000.0) / 1000.0
 		$Label.text = str(slider_value, slider_symbol)

@@ -1,11 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://b4qeg77eflnu1"]
+[gd_scene load_steps=9 format=3 uid="uid://b4qeg77eflnu1"]
 
 [ext_resource type="PackedScene" uid="uid://b1gvmkr1ehdnk" path="res://Interface/Settings/ButtonTypes/ButtonMultiOption.tscn" id="1_cjlni"]
 [ext_resource type="FontFile" uid="uid://cfvfiw1qtrep1" path="res://Interface/Font/OverusedGrotesk-Bold.otf" id="2_sxpuv"]
 [ext_resource type="PackedScene" uid="uid://bwefrsfxu7lxd" path="res://Interface/Settings/ButtonTypes/ButtonSlider.tscn" id="3_vxfov"]
+[ext_resource type="Script" uid="uid://cfy8p6bec5h6o" path="res://Interface/Settings/settingsButtonSFX.gd" id="4_668tj"]
+[ext_resource type="AudioStream" uid="uid://cr1h44t3w130f" path="res://Interface/MainMenu/Sound/hover.wav" id="5_xe30s"]
+[ext_resource type="AudioStream" uid="uid://c7wgcc6jimvtc" path="res://Interface/MainMenu/Sound/SW_SFX_Menu_Forward.wav" id="6_xffmf"]
+[ext_resource type="AudioStream" uid="uid://d3q8178oe4ycy" path="res://Interface/MainMenu/Sound/SW_SFX_Menu_Backward.wav" id="7_6id5b"]
+[ext_resource type="AudioStream" uid="uid://bebahieimis82" path="res://Interface/MainMenu/Sound/select2.wav" id="8_51kaa"]
 
 [node name="Tab5" type="Node2D"]
-visible = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 offset_left = 144.8
@@ -52,3 +56,20 @@ setting_code_name = "subtitle_bg"
 setting_default_value = 40.0
 slider_step = 10.0
 slider_symbol = "%"
+
+[node name="ButtonSFXPlayer" type="Node" parent="."]
+script = ExtResource("4_668tj")
+root_path = NodePath("..")
+
+[node name="Hover" type="AudioStreamPlayer" parent="ButtonSFXPlayer"]
+stream = ExtResource("5_xe30s")
+volume_db = -5.0
+
+[node name="Forward" type="AudioStreamPlayer" parent="ButtonSFXPlayer"]
+stream = ExtResource("6_xffmf")
+
+[node name="Backward" type="AudioStreamPlayer" parent="ButtonSFXPlayer"]
+stream = ExtResource("7_6id5b")
+
+[node name="Forward2" type="AudioStreamPlayer" parent="ButtonSFXPlayer"]
+stream = ExtResource("8_51kaa")

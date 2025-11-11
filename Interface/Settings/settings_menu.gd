@@ -16,20 +16,19 @@ var previous_tab_button: Button = null
 func _ready():
 	load_tab("Tab1",get_node("Tabs/1"))
 	visible = false
-	await Game.delay(0.5)
-	toggle()
+	await get_tree().process_frame
+	for i in GameSettings.setting_names.size():
+		GameSettings.setting_changed.emit(GameSettings.setting_names[i], GameSettings.setting_values[i])
 
 func toggle():
 	if visible:
 		$section/Tabs/SettingsManager.apply()
 	else:
-		pass
+		load_animation.play("loaded")
 	visible = !visible
 
 func _unhandled_input(_event):
 	if visible:
-		if Input.is_action_just_pressed("exit"):
-			toggle()
 		if Input.is_action_just_pressed("rotate_left"):
 			var switching_to: int = int(previous_tab_button.name)-1
 			if switching_to < 1: switching_to = 5
@@ -42,10 +41,12 @@ func _unhandled_input(_event):
 			$Tabs/ButtonSFXPlayer/Forward.play()
 
 func load_tab(tab: String, node: Button):
-	if current_tab: 
-		current_tab.visible = false
+	if current_tab:
+		current_tab.queue_free()
 		current_tab = null
-	var next_tab = tabs.get_node(tab)
+	var new_tab = load(str("res://Interface/Settings/Tabs/settingsTab", tab[3], ".tscn")).instantiate()
+	tabs.add_child(new_tab)
+	var next_tab = new_tab
 	next_tab.visible = true
 	title.text = tabs_names[int(tab)-1]
 	load_animation.play("loaded")
@@ -56,7 +57,7 @@ func load_tab(tab: String, node: Button):
 		previous_tab_button.remove_theme_stylebox_override("normal")
 	previous_tab_button = node
 	node.modulate = "ffffffff"
-func setting_pressed(titleset, descriptionset, y_pos):
+func setting_pressed(titleset, descriptionset, _y_pos):
 	setting_title.text = titleset
 	setting_description.text = descriptionset
 func setting_exited():
@@ -65,7 +66,3 @@ func setting_exited():
 func _on_back_pressed():
 	if visible:
 		toggle()
-
-
-func _on_label_visibility_changed() -> void:
-	pass # Replace with function body.

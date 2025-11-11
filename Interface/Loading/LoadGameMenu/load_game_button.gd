@@ -8,17 +8,10 @@ extends Button
 var game_save: int = 0
 
 func _ready():
-	connect("mouse_entered", Callable(entered))
-	connect("mouse_exited", Callable(exited))
 	connect("pressed", Callable(pressed_btn))
 
-func entered():
-	current.visible = true
-	current.position.y = position.y
-func exited():
-	current.visible = false
 func pressed_btn():
-	get_parent().get_parent().confirm_load(game_save)
+	get_parent().get_parent().get_parent().get_parent().confirm_load(game_save)
 
 func load_data(data: Array):
 	titlenode.text = data[0]

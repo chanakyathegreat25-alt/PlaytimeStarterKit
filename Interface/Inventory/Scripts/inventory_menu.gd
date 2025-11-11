@@ -1,10 +1,10 @@
 extends Control
 
-@onready var buttons = $section/buttons
+@onready var buttons = $section/buttons/ScrollContainer/VBoxContainer
 @onready var selected = $section/Selected
 @onready var tab_indecator = $Tabs/TabIndecator
 @onready var item_image = $section/item_image
-@onready var title = $section/title
+@onready var title = $section/Node2D/title
 @onready var read = $Tabs/read
 @onready var decription = $section/decription
 @onready var reading: Panel = $section/Reading
@@ -19,6 +19,7 @@ const STYLE_SELECTED = preload("res://Interface/Inventory/Themes/StyleSelected.t
 
 var previous_tab_button: Button
 var previous_item_button: Button
+var current_tab: int = 0
 
 var current_button_idx: int = -1
 
@@ -29,6 +30,7 @@ func load_section(section: String, tab_button: Button):
 	for i in buttons.get_child_count():
 		buttons.get_child(0).free()
 	var section_array = Inventory.get(str("items_", section))
+	$AnimationPlayer.play("Transition")
 	for i in section_array.size():
 		var new_button = INV_BUTTON.instantiate()
 		buttons.add_child(new_button)
@@ -68,7 +70,7 @@ func item_clicked(button_node: Button):
 	previous_item_button = button_node
 	button_node.add_theme_stylebox_override("normal", STYLE_SELECTED)
 	
-	selected.position.y = button_node.position.y + buttons.position.y
+	selected.global_position.y = button_node.global_position.y
 	selected.visible = true
 	item_image.texture = button_node.item_texture
 	item_image.visible = true
@@ -85,6 +87,27 @@ func _unhandled_input(_event: InputEvent) -> void:
 			close_note()
 		elif previous_item_button:
 			load_note(current_button_idx, buttons.get_child(current_button_idx).text)
+	if visible:
+		if Input.is_action_just_pressed("exit"):
+			visible = false
+			Grabpack.player.capture_mouse(true)
+			$"..".close_inv.play()
+			reading.visible = false
+			get_tree().paused = false
+		if Input.is_action_just_pressed("rotate_left"):
+			var tab: = $Tabs
+			var switching_to: int = 0 if tab.get_child(0)==previous_tab_button else (1 if tab.get_child(1)==previous_tab_button else (2 if tab.get_child(2)==previous_tab_button else 3))
+			switching_to -= 1
+			if switching_to < 0: switching_to = 3
+			
+			load_section($Tabs.get_child(switching_to).name, $Tabs.get_child(switching_to))
+		if Input.is_action_just_pressed("rotate_right"):
+			var tab: = $Tabs
+			var switching_to: int = 0 if tab.get_child(0)==previous_tab_button else (1 if tab.get_child(1)==previous_tab_button else (2 if tab.get_child(2)==previous_tab_button else 3))
+			switching_to += 1
+			if switching_to > 3: switching_to = 0
+			
+			load_section($Tabs.get_child(switching_to).name, $Tabs.get_child(switching_to))
 
 func load_note(idx: int, note_title: String):
 	reading.visible = true

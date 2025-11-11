@@ -25,11 +25,12 @@ normal_enabled = true
 normal_texture = ExtResource("8_2amae")
 
 [sub_resource type="ORMMaterial3D" id="ORMMaterial3D_2amae"]
+albedo_color = Color(0.73300546, 0.7330054, 0.7330054, 1)
 albedo_texture = ExtResource("1_1agc2")
 orm_texture = ExtResource("3_2amae")
 emission_enabled = true
-emission = Color(0.78431374, 0, 1, 1)
-emission_energy_multiplier = 8.0
+emission = Color(0.5686275, 0, 1, 1)
+emission_energy_multiplier = 16.0
 emission_operator = 1
 emission_texture = ExtResource("11_pb27o")
 normal_enabled = true

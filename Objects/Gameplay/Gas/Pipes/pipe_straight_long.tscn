@@ -1,11 +1,29 @@
-[gd_scene load_steps=6 format=4 uid="uid://c6viimliqjycx"]
+[gd_scene load_steps=10 format=4 uid="uid://c6viimliqjycx"]
 
 [ext_resource type="Material" uid="uid://dnia3t1wv87a0" path="res://Objects/Materials/Trims/PaintedMetalTrim.tres" id="1_yesqq"]
-[ext_resource type="Material" uid="uid://bg2fp6rjhgu6n" path="res://Objects/VFX/Gas/SmokeTubes.tres" id="2_3u40b"]
+[ext_resource type="Shader" uid="uid://c4v2aodxea4w" path="res://Objects/Gameplay/Gas/Pipes/redTubeGasShader.gdshader" id="2_yesqq"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_fd7bw"]
 height = 5.14375
 radius = 0.4
+
+[sub_resource type="Gradient" id="Gradient_yesqq"]
+offsets = PackedFloat32Array(0.2536232, 0.9963768, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.95289856, 0, 0, 1, 1, 0, 0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_yesqq"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_3u40b"]
+noise = SubResource("FastNoiseLite_yesqq")
+color_ramp = SubResource("Gradient_yesqq")
+seamless = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3u40b"]
+render_priority = 0
+shader = ExtResource("2_yesqq")
+shader_parameter/noise = SubResource("NoiseTexture2D_3u40b")
+shader_parameter/move_speed = 0.1
+shader_parameter/move_direction = Vector2(0, 1)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_sj3lj"]
 _surfaces = [{
@@ -55,7 +73,7 @@ _surfaces = [{
 "index_count": 411,
 "index_data": PackedByteArray("LAABAAIAAAABACwAAgAbACwALQAAACwAGwACAAMACgAAAC0AHAAsABsALQAsABwAAwAdABsALgAbAB0AGwAuABwAHQADAC8ABAAvAAMAHQAVAC4AFQAdAC8ALwAEAB4AHgAEAAUAHgAFAAYAMAAvAB4ALwAwABUABgAxAB4AMQAGAAgAHgAfADAAHwAeADEAMgAVADAAMgAwAB8AFQAyADMANAAuABUAFQAzADQALgA0ABwAIQAzADIAIQA0ADMAHwA1ADIAIQAyADUANAA2ABwAIQA2ADQAHAA2ACUAIQAlADYAJQA3ABwAHAA3AC0ANwAlADgAIQA4ACUALQA3ABMAOAATADcAEwAnAC0AJwAKAC0AOQATADgAOgAKACcACgA6AAsAJwATADsAOwA6ACcAEwA5ADsACwA6ACgAKAAMAAsAOgA7ABQAFAAoADoADAAoADwAFAA8ACgAPAARAAwAJgAUADsAOwA5ACYAEQA8ACoAKgAQABEAEgAQACoAPQA8ABQAPAA9ACoAFAAmAD4APgA9ABQAJAA+ACYAJAAmADkAPQA+AD8AJAA/AD4APQApACoAPwApAD0AKgArABIAKgApACsADwASACsAKQA/AEAAJABAAD8AKQBBACsAQABBACkAKwBCAA8AQgArAEEAGgBBAEAAQQAaAEIAJABDAEAAQABDABoADwBCACMAIwBCABoAIwANAA8ADQAjAA4AGgBEACMAGgBDAEUARQBEABoAJABFAEMAIwBEAEYARQBGAEQAIwBHAA4ARgBHACMADgBHAAkARgBFAEgAJABIAEUARwBGABkASAAZAEYARwAiAAkAGQAiAEcABwAJACIASAAYABkAJAAYAEgAIgBJAAcAIgAZAEkABwBJAAgASgAZABgAGQBKAEkAGAAkAEsAGABLAEoASQAgAAgAIABJAEoACAAgADEAJABMAEsAOQBMACQATAA5ADgAOAAhAEwATQAxACAAMQBNAB8ANQAfAE0ATAAhAE4ATgBLAEwAIQA1ABYAIQAWAE4ATQAWADUASwBOABcAFwBOABYAFgBNABcAIAAXAE0ASgBLABcASgAXACAA"),
 "lods": [0.0192679, PackedByteArray("AgAbAAEAGwACAAMAHAABABsAAwAdABsABAAdAAMAFQAbAB0AGwAVABwAHQAEAB4AHgAEAAUAHgAFAAYAHwAdAB4AHQAfABUABgAgAB4AHwAeACAAIAAGAAgABwAgAAgAIQAVAB8AIQAcABUAIgAgAAcABwAJACIADgAiAAkAIwAiAA4ADQAjAA4AIwANAA8AIgAZACAAGQAiACMAIAAXAB8AGQAXACAAFgAfABcAIQAfABYAGAAWABcAFwAZABgAFgAYACQAJAAhABYAJAAYABkAJQAhACQAIQAlABwAJAAmACUAJQATABwAJgATACUAHAATACcAJwABABwAJwAAAAEACgAAACcACgAnAAsAJgAUABMAJwATABQACwAnACgAFAAoACcAKAAMAAsAKAARAAwAFAAmACkAKQAoABQAJAApACYAEQAoACoAKAApACoAKgAQABEAJAAZACkAEgAQACoAGgApABkAIwAaABkAKgApACsAKQAaACsAKgArABIAIwArABoADwASACsADwArACMA"), 0.0296885, PackedByteArray("EwAAAAEACgAAABMACgATAAsAEwABAAIACwATAAwAEQAMABAADAAUABAAFAAMABMAAgAVABMAAwAVAAIABAAVAAMAFQAEAAUAFgATABUAFQAFABcAFwAWABUABgAXAAUAFwAGAAgABwAXAAgACQAXAAcAEwAWABgAGAAWABcAGAAUABMAFwAZABgAGAAZABQACQAZABcAGQAJAA0ADQAJAA4AGgAUABkADQAaABkAEAAUABoADwAaAA0AEAAaABIADwASABoA"), 0.109011, PackedByteArray("AAABAAIAAgADAAAAAwAEAAUABgADAAUABgAAAAMABwAGAAgACQAGAAcAAAAGAAkACgAAAAsACwAAAAwACQAMAAAADQAJAA4ADQAPAAkADwAMAAkAEAAMAA8AEQAMABAAEAAPABIA")],
-"material": ExtResource("2_3u40b"),
+"material": SubResource("ShaderMaterial_3u40b"),
 "name": "MI_RedSmokeTubes.004",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -74,3 +92,8 @@ shape = SubResource("CylinderShape3D_fd7bw")
 [node name="SM_GasPipe_5M_A" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_yesqq")
 skeleton = NodePath("")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="SM_GasPipe_5M_A"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5711684, 1.0227267)
+light_color = Color(1, 0, 0, 1)
+omni_range = 4.928999

@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=4 uid="uid://mgaeb7vr4f7v"]
+[gd_scene load_steps=37 format=4 uid="uid://mgaeb7vr4f7v"]
 
 [ext_resource type="Script" uid="uid://bioaue0c67ol3" path="res://Objects/Gameplay/Puzzles/Scanners/Scripts/scanner_left_ch4.gd" id="1_w413f"]
 [ext_resource type="Texture2D" uid="uid://cwnbsxixha14m" path="res://Objects/Gameplay/Puzzles/Scanners/Models/T_HandScanner_BC.png" id="2_5paj6"]
@@ -9,7 +9,10 @@
 [ext_resource type="Texture2D" uid="uid://c5rc1743vtbi0" path="res://Objects/Gameplay/Puzzles/Scanners/Textures/T_Ready.png" id="6_adq8v"]
 [ext_resource type="AudioStream" uid="uid://dsg70rqmqxrr8" path="res://Objects/Gameplay/Puzzles/Scanners/Sound/SW_SFX_Handscanner_Scanning_LOOP.wav" id="8_u2cos"]
 [ext_resource type="AudioStream" uid="uid://ct414f55tqo1b" path="res://Objects/Gameplay/Puzzles/Scanners/Sound/SW_SFX_Unlock_Chime.wav" id="8_vhg7k"]
+[ext_resource type="Script" uid="uid://d2j0yacmlwy3h" path="res://Objects/Gameplay/startstopsfx.gd" id="9_b14yf"]
 [ext_resource type="AudioStream" uid="uid://mjnwosy64061" path="res://Objects/Gameplay/Puzzles/Scanners/Sound/SW_Keypad_Fail.wav" id="10_4osnw"]
+[ext_resource type="AudioStream" uid="uid://cgh7u4llx3fei" path="res://Objects/Gameplay/Puzzles/Scanners/Sound/SW_SFX_HandScanner_Start.wav" id="10_o0j62"]
+[ext_resource type="AudioStream" uid="uid://cpyrrr5qc12oc" path="res://Objects/Gameplay/Puzzles/Scanners/Sound/SW_SFX_HandScanner_Stop.wav" id="11_okylf"]
 
 [sub_resource type="ORMMaterial3D" id="ORMMaterial3D_vhg7k"]
 albedo_texture = ExtResource("2_5paj6")
@@ -427,6 +430,10 @@ one_shot = true
 
 [node name="Scanning" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("8_u2cos")
+script = ExtResource("9_b14yf")
+in_sound = ExtResource("10_o0j62")
+out_sound = ExtResource("11_okylf")
+loop = ExtResource("8_u2cos")
 
 [node name="ScanComplete" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("8_vhg7k")

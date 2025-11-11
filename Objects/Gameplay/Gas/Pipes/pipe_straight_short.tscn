@@ -1,11 +1,29 @@
-[gd_scene load_steps=6 format=4 uid="uid://cqcrk6m3gju4y"]
+[gd_scene load_steps=10 format=4 uid="uid://cqcrk6m3gju4y"]
 
-[ext_resource type="Material" uid="uid://kqchhiv4yemk" path="res://Objects/VFX/Gas/SmokeTubesCircle.tres" id="1_gxukw"]
 [ext_resource type="Material" uid="uid://dnia3t1wv87a0" path="res://Objects/Materials/Trims/PaintedMetalTrim.tres" id="1_uyrbg"]
+[ext_resource type="Shader" uid="uid://c4v2aodxea4w" path="res://Objects/Gameplay/Gas/Pipes/redTubeGasShader.gdshader" id="2_uyrbg"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_gxukw"]
 height = 2.14297
 radius = 0.4
+
+[sub_resource type="Gradient" id="Gradient_yesqq"]
+offsets = PackedFloat32Array(0.2536232, 0.9963768, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.95289856, 0, 0, 1, 1, 0, 0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_yesqq"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_3u40b"]
+noise = SubResource("FastNoiseLite_yesqq")
+color_ramp = SubResource("Gradient_yesqq")
+seamless = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vnmx4"]
+render_priority = 0
+shader = ExtResource("2_uyrbg")
+shader_parameter/noise = SubResource("NoiseTexture2D_3u40b")
+shader_parameter/move_speed = 0.1
+shader_parameter/move_direction = Vector2(0, 1)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_urllu"]
 _surfaces = [{
@@ -55,7 +73,7 @@ _surfaces = [{
 "index_count": 315,
 "index_data": PackedByteArray("IgACAAAAAgAiAAQAAAAVACIAFQAAAAEAIQAEACIABAAhAAUADwAiABUADwAhACIAIwAFACEABQAjACAAIAADAAUAEQAjACEAIwARACAADQADACAAIQAkABEAJAAhAA8ADQAgAB8ADgANAB8AEQAlACAAHwAgACUAJgARACQAEQAmACUAJAAcACYAHAAkAA8ADwAnABwAKAAmABwAKAAcACcAJgApACUAKAApACYAEwAlACkAJQATAB8AKQAqABMAKAAqACkAHwATACsAKwATACoAKwAsAB8ALAAOAB8AKgAeACsAKAAeACoALAArAC0ALQArAB4ADgAsAB0ALQAdACwAHQAMAA4ALQAeAC4AKAAuAB4AHQAtABQALQAuAC8AKAAvAC4ALwAUAC0ADAAdADAAFAAwAB0AMAAKAAwACwAKADAAMAAbAAsAMAAUABsACAALABsAFAAvADEAKAAxAC8AFAAyABsAMQAyABQAGwAyADMAMwAyADEAGwAZAAgAMwAZABsAMQA0ADMAKAA0ADEAMwA0ADUAKAA1ADQANQASADMAGQAzABIACAAZADYAEgA2ABkANgAJAAgACQA2ABgAEgAYADYAGAAHAAkABwAYAAYANwAYABIANwASADUAGAAXAAYAGAA3ABcABgAXAAEANwA1ABoAKAAaADUANwAQABcAGgAQADcAFwAWAAEAFwAQABYAAQAWABUAGgA4ABAAKAA4ABoAEAA5ABYAEAA4ADkAOgAVABYAFgA5ADoAFQA6AA8AOAA7ADkAKAA7ADgAOgA5ADsAKAA8ADsAOwA8ADoADwA6ADwAKAAnADwAPAAnAA8A"),
 "lods": [0.0217034, PackedByteArray("AAAVAAIAFQAAAAEADwACABUAAQAWABUADwAVABYAFwAWAAEABgAXAAEAFwAQABYAFgAQAA8AGAAXAAYAGAAQABcABwAYAAYAGAAHAAkACQAZABgAGQAJAAgAEAAYABIAEgAYABkAEAASABoADwAQABoAGwAZAAgAEgAZABsACAALABsACgAbAAsAGwAUABIACgAUABsAEgAUABoAGgAcAA8AFAAKAB0ADAAdAAoAHQAMAA4AFAAeABoAGgARABwAHAARAA8AGgAeABEAFAATAB4AHQATABQAEQAeABMAHQAOAB8AEwAdAB8AEQATAB8ADgANAB8ADQAgAB8AHwAgABEADQADACAAIAADAAUAIQARACAABQAhACAAEQAhAA8ABAAhAAUADwAhAAIAIQAEAAIA"), 0.0311249, PackedByteArray("AAABAAIADwACAAEAAQAQAA8ADwARAAIAEQAEAAIABAARAAUABQARAAMADQADABEABwAQAAEABgAHAAEADwAQABIAEAAHABIAEgARAA8AEQATAA0AEwAMAA0ADAAOAA0AEQAUABMADAATABQAEgAUABEAFAAKAAwAEgAHAAgACAAUABIACgAUAAgACQAIAAcACgAIAAsA"), 0.107195, PackedByteArray("AAABAAIAAwACAAEAAwAEAAIABAADAAUABgAHAAEAAQAHAAMACAADAAcACQAIAAcACgADAAgACgAIAAsAAwAKAAwAAwAMAA0ADAAOAA0A")],
-"material": ExtResource("1_gxukw"),
+"material": SubResource("ShaderMaterial_vnmx4"),
 "name": "MI_RedSmokeTubes_Circle.001",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -74,3 +92,8 @@ shape = SubResource("CylinderShape3D_gxukw")
 [node name="SM_GasPipe_2M_A" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_ed63b")
 skeleton = NodePath("")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="SM_GasPipe_2M_A"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0711684, 1.0227267)
+light_color = Color(1, 0, 0, 1)
+omni_range = 4.928999

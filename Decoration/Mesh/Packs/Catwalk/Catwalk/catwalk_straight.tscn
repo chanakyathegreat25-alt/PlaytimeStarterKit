@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=4 uid="uid://cib6ubx4t77jy"]
 
 [ext_resource type="Material" uid="uid://56ho0nobwxyd" path="res://Objects/Materials/Trims/MetalTrim.tres" id="1_0netk"]
-[ext_resource type="Material" uid="uid://c07dodymuxgfw" path="res://Decoration/Mesh/Material/OrganizedTexture/Tread/TreadPlate.tres" id="2_na8s4"]
+[ext_resource type="Material" uid="uid://cerle4vdlbaeh" path="res://Decoration/Mesh/Material/OrganizedTexture/GrippyMetal/GrippyMetal.tres" id="2_063yr"]
 [ext_resource type="Script" uid="uid://0ltxxdtkyj0o" path="res://Player/Sound/Movement/footstep_sound.gd" id="3_na8s4"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_w8jh6"]
@@ -52,7 +52,7 @@ _surfaces = [{
 "index_count": 192,
 "index_data": PackedByteArray("AQADABoAAQAaABsAGwAaABwAAAABABsAGwAcAB0AAAAbAB4AHgAbAB0AHQAcAB8ABAAAAB4AHQAfACAAIAAfAAIAIAACAAUAIQAdACAAHgAdACEAIgAgAAUAIQAgACIAIgAFAAgABAAeACMAIwAeACEABwAEACMABwAjAAYAIwAhACQABgAjACQAJAAhACIABgAkAAkAJQAiAAgAJAAiACUACQAkACUAJQAIAAoACQAlAAsACwAlAAoACwAKAAwADQAOAA8ADQAPACYAJgAPABAAEQANACYAJgAQACcAEQAmACgAKAAmACcAJwAQABIAFQARACgAJwASACkAKQASABMAKQATABQAKgAnACkAKAAnACoAKwApABQAKgApACsAKwAUABYAFQAoACwALAAoACoAGQAVACwAGQAsAC0ALAAqAC4ALQAsAC4ALgAqACsALQAuAC8AMAArABYALgArADAALwAuADAAMAAWABcALwAwADEAMQAwABcAMQAXABgA"),
 "lods": [1e-10, PackedByteArray("AAABAAIAAQADAAIABAAAAAIABAACAAUABgAEAAUABwAEAAYABgAFAAgACQAGAAgACQAIAAoACwAJAAoACwAKAAwADQAOAA8ADQAPABAADQAQABEAEQAQABIAEQASABMAEQATABQAFQARABQAFQAUABYAFQAWABcAGAAVABcAGQAVABgA")],
-"material": ExtResource("2_na8s4"),
+"material": ExtResource("2_063yr"),
 "name": "MI_GrippyMetal_A.001",
 "primitive": 3,
 "uv_scale": Vector4(3.74414, 1.91406, 1.0127, 0.496582),
@@ -63,7 +63,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_w8jh6")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_y5yby"]
-size = Vector3(2, 0.2, 4)
+size = Vector3(2, 0.15566406, 4)
 
 [node name="CatwalkStraight" type="StaticBody3D"]
 
@@ -72,7 +72,7 @@ mesh = SubResource("ArrayMesh_ge63g")
 skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.1, 2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.07783203, 2)
 shape = SubResource("BoxShape3D_y5yby")
 
 [node name="FootStepSurface" type="Node" parent="."]

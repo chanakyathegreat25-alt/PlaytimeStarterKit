@@ -14,10 +14,13 @@ extends StaticBody3D
 
 @export var powered: bool = true
 @export var scan_time: float = 2.5
+@export var link_to_scanner: StaticBody3D
 
 var text_material: StandardMaterial3D = null
 var screen_material: StandardMaterial3D = null
 
+var is_ready: bool = false
+var is_start: bool = false
 var scan_state: int = 0
 var scan_hand: bool = false
 
@@ -42,6 +45,8 @@ func _ready():
 	set_state(0)
 	if not powered:
 		dispower_scanner()
+	if link_to_scanner and not link_to_scanner.link_to_scanner:
+		link_to_scanner.link_to_scanner = self
 
 func set_state(state: int):
 	screen_material.albedo_color = Color.BLACK
@@ -51,13 +56,13 @@ func set_state(state: int):
 		text_material.emission_texture = T_READY
 		screen_animation.play("ready")
 		screen_material.emission_texture = T_HAND_SCANNER
-		scanning.stop()
+		scanning.Out()
 	elif state == 1:
 		text_animation.play("scan_loop")
 		text_material.emission_texture = T_SCANNING
 		screen_animation.play("ready")
 		screen_material.emission_texture = T_HAND_SCANNER
-		scanning.play()
+		scanning.In()
 	elif state == 2:
 		omni_light_3d.light_color = Color.GREEN
 		text_animation.play("verified_loop")
@@ -65,7 +70,7 @@ func set_state(state: int):
 		screen_animation.play("verified")
 		#screen_material.albedo_color = Color.LAWN_GREEN
 		screen_material.emission_texture = T_VERIFIED_TEXT
-		scanning.stop()
+		scanning.Out()
 		scan_complete.play()
 	else:
 		omni_light_3d.light_color = Color.RED
@@ -73,7 +78,7 @@ func set_state(state: int):
 		text_material.emission_texture = T_ERROR
 		screen_animation.play("error")
 		screen_material.emission_texture = T_DENIED_TEXT
-		scanning.stop()
+		scanning.Out()
 		fail.play()
 	scan_state = state
 
@@ -89,15 +94,28 @@ func scan_finished():
 
 func start_scan(hand):
 	if not powered: return
+	scan_hand = hand
+	if link_to_scanner and not link_to_scanner.is_start:
+		is_ready = true
+		if not link_to_scanner.is_ready: 
+			return
+		else:
+			is_start = true
+			if link_to_scanner.scan_state != 2: link_to_scanner.start_scan(link_to_scanner.scan_hand)
 	set_state(1)
 	timer.start(scan_time)
-	scan_hand = hand
 	emit_signal("scan_started")
+	is_start = false
 func stop_scan(hand):
+	is_ready = false
 	if hand == scan_hand:
 		timer.stop()
 		set_state(0)
 		emit_signal("scan_cancelled")
+		if link_to_scanner and link_to_scanner.scan_state != 2:
+			link_to_scanner.set_state(0)
+			link_to_scanner.timer.stop()
+			link_to_scanner.emit_signal("scan_cancelled")
 
 func power_scanner():
 	omni_light_3d.visible = true

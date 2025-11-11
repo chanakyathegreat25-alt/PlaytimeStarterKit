@@ -4,7 +4,7 @@ extends Node3D
 @onready var anim = $AnimationPlayer
 @onready var opening = $opening
 @onready var close = $close
-@onready var gate = $frame/gate
+@onready var gate = $gate
 
 @export_category("Settings")
 ##Cosmetic of the gate.
@@ -43,7 +43,7 @@ func load_door():
 	
 	gate_mesh = gate_type_node.gate
 	frame_mesh = gate_type_node.frame
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Engine.is_editor_hint():
 		if prev_gate_scene != gate_type.resource_path:
 			load_door()

@@ -2,7 +2,7 @@ extends Node3D
 
 @onready var item_animation: AnimationPlayer = $"../ItemAnimation"
 @onready var watch = $Watch
-@onready var arm_attach: BoneAttachment3D = $"../LayerWalk/ArmLeft/LayerIdle/LayerWalk/LayerCrouch/LayerJump/LayerPack/LayerShoot/CanonAttach/ArmAttach"
+@onready var arm_attach: BoneAttachment3D = $"../LayerWalk/CanonAttachLeft/ArmAttach"
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var camera_3d: Camera3D = $CanvasLayer/ui/SubViewportContainer/SubViewport/Camera3D
 
@@ -31,7 +31,7 @@ func _unhandled_input(_event: InputEvent) -> void:
 		else:
 			enter_watch()
 func exit_watch():
-	item_animation.play("ExitWatch")
+	#item_animation.play("ExitWatch")
 	animation_player.play_backwards("enable")
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	Grabpack.set_movable(true)
@@ -42,8 +42,10 @@ func exit_watch():
 	exit.play()
 	using = false
 func enter_watch():
+	if cameras.size() < 1: return
+	
 	cameras = get_tree().get_nodes_in_group("WatchCamera")
-	item_animation.play("EnterWatch")
+	#item_animation.play("EnterWatch")
 	animation_player.play("enable")
 	
 	Grabpack.set_movable(false)

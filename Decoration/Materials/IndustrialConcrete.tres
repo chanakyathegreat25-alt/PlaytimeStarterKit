@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cipa76gl8h288" path="res://Decoration/Materials/Textures/Tiles/T_IndustrialConcreteMix_ORMH.png" id="3_8nuxr"]
 
 [resource]
+albedo_color = Color(0.8047426, 0.80474263, 0.8047426, 1)
 albedo_texture = ExtResource("1_kr0we")
 orm_texture = ExtResource("3_8nuxr")
 normal_enabled = true

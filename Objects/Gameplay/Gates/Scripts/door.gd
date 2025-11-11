@@ -42,7 +42,7 @@ func load_door():
 	
 	door_mesh = door_type_node.door
 	frame_mesh = door_type_node.frame
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Engine.is_editor_hint():
 		if prev_door_scene != door_type.resource_path:
 			load_door()

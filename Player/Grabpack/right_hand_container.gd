@@ -11,22 +11,18 @@ var hands: Array [PackedScene]
 @onready var player = $"../../.."
 @onready var air_grab_point = $"../../../Neck/AirGrabPoint"
 
-@onready var hand_pos = $"../LayerWalk/ArmRight/LayerIdle/LayerWalk/LayerCrouch/LayerJump/LayerPack/LayerSwitch/LayerShoot/HandAttach/HandPos"
+@onready var hand_pos = $"../LayerWalk/CanonAttachRight/HandPos"
 @onready var hand_fake = $"../RightHandFake"
 @onready var wire_container = $"../RightWireContainer"
 @onready var item_pos: Marker3D = $Hands/ItemPos
 
+@onready var animation: Node = $"../../GrabpackAnimationHandler"
 @onready var sound_manager = $"../../../SoundManager"
-
-@onready var hand_motions_animation = $HandMotionsAnimation
-@onready var canon_right_animation = $"../CanonRightAnimation"
-@onready var switch_animation = $"../SwitchAnimation"
 @onready var timer = $Timer
 @onready var right_auto_correct: Area3D = $"../RightAutoCorrect"
 @onready var right_wire_special: Node3D = $"../RightWireSpecial"
 
 #HAND SYSTEM
-@onready var hand_parent = $Hands
 
 var hand_queue: int = 0
 var current_hand: int = 0
@@ -71,7 +67,8 @@ func _ready():
 	hand_speed = player.hand_speed
 	hands = player.enabled_hands
 
-func _process(delta):
+func _process(_delta): if hand_attached: global_transform = hand_pos.global_transform
+func _physics_process(delta: float) -> void:
 	if awaiting_switch and hand_attached:
 		current_hand = -1
 		if grabpack.current_grabpack == 1: switch_hand(0, hand_queue)
@@ -97,9 +94,7 @@ func _process(delta):
 			if pulling:
 				retract_hand()
 				pulling = false
-	if hand_attached:
-		global_transform = hand_pos.global_transform
-	else:
+	if not hand_attached:
 		scale = exit_size
 		if hand_travelling:
 			position = position.move_toward(hand_grab_point, hand_speed * delta)
@@ -126,7 +121,7 @@ func _process(delta):
 							rotation_degrees.x = 90
 				else:
 					look_at(global_position - target_normal)
-		elif not hand_changed_point:
+		elif not hand_changed_point and not hand_retracting:
 			if not $FingerFingy3.is_colliding():
 				rotation.z -= 30.0*delta
 			if not $FingerFingy.is_colliding():
@@ -154,14 +149,12 @@ func _process(delta):
 			if next_point is bool:
 				position = hand_fake.position
 			else:
-				position = position.move_toward(next_point, hand_speed * delta)
+				position = position.move_toward(next_point, hand_speed*1.4 * delta)
 				if position.distance_to(next_point) > 0.1:
 					look_at(next_point, Vector3.DOWN)
 					rotation.x += 3.0
 			if position.distance_to(hand_fake.global_position) < 0.2:
-				if player.movement_animations > 0: canon_right_animation.play("ShootIn")
-				else: switch_animation.play("Fired")
-				hand_motions_animation.play("retract_impact")
+				animation.hand_used(true, 1.0)
 				play_animation("retract")
 				sound_manager.cable_sound(true, false)
 				sound_manager.retract_hand()
@@ -231,9 +224,10 @@ func launch_hand():
 	else:
 		hand_grab_point = air_grab_point.global_position
 	wire_container.start_wire()
-	if player.movement_animations > 0: canon_right_animation.play("ShootOut")
-	else: switch_animation.play("Fired")
+	
+	animation.hand_used(true, 0.0)
 	play_animation("fire")
+	
 	sound_manager.launch_hand()
 	sound_manager.cable_sound(true, true)
 	hand_attached = false
@@ -252,10 +246,7 @@ func launch_hand():
 func fire_non_launchable():
 	if not grabpack.grabpack_usable:
 		return
-	if fire_mode_animation:
-		if player.movement_animations > 0: canon_right_animation.play(fire_mode_animation_string)
-	
-	#SEND HAND SIGNALS
+	if fire_mode_animation: animation.hand_used(true, 0.0)
 	if hand_send_signals:
 		hand_signal_connector.emit_signal("hand_used")
 func retract_hand():
@@ -265,12 +256,11 @@ func retract_hand():
 		retract_type = true
 	else:
 		retract_type = false
+	play_animation("reverse")
 	hand_travelling = false
 	hand_reached_point = false
 	hand_retracting = true
 	quick_retract = true
-	
-	hand_motions_animation.play("retract")
 	sound_manager.cable_sound(true, true)
 	
 	#Send Signals
@@ -278,7 +268,6 @@ func retract_hand():
 		hand_signal_connector.emit_signal("hand_started_retract")
 
 func switch_hand(type: int, new_hand: int):
-		#MAKE SURE THE HAND IS ATTACHED
 		if not hand_attached: return
 		if disabled: return
 		
@@ -289,22 +278,20 @@ func switch_hand(type: int, new_hand: int):
 		
 		queue_hand(new_hand)
 		if type == 0:
-			switch_animation.speed_scale = 1.5
-			switch_animation.play("CollectSwitch")
+			animation.animation_tree.set("parameters/QuickSwitchAnim/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 		elif type == 1:
 			if not grabpack.grabpack_switchable_hands: return
 			if player.hand_switch_animation == player.hand_anims.Ch4:
-				if switch_animation.is_playing() and switch_animation.current_animation_position < 1.2999: return
+				if animation.animation_tree.get("parameters/QuickSwitchAnim/active") == true: return
 				#else: switch_animation.stop()
-				switch_animation.play("RESET")
-				switch_animation.speed_scale = 2.0
-				switch_animation.play("ScrewSwitch")
+				animation.animation_tree.set("parameters/SwitchSpeed/scale", 2.0)
+				animation.animation_tree.set("parameters/QuickSwitchAnim/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 			elif player.hand_switch_animation == player.hand_anims.Ch3:
-				switch_animation.speed_scale = 1.5
-				switch_animation.play("ScrewSwitch_3")
+				animation.animation_tree.set("parameters/SwitchSpeed/scale", 2.0)
+				animation.animation_tree.set("parameters/QuickSwitchAnim/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 			else:
-				switch_animation.speed_scale = 1.5
-				switch_animation.play("SwitchCh2")
+				animation.animation_tree.set("parameters/SwitchSpeed/scale", 2.0)
+				animation.animation_tree.set("parameters/QuickSwitchAnim/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 
 #HAND DATA
 func set_hand(hand_index: int):
@@ -312,7 +299,7 @@ func set_hand(hand_index: int):
 		current_hand_node.queue_free()
 		current_hand_node = null
 	var new_hand = hands[hand_index].instantiate()
-	hand_parent.add_child(new_hand)
+	get_node("Hands").add_child(new_hand)
 	
 	current_hand_node = new_hand
 	current_hand = hand_index

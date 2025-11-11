@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://bpa4it4qh6vgf" path="res://Interface/Inventory/Scripts/inventory_item.gd" id="2_axktd"]
 
 [node name="InvButton" type="Button"]
+custom_minimum_size = Vector2(740, 44)
 offset_right = 393.0
 offset_bottom = 39.0
 mouse_default_cursor_shape = 2

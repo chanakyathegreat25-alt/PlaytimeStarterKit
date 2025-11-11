@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=4 uid="uid://djxegucg0r1te"]
+[gd_scene load_steps=35 format=4 uid="uid://djxegucg0r1te"]
 
 [ext_resource type="Script" uid="uid://23vkrki6fk2b" path="res://Objects/Gameplay/Puzzles/Scanners/Scripts/scanner_right_ch4.gd" id="1_rgkf2"]
 [ext_resource type="Texture2D" uid="uid://cwnbsxixha14m" path="res://Objects/Gameplay/Puzzles/Scanners/Models/T_HandScanner_BC.png" id="2_a3qj4"]
@@ -8,8 +8,11 @@
 [ext_resource type="Texture2D" uid="uid://c5rc1743vtbi0" path="res://Objects/Gameplay/Puzzles/Scanners/Textures/T_Ready.png" id="6_iv34o"]
 [ext_resource type="Script" uid="uid://d4joakp74nxnn" path="res://Objects/Gameplay/HandFunctions/hand_grab.gd" id="7_xggmt"]
 [ext_resource type="AudioStream" uid="uid://dsg70rqmqxrr8" path="res://Objects/Gameplay/Puzzles/Scanners/Sound/SW_SFX_Handscanner_Scanning_LOOP.wav" id="8_rc6iu"]
+[ext_resource type="Script" uid="uid://d2j0yacmlwy3h" path="res://Objects/Gameplay/startstopsfx.gd" id="9_kukev"]
 [ext_resource type="AudioStream" uid="uid://ct414f55tqo1b" path="res://Objects/Gameplay/Puzzles/Scanners/Sound/SW_SFX_Unlock_Chime.wav" id="9_qi0w6"]
+[ext_resource type="AudioStream" uid="uid://cgh7u4llx3fei" path="res://Objects/Gameplay/Puzzles/Scanners/Sound/SW_SFX_HandScanner_Start.wav" id="10_1lbll"]
 [ext_resource type="AudioStream" uid="uid://mjnwosy64061" path="res://Objects/Gameplay/Puzzles/Scanners/Sound/SW_Keypad_Fail.wav" id="10_6f31f"]
+[ext_resource type="AudioStream" uid="uid://cpyrrr5qc12oc" path="res://Objects/Gameplay/Puzzles/Scanners/Sound/SW_SFX_HandScanner_Stop.wav" id="11_hsnkf"]
 
 [sub_resource type="ORMMaterial3D" id="ORMMaterial3D_vhg7k"]
 albedo_texture = ExtResource("2_a3qj4")
@@ -333,6 +336,11 @@ one_shot = true
 
 [node name="Scanning" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("8_rc6iu")
+script = ExtResource("9_kukev")
+in_sound = ExtResource("10_1lbll")
+out_sound = ExtResource("11_hsnkf")
+loop = ExtResource("8_rc6iu")
+metadata/_custom_type_script = "uid://d2j0yacmlwy3h"
 
 [node name="ScanComplete" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("9_qi0w6")

@@ -7,6 +7,8 @@ var current_environment_node: WorldEnvironmentGraphicsCompatible
 var current_objective = "none"
 var saves: Array = []
 
+func _ready() -> void:
+	if not GameSettings.setting_changed.is_connected(setting_changed): GameSettings.connect("setting_changed", setting_changed)
 func reset_nodes():
 	if not get_tree().get_first_node_in_group("HUD") == null:
 		hud = get_tree().get_first_node_in_group("HUD")
@@ -14,8 +16,13 @@ func reset_nodes():
 func set_objective(objective: String):
 	hud.new_objective(objective)
 	current_objective = objective
-func tutorial(tutorial_text: String):
+func tutorial(tutorial_text: String, time: float = 4.0):
 	hud.tutorial_notify(tutorial_text)
+	if time > 0.0:
+		await Game.delay(time)
+		remove_tutorial()
+func remove_tutorial():
+	hud.remove_tutorial()
 func tooltip(tooltip_text: String):
 	hud.tooltip(tooltip_text)
 
@@ -50,9 +57,13 @@ func delay(time: float = 1.0):
 func load_quality_environments():
 	if not current_environment_node: return
 	
-	if GameSettings.get_setting("graphics_quality") == 0: current_environment_node.environment = current_environment_node.high_environment
+	if GameSettings.get_setting("graphics_quality") == 3: current_environment_node.environment = current_environment_node.epic_environment
+	elif GameSettings.get_setting("graphics_quality") == 2: current_environment_node.environment = current_environment_node.high_environment
 	elif GameSettings.get_setting("graphics_quality") == 1: current_environment_node.environment = current_environment_node.medium_environment
-	elif GameSettings.get_setting("graphics_quality") == 2: current_environment_node.environment = current_environment_node.low_environment
+	elif GameSettings.get_setting("graphics_quality") == 0: current_environment_node.environment = current_environment_node.low_environment
+	
+	current_environment_node.compositor = preload("uid://cojs02qunkdeq") if GameSettings.get_setting("motion_blur") else null
+func setting_changed(setting, _value): if setting ==  "motion_blur" or setting == "graphics_quality": load_quality_environments()
 
 func load_checkpoint():
 	#ADD YOUR LOAD CHECKPOINT CODE HERE

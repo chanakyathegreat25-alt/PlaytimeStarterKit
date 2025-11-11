@@ -7,16 +7,21 @@ var default_values: Array[float]
 
 var built_settings: bool = false
 
-func _ready() -> void:
-	
-	build_settings()
+signal setting_changed(setting: String, new_value: float)
 
+func _ready() -> void:
+	build_settings()
+	loaded_settings()
+
+func loaded_settings():
+	for i in setting_names.size():
+		setting_changed.emit(setting_names[i], setting_values[i])
 func build_settings():
 	if built_settings: return
 	
 	for i in 5:
 		var current_tab = load(str("res://Interface/Settings/Tabs/settingsTab", i+1, ".tscn")).instantiate()
-		var getting_from = (current_tab if current_tab.get_child(0) is Button else (current_tab.get_child(0) if current_tab.get_child(0).get_child(0) is Button else current_tab.get_child(0).get_child(0)))
+		var getting_from = (current_tab if current_tab.get_child(0) is Button else (current_tab.get_child(0) if (current_tab.get_child(0).get_child(0) is Button or not current_tab.get_child(0).get_child(0)) else current_tab.get_child(0).get_child(0)))
 		for g in getting_from.get_child_count():
 			if getting_from.get_child(g) is Button:
 				setting_names.append(getting_from.get_child(g).setting_code_name)
@@ -32,3 +37,6 @@ func get_setting(setting: String):
 		return setting_values[setting_names.find(setting)]
 	else:
 		return false if setting_values[setting_names.find(setting)]==0.0 else true
+func change_setting(setting: String, new_value: float):
+	setting_values[setting_names.find(setting)] = new_value
+	setting_changed.emit(setting, new_value)

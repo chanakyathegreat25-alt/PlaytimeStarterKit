@@ -7,23 +7,20 @@ const DEFAULT_TEXTURE = preload("res://Interface/Inventory/ItemIcons/T_UI_RedHan
 @onready var player = $".."
 @onready var neck = $"../Neck"
 @onready var pack = $Pack
+@onready var left_hand = $Pack/LeftHandContainer
+@onready var right_hand = $Pack/RightHandContainer
 
 @onready var tube_left = $Pack/LayerWalk/TubeLeft
 @onready var right_tube = $Pack/LayerWalk/RightTube
-@onready var left_arm_attach = $Pack/LayerWalk/ArmLeft/LayerIdle/LayerWalk/LayerCrouch/LayerJump/LayerPack/LayerShoot/CanonAttach
-@onready var right_arm_attach = $Pack/LayerWalk/ArmRight/LayerIdle/LayerWalk/LayerCrouch/LayerJump/LayerPack/LayerSwitch/LayerShoot/CanonAttach
-
-@onready var item_animation = $Pack/ItemAnimation
-@onready var sound_manager: Node = $"../SoundManager"
-
+@onready var left_arm_attach = $Pack/LayerWalk/CanonAttachLeft
+@onready var right_arm_attach = $Pack/LayerWalk/CanonAttachRight
 @onready var attachment_left: BoneAttachment3D = left_arm_attach.get_node("ArmAttach")
 @onready var attachment_right: BoneAttachment3D = right_arm_attach.get_node("BoneAttachment3D")
 
-@onready var left_hand = $Pack/LeftHandContainer
-@onready var right_hand = $Pack/RightHandContainer
-@onready var canon_right_animation: AnimationPlayer = $Pack/CanonRightAnimation
+@onready var sound_manager: Node = $"../SoundManager"
+@onready var animation: Node = $GrabpackAnimationHandler
 
-var sway_speed: float = 30.0
+var sway_speed: float = 25.0
 var grabpack_equipped: bool = true
 var grabpack_lowered: bool = false
 
@@ -70,13 +67,13 @@ func _ready():
 	Grabpack.raise_grabpack()
 	
 	if player.start_lowered:
-		item_animation.play("StartLowered")
+		#item_animation.play("StartLowered")
 		grabpack_lowered = true
 
-func _process(delta):
+func _process(delta: float) -> void:
 	rotation.x = lerp_angle(rotation.x, neck.rotation.x, sway_speed * delta)
 	rotation.y = lerp_angle(rotation.y, neck.rotation.y, sway_speed * delta)
-
+func _physics_process(_delta: float) -> void:
 	if current_grabpack_skeleton_node:
 		attachment_left.position = Vector3.ZERO
 		attachment_right.position = Vector3.ZERO
@@ -85,32 +82,16 @@ func _process(delta):
 		current_grabpack_skeleton_node.force_update_transform()
 		attachment_left.force_update_transform()
 		attachment_right.force_update_transform()
-	
-	if player.movement_animations < 1:
-		if not left_hand.hand_attached: 
-			$Pack/LayerWalk/ArmLeft/LayerIdle/LayerWalk/LayerCrouch/LayerJump/LayerPack/LayerShoot.look_at(left_hand.position, Vector3.DOWN)
-		else: $Pack/LayerWalk/ArmLeft/LayerIdle/LayerWalk/LayerCrouch/LayerJump/LayerPack/LayerShoot.rotation_degrees = Vector3.ZERO
-		if not right_hand.hand_attached: 
-			$Pack/LayerWalk/ArmRight/LayerIdle/LayerWalk/LayerCrouch/LayerJump/LayerPack/LayerSwitch/LayerShoot.look_at(right_hand.position, Vector3.BACK)
-			$Pack/LayerWalk/ArmRight/LayerIdle/LayerWalk/LayerCrouch/LayerJump/LayerPack/LayerSwitch/LayerShoot/CanonAttach.rotation = Vector3(deg_to_rad(-180),deg_to_rad(0.0),deg_to_rad(90))
-			$Pack/LayerWalk/ArmRight/LayerIdle/LayerWalk/LayerCrouch/LayerJump/LayerPack/LayerSwitch/LayerShoot/HandAttach.rotation = Vector3(deg_to_rad(-180),deg_to_rad(0.0),deg_to_rad(90))
-		else:
-			$Pack/LayerWalk/ArmRight/LayerIdle/LayerWalk/LayerCrouch/LayerJump/LayerPack/LayerSwitch/LayerShoot.rotation_degrees = Vector3.ZERO
-			$Pack/LayerWalk/ArmRight/LayerIdle/LayerWalk/LayerCrouch/LayerJump/LayerPack/LayerSwitch/LayerShoot/CanonAttach.rotation = Vector3(deg_to_rad(0.0),deg_to_rad(0.0),deg_to_rad(0.0))
-			$Pack/LayerWalk/ArmRight/LayerIdle/LayerWalk/LayerCrouch/LayerJump/LayerPack/LayerSwitch/LayerShoot/HandAttach.rotation = Vector3(deg_to_rad(0.0),deg_to_rad(0.0),deg_to_rad(0.0))
-	
-# Grabpack Control
+
 func switch_grabpack(grabpack_index: int):
 	if grabpack_index == current_grabpack:
 		return
 	
 	grabpack_queue = grabpack_index
 	queue_grabpack(grabpack_index)
-	item_animation.play("SwitchGrabpackLowerRaise")
-
+	#item_animation.play("SwitchGrabpackLowerRaise")
 func set_queued_grabpack():
 	set_grabpack(grabpack_queue)
-
 func set_grabpack(grabpack_index: int):
 	_reset_attachments()
 
@@ -124,7 +105,6 @@ func set_grabpack(grabpack_index: int):
 	current_grabpack_node = new_grabpack
 	current_grabpack = grabpack_index
 	grabpack_lowered = false
-
 func update_grabpack_data():
 	_reset_attachments()
 	
@@ -142,8 +122,8 @@ func update_grabpack_data():
 	pack_bone_data_node = pack_bone_data
 	current_grabpack_skeleton_node = pack_bone_data.skeleton
 
-	left_arm_attach.scale = pack_bone_data.attachment_size
-	right_arm_attach.scale = pack_bone_data.attachment_size
+	attachment_left.scale = pack_bone_data.attachment_size
+	attachment_right.scale = pack_bone_data.attachment_size
 
 	attachment_left.set_use_external_skeleton(true)
 	attachment_right.set_use_external_skeleton(true)
@@ -164,27 +144,24 @@ func update_grabpack_data():
 
 		leftik.start()
 		rightik.start()
-
 func update_grabpack_visibility(new_visible: bool):
 	current_grabpack_node.visible = new_visible
-
 func queue_grabpack(grabpack_index: int):
 	grabpack_queue = clamp(grabpack_index, 0, grabpacks.size() - 1)
 
 func lower_grabpack():
 	if not grabpack_lowered:
-		if player.movement_animations > 0: item_animation.play("LowerPack")
-		else: item_animation.play("LowerPackCh2")
+		animation.animation_tree.set("parameters/RaiseLower/blend_amount", 0.0)
+		animation.animation_tree.set("parameters/ToggleAnimation/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 		sound_manager.lower_grabpack()
 		grabpack_usable = false
 		grabpack_lowered = true
 		if not left_hand.hand_attached: left_hand.retract_hand()
 		if not right_hand.hand_attached: right_hand.retract_hand()
-
 func raise_grabpack():
 	if grabpack_lowered:
-		if player.movement_animations > 0: item_animation.play("RaisePack")
-		else: item_animation.play("RaisePackCh2")
+		animation.animation_tree.set("parameters/RaiseLower/blend_amount", 1.0)
+		animation.animation_tree.set("parameters/ToggleAnimation/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 		sound_manager.raise_grabpack()
 		grabpack_usable = current_grabpack_node.has_node("GrabpackLaunchable")
 		grabpack_lowered = false
@@ -198,12 +175,12 @@ func _input(_event):
 			if pack_bone_data_node and pack_bone_data_node.use_flashlight_animation:
 				if not player.flashlight:
 					current_grabpack_node.get_node("AnimationPlayer").play("flashlight_on")
-					if not canon_right_animation.is_playing():
-						canon_right_animation.play("flashlight_on")
+					#if not canon_right_animation.is_playing():
+						#canon_right_animation.play("flashlight_on")
 				else:
 					current_grabpack_node.get_node("AnimationPlayer").play("flashlight_off")
-					if not canon_right_animation.is_playing():
-						canon_right_animation.play("flashlight_off")
+					#if not canon_right_animation.is_playing():
+						#canon_right_animation.play("flashlight_off")
 				player.flashlight = !player.flashlight
 				sound_manager.toggle_flashlight()
 

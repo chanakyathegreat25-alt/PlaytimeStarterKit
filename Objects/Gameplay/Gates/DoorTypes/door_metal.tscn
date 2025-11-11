@@ -1,10 +1,8 @@
-[gd_scene load_steps=19 format=4 uid="uid://if432yo7m336"]
+[gd_scene load_steps=17 format=4 uid="uid://if432yo7m336"]
 
-[ext_resource type="Script" uid="uid://fu17ske4f7t0" path="res://Objects/Gameplay/Gates/GateTypes/gate_type.gd" id="1_noycc"]
+[ext_resource type="Script" uid="uid://br2mgfupem084" path="res://Objects/Gameplay/Gates/DoorTypes/doorType.gd" id="1_wntug"]
 [ext_resource type="Texture2D" uid="uid://ccj2siejsi5k4" path="res://Objects/Gameplay/Gates/Model/T_Door_B_BC.png" id="2_knljn"]
-[ext_resource type="AudioStream" uid="uid://86ppp2f7ovug" path="res://Objects/Gameplay/Gates/Audio/SW_Door_Metal_Rotating_03.wav" id="2_p7gd5"]
 [ext_resource type="Texture2D" uid="uid://lirk5fe7uwc2" path="res://Objects/Gameplay/Gates/Model/T_Door_B_N.png" id="3_p7gd5"]
-[ext_resource type="AudioStream" uid="uid://ddm1us2nj7m0s" path="res://Objects/Gameplay/Gates/Audio/SW_Door_Metal_Rotating_01.wav" id="3_wntug"]
 [ext_resource type="Texture2D" uid="uid://dwbj1qktvx2ux" path="res://Objects/Gameplay/Gates/Model/T_Door_B_ORM.png" id="4_wntug"]
 [ext_resource type="Texture2D" uid="uid://dl8qn48b25sdv" path="res://Objects/Gameplay/Gates/Model/T_Door_3m_BC.png" id="7_wvofj"]
 [ext_resource type="Texture2D" uid="uid://5d4fsagv1vy5" path="res://Objects/Gameplay/Gates/Model/T_Door_3m_N.png" id="8_6xafp"]
@@ -99,13 +97,11 @@ shadow_mesh = SubResource("ArrayMesh_60cde")
 [sub_resource type="BoxShape3D" id="BoxShape3D_mqmu6"]
 size = Vector3(1.2, 2.4, 0.2)
 
-[node name="GateType" type="Node3D" node_paths=PackedStringArray("frame", "gate")]
-script = ExtResource("1_noycc")
+[node name="GateType" type="Node3D" node_paths=PackedStringArray("frame", "door")]
+script = ExtResource("1_wntug")
 frame = NodePath("SM_DoorFrame_B")
-gate = NodePath("SM_Door_A_01")
-open_sound = ExtResource("2_p7gd5")
-close_sound = ExtResource("3_wntug")
-metadata/_custom_type_script = "uid://fu17ske4f7t0"
+door = NodePath("SM_Door_A_01")
+metadata/_custom_type_script = "uid://br2mgfupem084"
 
 [node name="SM_DoorFrame_B" type="MeshInstance3D" parent="."]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0.0607368, 0, -0.157393)

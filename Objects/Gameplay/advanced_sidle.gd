@@ -27,7 +27,7 @@ func _ready() -> void:
 	entrance1.connect("body_entered", Callable(ent1entered))
 	entrance2.connect("body_entered", Callable(ent2entered))
 
-func _process(delta):
+func _physics_process(delta) -> void:
 	if entering:
 		if not Input.is_action_pressed("forward"):
 			Grabpack.set_movable(true)
@@ -40,6 +40,7 @@ func _process(delta):
 		Grabpack.player.neck.rotation.z -= 1.0*delta
 		if enter_time > 0.2:
 			Grabpack.lower_grabpack()
+			Grabpack.player.animation_manager.is_sidel_animation = true
 			player_rotation_target = $PathFollow3D/followHead/followHeadLook
 			entering = false
 			in_sidle = true
@@ -52,8 +53,8 @@ func _process(delta):
 		follow_head.rotation.x = clamp(follow_head.rotation.x, -1.5, 0.0)
 		Grabpack.player.position = Grabpack.player.position.move_toward(follow.global_position, 2.0*delta)
 		if Input.is_action_pressed("forward"):
-			Grabpack.player.animation_manager.walk_animation.play("WalkSidel")
-			Grabpack.player.animation_manager.walk_animation.speed_scale = 1.0
+			#Grabpack.player.animation_manager.walk_animation.play("WalkSidel")
+			#Grabpack.player.animation_manager.walk_animation.speed_scale = 1.0
 			
 			if follow_head.rotation.y > -1.6: follow.progress += 0.6*delta
 			else: follow.progress -= 0.6*delta
@@ -74,7 +75,7 @@ func _process(delta):
 				in_sidle = false
 				exiting = true
 		else:
-			Grabpack.player.animation_manager.walk_animation.play("NotWalking")
+			Grabpack.player.animation_manager.animation_tree.set("parameters/WalkBlend/blend_amount", 0.0)
 	
 	if exiting:
 		if not Input.is_action_pressed("forward"):
@@ -85,8 +86,8 @@ func _process(delta):
 		if exit_time > 0.3:
 			exiting = false
 			stop_stare()
-			Grabpack.player.animation_manager.walk_animation.play("NotWalking")
 			Grabpack.player.animation_manager.is_walking = false
+			Grabpack.player.animation_manager.is_sidel_animation = false
 			Grabpack.set_movable(true)
 			Grabpack.raise_grabpack()
 	if look_at_target and player_rotation_target:
@@ -98,7 +99,8 @@ func smooth_look_at(target: Vector3, delta: float):
 	var current_transform = neck.global_transform
 	var target_direction = (target - current_transform.origin).normalized()
 
-	var target_basis = Basis().looking_at(target_direction, Vector3.UP)
+	@warning_ignore("static_called_on_instance")
+	var target_basis = Basis.looking_at(target_direction, Vector3.UP)
 	
 	current_transform.basis = current_transform.basis.orthonormalized().slerp(target_basis, rotation_speed * delta)
 	neck.global_transform = current_transform
@@ -114,7 +116,6 @@ func ent1entered(body: Node3D) -> void:
 	if in_sidle: return
 	if body.is_in_group("Player"):
 		Grabpack.set_movable(false)
-		Grabpack.player.animation_manager.walk_animation.play("StopWalking")
 		Grabpack.player.animation_manager.is_walking = false
 		follow_head.rotation_degrees.y = -50
 		enter_time = 0.0
@@ -126,7 +127,6 @@ func ent2entered(body: Node3D) -> void:
 	if in_sidle: return
 	if body.is_in_group("Player"):
 		Grabpack.set_movable(false)
-		Grabpack.player.animation_manager.walk_animation.play("StopWalking")
 		Grabpack.player.animation_manager.is_walking = false
 		follow_head.rotation_degrees.y = -150
 		enter_time = 0.0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bwefrsfxu7lxd"]
+[gd_scene load_steps=16 format=3 uid="uid://bwefrsfxu7lxd"]
 
 [ext_resource type="Theme" uid="uid://ct16po6jdi8g1" path="res://Interface/Settings/settingsMenuButton.tres" id="1_rj2sk"]
 [ext_resource type="Script" uid="uid://dww2iuhrehksk" path="res://Interface/Settings/settings_button.gd" id="2_7ucsf"]
@@ -6,8 +6,16 @@
 [ext_resource type="Texture2D" uid="uid://deg4gcb0cpqi2" path="res://Interface/Settings/Textures/Chevron-Left.png" id="4_wp0ri"]
 [ext_resource type="AudioStream" uid="uid://bebahieimis82" path="res://Interface/MainMenu/Sound/select2.wav" id="5_fvgea"]
 
-[sub_resource type="SVGTexture" id="SVGTexture_vkm2n"]
+[sub_resource type="DPITexture" id="DPITexture_wp0ri"]
+_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\"><circle cx=\"8\" cy=\"8\" r=\"7\" fill=\"#fefefe\" fill-opacity=\".75\"/></svg>
+"
+
+[sub_resource type="DPITexture" id="DPITexture_fvgea"]
 _source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\"><circle cx=\"8\" cy=\"8\" r=\"7\" fill=\"#fefefe\"/></svg>
+"
+
+[sub_resource type="DPITexture" id="DPITexture_n21l4"]
+_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\"><circle cx=\"8\" cy=\"8\" r=\"7\" fill=\"#fefefe\" fill-opacity=\".37\"/></svg>
 "
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_e305e"]
@@ -116,7 +124,9 @@ offset_top = 6.399987
 offset_right = 541.6
 offset_bottom = 39.199974
 mouse_filter = 1
-theme_override_icons/grabber = SubResource("SVGTexture_vkm2n")
+theme_override_icons/grabber = SubResource("DPITexture_wp0ri")
+theme_override_icons/grabber_highlight = SubResource("DPITexture_fvgea")
+theme_override_icons/grabber_disabled = SubResource("DPITexture_n21l4")
 theme_override_styles/slider = SubResource("StyleBoxLine_e305e")
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_lycpx")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_mtdyh")

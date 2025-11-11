@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://wted730xx6x5"]
+[gd_scene load_steps=37 format=3 uid="uid://wted730xx6x5"]
 
 [ext_resource type="Script" uid="uid://1d8jpgk0gck3" path="res://Interface/Settings/settings_menu.gd" id="1_ah56o"]
 [ext_resource type="FontFile" uid="uid://d02qiqkper325" path="res://Interface/Font/OverusedGrotesk-Medium.otf" id="2_e305e"]
@@ -24,13 +24,7 @@
 [ext_resource type="AudioStream" uid="uid://d3q8178oe4ycy" path="res://Interface/MainMenu/Sound/SW_SFX_Menu_Backward.wav" id="16_iwa01"]
 [ext_resource type="AudioStream" uid="uid://bebahieimis82" path="res://Interface/MainMenu/Sound/select2.wav" id="17_d17gp"]
 [ext_resource type="Script" uid="uid://bs65c2yapygnv" path="res://Interface/Settings/settings_manager.gd" id="17_iybea"]
-[ext_resource type="PackedScene" uid="uid://bbyctaxc7r8yo" path="res://Interface/Settings/Tabs/settingsTab1.tscn" id="20_l7jyv"]
-[ext_resource type="PackedScene" uid="uid://gu7eilhp8bth" path="res://Interface/Settings/Tabs/settingsTab2.tscn" id="21_2otjx"]
-[ext_resource type="PackedScene" uid="uid://ctgp52pfpah65" path="res://Interface/Settings/Tabs/settingsTab3.tscn" id="22_inh12"]
 [ext_resource type="Script" uid="uid://cbvj3eu82rfm1" path="res://Interface/MainMenu/button_current.gd" id="23_42dg6"]
-[ext_resource type="Script" uid="uid://cfy8p6bec5h6o" path="res://Interface/Settings/settingsButtonSFX.gd" id="23_kgpdl"]
-[ext_resource type="PackedScene" uid="uid://r62g5atp45ih" path="res://Interface/Settings/Tabs/settingsTab4.tscn" id="23_wr453"]
-[ext_resource type="PackedScene" uid="uid://b4qeg77eflnu1" path="res://Interface/Settings/Tabs/settingsTab5.tscn" id="24_l5vf3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yum3l"]
 bg_color = Color(0, 0, 0, 0)
@@ -45,7 +39,7 @@ color = Color(0.32941177, 0.36078432, 0.38431373, 1)
 thickness = 3
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_inh12"]
-color = Color(0.341176, 0.819608, 1, 1)
+color = Color(0.29411766, 0.8117647, 1, 1)
 grow_begin = 0.0
 grow_end = 0.0
 thickness = 6
@@ -112,6 +106,54 @@ tracks/3/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("setting_description:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(832.8, 220)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("setting_title:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(833.6, 171.20001)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("setting_title:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("setting_description:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_iybea"]
 resource_name = "loaded"
@@ -163,6 +205,54 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("setting_description:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(832.8, 275), Vector2(832.8, 220)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("setting_title:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(833.6, 230), Vector2(833.6, 171.20001)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("setting_title:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.08333337, 0.25, 0.2666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("setting_description:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.08333331, 0.25, 0.26666665),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vkm2n"]
@@ -378,7 +468,7 @@ modulate = Color(1, 1, 1, 0)
 offset_top = 68.000015
 offset_right = 462.39996
 offset_bottom = 154.00002
-theme_override_colors/font_color = Color(0.341176, 0.819608, 1, 1)
+theme_override_colors/font_color = Color(0.29411766, 0.8117647, 1, 1)
 theme_override_constants/paragraph_spacing = 0
 theme_override_fonts/font = ExtResource("12_x0yxn")
 theme_override_font_sizes/font_size = 64
@@ -396,8 +486,8 @@ theme_override_styles/separator = SubResource("StyleBoxLine_wr453")
 offset_left = 833.6
 offset_top = 171.20001
 offset_right = 1279.9999
-offset_bottom = 211.0
-theme_override_colors/font_color = Color(0.341176, 0.819608, 1, 1)
+offset_bottom = 210.9989
+theme_override_colors/font_color = Color(0.29411766, 0.8117647, 1, 1)
 theme_override_constants/paragraph_spacing = 0
 theme_override_constants/outline_size = 0
 theme_override_fonts/font = ExtResource("12_x0yxn")
@@ -410,7 +500,7 @@ uppercase = true
 offset_left = 832.8
 offset_top = 220.0
 offset_right = 1302.8
-offset_bottom = 538.0
+offset_bottom = 537.9994
 theme_override_colors/font_color = Color(0.728822, 0.728822, 0.728822, 1)
 theme_override_constants/paragraph_spacing = 0
 theme_override_constants/outline_size = 0
@@ -427,35 +517,8 @@ speed_scale = 1.5
 
 [node name="Tabs" type="Node2D" parent="section"]
 
-[node name="Tab1" parent="section/Tabs" instance=ExtResource("20_l7jyv")]
-
-[node name="Tab2" parent="section/Tabs" instance=ExtResource("21_2otjx")]
-
-[node name="Tab3" parent="section/Tabs" instance=ExtResource("22_inh12")]
-
-[node name="Tab4" parent="section/Tabs" instance=ExtResource("23_wr453")]
-
-[node name="Tab5" parent="section/Tabs" instance=ExtResource("24_l5vf3")]
-
 [node name="SettingsManager" type="Node" parent="section/Tabs"]
 script = ExtResource("17_iybea")
-
-[node name="ButtonSFXPlayer" type="Node" parent="section/Tabs"]
-script = ExtResource("23_kgpdl")
-root_path = NodePath("..")
-
-[node name="Hover" type="AudioStreamPlayer" parent="section/Tabs/ButtonSFXPlayer"]
-stream = ExtResource("14_kgpdl")
-volume_db = -5.0
-
-[node name="Forward" type="AudioStreamPlayer" parent="section/Tabs/ButtonSFXPlayer"]
-stream = ExtResource("14_iwa01")
-
-[node name="Backward" type="AudioStreamPlayer" parent="section/Tabs/ButtonSFXPlayer"]
-stream = ExtResource("16_iwa01")
-
-[node name="Forward2" type="AudioStreamPlayer" parent="section/Tabs/ButtonSFXPlayer"]
-stream = ExtResource("17_d17gp")
 
 [node name="Current" type="Node2D" parent="section/Tabs"]
 visible = false
