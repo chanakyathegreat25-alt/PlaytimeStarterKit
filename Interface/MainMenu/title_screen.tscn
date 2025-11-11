@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://dtp3lixj6uyxo"]
+[gd_scene load_steps=41 format=3 uid="uid://dtp3lixj6uyxo"]
 
 [ext_resource type="Script" uid="uid://id7iagt8fncx" path="res://Interface/MainMenu/Scripts/title_screen.gd" id="1_dj2vu"]
 [ext_resource type="FontFile" uid="uid://dp3oq0ou16joq" path="res://Interface/Font/VCR_OSD_MONO_1.001.ttf" id="2_dj2vu"]
@@ -11,8 +11,6 @@
 [ext_resource type="FontFile" uid="uid://d02qiqkper325" path="res://Interface/Font/OverusedGrotesk-Medium.otf" id="8_s7yi2"]
 [ext_resource type="Texture2D" uid="uid://cg8fpx4l4o3mk" path="res://Interface/Loading/T_SavingIcon.png" id="8_uoyxv"]
 [ext_resource type="Theme" uid="uid://c3y4p2f8djdyb" path="res://Interface/MainMenu/Themes/title_button.tres" id="9_2653s"]
-[ext_resource type="Texture2D" uid="uid://c588l8chvw3mi" path="res://TEMP/Screenshot 2025-10-30 231514.png" id="9_uoyxv"]
-[ext_resource type="Texture2D" uid="uid://dxunth3ls4td8" path="res://TEMP/Screenshot 2025-10-30 223419.png" id="10_cxxfl"]
 [ext_resource type="Script" uid="uid://syb4cas6oqdo" path="res://Interface/MainMenu/button_sfx_player.gd" id="12_cxxfl"]
 [ext_resource type="AudioStream" uid="uid://cr1h44t3w130f" path="res://Interface/MainMenu/Sound/hover.wav" id="13_2lx6b"]
 [ext_resource type="VideoStream" uid="uid://b44atf63p6dkf" path="res://Interface/MainMenu/Texture/PPC4_Main_Menu_Backgroundv2.ogv" id="14_2lx6b"]
@@ -677,16 +675,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="Screenshot20251030231514" type="Sprite2D" parent="menu"]
-visible = false
-position = Vector2(918, 537)
-texture = ExtResource("9_uoyxv")
-
-[node name="Screenshot20251030223419" type="Sprite2D" parent="menu/Screenshot20251030231514"]
-position = Vector2(40, 0)
-scale = Vector2(0.7973344, 0.75)
-texture = ExtResource("10_cxxfl")
 
 [node name="Pressed" type="AudioStreamPlayer" parent="menu"]
 stream = ExtResource("7_fg6rl")

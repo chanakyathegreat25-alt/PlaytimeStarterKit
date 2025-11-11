@@ -1,4 +1,4 @@
-[gd_scene load_steps=270 format=4 uid="uid://dkty77argxwyc"]
+[gd_scene load_steps=269 format=4 uid="uid://dkty77argxwyc"]
 
 [ext_resource type="Texture2D" uid="uid://cl7alwgeec33w" path="res://Player/Grabpack/Models/grabpack_chapter_3_-_poppy_playtime_0.png" id="1_00tjw"]
 [ext_resource type="Script" uid="uid://dkgdss1i1qci7" path="res://Player/player.gd" id="1_od3ui"]
@@ -40,7 +40,6 @@
 [ext_resource type="AudioStream" uid="uid://c7rdq8ypp0lks" path="res://Player/Sound/Inventory/item_grab_v3.wav" id="45_1kmt7"]
 [ext_resource type="AudioStream" uid="uid://b673wed8myb10" path="res://Player/Sound/Grabpack/SW_Grabpack_RopeSwing_02.wav" id="46_286oo"]
 [ext_resource type="FontFile" uid="uid://cfvfiw1qtrep1" path="res://Interface/Font/OverusedGrotesk-Bold.otf" id="47_fhogf"]
-[ext_resource type="Texture2D" uid="uid://ltq281nr7f3l" path="res://TEMP/Screenshot 2025-11-01 152817.png" id="47_k84o0"]
 [ext_resource type="AudioStream" uid="uid://c3ihq6e51p4xw" path="res://Player/Sound/Grabpack/SW_Jingle_Grabpack2_Obtain.wav" id="48_qns6m"]
 [ext_resource type="AudioStream" uid="uid://l5q40iypyf78" path="res://Player/Sound/Grabpack/SFX puzzle complete sfx.mp3" id="49_fatyj"]
 [ext_resource type="AudioStream" uid="uid://6mcjjdxd02d3" path="res://Player/Sound/Grabpack/SW_Grabpack_SwitchHands_02.wav" id="49_lhliw"]
@@ -7424,11 +7423,11 @@ expand_margin_right = 10.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_iyprq"]
 shader = ExtResource("37_qs4pp")
-shader_parameter/primary_color = Color(0.5058824, 0.5058824, 0.5058824, 0.9490196)
+shader_parameter/primary_color = Color(0.5729879, 0.5729884, 0.57298815, 0.9490196)
 shader_parameter/outline_color = Color(0, 0, 0, 0)
-shader_parameter/unfilled_color = Color(0.36862746, 0.36862746, 0.37254903, 0.85490197)
+shader_parameter/unfilled_color = Color(0.3102885, 0.3102885, 0.31378162, 0.85490197)
 shader_parameter/value = 0.5999999865888
-shader_parameter/smooth_ = 0.00500000000465661
+shader_parameter/smooth_ = 0.03
 shader_parameter/width_in = 0.57
 shader_parameter/width_out = 0.73
 shader_parameter/border_width = 0.0
@@ -8372,6 +8371,57 @@ VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_kgpdl")
 color = Color(0.411765, 0.858824, 1, 1)
 thickness = 2
 
+[sub_resource type="Animation" id="Animation_skhd2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("section/Node2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("section/buttons:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(16, 205)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("section/buttons:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("section/Node2D:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_fhogf"]
 resource_name = "Transition"
 length = 0.1
@@ -8422,57 +8472,6 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_skhd2"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("section/Node2D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("section/buttons:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(16, 205)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("section/buttons:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("section/Node2D:modulate")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ppx2g"]
@@ -8749,13 +8748,6 @@ target_node = NodePath("../../../LayerWalk/RightTube")
 [node name="Object_38" type="Node3D" parent="Grabpack/Pack/GrabpackOne"]
 transform = Transform3D(100, 0, 0, 0, 1.24957e-12, 100, 0, -100, 1.24957e-12, -0.101705, 5.09721, -8.90522)
 
-[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Grabpack/Pack"]
-transform = Transform3D(-0.82500005, -7.075899e-14, 1.2457153e-07, 0, 0.82500005, 4.686157e-07, -1.2457153e-07, 4.686157e-07, -0.82500005, 1.7695129e-08, -0.7607608, 0.41314667)
-bone_name = "JNT_GrabpackParent"
-bone_idx = 4
-use_external_skeleton = true
-external_skeleton = NodePath("")
-
 [node name="LayerWalk" type="Node3D" parent="Grabpack/Pack"]
 transform = Transform3D(-0.99990237, 0.013973136, 7.303553e-06, 0.013973136, 0.99990237, 2.1268159e-05, -7.005657e-06, 2.1368136e-05, -1, 0.042513777, 0.27010536, 0.53000003)
 
@@ -8806,33 +8798,6 @@ transform = Transform3D(0.99999887, 3.9633485e-10, -9.1433494e-30, -3.9633496e-1
 transform = Transform3D(-0.99990046, 0.014174169, 0.00017573747, 0.014174314, 0.99990046, 0.0008252557, -0.00016402251, 0.0008276635, -1.000001, 0, 0, 0)
 remote_path = NodePath("../../../../../Neck/Camera3D")
 update_rotation = false
-
-[node name="CamAtt" type="BoneAttachment3D" parent="Grabpack/Pack/LayerWalk"]
-transform = Transform3D(1.9669535e-07, 0.82500005, -4.9173835e-08, -1.475222e-07, 2.1684043e-19, 0.82500005, 0.82500005, -2.458692e-07, 9.834838e-08, 0, 0, 0)
-bone_name = "SCT_Camera"
-bone_idx = 2
-use_external_skeleton = true
-external_skeleton = NodePath("")
-
-[node name="Camera3D" type="Camera3D" parent="Grabpack/Pack/LayerWalk/CamAtt"]
-transform = Transform3D(-1, 8.742278e-08, 0, 8.742278e-08, 1, 8.742278e-08, 7.642742e-15, 8.742278e-08, -1, 0, 0, 0)
-keep_aspect = 0
-current = true
-fov = 90.0
-
-[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Grabpack/Pack/LayerWalk"]
-transform = Transform3D(0.6726519, 0.1083564, -0.46521315, 0.47574478, -0.22395997, 0.63571537, -0.04279427, -0.7865914, -0.24508743, 0.44332123, -1.5081623, 0.70862776)
-bone_name = "JNT_L_Grabpack_Gun"
-bone_idx = 22
-use_external_skeleton = true
-external_skeleton = NodePath("")
-
-[node name="BoneAttachment3D2" type="BoneAttachment3D" parent="Grabpack/Pack/LayerWalk"]
-transform = Transform3D(0.67266023, 0.10834381, -0.46520406, -0.4757321, 0.22396606, -0.63572264, 0.042804003, 0.7865913, 0.24508567, -0.4433209, -1.5081627, 0.708627)
-bone_name = "JNT_R_Grabpack_Gun"
-bone_idx = 5
-use_external_skeleton = true
-external_skeleton = NodePath("")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Grabpack/Pack/LayerWalk"]
 transform = Transform3D(-2.5, 3.70577e-21, -3.774895e-07, -2.1442136e-13, 2.5, 1.4200486e-06, 3.774895e-07, 1.4200486e-06, -2.5, 0.16277452, -0.21399975, 0.20497459)
@@ -9440,12 +9405,6 @@ theme_override_font_sizes/font_size = 24
 text = "FPS: 120"
 horizontal_alignment = 2
 
-[node name="Screenshot2025-03-02171422" type="Sprite2D" parent="UI"]
-visible = false
-position = Vector2(958, 541)
-scale = Vector2(0.75, 0.75)
-texture = ExtResource("47_k84o0")
-
 [node name="objective" type="Node2D" parent="UI"]
 visible = false
 modulate = Color(1, 1, 1, 0)
@@ -9567,6 +9526,7 @@ script = ExtResource("38_8ynux")
 
 [node name="CustomCrosshair" type="Sprite2D" parent="UI/crosshair"]
 visible = false
+modulate = Color(0.57254905, 0.57254905, 0.57254905, 0.9490196)
 scale = Vector2(0.74, 0.74)
 texture = ExtResource("51_lfyh2")
 
@@ -9690,6 +9650,7 @@ libraries = {
 
 [node name="inventory" type="Control" parent="UI"]
 process_mode = 3
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

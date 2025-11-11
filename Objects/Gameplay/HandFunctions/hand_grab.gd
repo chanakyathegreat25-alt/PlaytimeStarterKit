@@ -74,7 +74,6 @@ func _process(_delta):
 				pulling_left = true
 			if (Grabpack.left_hand.hand_retracting and not usable_while_retracting) or Grabpack.left_hand.hand_attached:
 				grabbed_left = false
-				print(randi())
 				pulling_left = false
 				emit_signal("let_go", false)
 				grabL = false
@@ -178,3 +177,11 @@ func _enter_tree():
 		add_child(new_marker)
 		new_marker.owner = get_tree().edited_scene_root
 		grab_marker = new_marker
+
+func stop_grabbing():
+	grabbed_left = false
+	pulling_left = false
+	grabL = false
+	grabbed_right = false
+	pulling_right = false
+	grabR = false

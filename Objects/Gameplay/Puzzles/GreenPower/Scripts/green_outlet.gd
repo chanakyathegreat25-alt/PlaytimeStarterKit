@@ -23,6 +23,7 @@ func _process(delta):
 
 func _on_hand_grab_grabbed(hand: bool) -> void:
 	if hand and Grabpack.right_hand.current_hand_node.name == "GreenHand":
+		
 		if Grabpack.right_hand.current_hand_node.powered or not has_power:
 			return
 		Grabpack.right_hand.current_hand_node.remaining_power = power_time

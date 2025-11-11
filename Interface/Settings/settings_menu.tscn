@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://wted730xx6x5"]
+[gd_scene load_steps=36 format=3 uid="uid://wted730xx6x5"]
 
 [ext_resource type="Script" uid="uid://1d8jpgk0gck3" path="res://Interface/Settings/settings_menu.gd" id="1_ah56o"]
 [ext_resource type="FontFile" uid="uid://d02qiqkper325" path="res://Interface/Font/OverusedGrotesk-Medium.otf" id="2_e305e"]
@@ -13,7 +13,6 @@
 [ext_resource type="Texture2D" uid="uid://crsxxaypxgd42" path="res://Interface/Settings/Textures/T_LanguageSettings.png" id="8_ah56o"]
 [ext_resource type="AudioStream" uid="uid://41gw4esu1lc3" path="res://Interface/MainMenu/Sound/SW_SFX_Modal_PopUp.wav" id="12_42dg6"]
 [ext_resource type="Texture2D" uid="uid://ccao7o5vuq77u" path="res://Interface/Icons/Keyboard/T_ESC.png" id="12_iwa01"]
-[ext_resource type="Texture2D" uid="uid://do02fsa5fku7c" path="res://Interface/Settings/Textures/Screenshot 2025-10-31 233013.png" id="12_iybea"]
 [ext_resource type="FontFile" uid="uid://cfvfiw1qtrep1" path="res://Interface/Font/OverusedGrotesk-Bold.otf" id="12_x0yxn"]
 [ext_resource type="Script" uid="uid://syb4cas6oqdo" path="res://Interface/MainMenu/button_sfx_player.gd" id="13_42dg6"]
 [ext_resource type="Texture2D" uid="uid://b81ad753ktxcl" path="res://Interface/Icons/Keyboard/T_R.png" id="13_iwa01"]
@@ -288,12 +287,6 @@ expand_mode = 1
 
 [node name="Tabs" type="Node2D" parent="."]
 position = Vector2(62, 55)
-
-[node name="Screenshot2025-03-02171422" type="Sprite2D" parent="Tabs"]
-visible = false
-position = Vector2(895, 486)
-scale = Vector2(0.75, 0.75)
-texture = ExtResource("12_iybea")
 
 [node name="Q" type="Label" parent="Tabs"]
 offset_left = 3.0

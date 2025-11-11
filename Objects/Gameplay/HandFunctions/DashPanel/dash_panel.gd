@@ -58,7 +58,7 @@ func area_entered(area):
 		using = true
 		#Grabpack.right_specific_rotation_axis("x", global_rotation.x-1.5)
 
-func let_go(hand: bool) -> void:
+func let_go(_hand: bool) -> void:
 	if using:
 		dash_cancelled.emit()
 		jumped.fadeOut(40.0)

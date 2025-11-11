@@ -15,12 +15,13 @@ func _ready() -> void:
 
 func install_sounds(node: Node) -> void:
 	for i in node.get_children():
-		if i is Button:
-			i.mouse_entered.connect( func(): ui_sfx_play("hover", i))
-			i.pressed.connect( func(): ui_sfx_play("select", i, 1 if i.name.contains("SF2") else (2 if i.name.contains("SF3") else (-1 if i.name.contains("NSF") else 0))))
-		
-		#repeat
-		install_sounds(i)
+		if "on_arrow" in i:
+			if i is Button:
+				i.mouse_entered.connect( func(): ui_sfx_play("hover", i))
+				i.pressed.connect( func(): ui_sfx_play("select", i, 1 if i.name.contains("SF2") else (2 if i.name.contains("SF3") else (-1 if i.name.contains("NSF") else 0))))
+			
+			#repeat
+			install_sounds(i)
 
 func ui_sfx_play(sound : StringName, button_node: Button, variation: int = 0) -> void:
 	if sound == "select":

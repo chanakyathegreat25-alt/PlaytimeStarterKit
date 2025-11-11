@@ -1,10 +1,9 @@
-[gd_scene load_steps=27 format=3 uid="uid://dgwhev5imypr8"]
+[gd_scene load_steps=26 format=3 uid="uid://dgwhev5imypr8"]
 
 [ext_resource type="Script" uid="uid://biwuwhtwoexaw" path="res://Interface/Pause/pause.gd" id="1_tymi6"]
 [ext_resource type="Theme" uid="uid://c3y4p2f8djdyb" path="res://Interface/MainMenu/Themes/title_button.tres" id="2_2wx6c"]
 [ext_resource type="FontFile" uid="uid://cfvfiw1qtrep1" path="res://Interface/Font/OverusedGrotesk-Bold.otf" id="2_atxbg"]
 [ext_resource type="Texture2D" uid="uid://ba641twe6vsbv" path="res://Interface/MainMenu/Texture/T_PauseBG.png" id="2_sa6jc"]
-[ext_resource type="Texture2D" uid="uid://dxbnbrib3wakg" path="res://TEMP/Screenshot 2025-11-01 124342.png" id="4_nh1wh"]
 [ext_resource type="FontFile" uid="uid://d02qiqkper325" path="res://Interface/Font/OverusedGrotesk-Medium.otf" id="5_sa6jc"]
 [ext_resource type="Texture2D" uid="uid://bivri32i53cow" path="res://Interface/Loading/LoadGameMenu/Objective.png" id="6_0mkij"]
 [ext_resource type="Script" uid="uid://cbvj3eu82rfm1" path="res://Interface/MainMenu/button_current.gd" id="6_nh1wh"]
@@ -282,12 +281,6 @@ color = Color(0, 0, 0, 1)
 position = Vector2(962, 540)
 scale = Vector2(1.00208, 1)
 texture = ExtResource("2_sa6jc")
-
-[node name="Screenshot2025-03-02171422" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(961, 539)
-scale = Vector2(0.75, 0.75)
-texture = ExtResource("4_nh1wh")
 
 [node name="Title" type="Label" parent="."]
 layout_mode = 0

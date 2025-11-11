@@ -1,8 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://blbde3nsukjhl"]
+[gd_scene load_steps=11 format=3 uid="uid://blbde3nsukjhl"]
 
 [ext_resource type="FontFile" uid="uid://dp3oq0ou16joq" path="res://Interface/Font/VCR_OSD_MONO_1.001.ttf" id="1_js3q3"]
 [ext_resource type="Script" uid="uid://cxowskoo66nfw" path="res://Interface/Loading/LoadGameMenu/load_game_button.gd" id="2_0lp7s"]
-[ext_resource type="Texture2D" uid="uid://cs8fg8ojw4cx7" path="res://TEMP/Screenshot 2025-10-31 072449.png" id="3_y0hvq"]
 [ext_resource type="FontFile" uid="uid://d02qiqkper325" path="res://Interface/Font/OverusedGrotesk-Medium.otf" id="4_js3q3"]
 [ext_resource type="Texture2D" uid="uid://bivri32i53cow" path="res://Interface/Loading/LoadGameMenu/Objective.png" id="5_rwlj6"]
 
@@ -61,12 +60,6 @@ offset_right = 0.8800049
 offset_bottom = -0.24002075
 theme = SubResource("Theme_y0hvq")
 script = ExtResource("2_0lp7s")
-
-[node name="Screenshot2025-03-02171422" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(486, 337)
-scale = Vector2(0.75, 0.75)
-texture = ExtResource("3_y0hvq")
 
 [node name="Title" type="Label" parent="."]
 layout_mode = 1

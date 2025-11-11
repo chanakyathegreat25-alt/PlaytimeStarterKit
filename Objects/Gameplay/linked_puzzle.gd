@@ -5,16 +5,20 @@ class_name LinkedPuzzle
 @export var puzzle: NodePath:
 	set(value):
 		puzzle = value
-		notify_property_list_changed()
-var enable_signal: String
-var disable_signal: String
+		if Engine.is_editor_hint(): notify_property_list_changed()
+var enable_signal: String:
+	set(value):
+		enable_signal = value
+var disable_signal: String:
+	set(value):
+		disable_signal = value
+var stored_signalE: String
+var stored_signalD: String
 
 var linker_node: Node
 
 func _get_property_list() -> Array[Dictionary]:
 	var props: Array[Dictionary] = []
-	
-	if not Engine.is_editor_hint(): props
 
 	if linker_node and linker_node.has_node(puzzle):
 		var node = linker_node.get_node(puzzle)

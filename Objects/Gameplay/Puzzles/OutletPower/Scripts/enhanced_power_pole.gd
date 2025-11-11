@@ -174,6 +174,8 @@ func hand_launch():
 		#hand_node.wire_unwrap = true
 		return
 	if pushing:
+		hand_grab.enabled = false
+		hand_grab.stop_grabbing()
 		hand_grab.update_every_frame = false
 		if push_hand:
 			Grabpack.right_wire_custom(false, true, Vector3.ZERO, $PuzzlePoleHandle/Point2.global_position)
@@ -206,3 +208,5 @@ func fix_hand_pause():
 		else:
 			Grabpack.left_hand.hand_changed_point = false
 			Grabpack.left_hand.quick_retract = true
+
+func hand_enable(): hand_grab.enabled = true

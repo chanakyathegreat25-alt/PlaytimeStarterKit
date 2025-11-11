@@ -457,7 +457,7 @@ tracks/7/keys = {
 
 [sub_resource type="Animation" id="Animation_uytmp"]
 resource_name = "hit"
-length = 0.5
+length = 0.55
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -489,11 +489,14 @@ tracks/2/path = NodePath(".")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.433333),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0.433333, 0.53333336),
+"transitions": PackedFloat32Array(1, 1),
 "values": [{
 "args": [],
 "method": &"hand_launch"
+}, {
+"args": [],
+"method": &"hand_enable"
 }]
 }
 tracks/3/type = "value"

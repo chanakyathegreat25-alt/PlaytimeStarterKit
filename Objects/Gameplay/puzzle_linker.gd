@@ -4,9 +4,12 @@ class_name PuzzleLinker
 
 @export var puzzle_list: Array[LinkedPuzzle]:
 	set(value):
-		if not Engine.is_editor_hint(): return
 		puzzle_list = value
-		if puzzle_list.size() > 0: puzzle_list[puzzle_list.size()-1].linker_node = self
+		if not Engine.is_editor_hint(): return
+		if puzzle_list.size() > 0:
+			for i in puzzle_list.size():
+				puzzle_list[i].linker_node = self
+				puzzle_list[i].notify_property_list_changed()
 
 var active: Array[bool]
 var target_active: Array[bool]
@@ -19,8 +22,9 @@ signal another_deactive
 func _ready() -> void:
 	if Engine.is_editor_hint(): return
 	for i in puzzle_list.size():
-		get_node(puzzle_list[i].puzzle).connect(puzzle_list[i].enable_signal, func(): puzzle_active(i))
-		get_node(puzzle_list[i].puzzle).connect(puzzle_list[i].disable_signal, func(): puzzle_deactive(i))
+		get_node(puzzle_list[i].puzzle).connect(str(puzzle_list[i].enable_signal), func(): puzzle_active(i))
+		if get_node(puzzle_list[i].puzzle).has_signal(str(puzzle_list[i].disable_signal)): get_node(puzzle_list[i].puzzle).connect(str(puzzle_list[i].disable_signal), func(): puzzle_deactive(i))
+		active.append(false)
 		target_active.append(true)
 func puzzle_active(idx):
 	active[idx] = true

@@ -38,14 +38,14 @@ func _ready():
 	setting_node = get_node(settings_root)
 	connect("mouse_exited", Callable(setting_node.setting_exited))
 	connect("visibility_changed", Callable(new_vis))
+	get_node("ShiftL").connect("mouse_entered", func(): hover_shift(-1))
+	get_node("ShiftR").connect("mouse_entered", func(): hover_shift(1))
+	get_node("ShiftL").connect("mouse_exited", func(): off_shift())
+	get_node("ShiftR").connect("mouse_exited", func(): off_shift())
 	if has_node("HSlider"):
 		var slider: HSlider = get_node("HSlider")
 		slider.connect("value_changed", Callable(new_vis))
 	
-	get_node("ShiftLeft").mouse_entered.connect( func(): set_arrow(-1))
-	get_node("ShiftLeft").mouse_exited.connect( func(): set_arrow(0))
-	get_node("ShiftRight").mouse_entered.connect( func(): set_arrow(1))
-	get_node("ShiftRight").mouse_exited.connect( func(): set_arrow(0))
 	pressed.connect( func(): clicked())
 	mouse_entered.connect( func(): set_hover(true))
 	mouse_exited.connect( func(): set_hover(false))
@@ -54,8 +54,6 @@ func _ready():
 func send_data():
 	setting_node.setting_pressed(setting_name, setting_description, position.y)
 
-func set_arrow(arrow: int):
-	on_arrow = arrow
 func set_hover(value: bool):
 	hovered = value
 	new_vis()
@@ -93,9 +91,22 @@ func new_vis(_optional = 10.0):
 	
 	if multi_option:
 		get_node("Label").text = options[current_option]
-		get_node("ShiftLeftS").modulate = "5d5d5d" if current_option == 0 else ("ffffff" if hovered else "9b9faa")
-		get_node("ShiftRightS").modulate = "5d5d5d" if current_option == options.size()-1 else ("ffffff" if hovered else "9b9faa")
+		get_node("ShiftL").modulate = "5d5d5d" if current_option == 0 else ("ffffff" if hovered else "9b9faa")
+		get_node("ShiftR").modulate = "5d5d5d" if current_option == options.size()-1 else ("ffffff" if hovered else "9b9faa")
 	elif is_slider:
 		var slider: HSlider = $HSlider
-		get_node("ShiftLeftS").modulate = "5d5d5d" if slider.value == slider.min_value else ("ffffff" if hovered else "9b9faa")
-		get_node("ShiftRightS").modulate = "5d5d5d" if slider.value == slider.max_value else ("ffffff" if hovered else "9b9faa")
+		get_node("ShiftL").modulate = "5d5d5d" if slider.value == slider.min_value else ("ffffff" if hovered else "9b9faa")
+		get_node("ShiftR").modulate = "5d5d5d" if slider.value == slider.max_value else ("ffffff" if hovered else "9b9faa")
+
+func shiftL() -> void:
+	on_arrow = -1
+	
+func shiftR() -> void:
+	on_arrow = 1
+	
+func off_shift() -> void:
+	on_arrow = 0
+	new_vis()
+func hover_shift(button: int):
+	on_arrow = button
+	new_vis()

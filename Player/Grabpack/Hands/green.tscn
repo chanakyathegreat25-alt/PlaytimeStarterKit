@@ -4070,6 +4070,7 @@ shader = ExtResource("5_jduao")
 shader_parameter/lightningNoise1 = SubResource("NoiseTexture2D_eapr4")
 shader_parameter/lightningNoise2 = SubResource("NoiseTexture2D_b10n3")
 shader_parameter/tint = Color(0.741176, 1, 0.976471, 1)
+shader_parameter/effect_speed = 0.2
 shader_parameter/distortionVertex = 0.16999999620016
 shader_parameter/speedVertex = 0.56499998737112
 shader_parameter/noiseVertex = SubResource("NoiseTexture2D_jduao")

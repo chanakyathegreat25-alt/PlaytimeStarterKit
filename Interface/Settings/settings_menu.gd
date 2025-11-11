@@ -22,8 +22,12 @@ func _ready():
 
 func toggle():
 	if visible:
-		$section/Tabs/SettingsManager.apply()
+		#$section/Tabs/SettingsManager.apply()
+		if current_tab:
+			current_tab.queue_free()
+			current_tab = null
 	else:
+		load_tab("Tab1", $"Tabs/1")
 		load_animation.play("loaded")
 	visible = !visible
 
@@ -45,6 +49,12 @@ func load_tab(tab: String, node: Button):
 		current_tab.queue_free()
 		current_tab = null
 	var new_tab = load(str("res://Interface/Settings/Tabs/settingsTab", tab[3], ".tscn")).instantiate()
+	var button_container = new_tab if new_tab.get_child(0) is Button else (new_tab.get_child(0) if new_tab.get_child(0).get_child(0) is Button else new_tab.get_child(0).get_child(0))
+	for i in button_container.get_child_count():
+		var child = button_container.get_child(i)
+		if child is Button:
+			var setting = GameSettings.get_setting(child.setting_code_name)
+			child.setting_default_value = setting if not setting is bool else 1.0 if setting else 0.0
 	tabs.add_child(new_tab)
 	var next_tab = new_tab
 	next_tab.visible = true

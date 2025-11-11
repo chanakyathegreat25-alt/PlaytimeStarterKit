@@ -14,8 +14,8 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if finished: return
 	
-	if Input.is_action_pressed("jump"): skip_amount = move_toward(skip_amount, 1.0, 0.25*delta)
-	else: skip_amount = move_toward(skip_amount, 0.0, 0.5*delta)
+	if Input.is_action_pressed("jump"): skip_amount = move_toward(skip_amount, 1.0, 0.5*delta)
+	else: skip_amount = move_toward(skip_amount, 0.0, 1.0*delta)
 	
 	var mat: ShaderMaterial = ring.material
 	mat.set_shader_parameter("value", skip_amount)
