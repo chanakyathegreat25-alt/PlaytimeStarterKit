@@ -89,7 +89,13 @@ func switch_grabpack(grabpack_index: int):
 	
 	grabpack_queue = grabpack_index
 	queue_grabpack(grabpack_index)
-	#item_animation.play("SwitchGrabpackLowerRaise")
+	
+	lower_grabpack()
+	await Game.delay(0.5)
+	set_queued_grabpack()
+	update_grabpack_data(); update_grabpack_visibility(true)
+	grabpack_lowered = true
+	raise_grabpack()
 func set_queued_grabpack():
 	set_grabpack(grabpack_queue)
 func set_grabpack(grabpack_index: int):
