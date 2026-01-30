@@ -18,9 +18,6 @@ var hold_prev: bool = false
 signal locker_exited
 signal locker_entered
 
-func _ready() -> void:
-	camera.fov = GameSettings.fov
-
 func _process(delta: float) -> void:
 	if in_locker and not moving_in:
 		if Input.is_action_pressed("jump") and not out_of_breath and not breathing.is_fading():
@@ -51,12 +48,16 @@ func _process(delta: float) -> void:
 		if Input.is_action_just_pressed("interact"):
 			exit_locker()
 			return
+	if moving_in:
+		var cam = get_viewport().get_camera_3d()
+		Grabpack.player.global_position = Vector3(cam.global_position.x, cam.global_position.y-1.7, cam.global_position.z)
+		Grabpack.player.neck.global_rotation.y = cam.global_rotation.y
 
 func enter_locker():
 	locker_entered.emit()
 	$EnterSound.play()
 	
-	camera.fov = GameSettings.fov
+	camera.fov = GameSettings.get_setting("fov")
 	camera.transform = $CameraStart.transform
 	moving_in = true
 	in_locker = true
@@ -80,7 +81,7 @@ func exit_locker():
 	ui_anim_player.play("gone")
 	
 	$ExitSound.play()
-	camera.fov = GameSettings.fov
+	camera.fov = GameSettings.get_setting("fov")
 	moving_in = true
 	in_locker = false
 	breathing.fadeOut(40.0)

@@ -1,4 +1,4 @@
-[gd_resource type="ShaderMaterial" load_steps=9 format=3 uid="uid://bxh6nik6yr3ij"]
+[gd_resource type="ShaderMaterial" format=3 uid="uid://bxh6nik6yr3ij"]
 
 [ext_resource type="Shader" uid="uid://ba5ymrpy1g1w4" path="res://Player/Grabpack/Hands/electricity.gdshader" id="1_xweqa"]
 
@@ -51,6 +51,10 @@ shader = ExtResource("1_xweqa")
 shader_parameter/lightningNoise1 = SubResource("NoiseTexture2D_eapr4")
 shader_parameter/lightningNoise2 = SubResource("NoiseTexture2D_b10n3")
 shader_parameter/tint = Color(0.741176, 1, 0.976471, 1)
+shader_parameter/effect_speed = 0.2
 shader_parameter/distortionVertex = 0.16999999620016
 shader_parameter/speedVertex = 0.80499998200664
 shader_parameter/noiseVertex = SubResource("NoiseTexture2D_jduao")
+shader_parameter/lightning_height = 0.1
+shader_parameter/emission_color = Color(0, 0, 0, 1)
+shader_parameter/emission_strength = 1.0

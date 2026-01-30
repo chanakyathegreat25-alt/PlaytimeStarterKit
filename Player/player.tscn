@@ -1,4 +1,4 @@
-[gd_scene load_steps=269 format=4 uid="uid://dkty77argxwyc"]
+[gd_scene format=4 uid="uid://dkty77argxwyc"]
 
 [ext_resource type="Texture2D" uid="uid://cl7alwgeec33w" path="res://Player/Grabpack/Models/grabpack_chapter_3_-_poppy_playtime_0.png" id="1_00tjw"]
 [ext_resource type="Script" uid="uid://dkgdss1i1qci7" path="res://Player/player.gd" id="1_od3ui"]
@@ -217,6 +217,8 @@ bind/31/pose = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0, 0)
 bind/32/name = &"JNT_L_HandAttachment_Pivot_end_077"
 bind/32/bone = -1
 bind/32/pose = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0, 0)
+
+[sub_resource type="JointLimitationCone3D" id="JointLimitationCone3D_t7sh4"]
 
 [sub_resource type="Animation" id="Animation_fm5nm"]
 length = 0.001
@@ -7258,7 +7260,6 @@ fadeout_time = 0.3
 animation = &"QuickSwitch"
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_286oo"]
-graph_offset = Vector2(-847.541, 385.29395)
 nodes/output/position = Vector2(2860, 140)
 nodes/Idle/node = SubResource("AnimationNodeAnimation_286oo")
 nodes/Idle/position = Vector2(-1020, 280)
@@ -8480,25 +8481,25 @@ _data = {
 &"Transition": SubResource("Animation_fhogf")
 }
 
-[node name="Player" type="CharacterBody3D" groups=["Player"]]
+[node name="Player" type="CharacterBody3D" unique_id=1727012216 groups=["Player"]]
 script = ExtResource("1_od3ui")
 
-[node name="Grabpack" type="Node3D" parent="." groups=["Grabpack"]]
+[node name="Grabpack" type="Node3D" parent="." unique_id=1328194404 groups=["Grabpack"]]
 process_priority = 100
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 1.7, 0)
 script = ExtResource("2_apopc")
 grabpacks = Array[PackedScene]([ExtResource("3_6pogt"), ExtResource("4_ie76m"), ExtResource("5_ie76m"), ExtResource("6_soeee")])
 
-[node name="GrabpackAnimationHandler" type="Node" parent="Grabpack"]
+[node name="GrabpackAnimationHandler" type="Node" parent="Grabpack" unique_id=2104103768]
 script = ExtResource("12_5htga")
 
-[node name="Pack" type="Node3D" parent="Grabpack"]
+[node name="Pack" type="Node3D" parent="Grabpack" unique_id=521083049]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.002, -0.235, -0.37)
 
-[node name="GrabpackOne" type="Node3D" parent="Grabpack/Pack"]
+[node name="GrabpackOne" type="Node3D" parent="Grabpack/Pack" unique_id=1728241772]
 transform = Transform3D(-3.33333, -5.03319e-07, -2.20008e-14, 0, -1.45704e-07, 3.33333, -5.03319e-07, 3.33333, 1.45704e-07, 0, 0.055, 0.237)
 
-[node name="Skeleton3D" type="Skeleton3D" parent="Grabpack/Pack/GrabpackOne"]
+[node name="Skeleton3D" type="Skeleton3D" parent="Grabpack/Pack/GrabpackOne" unique_id=1166866808]
 bones/0/name = "_rootJoint"
 bones/0/parent = -1
 bones/0/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
@@ -8545,9 +8546,9 @@ bones/6/name = "JNT_R_Grabpack_Gun_05"
 bones/6/parent = 5
 bones/6/rest = Transform3D(1, 0, 0, 0, 1, -7.45058e-07, 0, 7.45058e-07, 1, -0.13434, -0.080193, 0.132049)
 bones/6/enabled = true
-bones/6/position = Vector3(-0.13197938, -0.45572072, 0.21374005)
-bones/6/rotation = Quaternion(0.5582793, -0.19940844, -0.22927836, 0.77200514)
-bones/6/scale = Vector3(0.99999875, 1.0000002, 1.0000017)
+bones/6/position = Vector3(-0.1321112, -0.08277404, 0.1318801)
+bones/6/rotation = Quaternion(2.7935794e-05, -1.5499937e-06, -0.0069876127, 0.99997556)
+bones/6/scale = Vector3(0.99999875, 1.0000004, 1.0000018)
 bones/7/name = "JNT_R_Grabpack_Trigger_06"
 bones/7/parent = 6
 bones/7/rest = Transform3D(1, 0, 0, 0, 1, 3.72529e-07, 0, -3.72529e-07, 1, 0, -0.0217514, 0.0155989)
@@ -8650,9 +8651,9 @@ bones/21/name = "JNT_L_Grabpack_Gun_016"
 bones/21/parent = 5
 bones/21/rest = Transform3D(1, -7.64274e-15, -8.74228e-08, 0, -1, 8.74228e-08, -8.74228e-08, -8.74228e-08, -1, 0.13434, -0.080193, 0.132049)
 bones/21/enabled = true
-bones/21/position = Vector3(0.13401352, -0.4557215, 0.21374036)
-bones/21/rotation = Quaternion(-0.77199394, -0.22927776, 0.19940871, 0.558295)
-bones/21/scale = Vector3(0.9999977, 0.99999714, 0.99999905)
+bones/21/position = Vector3(0.12146307, -0.0701406, 0.1331522)
+bones/21/rotation = Quaternion(0.99997556, -0.0069868756, -3.6068077e-06, -1.0613071e-05)
+bones/21/scale = Vector3(0.99999774, 0.999997, 0.9999989)
 bones/22/name = "JNT_L_Grabpack_Trigger_017"
 bones/22/parent = 21
 bones/22/rest = Transform3D(1, 2.77556e-14, 8.74228e-08, 4.81195e-15, 1, -3.72529e-07, -8.74228e-08, 3.72529e-07, 1, -5.12261e-09, 0.0217512, -0.0155988)
@@ -8731,33 +8732,74 @@ bones/32/position = Vector3(0, 0.02, -1.38778e-17)
 bones/32/rotation = Quaternion(-2.64698e-23, 0, 1.92922e-30, 1)
 bones/32/scale = Vector3(1, 1, 1)
 
-[node name="Object_39" type="MeshInstance3D" parent="Grabpack/Pack/GrabpackOne/Skeleton3D"]
+[node name="Object_39" type="MeshInstance3D" parent="Grabpack/Pack/GrabpackOne/Skeleton3D" unique_id=398796060]
 mesh = SubResource("ArrayMesh_b1ygp")
 skin = SubResource("Skin_o28un")
 
-[node name="TubeIKRight" type="SkeletonIK3D" parent="Grabpack/Pack/GrabpackOne/Skeleton3D"]
-root_bone = &"JNT_R_Grabpack_Tube_01_09"
-tip_bone = &"JNT_R_Grabpack_Tube_06_014"
-target_node = NodePath("../../../LayerWalk/TubeLeft")
+[node name="TubeIK" type="JacobianIK3D" parent="Grabpack/Pack/GrabpackOne/Skeleton3D" unique_id=1393828969]
+transform = Transform3D(1, 0, 0, 0, 1, -3.5527137e-15, -3.3881318e-21, 3.5527137e-15, 1, -0.12729931, 0.13487229, -0.05334127)
+max_iterations = 30
+angular_delta_limit = 0.026179938779914945
+deterministic = true
+setting_count = 2
+settings/0/target_node = NodePath("../../../LayerWalk/RightTube")
+settings/1/target_node = NodePath("../../../LayerWalk/TubeLeft")
+settings/0/root_bone_name = "JNT_R_Grabpack_Tube_01_09"
+settings/0/root_bone = 12
+settings/0/end_bone_name = "JNT_R_Grabpack_Tube_06_end_073"
+settings/0/end_bone = 18
+settings/0/extend_end_bone = false
+settings/0/joint_count = 7
+settings/1/root_bone_name = "JNT_L_Grabpack_Tube_01_018"
+settings/1/root_bone = 24
+settings/1/end_bone_name = "JNT_L_Grabpack_Tube_06_end_076"
+settings/1/end_bone = 30
+settings/1/extend_end_bone = false
+settings/1/joint_count = 7
+settings/0/joints/0/rotation_axis = 3
+settings/0/joints/0/limitation = SubResource("JointLimitationCone3D_t7sh4")
+settings/0/joints/0/limitation/right_axis = 0
+settings/0/joints/0/limitation/rotation_offset = Quaternion(0, 0, 0, 1)
+settings/0/joints/1/rotation_axis = 3
+settings/0/joints/1/limitation = null
+settings/0/joints/2/rotation_axis = 3
+settings/0/joints/2/limitation = null
+settings/0/joints/3/rotation_axis = 3
+settings/0/joints/3/limitation = null
+settings/0/joints/4/rotation_axis = 3
+settings/0/joints/4/limitation = null
+settings/0/joints/5/rotation_axis = 3
+settings/0/joints/5/limitation = null
+settings/0/joints/6/rotation_axis = 3
+settings/0/joints/6/limitation = null
+settings/1/joints/0/rotation_axis = 3
+settings/1/joints/0/limitation = null
+settings/1/joints/1/rotation_axis = 3
+settings/1/joints/1/limitation = null
+settings/1/joints/2/rotation_axis = 3
+settings/1/joints/2/limitation = null
+settings/1/joints/3/rotation_axis = 3
+settings/1/joints/3/limitation = null
+settings/1/joints/4/rotation_axis = 3
+settings/1/joints/4/limitation = null
+settings/1/joints/5/rotation_axis = 3
+settings/1/joints/5/limitation = null
+settings/1/joints/6/rotation_axis = 3
+settings/1/joints/6/limitation = null
 
-[node name="TubeIKLeft" type="SkeletonIK3D" parent="Grabpack/Pack/GrabpackOne/Skeleton3D"]
-root_bone = &"JNT_L_Grabpack_Tube_01_018"
-tip_bone = &"JNT_L_Grabpack_Tube_06_023"
-target_node = NodePath("../../../LayerWalk/RightTube")
-
-[node name="Object_38" type="Node3D" parent="Grabpack/Pack/GrabpackOne"]
+[node name="Object_38" type="Node3D" parent="Grabpack/Pack/GrabpackOne" unique_id=1460301275]
 transform = Transform3D(100, 0, 0, 0, 1.24957e-12, 100, 0, -100, 1.24957e-12, -0.101705, 5.09721, -8.90522)
 
-[node name="LayerWalk" type="Node3D" parent="Grabpack/Pack"]
+[node name="LayerWalk" type="Node3D" parent="Grabpack/Pack" unique_id=1597670397]
 transform = Transform3D(-0.99990237, 0.013973136, 7.303553e-06, 0.013973136, 0.99990237, 2.1268159e-05, -7.005657e-06, 2.1368136e-05, -1, 0.042513777, 0.27010536, 0.53000003)
 
-[node name="CanonAttachLeft" type="Node3D" parent="Grabpack/Pack/LayerWalk"]
+[node name="CanonAttachLeft" type="Node3D" parent="Grabpack/Pack/LayerWalk" unique_id=1623215385]
 transform = Transform3D(33.33088, 0.39236504, -0.047265075, 0.39281738, -33.329227, 0.3323114, -0.043347754, -0.3328444, -33.331573, 0.4813087, -0.32750845, 0.4357524)
 
-[node name="LeftWireOrigin" type="Marker3D" parent="Grabpack/Pack/LayerWalk/CanonAttachLeft"]
+[node name="LeftWireOrigin" type="Marker3D" parent="Grabpack/Pack/LayerWalk/CanonAttachLeft" unique_id=104504243]
 transform = Transform3D(-0.029999992, 2.9550985e-05, -7.011304e-07, -2.9469771e-05, -0.029956013, -0.0016236121, -2.2994097e-06, -0.0016236043, 0.029956028, 0, 0, -0.007)
 
-[node name="ArmAttach" type="BoneAttachment3D" parent="Grabpack/Pack/LayerWalk/CanonAttachLeft"]
+[node name="ArmAttach" type="BoneAttachment3D" parent="Grabpack/Pack/LayerWalk/CanonAttachLeft" unique_id=598428061]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 bone_name = "JNT_L_Grabpack_Gun_016"
 bone_idx = 21
@@ -8765,13 +8807,13 @@ override_pose = true
 use_external_skeleton = true
 external_skeleton = NodePath("../../../GrabpackOne/Skeleton3D")
 
-[node name="HandPos" type="Node3D" parent="Grabpack/Pack/LayerWalk/CanonAttachLeft"]
+[node name="HandPos" type="Node3D" parent="Grabpack/Pack/LayerWalk/CanonAttachLeft" unique_id=1491999326]
 transform = Transform3D(-0.029989636, 2.270304e-06, -0.0007884695, -7.605516e-08, -0.029999884, -8.348832e-05, -0.0007884728, -8.3457475e-05, 0.029989518, 0, 0, -0.01)
 
-[node name="CanonAttachRight" type="Node3D" parent="Grabpack/Pack/LayerWalk"]
+[node name="CanonAttachRight" type="Node3D" parent="Grabpack/Pack/LayerWalk" unique_id=1214402373]
 transform = Transform3D(33.33, 0.46576166, -0.004208677, -0.4657799, 33.32859, -0.31269732, -0.0001611941, 0.3127252, 33.33189, -0.40524673, -0.31511903, 0.43575853)
 
-[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Grabpack/Pack/LayerWalk/CanonAttachRight"]
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Grabpack/Pack/LayerWalk/CanonAttachRight" unique_id=1689278918]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 bone_name = "JNT_R_Grabpack_Gun_05"
 bone_idx = 6
@@ -8779,60 +8821,58 @@ override_pose = true
 use_external_skeleton = true
 external_skeleton = NodePath("../../../GrabpackOne/Skeleton3D")
 
-[node name="HandPos" type="Node3D" parent="Grabpack/Pack/LayerWalk/CanonAttachRight"]
+[node name="HandPos" type="Node3D" parent="Grabpack/Pack/LayerWalk/CanonAttachRight" unique_id=528545464]
 transform = Transform3D(-0.03, 8.634796e-12, 7.605545e-08, 8.63487e-12, 0.03, 2.9103945e-11, -7.605545e-08, 2.910397e-11, -0.03, 0, 0, 0.01)
 
-[node name="RightWireOrigin" type="Marker3D" parent="Grabpack/Pack/LayerWalk/CanonAttachRight"]
+[node name="RightWireOrigin" type="Marker3D" parent="Grabpack/Pack/LayerWalk/CanonAttachRight" unique_id=1106846198]
 transform = Transform3D(-0.1, 9.013537e-09, -8.742063e-09, -8.615167e-09, -0.1, -3.782916e-07, -8.742518e-09, -3.784662e-07, 0.10000001, 0, 0, 0.007)
 
-[node name="TubeLeft" type="Marker3D" parent="Grabpack/Pack/LayerWalk"]
-transform = Transform3D(-0.999609, 0.0279435, 5.08969e-07, 0.0279435, 0.999609, 4.26777e-05, 6.838e-07, 4.26753e-05, -1, 0.694368, -0.622849, 0.112126)
+[node name="TubeLeft" type="Marker3D" parent="Grabpack/Pack/LayerWalk" unique_id=1091407550]
+transform = Transform3D(-0.999609, 0.0279435, 5.08969e-07, 0.0279435, 0.999609, 4.26777e-05, 6.838e-07, 4.26753e-05, -1, 0.515, -0.447, -0.117)
 
-[node name="RightTube" type="Marker3D" parent="Grabpack/Pack/LayerWalk"]
-transform = Transform3D(-0.999609, 0.0279435, 5.08969e-07, 0.0279435, 0.999609, 4.26777e-05, 6.838e-07, 4.26753e-05, -1, -0.70514, -0.585726, 0.120127)
+[node name="RightTube" type="Marker3D" parent="Grabpack/Pack/LayerWalk" unique_id=2122384722]
+transform = Transform3D(-0.99960876, 0.027943494, 5.0896915e-07, 0.027943494, 0.99960876, 4.2677686e-05, 6.8380086e-07, 4.267528e-05, -0.9999997, -0.5149456, -0.44707656, -0.11730455)
 
-[node name="CameraBone" type="Marker3D" parent="Grabpack/Pack/LayerWalk"]
+[node name="CameraBone" type="Marker3D" parent="Grabpack/Pack/LayerWalk" unique_id=1036063412]
 transform = Transform3D(0.99999887, 3.9633485e-10, -9.1433494e-30, -3.9633496e-10, 0.99999857, 0, 9.143352e-30, 3.623832e-39, 0.99999857, 0, 0, 0)
 
-[node name="RemoteTransform3D" type="RemoteTransform3D" parent="Grabpack/Pack/LayerWalk/CameraBone"]
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="Grabpack/Pack/LayerWalk/CameraBone" unique_id=891184948]
 transform = Transform3D(-0.99990046, 0.014174169, 0.00017573747, 0.014174314, 0.99990046, 0.0008252557, -0.00016402251, 0.0008276635, -1.000001, 0, 0, 0)
 remote_path = NodePath("../../../../../Neck/Camera3D")
 update_rotation = false
 
-[node name="OmniLight3D" type="OmniLight3D" parent="Grabpack/Pack/LayerWalk"]
-transform = Transform3D(-2.5, 3.70577e-21, -3.774895e-07, -2.1442136e-13, 2.5, 1.4200486e-06, 3.774895e-07, 1.4200486e-06, -2.5, 0.16277452, -0.21399975, 0.20497459)
+[node name="OmniLight3D" type="OmniLight3D" parent="Grabpack/Pack/LayerWalk" unique_id=192567866]
+transform = Transform3D(-2.5, 2.0646428e-20, -3.774895e-07, -2.1442134e-13, 2.5, 1.4200486e-06, 3.774895e-07, 1.4200486e-06, -2.5, 0.21, -0.214, 0.322)
 light_energy = 0.035
 light_volumetric_fog_energy = 0.0
 omni_range = 0.33777502
 
-[node name="OmniLight3D2" type="OmniLight3D" parent="Grabpack/Pack/LayerWalk"]
-transform = Transform3D(-2.5, 3.70577e-21, -3.774895e-07, -2.1442136e-13, 2.5, 1.4200486e-06, 3.774895e-07, 1.4200486e-06, -2.5, -0.163, -0.214, 0.205)
+[node name="OmniLight3D2" type="OmniLight3D" parent="Grabpack/Pack/LayerWalk" unique_id=1703550941]
+transform = Transform3D(-2.5, 2.0646428e-20, -3.774895e-07, -2.1442134e-13, 2.5, 1.4200486e-06, 3.774895e-07, 1.4200486e-06, -2.5, -0.21, -0.214, 0.322)
 light_energy = 0.035
 light_volumetric_fog_energy = 0.0
 omni_range = 0.33777502
 
-[node name="LeftHandContainer" type="Node3D" parent="Grabpack/Pack" groups=["LeftHand"]]
+[node name="LeftHandContainer" type="Node3D" parent="Grabpack/Pack" unique_id=909047757 groups=["LeftHand"]]
 process_priority = 100
 transform = Transform3D(0.399999, 9.43146e-10, -5.820766e-11, 9.41327e-10, 0.39999905, -4.656613e-10, 5.820766e-11, 0, 0.399999, -0.17800003, 1.5909996, -0.23600002)
 top_level = true
 script = ExtResource("10_p5o4e")
 
-[node name="Hands" type="Node3D" parent="Grabpack/Pack/LeftHandContainer"]
+[node name="Hands" type="Node3D" parent="Grabpack/Pack/LeftHandContainer" unique_id=1654145837]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0950627)
 
-[node name="Blue" type="Node3D" parent="Grabpack/Pack/LeftHandContainer/Hands"]
+[node name="Blue" type="Node3D" parent="Grabpack/Pack/LeftHandContainer/Hands" unique_id=1621143]
 transform = Transform3D(-1, 1.50996e-07, 6.60024e-15, 0, -4.37114e-08, 1, 1.50996e-07, 1, 4.37114e-08, 0.0110001, 0.167644, -0.056397)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Grabpack/Pack/LeftHandContainer/Hands/Blue"]
-libraries = {
-&"": SubResource("AnimationLibrary_hfxmn")
-}
-autoplay = "normal"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Grabpack/Pack/LeftHandContainer/Hands/Blue" unique_id=474714890]
+libraries/ = SubResource("AnimationLibrary_hfxmn")
+autoplay = &"normal"
 
-[node name="SK_PurpleHand" type="Node3D" parent="Grabpack/Pack/LeftHandContainer/Hands/Blue"]
+[node name="SK_PurpleHand" type="Node3D" parent="Grabpack/Pack/LeftHandContainer/Hands/Blue" unique_id=1205417519]
 transform = Transform3D(0.033, 0, 0, 0, 0.033, 0, 0, 0, 0.033, 0, 0, 0)
 
-[node name="Skeleton3D" type="Skeleton3D" parent="Grabpack/Pack/LeftHandContainer/Hands/Blue/SK_PurpleHand"]
+[node name="Skeleton3D" type="Skeleton3D" parent="Grabpack/Pack/LeftHandContainer/Hands/Blue/SK_PurpleHand" unique_id=1155998440]
 transform = Transform3D(0.1, -1.50996e-08, -1.50996e-08, -1.50996e-08, -4.37114e-09, -0.1, 1.50996e-08, 0.1, -4.37114e-09, 0.444677, -0.172974, -6.34527)
 bones/0/name = "hand_launcher"
 bones/0/parent = -1
@@ -9024,101 +9064,93 @@ bones/26/position = Vector3(-6.31089e-30, 7.76342e-38, -2.84217e-14)
 bones/26/rotation = Quaternion(1.42109e-14, -3.13281e-31, -2.99284e-30, 1)
 bones/26/scale = Vector3(1, 1, 1)
 
-[node name="SK_GrabpackHand_001" type="MeshInstance3D" parent="Grabpack/Pack/LeftHandContainer/Hands/Blue/SK_PurpleHand/Skeleton3D"]
+[node name="SK_GrabpackHand_001" type="MeshInstance3D" parent="Grabpack/Pack/LeftHandContainer/Hands/Blue/SK_PurpleHand/Skeleton3D" unique_id=1481316708]
 mesh = SubResource("ArrayMesh_3bga3")
 skin = SubResource("Skin_lhliw")
 
-[node name="LeftHandWirePoint" type="Marker3D" parent="Grabpack/Pack/LeftHandContainer/Hands"]
+[node name="LeftHandWirePoint" type="Marker3D" parent="Grabpack/Pack/LeftHandContainer/Hands" unique_id=2042237064]
 transform = Transform3D(-1, 8.74231e-08, -8.74229e-08, -8.74228e-08, -1, -3.78291e-06, -8.74233e-08, -3.78291e-06, 1, -0.000442624, 0.00319743, 0.00364476)
 
-[node name="Area3D" type="Area3D" parent="Grabpack/Pack/LeftHandContainer/Hands" groups=["LeftHandArea"]]
+[node name="Area3D" type="Area3D" parent="Grabpack/Pack/LeftHandContainer/Hands" unique_id=755940737 groups=["LeftHandArea"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0950627)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Grabpack/Pack/LeftHandContainer/Hands/Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Grabpack/Pack/LeftHandContainer/Hands/Area3D" unique_id=1435285711]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0131348, 0.0860355, 0.0375488)
 shape = SubResource("BoxShape3D_gvnt1")
 
-[node name="ItemPos" type="Marker3D" parent="Grabpack/Pack/LeftHandContainer/Hands"]
+[node name="ItemPos" type="Marker3D" parent="Grabpack/Pack/LeftHandContainer/Hands" unique_id=1376663657]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.095)
 
-[node name="HandMotionsAnimation" type="AnimationPlayer" parent="Grabpack/Pack/LeftHandContainer"]
-libraries = {
-&"": SubResource("AnimationLibrary_f4lon")
-}
+[node name="HandMotionsAnimation" type="AnimationPlayer" parent="Grabpack/Pack/LeftHandContainer" unique_id=1948897912]
+libraries/ = SubResource("AnimationLibrary_f4lon")
 playback_default_blend_time = 0.1
 
-[node name="DirectionCast" type="RayCast3D" parent="Grabpack/Pack/LeftHandContainer"]
+[node name="DirectionCast" type="RayCast3D" parent="Grabpack/Pack/LeftHandContainer" unique_id=1536666579]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0.0935527)
 
-[node name="Timer" type="Timer" parent="Grabpack/Pack/LeftHandContainer"]
+[node name="Timer" type="Timer" parent="Grabpack/Pack/LeftHandContainer" unique_id=1335792417]
 wait_time = 0.2
 one_shot = true
 
-[node name="FingerFingy" type="RayCast3D" parent="Grabpack/Pack/LeftHandContainer"]
+[node name="FingerFingy" type="RayCast3D" parent="Grabpack/Pack/LeftHandContainer" unique_id=1688061391]
 transform = Transform3D(0.9999998, 0, 0, 0, 0.9999998, 0, 0, 0, 0.9999998, 0, 0.18260026, 0.057685792)
 target_position = Vector3(0, 0, -0.4)
 
-[node name="FingerFingy3" type="RayCast3D" parent="Grabpack/Pack/LeftHandContainer"]
+[node name="FingerFingy3" type="RayCast3D" parent="Grabpack/Pack/LeftHandContainer" unique_id=323196374]
 transform = Transform3D(0.9999998, 0, 0, 0, 0.9999998, 0, 0, 0, 0.9999998, -0.08934474, 0.16572404, 0.057685792)
 target_position = Vector3(0, 0, -0.4)
 
-[node name="RightHandContainer" type="Node3D" parent="Grabpack/Pack" groups=["RightHand"]]
+[node name="RightHandContainer" type="Node3D" parent="Grabpack/Pack" unique_id=1147582524 groups=["RightHand"]]
 process_priority = 100
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0.179951, 1.58969, -0.191673)
 top_level = true
 script = ExtResource("11_dkpta")
 
-[node name="Hands" type="Node3D" parent="Grabpack/Pack/RightHandContainer"]
+[node name="Hands" type="Node3D" parent="Grabpack/Pack/RightHandContainer" unique_id=1052812437]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0950627)
 
-[node name="RightWirePoint" type="Marker3D" parent="Grabpack/Pack/RightHandContainer/Hands"]
+[node name="RightWirePoint" type="Marker3D" parent="Grabpack/Pack/RightHandContainer/Hands" unique_id=2132544408]
 transform = Transform3D(-1, 8.74231e-08, -8.74229e-08, -8.74228e-08, -1, -3.78291e-06, -8.74233e-08, -3.78291e-06, 1, -0.000442624, 0.00319743, 0.00364476)
 
-[node name="Area3D" type="Area3D" parent="Grabpack/Pack/RightHandContainer/Hands" groups=["RightHandArea"]]
+[node name="Area3D" type="Area3D" parent="Grabpack/Pack/RightHandContainer/Hands" unique_id=226318534 groups=["RightHandArea"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0950627)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Grabpack/Pack/RightHandContainer/Hands/Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Grabpack/Pack/RightHandContainer/Hands/Area3D" unique_id=194152568]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.013, 0.086, 0.038)
 shape = SubResource("BoxShape3D_gvnt1")
 
-[node name="ItemPos" type="Marker3D" parent="Grabpack/Pack/RightHandContainer/Hands"]
+[node name="ItemPos" type="Marker3D" parent="Grabpack/Pack/RightHandContainer/Hands" unique_id=210160557]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0950627)
 
-[node name="HandMotionsAnimation" type="AnimationPlayer" parent="Grabpack/Pack/RightHandContainer"]
-libraries = {
-&"": SubResource("AnimationLibrary_f4lon")
-}
+[node name="HandMotionsAnimation" type="AnimationPlayer" parent="Grabpack/Pack/RightHandContainer" unique_id=77464231]
+libraries/ = SubResource("AnimationLibrary_f4lon")
 playback_default_blend_time = 0.1
 
-[node name="Timer" type="Timer" parent="Grabpack/Pack/RightHandContainer"]
+[node name="Timer" type="Timer" parent="Grabpack/Pack/RightHandContainer" unique_id=1937793942]
 wait_time = 0.2
 one_shot = true
 
-[node name="DirectionCast" type="RayCast3D" parent="Grabpack/Pack/RightHandContainer"]
+[node name="DirectionCast" type="RayCast3D" parent="Grabpack/Pack/RightHandContainer" unique_id=411145805]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0.0935527)
 
-[node name="FingerFingy" type="RayCast3D" parent="Grabpack/Pack/RightHandContainer"]
+[node name="FingerFingy" type="RayCast3D" parent="Grabpack/Pack/RightHandContainer" unique_id=1826093566]
 transform = Transform3D(0.9999998, 0, 0, 0, 0.9999998, 0, 0, 0, 0.9999998, 0, 0.18260026, 0.057685792)
 target_position = Vector3(0, 0, -0.4)
 
-[node name="FingerFingy3" type="RayCast3D" parent="Grabpack/Pack/RightHandContainer"]
+[node name="FingerFingy3" type="RayCast3D" parent="Grabpack/Pack/RightHandContainer" unique_id=136683183]
 transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, 0.08525199, 0.16599989, 0.058)
 target_position = Vector3(0, 0, -0.4)
 
-[node name="CanonLeft" type="AnimationPlayer" parent="Grabpack/Pack"]
-libraries = {
-&"": SubResource("AnimationLibrary_vx8o5")
-}
+[node name="CanonLeft" type="AnimationPlayer" parent="Grabpack/Pack" unique_id=4769467]
+libraries/ = SubResource("AnimationLibrary_vx8o5")
 
-[node name="CanonRight" type="AnimationPlayer" parent="Grabpack/Pack"]
+[node name="CanonRight" type="AnimationPlayer" parent="Grabpack/Pack" unique_id=2075983477]
 
-[node name="GrabpackAnimation" type="AnimationPlayer" parent="Grabpack/Pack"]
-libraries = {
-&"": SubResource("AnimationLibrary_y7oqx")
-}
-autoplay = "Idle"
+[node name="GrabpackAnimation" type="AnimationPlayer" parent="Grabpack/Pack" unique_id=1069516057]
+libraries/ = SubResource("AnimationLibrary_y7oqx")
+autoplay = &"Idle"
 
-[node name="AnimationTree" type="AnimationTree" parent="Grabpack/Pack"]
+[node name="AnimationTree" type="AnimationTree" parent="Grabpack/Pack" unique_id=1917989006]
 tree_root = SubResource("AnimationNodeBlendTree_286oo")
 anim_player = NodePath("../GrabpackAnimation")
 "parameters/TimeScale 2/scale" = 1.0
@@ -9168,32 +9200,32 @@ parameters/RaiseLower/blend_amount = 0.0
 parameters/LoweredPose/blend_amount = 1.0
 parameters/WalkType/blend_amount = 0.0
 
-[node name="LeftAutoCorrect" type="Area3D" parent="Grabpack/Pack" groups=["LeftHandCorrecter"]]
+[node name="LeftAutoCorrect" type="Area3D" parent="Grabpack/Pack" unique_id=458148498 groups=["LeftHandCorrecter"]]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0.0008, 1.606, -0.148)
 top_level = true
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Grabpack/Pack/LeftAutoCorrect"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Grabpack/Pack/LeftAutoCorrect" unique_id=1524751087]
 shape = SubResource("BoxShape3D_fhogf")
 disabled = true
 
-[node name="RightAutoCorrect" type="Area3D" parent="Grabpack/Pack" groups=["RightHandCorrecter"]]
+[node name="RightAutoCorrect" type="Area3D" parent="Grabpack/Pack" unique_id=350352015 groups=["RightHandCorrecter"]]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0.0008, 1.606, -0.148)
 top_level = true
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Grabpack/Pack/RightAutoCorrect"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Grabpack/Pack/RightAutoCorrect" unique_id=1756833559]
 shape = SubResource("BoxShape3D_fhogf")
 
-[node name="LeftWireSpecial" type="Node3D" parent="Grabpack/Pack"]
+[node name="LeftWireSpecial" type="Node3D" parent="Grabpack/Pack" unique_id=1404523482]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.3841858e-07, 0)
 top_level = true
 script = ExtResource("18_vx8o5")
 
-[node name="RightWireSpecial" type="Node3D" parent="Grabpack/Pack"]
+[node name="RightWireSpecial" type="Node3D" parent="Grabpack/Pack" unique_id=748116195]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.3841858e-07, 0)
 top_level = true
 script = ExtResource("18_vx8o5")
 
-[node name="LeftWireContainer" type="Node3D" parent="Grabpack/Pack" node_paths=PackedStringArray("hand_container", "wire_origin", "wire_point", "wire_fake")]
+[node name="LeftWireContainer" type="Node3D" parent="Grabpack/Pack" unique_id=193232089 node_paths=PackedStringArray("hand_container", "wire_origin", "wire_point", "wire_fake")]
 top_level = true
 script = ExtResource("11_gu6f8")
 hand_container = NodePath("../LeftHandContainer")
@@ -9201,7 +9233,7 @@ wire_origin = NodePath("../LayerWalk/CanonAttachLeft/LeftWireOrigin")
 wire_point = NodePath("../LeftHandContainer/Hands/LeftHandWirePoint")
 wire_fake = NodePath("../LeftHandFake")
 
-[node name="RightWireContainer" type="Node3D" parent="Grabpack/Pack" node_paths=PackedStringArray("hand_container", "wire_origin", "wire_point", "wire_fake")]
+[node name="RightWireContainer" type="Node3D" parent="Grabpack/Pack" unique_id=719831256 node_paths=PackedStringArray("hand_container", "wire_origin", "wire_point", "wire_fake")]
 top_level = true
 script = ExtResource("11_gu6f8")
 hand = true
@@ -9210,24 +9242,24 @@ wire_origin = NodePath("../LayerWalk/CanonAttachRight/RightWireOrigin")
 wire_point = NodePath("../RightHandContainer/Hands/RightWirePoint")
 wire_fake = NodePath("../RightHandFake")
 
-[node name="LeftHandFake" type="Marker3D" parent="Grabpack/Pack"]
+[node name="LeftHandFake" type="Marker3D" parent="Grabpack/Pack" unique_id=812142808]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.192, -0.45, -1.1625)
 
-[node name="RightHandFake" type="Marker3D" parent="Grabpack/Pack"]
+[node name="RightHandFake" type="Marker3D" parent="Grabpack/Pack" unique_id=712740386]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.188, -0.45, -1.1625)
 
-[node name="LengthCalculator" type="Node" parent="Grabpack/Pack"]
+[node name="LengthCalculator" type="Node" parent="Grabpack/Pack" unique_id=1474603773]
 script = ExtResource("12_8ynux")
 
-[node name="Neck" type="Node3D" parent="."]
+[node name="Neck" type="Node3D" parent="." unique_id=176592773]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 1.7, 0)
 
-[node name="RayCast3D" type="RayCast3D" parent="Neck"]
+[node name="RayCast3D" type="RayCast3D" parent="Neck" unique_id=827044524]
 transform = Transform3D(1, -1.23146e-09, -1.45519e-11, 1.23146e-09, 1, -2.79397e-09, 1.45519e-11, 2.79397e-09, 1, 0, 0, -0.01)
 visible = false
 target_position = Vector3(0, 0, -180)
 
-[node name="ItemRaycast" type="RayCast3D" parent="Neck" groups=["ItemRaycast"]]
+[node name="ItemRaycast" type="RayCast3D" parent="Neck" unique_id=99665489 groups=["ItemRaycast"]]
 transform = Transform3D(2.5, 7.88988e-10, -7.348e-19, -7.88988e-10, 2.5, -2.32831e-09, -2.3006e-24, 2.32831e-09, 2.5, 2.2044e-20, 0, 0.115)
 visible = false
 target_position = Vector3(0, 0, -2.25)
@@ -9235,24 +9267,24 @@ collision_mask = 2
 collide_with_areas = true
 debug_shape_custom_color = Color(0, 0, 1, 1)
 
-[node name="AirGrabPoint" type="Marker3D" parent="Neck"]
+[node name="AirGrabPoint" type="Marker3D" parent="Neck" unique_id=663478531]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -179.25)
 
-[node name="Camera3D" type="Camera3D" parent="Neck"]
-transform = Transform3D(0.9999022, 0.013973248, 5.837287e-07, -0.013973247, 0.99990225, -3.2780392e-07, -5.8825214e-07, 3.1961525e-07, 0.99999994, 0.002, -0.020999908, 0.16)
+[node name="Camera3D" type="Camera3D" parent="Neck" unique_id=619049896]
+transform = Transform3D(0.9999022, 0.013973247, 5.837287e-07, -0.013973246, 0.99990225, -3.2780392e-07, -5.8825214e-07, 3.1961525e-07, 0.99999994, 0.009503686, -0.012719631, 0.16000006)
 keep_aspect = 0
 current = true
 fov = 90.0
 script = ExtResource("21_lhliw")
 
-[node name="infront" type="Marker3D" parent="Neck/Camera3D"]
+[node name="infront" type="Marker3D" parent="Neck/Camera3D" unique_id=1336386702]
 transform = Transform3D(1, -8.66669e-34, 0, -8.57039e-34, 1, 0, 1.034e-26, 0, 1, 0, 0, -0.1)
 
-[node name="Flashlight" type="Node3D" parent="Neck/Camera3D"]
+[node name="Flashlight" type="Node3D" parent="Neck/Camera3D" unique_id=253652731]
 transform = Transform3D(1, -3.15595e-10, -8.08117e-25, 3.15595e-10, 1, 9.31323e-10, -2.9392e-19, -9.31323e-10, 1, 0, 0, -0.197)
 visible = false
 
-[node name="SpotLight3D" type="SpotLight3D" parent="Neck/Camera3D/Flashlight"]
+[node name="SpotLight3D" type="SpotLight3D" parent="Neck/Camera3D/Flashlight" unique_id=1269195216]
 transform = Transform3D(1, 3.673e-42, 1.54074e-33, 3.673e-42, 1, 0, 0, 0, 1, 0, 0, 0)
 light_energy = 4.0
 light_projector = ExtResource("21_t7sh4")
@@ -9261,115 +9293,115 @@ shadow_enabled = true
 spot_range = 20.0
 spot_angle = 37.5685
 
-[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Neck"]
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Neck" unique_id=1224420761]
 transform = Transform3D(-7.212381e-08, -0.82500005, 4.9173778e-08, 3.2109386e-07, -1.3965826e-13, 0.82500005, -0.82500005, 1.2129765e-07, 3.7026768e-07, 0.002, -0.020999908, 0.16)
 bone_name = "SCT_Camera"
 bone_idx = 2
 use_external_skeleton = true
 external_skeleton = NodePath("")
 
-[node name="StandingCollision" type="CollisionShape3D" parent="."]
+[node name="StandingCollision" type="CollisionShape3D" parent="." unique_id=1162981610]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
 shape = SubResource("CapsuleShape3D_vtle1")
 
-[node name="CrouchCollision" type="CollisionShape3D" parent="."]
+[node name="CrouchCollision" type="CollisionShape3D" parent="." unique_id=90287902]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("CapsuleShape3D_apopc")
 
-[node name="RayCast3D" type="RayCast3D" parent="."]
+[node name="RayCast3D" type="RayCast3D" parent="." unique_id=2145639792]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 target_position = Vector3(0, 0.78, 0)
 
-[node name="StepCast" type="RayCast3D" parent="."]
+[node name="StepCast" type="RayCast3D" parent="." unique_id=1379859164]
 target_position = Vector3(0, -0.15, 0)
 script = ExtResource("24_8mwp6")
 
-[node name="SoundManager" type="Node" parent="." groups=["SoundManager"]]
+[node name="SoundManager" type="Node" parent="." unique_id=1788004971 groups=["SoundManager"]]
 script = ExtResource("15_c6x0f")
 
-[node name="launch1" type="AudioStreamPlayer" parent="SoundManager"]
+[node name="launch1" type="AudioStreamPlayer" parent="SoundManager" unique_id=936396734]
 stream = ExtResource("24_jp1hh")
 bus = &"SFX"
 
-[node name="launch2" type="AudioStreamPlayer" parent="SoundManager"]
+[node name="launch2" type="AudioStreamPlayer" parent="SoundManager" unique_id=1669691411]
 stream = ExtResource("25_qs4pp")
 bus = &"SFX"
 
-[node name="launch3" type="AudioStreamPlayer" parent="SoundManager"]
+[node name="launch3" type="AudioStreamPlayer" parent="SoundManager" unique_id=1300168422]
 stream = ExtResource("26_iyprq")
 bus = &"SFX"
 
-[node name="retract1" type="AudioStreamPlayer" parent="SoundManager"]
+[node name="retract1" type="AudioStreamPlayer" parent="SoundManager" unique_id=177726345]
 stream = ExtResource("27_f4lon")
 bus = &"SFX"
 
-[node name="retract2" type="AudioStreamPlayer" parent="SoundManager"]
+[node name="retract2" type="AudioStreamPlayer" parent="SoundManager" unique_id=1494359727]
 stream = ExtResource("28_8ynux")
 bus = &"SFX"
 
-[node name="retract3" type="AudioStreamPlayer" parent="SoundManager"]
+[node name="retract3" type="AudioStreamPlayer" parent="SoundManager" unique_id=643800938]
 stream = ExtResource("29_d30e8")
 bus = &"SFX"
 
-[node name="switch_hand" type="AudioStreamPlayer" parent="SoundManager"]
+[node name="switch_hand" type="AudioStreamPlayer" parent="SoundManager" unique_id=468311881]
 stream = ExtResource("44_7x5p2")
 bus = &"SFX"
 
-[node name="cableloopleft" type="AudioStreamPlayer" parent="SoundManager"]
+[node name="cableloopleft" type="AudioStreamPlayer" parent="SoundManager" unique_id=1924197192]
 stream = ExtResource("35_6rl0i")
 bus = &"SFX"
 
-[node name="cableloopright" type="AudioStreamPlayer" parent="SoundManager"]
+[node name="cableloopright" type="AudioStreamPlayer" parent="SoundManager" unique_id=1030239823]
 stream = ExtResource("35_6rl0i")
 bus = &"SFX"
 
-[node name="sidelStep1" type="AudioStreamPlayer" parent="SoundManager"]
+[node name="sidelStep1" type="AudioStreamPlayer" parent="SoundManager" unique_id=1530289924]
 stream = ExtResource("41_7x5p2")
 bus = &"SFX"
 
-[node name="sidelStep2" type="AudioStreamPlayer" parent="SoundManager"]
+[node name="sidelStep2" type="AudioStreamPlayer" parent="SoundManager" unique_id=1206219058]
 stream = ExtResource("42_6eb1q")
 bus = &"SFX"
 
-[node name="sidelStep3" type="AudioStreamPlayer" parent="SoundManager"]
+[node name="sidelStep3" type="AudioStreamPlayer" parent="SoundManager" unique_id=628501870]
 stream = ExtResource("43_wvbyc")
 bus = &"SFX"
 
-[node name="switchhand" type="AudioStreamPlayer" parent="SoundManager"]
+[node name="switchhand" type="AudioStreamPlayer" parent="SoundManager" unique_id=125545716]
 stream = ExtResource("36_t7sh4")
 volume_db = -6.0
 bus = &"SFX"
 
-[node name="switchhand2" type="AudioStreamPlayer" parent="SoundManager"]
+[node name="switchhand2" type="AudioStreamPlayer" parent="SoundManager" unique_id=2019779852]
 stream = ExtResource("49_lhliw")
 volume_db = -6.0
 bus = &"SFX"
 
-[node name="collect" type="AudioStreamPlayer" parent="SoundManager"]
+[node name="collect" type="AudioStreamPlayer" parent="SoundManager" unique_id=836731115]
 stream = ExtResource("45_1kmt7")
 bus = &"SFX"
 
-[node name="flashlight" type="AudioStreamPlayer" parent="SoundManager"]
+[node name="flashlight" type="AudioStreamPlayer" parent="SoundManager" unique_id=449084336]
 stream = ExtResource("51_lhliw")
 bus = &"SFX"
 
-[node name="puzzlejingle" type="AudioStreamPlayer" parent="SoundManager"]
+[node name="puzzlejingle" type="AudioStreamPlayer" parent="SoundManager" unique_id=1146529410]
 stream = ExtResource("48_qns6m")
 bus = &"SFX"
 
-[node name="puzzlecomplete" type="AudioStreamPlayer" parent="SoundManager"]
+[node name="puzzlecomplete" type="AudioStreamPlayer" parent="SoundManager" unique_id=92303000]
 stream = ExtResource("49_fatyj")
 bus = &"SFX"
 
-[node name="Swing" type="AudioStreamPlayer" parent="SoundManager"]
+[node name="Swing" type="AudioStreamPlayer" parent="SoundManager" unique_id=1289286386]
 stream = ExtResource("46_286oo")
 bus = &"SFX"
 
-[node name="UI" type="CanvasLayer" parent="." groups=["HUD"]]
+[node name="UI" type="CanvasLayer" parent="." unique_id=1307745171 groups=["HUD"]]
 process_mode = 3
 script = ExtResource("37_f4lon")
 
-[node name="Grain" type="ColorRect" parent="UI"]
+[node name="Grain" type="ColorRect" parent="UI" unique_id=1922899898]
 visible = false
 material = SubResource("ShaderMaterial_w5pua")
 anchors_preset = 15
@@ -9379,7 +9411,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="Vignette" type="TextureRect" parent="UI"]
+[node name="Vignette" type="TextureRect" parent="UI" unique_id=1028568123]
 visible = false
 anchors_preset = 15
 anchor_right = 1.0
@@ -9393,7 +9425,7 @@ grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("65_lfyh2")
 
-[node name="DisplayedFPS" type="Label" parent="UI"]
+[node name="DisplayedFPS" type="Label" parent="UI" unique_id=1268216451]
 visible = false
 offset_left = 1804.0
 offset_top = 19.0
@@ -9405,12 +9437,12 @@ theme_override_font_sizes/font_size = 24
 text = "FPS: 120"
 horizontal_alignment = 2
 
-[node name="objective" type="Node2D" parent="UI"]
+[node name="objective" type="Node2D" parent="UI" unique_id=959924575]
 visible = false
 modulate = Color(1, 1, 1, 0)
 position = Vector2(960, 52)
 
-[node name="obj" type="Label" parent="UI/objective"]
+[node name="obj" type="Label" parent="UI/objective" unique_id=327193216]
 offset_left = -97.0
 offset_top = 75.0
 offset_right = 97.0
@@ -9423,7 +9455,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="obj_msg" type="Label" parent="UI/objective"]
+[node name="obj_msg" type="Label" parent="UI/objective" unique_id=957230967]
 modulate = Color(1, 1, 1, 0)
 offset_left = -501.0
 offset_top = 98.0
@@ -9437,22 +9469,22 @@ text = "I AM IN BETWEEN THE WALLS :O"
 horizontal_alignment = 1
 uppercase = true
 
-[node name="obj_sound" type="AudioStreamPlayer" parent="UI/objective"]
+[node name="obj_sound" type="AudioStreamPlayer" parent="UI/objective" unique_id=1279510360]
 stream = ExtResource("49_wvbyc")
 volume_db = 1.0
 
-[node name="tutorial" type="Node2D" parent="UI"]
+[node name="tutorial" type="Node2D" parent="UI" unique_id=1595542734]
 visible = false
 modulate = Color(1, 1, 1, 0)
 position = Vector2(1920, 239)
 
-[node name="gradient" type="TextureRect" parent="UI/tutorial"]
+[node name="gradient" type="TextureRect" parent="UI/tutorial" unique_id=1423176905]
 offset_left = -3.0
 offset_right = 611.0
 offset_bottom = 205.0
 texture = SubResource("GradientTexture1D_6eb1q")
 
-[node name="tutorial" type="Label" parent="UI/tutorial"]
+[node name="tutorial" type="Label" parent="UI/tutorial" unique_id=978274335]
 offset_left = 26.0
 offset_top = 25.0
 offset_right = 526.0
@@ -9462,14 +9494,14 @@ theme_override_fonts/font = ExtResource("47_fhogf")
 theme_override_font_sizes/font_size = 29
 text = "TUTORIAL"
 
-[node name="seperator" type="HSeparator" parent="UI/tutorial"]
+[node name="seperator" type="HSeparator" parent="UI/tutorial" unique_id=426984548]
 offset_left = 26.0
 offset_top = 61.0
 offset_right = 611.0
 offset_bottom = 72.0
 theme_override_styles/separator = SubResource("StyleBoxLine_7x5p2")
 
-[node name="text" type="Label" parent="UI/tutorial"]
+[node name="text" type="Label" parent="UI/tutorial" unique_id=48836800]
 offset_left = 26.0
 offset_top = 74.0
 offset_right = 530.0
@@ -9481,16 +9513,16 @@ text = "Place a Battery into the Reciever to
 Restore Power"
 autowrap_mode = 2
 
-[node name="tooltip" type="AudioStreamPlayer" parent="UI/tutorial"]
+[node name="tooltip" type="AudioStreamPlayer" parent="UI/tutorial" unique_id=1124968004]
 stream = ExtResource("50_gvnt1")
 
-[node name="tooltip" type="Node2D" parent="UI"]
+[node name="tooltip" type="Node2D" parent="UI" unique_id=1792160320]
 visible = false
 modulate = Color(1, 1, 1, 0)
 position = Vector2(960, 1200)
 metadata/_edit_use_anchors_ = true
 
-[node name="tooltiplabel" type="Label" parent="UI/tooltip"]
+[node name="tooltiplabel" type="Label" parent="UI/tooltip" unique_id=912594478]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -9509,28 +9541,28 @@ text = "Oh"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="saving" type="Node2D" parent="UI"]
+[node name="saving" type="Node2D" parent="UI" unique_id=1948414613]
 visible = false
 modulate = Color(1, 1, 1, 0)
 position = Vector2(83, 57)
 
-[node name="Sprite2D" type="Sprite2D" parent="UI/saving"]
+[node name="Sprite2D" type="Sprite2D" parent="UI/saving" unique_id=1222565731]
 position = Vector2(-1, 54)
 scale = Vector2(0.21125026, 0.2128904)
 texture = ExtResource("51_f8nak")
 
-[node name="crosshair" type="Node2D" parent="UI"]
+[node name="crosshair" type="Node2D" parent="UI" unique_id=1563751104]
 position = Vector2(960, 540)
 scale = Vector2(0.54, 0.54)
 script = ExtResource("38_8ynux")
 
-[node name="CustomCrosshair" type="Sprite2D" parent="UI/crosshair"]
+[node name="CustomCrosshair" type="Sprite2D" parent="UI/crosshair" unique_id=1688023930]
 visible = false
 modulate = Color(0.57254905, 0.57254905, 0.57254905, 0.9490196)
 scale = Vector2(0.74, 0.74)
 texture = ExtResource("51_lfyh2")
 
-[node name="CrossHair" type="ColorRect" parent="UI/crosshair"]
+[node name="CrossHair" type="ColorRect" parent="UI/crosshair" unique_id=2067035335]
 material = SubResource("ShaderMaterial_iyprq")
 offset_left = -45.0
 offset_top = 45.0
@@ -9539,72 +9571,70 @@ offset_bottom = 135.0
 rotation = -1.5708
 mouse_filter = 2
 
-[node name="Centre" type="Sprite2D" parent="UI/crosshair/CrossHair"]
+[node name="Centre" type="Sprite2D" parent="UI/crosshair/CrossHair" unique_id=476768542]
 modulate = Color(0.5058824, 0.5058824, 0.5058824, 0.9490196)
 position = Vector2(45, 45)
 rotation = 1.5708
 scale = Vector2(0.74, 0.74)
 texture = ExtResource("52_lfyh2")
 
-[node name="damage" type="Node2D" parent="UI"]
+[node name="damage" type="Node2D" parent="UI" unique_id=445154184]
 script = ExtResource("55_11slg")
 
-[node name="Damage" type="Sprite2D" parent="UI/damage"]
+[node name="Damage" type="Sprite2D" parent="UI/damage" unique_id=60221367]
 modulate = Color(1, 0, 0, 0)
 position = Vector2(957.5, 533.25)
 scale = Vector2(1.49316, 1.24686)
 texture = ExtResource("55_11wp0")
 
-[node name="GasMask" type="Node2D" parent="UI"]
+[node name="GasMask" type="Node2D" parent="UI" unique_id=925351733]
 script = ExtResource("54_soeee")
 
-[node name="BrokenEquip" type="AnimatedSprite2D" parent="UI/GasMask"]
+[node name="BrokenEquip" type="AnimatedSprite2D" parent="UI/GasMask" unique_id=1489399825]
 visible = false
 position = Vector2(960, 540)
 scale = Vector2(5.6305, 5.29412)
 sprite_frames = SubResource("SpriteFrames_6xaqw")
 animation = &"equip"
 
-[node name="BrokenOverlay" type="Sprite2D" parent="UI/GasMask"]
+[node name="BrokenOverlay" type="Sprite2D" parent="UI/GasMask" unique_id=9088900]
 visible = false
 position = Vector2(962, 533)
 scale = Vector2(1.00208, 1.01296)
 texture = ExtResource("56_qns6m")
 
-[node name="NormalOverlay" type="Sprite2D" parent="UI/GasMask"]
+[node name="NormalOverlay" type="Sprite2D" parent="UI/GasMask" unique_id=519742484]
 visible = false
 position = Vector2(948, 1181)
 scale = Vector2(1.00208, 1.01296)
 texture = ExtResource("57_fatyj")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/GasMask"]
-libraries = {
-&"": SubResource("AnimationLibrary_k84o0")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/GasMask" unique_id=1108071598]
+libraries/ = SubResource("AnimationLibrary_k84o0")
 
-[node name="ColorRect" type="ColorRect" parent="UI/GasMask"]
+[node name="ColorRect" type="ColorRect" parent="UI/GasMask" unique_id=2103102827]
 visible = false
 offset_right = 1920.0
 offset_bottom = 1080.0
 mouse_filter = 2
 color = Color(0, 0, 0, 0)
 
-[node name="Breathing" type="AudioStreamPlayer" parent="UI/GasMask"]
+[node name="Breathing" type="AudioStreamPlayer" parent="UI/GasMask" unique_id=2069235100]
 stream = ExtResource("58_3bga3")
 
-[node name="EquipSfx" type="AudioStreamPlayer" parent="UI/GasMask"]
+[node name="EquipSfx" type="AudioStreamPlayer" parent="UI/GasMask" unique_id=728316326]
 stream = ExtResource("59_lhliw")
 
-[node name="UnequipSfx" type="AudioStreamPlayer" parent="UI/GasMask"]
+[node name="UnequipSfx" type="AudioStreamPlayer" parent="UI/GasMask" unique_id=1361226214]
 stream = ExtResource("60_11wp0")
 
-[node name="Timer" type="Timer" parent="UI/GasMask"]
+[node name="Timer" type="Timer" parent="UI/GasMask" unique_id=2008552266]
 one_shot = true
 
-[node name="Counter" type="Node2D" parent="UI/GasMask"]
+[node name="Counter" type="Node2D" parent="UI/GasMask" unique_id=1675307996]
 visible = false
 
-[node name="Label" type="Label" parent="UI/GasMask/Counter"]
+[node name="Label" type="Label" parent="UI/GasMask/Counter" unique_id=234156463]
 offset_left = 1566.0
 offset_top = 890.0
 offset_right = 1656.0
@@ -9614,7 +9644,7 @@ theme_override_colors/font_color = Color(0, 0.694118, 1, 1)
 theme_override_font_sizes/font_size = 66
 text = "O2"
 
-[node name="Count" type="Label" parent="UI/GasMask/Counter"]
+[node name="Count" type="Label" parent="UI/GasMask/Counter" unique_id=1617920903]
 offset_left = 1674.57
 offset_top = 873.0
 offset_right = 1833.57
@@ -9625,30 +9655,22 @@ theme_override_fonts/font = ExtResource("51_gvnt1")
 theme_override_font_sizes/font_size = 136
 text = "49"
 
-[node name="SelectionWheel" parent="UI" instance=ExtResource("56_fatyj")]
+[node name="SelectionWheel" parent="UI" unique_id=1622269545 instance=ExtResource("56_fatyj")]
 visible = false
 
-[node name="ObjectiveAnimation" type="AnimationPlayer" parent="UI"]
-libraries = {
-&"": SubResource("AnimationLibrary_7x5p2")
-}
+[node name="ObjectiveAnimation" type="AnimationPlayer" parent="UI" unique_id=1958302942]
+libraries/ = SubResource("AnimationLibrary_7x5p2")
 
-[node name="TutorialAnimation" type="AnimationPlayer" parent="UI"]
-libraries = {
-&"": SubResource("AnimationLibrary_wvbyc")
-}
+[node name="TutorialAnimation" type="AnimationPlayer" parent="UI" unique_id=289997203]
+libraries/ = SubResource("AnimationLibrary_wvbyc")
 
-[node name="TooltipAnimation" type="AnimationPlayer" parent="UI"]
-libraries = {
-&"": SubResource("AnimationLibrary_1kmt7")
-}
+[node name="TooltipAnimation" type="AnimationPlayer" parent="UI" unique_id=1699682461]
+libraries/ = SubResource("AnimationLibrary_1kmt7")
 
-[node name="SavingAnimation" type="AnimationPlayer" parent="UI"]
-libraries = {
-&"": SubResource("AnimationLibrary_ac8n6")
-}
+[node name="SavingAnimation" type="AnimationPlayer" parent="UI" unique_id=2136954656]
+libraries/ = SubResource("AnimationLibrary_ac8n6")
 
-[node name="inventory" type="Control" parent="UI"]
+[node name="inventory" type="Control" parent="UI" unique_id=1828799678]
 process_mode = 3
 visible = false
 layout_mode = 3
@@ -9660,7 +9682,7 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("53_yxu6j")
 
-[node name="ColorRect2" type="ColorRect" parent="UI/inventory"]
+[node name="ColorRect2" type="ColorRect" parent="UI/inventory" unique_id=484464773]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -9669,7 +9691,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.764706)
 
-[node name="ColorRect" type="TextureRect" parent="UI/inventory"]
+[node name="ColorRect" type="TextureRect" parent="UI/inventory" unique_id=128636185]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -9679,10 +9701,10 @@ grow_vertical = 2
 texture = ExtResource("54_68syb")
 expand_mode = 1
 
-[node name="Tabs" type="Node2D" parent="UI/inventory"]
+[node name="Tabs" type="Node2D" parent="UI/inventory" unique_id=159262274]
 position = Vector2(62, 55)
 
-[node name="Keys" type="Button" parent="UI/inventory/Tabs"]
+[node name="Keys" type="Button" parent="UI/inventory/Tabs" unique_id=1747144904]
 offset_left = 118.0
 offset_top = 19.0
 offset_right = 193.0
@@ -9693,7 +9715,7 @@ icon = ExtResource("55_qas3k")
 expand_icon = true
 script = ExtResource("55_kdg72")
 
-[node name="VHS" type="Button" parent="UI/inventory/Tabs"]
+[node name="VHS" type="Button" parent="UI/inventory/Tabs" unique_id=936929651]
 modulate = Color(0.4627451, 0.49803922, 0.5294118, 1)
 offset_left = 196.0
 offset_top = 19.333336
@@ -9705,7 +9727,7 @@ icon = ExtResource("57_kdg72")
 expand_icon = true
 script = ExtResource("55_kdg72")
 
-[node name="Notes" type="Button" parent="UI/inventory/Tabs"]
+[node name="Notes" type="Button" parent="UI/inventory/Tabs" unique_id=936602620]
 modulate = Color(0.4627451, 0.49803922, 0.5294118, 1)
 offset_left = 274.0
 offset_top = 19.0
@@ -9717,7 +9739,7 @@ icon = ExtResource("56_ntwt4")
 expand_icon = true
 script = ExtResource("55_kdg72")
 
-[node name="Equipment" type="Button" parent="UI/inventory/Tabs"]
+[node name="Equipment" type="Button" parent="UI/inventory/Tabs" unique_id=2043839507]
 modulate = Color(0.4627451, 0.49803922, 0.5294118, 1)
 offset_left = 352.0
 offset_top = 19.0
@@ -9729,13 +9751,13 @@ icon = ExtResource("58_qpoj2")
 expand_icon = true
 script = ExtResource("55_kdg72")
 
-[node name="Screenshot2025-03-02171422" type="Sprite2D" parent="UI/inventory/Tabs"]
+[node name="Screenshot2025-03-02171422" type="Sprite2D" parent="UI/inventory/Tabs" unique_id=583210152]
 visible = false
 position = Vector2(895, 486)
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("66_t7sh4")
 
-[node name="Q" type="Label" parent="UI/inventory/Tabs"]
+[node name="Q" type="Label" parent="UI/inventory/Tabs" unique_id=1784804735]
 offset_left = 3.0
 offset_top = 19.0
 offset_right = 115.0
@@ -9749,7 +9771,7 @@ text = "Q"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Q2" type="Label" parent="UI/inventory/Tabs"]
+[node name="Q2" type="Label" parent="UI/inventory/Tabs" unique_id=223132275]
 offset_left = 432.0
 offset_top = 19.0
 offset_right = 539.0
@@ -9762,7 +9784,7 @@ text = "E"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="EBG" type="TextureRect" parent="UI/inventory/Tabs"]
+[node name="EBG" type="TextureRect" parent="UI/inventory/Tabs" unique_id=1975253030]
 modulate = Color(0.33035854, 0.36006927, 0.38554204, 1)
 offset_left = 431.0
 offset_top = 19.0
@@ -9770,28 +9792,28 @@ offset_right = 694.0
 offset_bottom = 94.0
 texture = ExtResource("66_11slg")
 
-[node name="TitleSeperator" type="HSeparator" parent="UI/inventory/Tabs"]
+[node name="TitleSeperator" type="HSeparator" parent="UI/inventory/Tabs" unique_id=1951894724]
 offset_left = 620.0
 offset_top = 72.0
 offset_right = 1774.0
 offset_bottom = 76.0
 theme_override_styles/separator = SubResource("StyleBoxLine_uvbbp")
 
-[node name="TitleSeperator2" type="HSeparator" parent="UI/inventory/Tabs"]
+[node name="TitleSeperator2" type="HSeparator" parent="UI/inventory/Tabs" unique_id=1961648689]
 offset_left = 1.0
 offset_top = 899.0
 offset_right = 1790.0
 offset_bottom = 928.0
 theme_override_styles/separator = SubResource("StyleBoxLine_uvbbp")
 
-[node name="TabIndecator" type="HSeparator" parent="UI/inventory/Tabs"]
+[node name="TabIndecator" type="HSeparator" parent="UI/inventory/Tabs" unique_id=624748540]
 offset_left = 118.0
 offset_top = 91.0
 offset_right = 193.0
 offset_bottom = 106.0
 theme_override_styles/separator = SubResource("StyleBoxLine_3e3ym")
 
-[node name="backSF3" type="Button" parent="UI/inventory/Tabs"]
+[node name="backSF3" type="Button" parent="UI/inventory/Tabs" unique_id=1065620295]
 offset_left = 1696.0
 offset_top = 954.0
 offset_right = 1894.0769
@@ -9808,7 +9830,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_ca054")
 text = "BACK"
 icon = ExtResource("74_fhogf")
 
-[node name="read" type="Button" parent="UI/inventory/Tabs"]
+[node name="read" type="Button" parent="UI/inventory/Tabs" unique_id=1895525026]
 offset_left = 1537.0
 offset_top = 954.0
 offset_right = 1808.1536
@@ -9825,20 +9847,20 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_0f4m7")
 text = "Read Note"
 icon = ExtResource("75_286oo")
 
-[node name="section" type="Node2D" parent="UI/inventory"]
+[node name="section" type="Node2D" parent="UI/inventory" unique_id=872491076]
 position = Vector2(0, 109)
 
-[node name="Node2D" type="Node2D" parent="UI/inventory/section"]
+[node name="Node2D" type="Node2D" parent="UI/inventory/section" unique_id=1455504189]
 modulate = Color(1, 1, 1, 0)
 
-[node name="HSeparator" type="HSeparator" parent="UI/inventory/section/Node2D"]
+[node name="HSeparator" type="HSeparator" parent="UI/inventory/section/Node2D" unique_id=359629221]
 offset_left = -3.0
 offset_top = 184.0
 offset_right = 582.0
 offset_bottom = 189.0
 theme_override_styles/separator = SubResource("StyleBoxLine_gxi5p")
 
-[node name="title" type="Label" parent="UI/inventory/section/Node2D"]
+[node name="title" type="Label" parent="UI/inventory/section/Node2D" unique_id=1007186681]
 offset_top = 90.0
 offset_right = 584.0
 offset_bottom = 200.0
@@ -9852,7 +9874,7 @@ text = "Notes"
 horizontal_alignment = 2
 uppercase = true
 
-[node name="decription" type="Label" parent="UI/inventory/section"]
+[node name="decription" type="Label" parent="UI/inventory/section" unique_id=1679533834]
 offset_left = 1143.0
 offset_top = 698.0
 offset_right = 1830.0
@@ -9869,7 +9891,7 @@ vertical_alignment = 1
 autowrap_mode = 2
 uppercase = true
 
-[node name="Selected" type="VSeparator" parent="UI/inventory/section"]
+[node name="Selected" type="VSeparator" parent="UI/inventory/section" unique_id=1857191350]
 visible = false
 offset_left = 169.0
 offset_top = 223.0
@@ -9877,44 +9899,44 @@ offset_right = 179.0
 offset_bottom = 267.0
 theme_override_styles/separator = SubResource("StyleBoxLine_yxu6j")
 
-[node name="item_image" type="MeshInstance2D" parent="UI/inventory/section"]
+[node name="item_image" type="MeshInstance2D" parent="UI/inventory/section" unique_id=282294523]
 position = Vector2(1490, 376)
 scale = Vector2(552, 524)
 mesh = SubResource("QuadMesh_68syb")
 texture = ExtResource("61_x0uyb")
 
-[node name="buttons" type="Node2D" parent="UI/inventory/section"]
+[node name="buttons" type="Node2D" parent="UI/inventory/section" unique_id=271457262]
 position = Vector2(16, 205)
 
-[node name="ScrollContainer" type="ScrollContainer" parent="UI/inventory/section/buttons"]
+[node name="ScrollContainer" type="ScrollContainer" parent="UI/inventory/section/buttons" unique_id=216806620]
 offset_left = 164.0
 offset_top = 18.0
 offset_right = 940.0
 offset_bottom = 615.0
 theme = SubResource("Theme_t7sh4")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/inventory/section/buttons/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/inventory/section/buttons/ScrollContainer" unique_id=1689055904]
 layout_mode = 2
 theme_override_constants/separation = 3
 
-[node name="InvButton" parent="UI/inventory/section/buttons/ScrollContainer/VBoxContainer" instance=ExtResource("60_mdkl3")]
+[node name="InvButton" parent="UI/inventory/section/buttons/ScrollContainer/VBoxContainer" unique_id=1464209378 instance=ExtResource("60_mdkl3")]
 layout_mode = 2
 toggle_mode = true
 button_pressed = true
 text = "Caution: This is a TEST!"
 
-[node name="Reading" type="Panel" parent="UI/inventory/section"]
+[node name="Reading" type="Panel" parent="UI/inventory/section" unique_id=1753020614]
 visible = false
 offset_top = -112.0
 offset_right = 1920.0
 offset_bottom = 971.0
 
-[node name="Background" type="Sprite2D" parent="UI/inventory/section/Reading"]
+[node name="Background" type="Sprite2D" parent="UI/inventory/section/Reading" unique_id=412858462]
 position = Vector2(962, 541.5)
 scale = Vector2(1.00208, 1.00278)
 texture = ExtResource("65_lfyh2")
 
-[node name="notetitle" type="Label" parent="UI/inventory/section/Reading"]
+[node name="notetitle" type="Label" parent="UI/inventory/section/Reading" unique_id=1176964297]
 layout_mode = 0
 offset_top = 123.0
 offset_right = 1924.0
@@ -9925,7 +9947,7 @@ text = "Experiment 1006"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="notecontent" type="Label" parent="UI/inventory/section/Reading"]
+[node name="notecontent" type="Label" parent="UI/inventory/section/Reading" unique_id=733243986]
 layout_mode = 0
 offset_left = 394.0
 offset_top = 257.0
@@ -9937,7 +9959,7 @@ text = "Experiment 1006"
 horizontal_alignment = 1
 autowrap_mode = 2
 
-[node name="Seperator" type="HSeparator" parent="UI/inventory/section/Reading"]
+[node name="Seperator" type="HSeparator" parent="UI/inventory/section/Reading" unique_id=277249067]
 layout_mode = 0
 offset_left = 557.0
 offset_top = 186.0
@@ -9945,7 +9967,7 @@ offset_right = 1363.0
 offset_bottom = 245.0
 theme_override_styles/separator = SubResource("StyleBoxLine_soeee")
 
-[node name="Button" type="Button" parent="UI/inventory/section/Reading"]
+[node name="Button" type="Button" parent="UI/inventory/section/Reading" unique_id=2026286913]
 layout_mode = 0
 offset_left = 1702.0
 offset_top = 982.0
@@ -9956,27 +9978,25 @@ theme_override_font_sizes/font_size = 30
 text = "Back"
 flat = true
 
-[node name="Open" type="AudioStreamPlayer" parent="UI/inventory"]
+[node name="Open" type="AudioStreamPlayer" parent="UI/inventory" unique_id=640501260]
 stream = ExtResource("58_ntwt4")
 
-[node name="Close" type="AudioStreamPlayer" parent="UI/inventory"]
+[node name="Close" type="AudioStreamPlayer" parent="UI/inventory" unique_id=761142329]
 stream = ExtResource("63_68syb")
 
-[node name="Press" type="AudioStreamPlayer" parent="UI/inventory"]
+[node name="Press" type="AudioStreamPlayer" parent="UI/inventory" unique_id=55435130]
 stream = ExtResource("64_x0uyb")
 
-[node name="Switch" type="AudioStreamPlayer" parent="UI/inventory"]
+[node name="Switch" type="AudioStreamPlayer" parent="UI/inventory" unique_id=752530478]
 stream = ExtResource("65_68syb")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/inventory"]
-libraries = {
-&"": SubResource("AnimationLibrary_ppx2g")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/inventory" unique_id=421498560]
+libraries/ = SubResource("AnimationLibrary_ppx2g")
 
-[node name="Pause" parent="UI" instance=ExtResource("68_pqfba")]
+[node name="Pause" parent="UI" unique_id=1517995750 instance=ExtResource("68_pqfba")]
 visible = false
 
-[node name="HookController" type="Node" parent="." node_paths=PackedStringArray("hook_raycast", "player_body")]
+[node name="HookController" type="Node" parent="." unique_id=960098235 node_paths=PackedStringArray("hook_raycast", "player_body")]
 script = ExtResource("67_x0uyb")
 hook_raycast = NodePath("../Neck/RayCast3D")
 player_body = NodePath("..")

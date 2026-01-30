@@ -199,16 +199,13 @@ func _physics_process(delta: float) -> void:
 				jump_vel.y = 9.0
 	
 	if not left_hand.hand_attached or not right_hand.hand_attached:
-		# Simulate the new position
 		var max_total_length: float = length_calculator.max_length
-		var desired_velocity: Vector3 = velocity  # Example speed
-		#var current_position = global_position
+		var desired_velocity: Vector3 = velocity
 		
 		wire_1_length = left_wire_container.get_wire_distance()
 		wire_2_length = right_wire_container.get_wire_distance()
 		var total_length: float = wire_1_length + wire_2_length
-		
-		# Prevent exceeding max length
+
 		if total_length > max_total_length:
 			var hand_limits: bool = false
 			if left_hand.hand_travelling:
@@ -219,17 +216,15 @@ func _physics_process(delta: float) -> void:
 				hand_limits = true
 			if not hand_limits:
 				var excess_length: float = total_length - max_total_length
-		
-				# Find the direction toward the center point between anchors
+				
 				var direction_to_center: Vector3 = ((left_wire_container.get_wire_second() + right_wire_container.get_wire_second()) / 2 - global_position).normalized()
 		
-				# Apply a correction that keeps the player within the allowed range
+				
 				global_position += direction_to_center * excess_length
 		
-				# Stop movement when max length is reached
 				velocity = Vector3.ZERO  
 		else:
-			# Apply movement normally if within bounds
+			
 			velocity.x = desired_velocity.x
 			velocity.z = desired_velocity.z
 
@@ -268,7 +263,6 @@ func _jump(delta: float) -> Vector3:
 	if jumping:
 		if special_jump:
 			jump_vel = Vector3(0, sqrt(4 * special_jump_height * gravity), 0)
-			animation_manager.jump()
 		elif is_on_floor():
 			var can_jump: bool = true
 			if crouch_cast.is_colliding():

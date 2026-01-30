@@ -1,4 +1,4 @@
-[gd_resource type="Compositor" script_class="MotionBlurCompositor" load_steps=16 format=3 uid="uid://cojs02qunkdeq"]
+[gd_resource type="Compositor" script_class="MotionBlurCompositor" format=3 uid="uid://cojs02qunkdeq"]
 
 [ext_resource type="Resource" uid="uid://cslvcweyejh3c" path="res://addons/SphynxMotionBlurToolkit/PreBlurProcessing/default_camera_movement_component.tres" id="1_vfkts"]
 [ext_resource type="Resource" uid="uid://iru8ynu04i00" path="res://addons/SphynxMotionBlurToolkit/PreBlurProcessing/default_camera_rotation_component.tres" id="2_kie83"]

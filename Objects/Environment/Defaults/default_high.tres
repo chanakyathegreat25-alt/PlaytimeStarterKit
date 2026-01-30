@@ -1,4 +1,4 @@
-[gd_resource type="Environment" load_steps=4 format=3 uid="uid://cdjq6e3pcv5ov"]
+[gd_resource type="Environment" format=3 uid="uid://cdjq6e3pcv5ov"]
 
 [ext_resource type="CompressedTexture3D" uid="uid://yw7ywog8r1h0" path="res://Decoration/Correction/LUT_01_LiftControlRoom_Basic_v02.png" id="1_25wia"]
 
@@ -22,7 +22,7 @@ sdfgi_energy = 40.515
 glow_enabled = true
 glow_bloom = 0.3
 volumetric_fog_enabled = true
-volumetric_fog_density = 0.035
+volumetric_fog_density = 0.023
 volumetric_fog_albedo = Color(0.81418717, 0.92133707, 0.99999994, 1)
 adjustment_enabled = true
 adjustment_brightness = 0.8

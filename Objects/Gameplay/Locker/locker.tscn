@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=4 uid="uid://b3of7j842y6tj"]
+[gd_scene format=4 uid="uid://b3of7j842y6tj"]
 
 [ext_resource type="Script" uid="uid://cou8wp5e4ceqx" path="res://Objects/Gameplay/Locker/locker.gd" id="1_8pq60"]
 [ext_resource type="Texture2D" uid="uid://dxbagj2rjxkim" path="res://Objects/Gameplay/Locker/Mesh/HuggyLocker_Image_0.png" id="2_f76xn"]
@@ -73,6 +73,49 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_kyopi"]
+resource_name = "LockerShake"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bang1")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.16666667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Bang2")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Skeleton3D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.16666666, 0.23333333, 0.3, 0.36666667, 0.43333334),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-3.13916e-07, 4.3711413e-08, -4.37114e-08), Vector3(0, 0, 0.017453292), Vector3(-3.13916e-07, 4.3711413e-08, -4.37114e-08), Vector3(0, 0, 0.017453292), Vector3(-3.13916e-07, 4.3711413e-08, -4.37114e-08)]
 }
 
 [sub_resource type="Animation" id="Animation_ug7vc"]
@@ -202,49 +245,6 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector3(-3.13916e-07, 4.3711413e-08, -4.37114e-08)]
-}
-
-[sub_resource type="Animation" id="Animation_kyopi"]
-resource_name = "LockerShake"
-tracks/0/type = "method"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Bang1")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.16666667),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [0.0],
-"method": &"play"
-}]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Bang2")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.3),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [0.0],
-"method": &"play"
-}]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Skeleton3D:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.16666666, 0.23333333, 0.3, 0.36666667, 0.43333334),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(-3.13916e-07, 4.3711413e-08, -4.37114e-08), Vector3(0, 0, 0.017453292), Vector3(-3.13916e-07, 4.3711413e-08, -4.37114e-08), Vector3(0, 0, 0.017453292), Vector3(-3.13916e-07, 4.3711413e-08, -4.37114e-08)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_epxqx"]
@@ -447,16 +447,14 @@ _data = {
 &"loop": SubResource("Animation_f76xn")
 }
 
-[node name="Locker" type="StaticBody3D"]
+[node name="Locker" type="StaticBody3D" unique_id=1484328931]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
 script = ExtResource("1_8pq60")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_epxqx")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1810239682]
+libraries/ = SubResource("AnimationLibrary_epxqx")
 
-[node name="Skeleton3D" type="Skeleton3D" parent="."]
+[node name="Skeleton3D" type="Skeleton3D" parent="." unique_id=1743637867]
 transform = Transform3D(1, 4.3711385e-08, 4.3711413e-08, -4.37114e-08, 1, 3.13916e-07, -4.37114e-08, -3.13916e-07, 1, 0, 0, 0)
 bones/0/name = "_rootJoint"
 bones/0/parent = -1
@@ -501,41 +499,42 @@ bones/5/position = Vector3(0.269581, -1.26162, -0.409984)
 bones/5/rotation = Quaternion(1.54111e-07, 3.41903e-09, 5.26909e-16, 1)
 bones/5/scale = Vector3(1, 1, 1)
 
-[node name="Object_13" type="MeshInstance3D" parent="Skeleton3D"]
+[node name="Object_13" type="MeshInstance3D" parent="Skeleton3D" unique_id=1015044519]
 mesh = SubResource("ArrayMesh_r0iav")
 skin = SubResource("Skin_agvse")
 
-[node name="Object_14" type="MeshInstance3D" parent="Skeleton3D"]
+[node name="Object_14" type="MeshInstance3D" parent="Skeleton3D" unique_id=1706919227]
 mesh = SubResource("ArrayMesh_fjm4l")
 skin = SubResource("Skin_agvse")
 
-[node name="PlayerExit" type="Marker3D" parent="."]
+[node name="PlayerExit" type="Marker3D" parent="." unique_id=531909959]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 1.2)
 
-[node name="NpcPos" type="Marker3D" parent="."]
+[node name="NpcPos" type="Marker3D" parent="." unique_id=1118650777]
 transform = Transform3D(-1, 0, 2.5351817e-06, 0, 1, 0, -2.5351817e-06, 0, -1, 8.74228e-09, 0, 1.4)
 
-[node name="CameraStart" type="Marker3D" parent="."]
+[node name="CameraStart" type="Marker3D" parent="." unique_id=739535073]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 1.2)
 
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1466907130]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.38419e-07, 1.6, 1.2)
+keep_aspect = 0
 
-[node name="BasicInteraction" type="Area3D" parent="."]
+[node name="BasicInteraction" type="Area3D" parent="." unique_id=2136257076]
 script = ExtResource("5_8werv")
 metadata/_custom_type_script = "uid://cp2nj828ny1um"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="BasicInteraction"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BasicInteraction" unique_id=830309410]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.38419e-06, 1.2, 0.3)
 shape = SubResource("BoxShape3D_qdcnh")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1129463561]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
 shape = SubResource("BoxShape3D_6h05t")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1615244165]
 
-[node name="Label" type="Label" parent="CanvasLayer"]
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=1766546381]
 visible = false
 modulate = Color(1, 1, 1, 0)
 offset_left = 5.0
@@ -549,45 +548,43 @@ theme_override_font_sizes/font_size = 31
 text = "HOLD SPACE TO HOLD YOUR BREATH"
 horizontal_alignment = 1
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer"]
-libraries = {
-&"": SubResource("AnimationLibrary_eq7yl")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer" unique_id=2000309936]
+libraries/ = SubResource("AnimationLibrary_eq7yl")
 playback_default_blend_time = 0.5
 
-[node name="EnterSound" type="AudioStreamPlayer" parent="."]
+[node name="EnterSound" type="AudioStreamPlayer" parent="." unique_id=93199093]
 stream = ExtResource("8_eq7yl")
 
-[node name="ExitSound" type="AudioStreamPlayer" parent="."]
+[node name="ExitSound" type="AudioStreamPlayer" parent="." unique_id=251955495]
 stream = ExtResource("9_0t2wt")
 
-[node name="Bang1" type="AudioStreamPlayer3D" parent="."]
+[node name="Bang1" type="AudioStreamPlayer3D" parent="." unique_id=1257185245]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.5000001, -2.18557e-08)
 stream = ExtResource("10_epqwy")
 
-[node name="Bang2" type="AudioStreamPlayer3D" parent="."]
+[node name="Bang2" type="AudioStreamPlayer3D" parent="." unique_id=544830540]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1.5000001, 0.30000004)
 stream = ExtResource("11_8vdn7")
 
-[node name="OutOfBreath" type="AudioStreamPlayer" parent="."]
+[node name="OutOfBreath" type="AudioStreamPlayer" parent="." unique_id=900181033]
 stream = ExtResource("10_kyopi")
 mix_target = 2
 
-[node name="Breathing" type="AudioStreamPlayer" parent="."]
+[node name="Breathing" type="AudioStreamPlayer" parent="." unique_id=1630612319]
 stream = ExtResource("10_0t2wt")
 mix_target = 2
 script = ExtResource("10_eq7yl")
 
-[node name="CatnapLockerCheck" type="Marker3D" parent="."]
+[node name="CatnapLockerCheck" type="Marker3D" parent="." unique_id=2000528266]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 2)
 
-[node name="Head" type="Marker3D" parent="."]
+[node name="Head" type="Marker3D" parent="." unique_id=790576965]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8000001, 0)
 
-[node name="SpotLight3D" type="SpotLight3D" parent="."]
+[node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=122069817]
 transform = Transform3D(1, -4.3711395e-08, -4.3711402e-08, 4.37114e-08, -4.371139e-08, 1, -4.37114e-08, -1, -4.3711385e-08, 2.2973753e-08, 2.4469647, 0.5255781)
 light_color = Color(0.7179603, 0.8427797, 1, 1)
-light_energy = 1.5944297
+light_energy = 1.923848
 spot_range = 1.4649168
 spot_angle = 72.68662
 script = ExtResource("15_8vdn7")

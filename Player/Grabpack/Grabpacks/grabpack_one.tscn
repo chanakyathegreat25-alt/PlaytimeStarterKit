@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://b5hqdrggpb7dw"]
+[gd_scene format=4 uid="uid://b5hqdrggpb7dw"]
 
 [ext_resource type="Texture2D" uid="uid://blve0bao3jqbk" path="res://Player/Grabpack/Models/T_ClassicGrabpackBase_BC.png" id="1_w8835"]
 [ext_resource type="Texture2D" uid="uid://bdm7lk4thpacx" path="res://Player/Grabpack/Models/T_ClassicGrabpackBase_Nt.png" id="2_68t5p"]
@@ -134,9 +134,11 @@ bind/32/name = &"JNT_L_HandAttachment_Pivot_end_077"
 bind/32/bone = -1
 bind/32/pose = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0, 0)
 
-[node name="GrabpackOne" type="Node3D"]
+[sub_resource type="JointLimitationCone3D" id="JointLimitationCone3D_w8835"]
 
-[node name="Skeleton3D" type="Skeleton3D" parent="."]
+[node name="GrabpackOne" type="Node3D" unique_id=979233205]
+
+[node name="Skeleton3D" type="Skeleton3D" parent="." unique_id=1489817057]
 transform = Transform3D(-3.33333, -2.91409e-07, -4.74766e-14, 1.06967e-29, -5.43069e-07, 3.33333, -2.91409e-07, 3.33333, 5.43069e-07, 0, 0.055, 0.237)
 bones/0/name = "_rootJoint"
 bones/0/parent = -1
@@ -370,27 +372,68 @@ bones/32/position = Vector3(0, 0.02, -1.38778e-17)
 bones/32/rotation = Quaternion(-2.64698e-23, 0, 1.92922e-30, 1)
 bones/32/scale = Vector3(1, 1, 1)
 
-[node name="Object_39" type="MeshInstance3D" parent="Skeleton3D"]
+[node name="Object_39" type="MeshInstance3D" parent="Skeleton3D" unique_id=876408125]
 mesh = SubResource("ArrayMesh_c8313")
 skin = SubResource("Skin_5n6eu")
 
-[node name="TubeIKRight" type="SkeletonIK3D" parent="Skeleton3D"]
-root_bone = &"JNT_R_Grabpack_Tube_01_09"
-tip_bone = &"JNT_R_Grabpack_Tube_06_014"
-target_node = NodePath("../../../LayerWalk/TubeLeft")
+[node name="TubeIK" type="JacobianIK3D" parent="Skeleton3D" unique_id=617544322]
+transform = Transform3D(1, 0, 0, 0, 1, -3.5527137e-15, -3.3881318e-21, 3.5527137e-15, 1, -0.12729931, 0.13487229, -0.05334127)
+max_iterations = 30
+angular_delta_limit = 0.026179938779914945
+deterministic = true
+setting_count = 2
+settings/0/target_node = NodePath("")
+settings/1/target_node = NodePath("")
+settings/0/root_bone_name = "JNT_R_Grabpack_Tube_01_09"
+settings/0/root_bone = 12
+settings/0/end_bone_name = "JNT_R_Grabpack_Tube_06_end_073"
+settings/0/end_bone = 18
+settings/0/extend_end_bone = false
+settings/0/joint_count = 7
+settings/1/root_bone_name = "JNT_L_Grabpack_Tube_01_018"
+settings/1/root_bone = 24
+settings/1/end_bone_name = "JNT_L_Grabpack_Tube_06_end_076"
+settings/1/end_bone = 30
+settings/1/extend_end_bone = false
+settings/1/joint_count = 7
+settings/0/joints/0/rotation_axis = 3
+settings/0/joints/0/limitation = SubResource("JointLimitationCone3D_w8835")
+settings/0/joints/0/limitation/right_axis = 0
+settings/0/joints/0/limitation/rotation_offset = Quaternion(0, 0, 0, 1)
+settings/0/joints/1/rotation_axis = 3
+settings/0/joints/1/limitation = null
+settings/0/joints/2/rotation_axis = 3
+settings/0/joints/2/limitation = null
+settings/0/joints/3/rotation_axis = 3
+settings/0/joints/3/limitation = null
+settings/0/joints/4/rotation_axis = 3
+settings/0/joints/4/limitation = null
+settings/0/joints/5/rotation_axis = 3
+settings/0/joints/5/limitation = null
+settings/0/joints/6/rotation_axis = 3
+settings/0/joints/6/limitation = null
+settings/1/joints/0/rotation_axis = 3
+settings/1/joints/0/limitation = null
+settings/1/joints/1/rotation_axis = 3
+settings/1/joints/1/limitation = null
+settings/1/joints/2/rotation_axis = 3
+settings/1/joints/2/limitation = null
+settings/1/joints/3/rotation_axis = 3
+settings/1/joints/3/limitation = null
+settings/1/joints/4/rotation_axis = 3
+settings/1/joints/4/limitation = null
+settings/1/joints/5/rotation_axis = 3
+settings/1/joints/5/limitation = null
+settings/1/joints/6/rotation_axis = 3
+settings/1/joints/6/limitation = null
 
-[node name="TubeIKLeft" type="SkeletonIK3D" parent="Skeleton3D"]
-root_bone = &"JNT_L_Grabpack_Tube_01_018"
-tip_bone = &"JNT_L_Grabpack_Tube_06_023"
-target_node = NodePath("../../../LayerWalk/RightTube")
+[node name="GrabpackLaunchable" type="Node" parent="." unique_id=775999421]
 
-[node name="GrabpackLaunchable" type="Node" parent="."]
-
-[node name="GrabpackHandAttachmentData" type="Node" parent="." node_paths=PackedStringArray("skeleton")]
+[node name="GrabpackHandAttachmentData" type="Node" parent="." unique_id=312627499 node_paths=PackedStringArray("skeleton")]
 script = ExtResource("4_w8835")
 skeleton = NodePath("../Skeleton3D")
 left_gun_bone_index = 21
 right_gun_bone_index = 6
 attachment_size = Vector3(10, 10, 10)
 
-[node name="GrabpackUseIKTube" type="Node" parent="."]
+[node name="GrabpackUseIKTube" type="Node" parent="." unique_id=1275693966]

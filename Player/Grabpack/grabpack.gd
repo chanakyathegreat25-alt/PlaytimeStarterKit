@@ -35,7 +35,6 @@ var grabpack_usable: bool = false
 var wire_powered: bool = false
 
 func _ready():
-	# Reset grabpack
 	if has_node("Pack/GrabpackOne"):
 		$Pack/GrabpackOne.queue_free()
 	
@@ -59,29 +58,18 @@ func _ready():
 	
 	queue_grabpack(player.starting_grabpack)
 	set_queued_grabpack()
-	await get_tree().create_timer(0.1).timeout
-	update_grabpack_data()
-	await get_tree().create_timer(0.1).timeout
+	
+	await get_tree().process_frame
+	await update_grabpack_data()
 	update_grabpack_visibility(true)
-	grabpack_lowered = true
-	Grabpack.raise_grabpack()
 	
 	if player.start_lowered:
-		#item_animation.play("StartLowered")
 		grabpack_lowered = true
+	else: animation.set_lower(false)
 
 func _process(delta: float) -> void:
 	rotation.x = lerp_angle(rotation.x, neck.rotation.x, sway_speed * delta)
 	rotation.y = lerp_angle(rotation.y, neck.rotation.y, sway_speed * delta)
-func _physics_process(_delta: float) -> void:
-	if current_grabpack_skeleton_node:
-		attachment_left.position = Vector3.ZERO
-		attachment_right.position = Vector3.ZERO
-		attachment_left.rotation = Vector3.ZERO
-		attachment_right.rotation = Vector3.ZERO
-		current_grabpack_skeleton_node.force_update_transform()
-		attachment_left.force_update_transform()
-		attachment_right.force_update_transform()
 
 func switch_grabpack(grabpack_index: int):
 	if grabpack_index == current_grabpack:
@@ -92,7 +80,9 @@ func switch_grabpack(grabpack_index: int):
 	
 	lower_grabpack()
 	await Game.delay(0.5)
+	update_grabpack_visibility(false)
 	set_queued_grabpack()
+	await get_tree().process_frame
 	update_grabpack_data(); update_grabpack_visibility(true)
 	grabpack_lowered = true
 	raise_grabpack()
@@ -112,7 +102,7 @@ func set_grabpack(grabpack_index: int):
 	current_grabpack = grabpack_index
 	grabpack_lowered = false
 func update_grabpack_data():
-	_reset_attachments()
+	#_reset_attachments()
 	
 	pack_bone_data_node = null
 	grabpack_switchable_hands = current_grabpack_node.has_node("GrabpackSwitchHands")
@@ -136,20 +126,28 @@ func update_grabpack_data():
 
 	attachment_left.set_external_skeleton(attachment_left.get_path_to(pack_bone_data.skeleton))
 	attachment_right.set_external_skeleton(attachment_right.get_path_to(pack_bone_data.skeleton))
-
+	
+	await get_tree().process_frame
+	
 	attachment_left.bone_idx = pack_bone_data.left_gun_bone_index
-	attachment_right.bone_idx = pack_bone_data.right_gun_bone_index
 	attachment_left.override_pose = true
+	attachment_right.bone_idx = pack_bone_data.right_gun_bone_index
 	attachment_right.override_pose = true
+	
+	if current_grabpack_skeleton_node:
+		attachment_left.position = Vector3.ZERO
+		attachment_right.position = Vector3.ZERO
+		attachment_left.rotation = Vector3.ZERO
+		attachment_right.rotation = Vector3.ZERO
+		current_grabpack_skeleton_node.force_update_transform()
+		attachment_left.force_update_transform()
+		attachment_right.force_update_transform()
 
 	if current_grabpack_node.has_node("GrabpackUseIKTube"):
-		var leftik: SkeletonIK3D = current_grabpack_skeleton_node.get_node("TubeIKLeft")
-		var rightik: SkeletonIK3D = current_grabpack_skeleton_node.get_node("TubeIKRight")
-		leftik.target_node = leftik.get_path_to(tube_left)
-		rightik.target_node = rightik.get_path_to(right_tube)
+		var ik: JacobianIK3D = current_grabpack_skeleton_node.get_node("TubeIK")
+		ik.set_target_node(1, ik.get_path_to(tube_left))
+		ik.set_target_node(0, ik.get_path_to(right_tube))
 
-		leftik.start()
-		rightik.start()
 func update_grabpack_visibility(new_visible: bool):
 	current_grabpack_node.visible = new_visible
 func queue_grabpack(grabpack_index: int):
@@ -173,9 +171,6 @@ func raise_grabpack():
 		grabpack_lowered = false
 
 func _input(_event):
-	if Input.is_action_pressed("f") and Input.is_action_pressed("u"):
-		left_hand.play_animation("middle")
-		right_hand.play_animation("middle")
 	if Input.is_action_just_pressed("flashlight"):
 		if player.flashlight_togglable:
 			if pack_bone_data_node and pack_bone_data_node.use_flashlight_animation:
@@ -191,9 +186,6 @@ func _input(_event):
 				sound_manager.toggle_flashlight()
 
 func _reset_attachments():
-	attachment_left.bone_idx = 0
 	attachment_left.override_pose = false
-	attachment_left.set_use_external_skeleton(false)
-	attachment_right.bone_idx = 0
 	attachment_right.override_pose = false
-	attachment_right.set_use_external_skeleton(false)
+	
